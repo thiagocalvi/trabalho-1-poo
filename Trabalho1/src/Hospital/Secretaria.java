@@ -19,7 +19,8 @@ public class Secretaria extends Pessoa{
         super(Nome, dataNascimento, Endereco, telefone, email);
         this.id = id;
         this.medicos = medicos;
-    }
+    } 
+    
     
      //Gets e Sets
     public int getId() {
