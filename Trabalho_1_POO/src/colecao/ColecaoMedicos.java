@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package colecao;
+
 import java.util.List;
+import java.util.ArrayList;
 /**
  *
  * @author thiago
@@ -11,20 +13,35 @@ import java.util.List;
 public class ColecaoMedicos {
     private List<Medico> medicos;
 
-    public List<Medico> getMedicos() {
+    
+    public ColecaoMedicos(){
+        this.medicos = new ArrayList<Medico>();
+    }
+        
+    
+    //Retorna todos os medicos cadastrados
+    public List<Medico> getMedicos(){
         return medicos;
     }
     
-        
-    public void adicionar(Medico medicos){
-        
+    
+    //Adiciona um medico na coleção
+    public void adicionar(Medico medico){
+        this.medicos.add(medico);
     }
     
-    public void remover(Medico medicos){
-        
+    //Remove um medico da coleção
+    public void remover(Medico medico){
+        this.medicos.remove(medico);
     }
     
-    public Medico buscar(int){
-        
+    //Busca um medico pelo crm
+    public Medico buscar(int crm){
+        for(Medico medico : medicos){
+            if(medico.getCrm() == crm){
+                return medico;
+            }
+        }
+        return null; //se o medico não for encontrado
     }
 }

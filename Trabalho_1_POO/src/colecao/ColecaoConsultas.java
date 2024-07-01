@@ -5,6 +5,7 @@
 package colecao;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,20 +15,30 @@ public class ColecaoConsultas {
     private List<Consulta> consultas;
 
     
+    public ColecaoConsultas(){
+        this.consultas = new ArrayList<Consulta>();
+    }
+    
+    
     public List<Consulta> getConsultas() {
         return consultas;
     }
     
         
     public void adicionar(Consulta consulta){
-        
+        this.consultas.add(consulta);
     }
     
     public void remover(Consulta consulta){
-        
+        this.consultas.remove(consulta);
     }
     
-    public Consulta buscar(int){
-        
+    public Consulta buscar(int id){
+        for(Consulta consulta : consultas){
+            if(consulta.getId == id){
+                return consulta;
+            }
+        }
+        return null;
     }
 }
