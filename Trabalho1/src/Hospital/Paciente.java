@@ -13,16 +13,20 @@ import java.time.LocalDate;
 public class Paciente extends Pessoa{
     //Atributos
     private int id;
-    private enum tipoConvenio{
+    private tipoConvenio tipoConvenio;
+    private DadosMedicos dadosMedicos;
+    
+    //tipoConvenio
+    public enum tipoConvenio{
         PARTICULAR,
         PLANOSAUDE
     };
-    private DadosMedicos dadosMedicos;
     
     //Construtor
-    public Paciente(int id, DadosMedicos dadosMedicos, String Nome, LocalDate dataNascimento, String Endereco, String telefone, String email) {
+    public Paciente(int id, tipoConvenio tipoConvenio, DadosMedicos dadosMedicos, String Nome, LocalDate dataNascimento, String Endereco, String telefone, String email) {
         super(Nome, dataNascimento, Endereco, telefone, email);
         this.id = id;
+        this.tipoConvenio = tipoConvenio;
         this.dadosMedicos = dadosMedicos;
     }
     
@@ -35,6 +39,14 @@ public class Paciente extends Pessoa{
         this.id = id;
     }
 
+    public tipoConvenio getTipoConvenio() {
+        return tipoConvenio;
+    }
+
+    public void setTipoConvenio(tipoConvenio tipoConvenio) {
+        this.tipoConvenio = tipoConvenio;
+    }
+    
     public DadosMedicos getDadosMedicos() {
         return dadosMedicos;
     }
