@@ -19,27 +19,13 @@ public class ColecaoConsultas {
     public ColecaoConsultas(){
         this.consultas = new ArrayList<Consulta>();
     }
-    
-    
+
     public List<Consulta> getConsultas() {
         return consultas;
     }
-    
-        
-    public void adicionar(Consulta consulta){
-        this.consultas.add(consulta);
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
     }
     
-    public void remover(Consulta consulta){
-        this.consultas.remove(consulta);
-    }
-    
-    public Consulta buscar(int id){
-        for(Consulta consulta : consultas){
-            if(consulta.getId() == id){
-                return consulta;
-            }
-        }
-        return null;
-    }
 }

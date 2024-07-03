@@ -17,26 +17,12 @@ public class ColecaoSecretarias {
     public ColecaoSecretarias(){
         this.secretarias = new ArrayList<Secretaria>();
     }
-    
+
     public List<Secretaria> getSecretarias() {
         return secretarias;
     }
-    
-        
-    public void adicionar(Secretaria secretaria){
-        this.secretarias.add(secretaria);
-    }
-    
-    public void remover(Secretaria secretaria){
-        this.secretarias.remove(secretaria);
-    }
-    
-    public Secretaria buscar(int  id){
-        for(Secretaria secretaria : secretarias){
-            if(secretaria.getId() == id){
-                return secretaria;
-            }
-        }
-        return null;
+
+    public void setSecretarias(List<Secretaria> secretarias) {
+        this.secretarias = secretarias;
     }
 }

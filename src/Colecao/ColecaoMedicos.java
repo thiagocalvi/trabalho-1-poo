@@ -18,31 +18,14 @@ public class ColecaoMedicos {
     public ColecaoMedicos(){
         this.medicos = new ArrayList<Medico>();
     }
-        
-    
-    //Retorna todos os medicos cadastrados
-    public List<Medico> getMedicos(){
+
+    public List<Medico> getMedicos() {
         return medicos;
     }
-    
-    
-    //Adiciona um medico na coleção
-    public void adicionar(Medico medico){
-        this.medicos.add(medico);
+
+    public void setMedicos(List<Medico> medicos) {
+        this.medicos = medicos;
     }
     
-    //Remove um medico da coleção
-    public void remover(Medico medico){
-        this.medicos.remove(medico);
-    }
     
-    //Busca um medico pelo crm
-    public Medico buscar(int crm){
-        for(Medico medico : medicos){
-            if(medico.getCrm() == crm){
-                return medico;
-            }
-        }
-        return null; //se o medico não for encontrado
-    }
 }
