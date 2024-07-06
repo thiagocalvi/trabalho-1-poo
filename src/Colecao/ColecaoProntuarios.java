@@ -18,25 +18,13 @@ public class ColecaoProntuarios {
     public ColecaoProntuarios(){
         this.prontuarios = new ArrayList<Prontuario>();
     }
-    
+
     public List<Prontuario> getProntuarios() {
         return prontuarios;
     }
-        
-    public void adicionar(Prontuario prontuario){
-        this.prontuarios.add(prontuario);
+
+    public void setProntuarios(List<Prontuario> prontuarios) {
+        this.prontuarios = prontuarios;
     }
     
-    public void remover(Prontuario prontuario){
-        this.prontuarios.remove(prontuario);
-    }
-    
-    public Prontuario buscar(int id){
-        for(Prontuario prontuario : prontuarios){
-            if(prontuario.getId() == id){
-                return prontuario;
-            }
-        }
-        return null;
-    }
 }
