@@ -28,3 +28,19 @@ O package Gerenciador armazena as classes
 * GerenciadorSecratarias
 
 :memo: Adicionar a descrição dos métodos das classes
+
+## Descrição das classes
+
+### Consulta
+
+### Medico
+
+### Paciente
+
+### Pessoa
+
+### Pronturario
+
+### Secretario
+
+
