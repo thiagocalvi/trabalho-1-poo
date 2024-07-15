@@ -23,7 +23,7 @@ public class MenuMedico {
         System.out.println("--------------------------");
         System.out.println("");
         
-        
+        System.out.println("");
         
         
         
