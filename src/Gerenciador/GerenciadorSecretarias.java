@@ -7,7 +7,7 @@ import Modelo.Secretaria;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 public class GerenciadorSecretarias {
     // MÉTODOS

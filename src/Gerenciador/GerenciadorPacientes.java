@@ -7,7 +7,7 @@ import Modelo.Paciente;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 public class GerenciadorPacientes {
     // MÉTODOS

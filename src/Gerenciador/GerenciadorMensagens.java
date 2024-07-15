@@ -7,7 +7,7 @@ import Modelo.Consulta;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 public class GerenciadorMensagens {
     // MÉTODOS

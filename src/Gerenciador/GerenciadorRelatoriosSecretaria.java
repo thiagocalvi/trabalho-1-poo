@@ -7,7 +7,7 @@ import Colecao.ColecaoConsultas;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 public class GerenciadorRelatoriosSecretaria {
     // MÉTODOS

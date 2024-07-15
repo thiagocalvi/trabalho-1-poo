@@ -7,7 +7,7 @@ import Modelo.Prontuario;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 public class GerenciadorProntuarios {
     // MÉTODOS
