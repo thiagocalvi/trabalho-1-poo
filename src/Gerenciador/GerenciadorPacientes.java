@@ -25,6 +25,8 @@ public class GerenciadorPacientes {
     
     public Paciente buscarPaciente(int valor){
         
+        return null;
+        
     }
     
 }

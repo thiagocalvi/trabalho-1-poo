@@ -25,6 +25,8 @@ public class GerenciadorSecretarias {
     
     public Secretaria buscarPaciente(int valor){
         
+        return null;
+        
     }
     
     
