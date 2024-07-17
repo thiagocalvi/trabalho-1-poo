@@ -6,6 +6,7 @@ package Gerenciador;
 import Modelo.Consulta;
 import Modelo.Medico;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,14 @@ import java.util.ArrayList;
  * @author jeanm
  */
 public class GerenciadorConsultas {
-        // MÉTODOS
+    private int id;
+    private LocalDate data;
+    private LocalTime horario;
+    
+    
+    
+    
+    // MÉTODOS
     public void cadastrarConsulta(Consulta consulta){
         System.out.println("----------------------------");
         System.out.println("TELA DE CADASTRO: ");
