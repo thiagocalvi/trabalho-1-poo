@@ -7,6 +7,7 @@ package Main;
 import java.util.Scanner;
 import Modelo.Medico;
 import Modelo.Secretaria;
+import Gerenciador.GerenciadorMedicos;
 
 /**
  *
@@ -15,6 +16,7 @@ import Modelo.Secretaria;
 public class MenuAdm {
     public static int chamaMedico() {
         Scanner read = new Scanner(System.in);
+        GerenciadorMedicos medicos = new GerenciadorMedicos();
         int option = 0;
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
@@ -36,7 +38,7 @@ public class MenuAdm {
         
         switch (option){
             case 1:
-                // Colocar a classe medico.cadastro
+                medicos.cadastrarMedico();
                 break;
                 
             case 2:
