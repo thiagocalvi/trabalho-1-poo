@@ -15,19 +15,19 @@ import java.util.Scanner;
 public class GerenciadorMedicos {
     private String nome;
     private int dia, mes, ano;
-    private String endereco;
     private String telefone;
     private String email;
     private String especialidade;
     private int crm;
     
+    
     Scanner read = new Scanner(System.in);
     
     // MÉTODOS
-    public void cadastrarMedico() throws InterruptedException{
-        
+    public void cadastrarMedico() {
+        System.out.println("----------------------------");
         System.out.println("TELA DE CADASTRO: ");
-        System.out.println("");
+        System.out.println("----------------------------");
         System.out.print("Nome: ");
         nome = read.nextLine();
         
@@ -38,9 +38,6 @@ public class GerenciadorMedicos {
         mes = Integer.parseInt(data.substring(3, 5));
         ano = Integer.parseInt(data.substring(6, 10));    
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
-        
-        System.out.print("Endereço: ");
-        endereco = read.nextLine(); 
         
         System.out.print("Telefone: ");
         telefone = read.nextLine();
@@ -54,12 +51,14 @@ public class GerenciadorMedicos {
         System.out.print("CRM: ");
         crm = read.nextInt();
         
-        Medico medico = new Medico(especialidade, crm, nome, dataNascimento, endereco, telefone, email);
+        Medico medico = new Medico(especialidade, crm, nome, dataNascimento, telefone, email);
         
         // Colocar o metodo colecao.medico 
-                
+        
+        System.out.println("----------------------------");
         System.out.println("Cadastro finalizado!");
-        Thread.sleep(2000);     
+        System.out.println("----------------------------");
+
     }
     
     public void atualizarMedico(int id){
@@ -71,6 +70,9 @@ public class GerenciadorMedicos {
     }
     
     public Medico buscarMedico(int id){
+        
+        
+        
         
         return null;
         
