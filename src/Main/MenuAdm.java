@@ -7,6 +7,8 @@ package Main;
 import java.util.Scanner;
 import Modelo.Medico;
 import Modelo.Secretaria;
+import Gerenciador.GerenciadorMedicos;
+import Gerenciador.GerenciadorSecretarias;
 
 /**
  *
@@ -33,6 +35,8 @@ public class MenuAdm {
         System.out.println("");
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
+        
+        GerenciadorMedicos gerenciadorMedicos = new GerenciadorMedicos();
         
         switch (option){
             case 1:

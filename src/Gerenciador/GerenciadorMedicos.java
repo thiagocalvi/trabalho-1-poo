@@ -11,7 +11,7 @@ import Modelo.Medico;
  */
 public class GerenciadorMedicos {
     // MÉTODOS
-    public void cadastrarMedico(Medico doutor){
+    public void cadastrarMedico(){
         
     }
     
