@@ -7,6 +7,8 @@ package Main;
 import java.util.Scanner;
 import Modelo.Medico;
 import Modelo.Secretaria;
+import Gerenciador.GerenciadorMedicos;
+import Gerenciador.GerenciadorSecretarias;
 
 /**
  *
@@ -33,6 +35,8 @@ public class MenuAdm {
         System.out.println("");
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
+        
+        GerenciadorMedicos gerenciadorMedicos = new GerenciadorMedicos();
         
         switch (option){
             case 1:
@@ -66,6 +70,7 @@ public class MenuAdm {
         System.out.println("");
         System.out.println("-------------------------------------");
         System.out.println("| Opção |           Tipo            |");
+        System.out.println("|-----------------------------------|");
         System.out.println("|   1   |    Cadastrar secretária   |");
         System.out.println("|   2   |    Atualizar secretária   |");
         System.out.println("|   3   |     Remover secretária    |");
@@ -121,6 +126,7 @@ public class MenuAdm {
         System.out.print("Opção: ");
         option = read.nextInt();
 
+        Main.limpaTela();
         int option1 = 0;
         switch (option){
             case 1:
@@ -129,6 +135,7 @@ public class MenuAdm {
                     if (option1 == 6){
                         option = 3;
                     }
+                    Main.limpaTela();
                 }
                 break;
             
@@ -137,7 +144,8 @@ public class MenuAdm {
                     option1 = chamaSecretaria();
                     if (option1 == 6){
                         option = 3;
-                    }      
+                    }
+                    Main.limpaTela();
                 }
                 break;
        

@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class DadosMedicos {
     //Atributos
+    private int id; //gerar id
     private boolean fuma;
     private boolean bebe;
     private String colesterol;
@@ -20,6 +21,7 @@ public class DadosMedicos {
     private List<String> alergias;
 
     //Construtor
+    
     public DadosMedicos(boolean fuma, boolean bebe, String colesterol, boolean diabete, boolean doencaCardiaca, List<String> cirurgias, List<String> alergias) {
         this.fuma = fuma;
         this.bebe = bebe;
@@ -29,8 +31,11 @@ public class DadosMedicos {
         this.cirurgias = cirurgias;
         this.alergias = alergias;
     }
+
+    public int getId() {
+        return id;
+    }
     
-    //Gets e Sets
     public boolean isFuma() {
         return fuma;
     }
@@ -86,5 +91,7 @@ public class DadosMedicos {
     public void setAlergias(List<String> alergias) {
         this.alergias = alergias;
     }
+    
+    
 
 }

@@ -5,26 +5,17 @@
 package Colecao;
 
 import Modelo.Medico;
-import java.util.List;
 import java.util.ArrayList;
 /**
  *
  * @author thiago
  */
 public class ColecaoMedicos {
-    private List<Medico> medicos;
+    private ArrayList<Medico> medicos;
 
     
     public ColecaoMedicos(){
         this.medicos = new ArrayList<Medico>();
-    }
-
-    public List<Medico> getMedicos() {
-        return medicos;
-    }
-
-    public void setMedicos(List<Medico> medicos) {
-        this.medicos = medicos;
     }
     
     
