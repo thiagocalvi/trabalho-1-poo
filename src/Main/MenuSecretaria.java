@@ -125,6 +125,7 @@ public class MenuSecretaria {
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
         
+        Main.limpaTela();
         int option1 = 0;
         switch (option){
             case 1:
@@ -133,6 +134,7 @@ public class MenuSecretaria {
                     if (option1 == 6){
                         option = 3;
                     }
+                    Main.limpaTela();
                 }
                 break;
             
@@ -141,7 +143,8 @@ public class MenuSecretaria {
                     option1 = chamaSecretaria();
                     if (option1 == 6){
                         option = 3;
-                    }      
+                    }    
+                    Main.limpaTela();
                 }
                 break;
        

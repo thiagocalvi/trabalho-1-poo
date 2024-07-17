@@ -4,6 +4,7 @@
  */
 package Gerenciador;
 import Modelo.Consulta;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,9 +26,13 @@ public class GerenciadorConsultas {
     
     public Consulta buscarConsulta(int valor){
         
+        return null;
+        
     }
     
-    public list gerarRelatorioConsultasDiaSeguinte(){
+    public ArrayList gerarRelatorioConsultasDiaSeguinte(){
+        
+        return null;
         
     }
 }

@@ -35,7 +35,7 @@ public class Main {
             System.out.println("----------------------------");
             System.out.println("| Opção |      Tipo        |");
             System.out.println("|--------------------------|");
-            System.out.println("|   1   |  Administração   |");
+            System.out.println("|   1   |  Administrador   |");
             System.out.println("|   2   |    Secretária    |");
             System.out.println("|   3   |      Médico      |");
             System.out.println("|   4   | Sair do Programa |");
@@ -63,7 +63,7 @@ public class Main {
 
                 case 3:                    
                     while (option1 != 5){
-                        option1 = MenuSecretaria.usuariaSecretaria();
+                        option1 = MenuMedico.usuarioMedico();
                         limpaTela();
                     }       
                     break;

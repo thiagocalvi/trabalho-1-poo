@@ -25,6 +25,8 @@ public class GerenciadorProntuarios {
     
     public Prontuario buscarProntuario(int valor){
         
+        return null;
+        
     }
     
     

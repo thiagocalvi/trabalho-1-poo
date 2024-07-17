@@ -5,6 +5,8 @@
 package Gerenciador;
 import Modelo.Prontuario;
 import Modelo.Medico;
+import Modelo.Paciente;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,17 +16,25 @@ public class GerenciadorRelatoriosMedico {
     // MÉTODOS
     public String gerarReceita(Prontuario prontuario){
         
+        return null;
+        
     }
     
     public String gerarAtestado(Prontuario prontuario){
+        
+        return null;
         
     }
     
     public String gerarDeclaracaoAcompanhamento(Prontuario prontuario){
         
+        return null;
+        
     }
     
-    public list gerarRelatorioClientesAtendidosNoMes(Medico, int mes, int ano){
+    public ArrayList<Paciente> gerarRelatorioClientesAtendidosNoMes(Medico doutor, int mes, int ano){
+        
+        return null;
         
     }
     

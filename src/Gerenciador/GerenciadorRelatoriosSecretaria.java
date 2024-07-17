@@ -4,6 +4,7 @@
  */
 package Gerenciador;
 import Colecao.ColecaoConsultas;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,11 +12,13 @@ import Colecao.ColecaoConsultas;
  */
 public class GerenciadorRelatoriosSecretaria {
     // MÉTODOS
-    public list getConsultasNextDay(ColecaoConsultas consulta){
+    public ArrayList getConsultasNextDay(ColecaoConsultas consulta){
+        
+        return null;
         
     }
     
-    public void gerarRelatorio(list){
+    public void gerarRelatorio(ArrayList lista){
         
     }
     
