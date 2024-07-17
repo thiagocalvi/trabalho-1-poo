@@ -12,23 +12,20 @@ import java.time.LocalTime;
  */
 public class Consulta {
     //Atributos
-    private int id;
+    private int id; //gerar id
     private LocalDate data;
     private LocalTime horario;
-    private Medico medico;
-    private Paciente paciente;
+    private int medicoId;
+    private int pacienteId;
     private enum tipo{
         normal,
         retorno
     };
     
     //Construtor
-    public Consulta(int id, LocalDate data, LocalTime horario, Medico medico, Paciente paciente) {
-        this.id = id;
+    public Consulta(LocalDate data, LocalTime horario) {
         this.data = data;
         this.horario = horario;
-        this.medico = medico;
-        this.paciente = paciente;
     }
     
     //Gets e Sets
@@ -36,10 +33,22 @@ public class Consulta {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMedicoId(Medico medico){
+        this.medicoId = medico.getCrm();
+    }
+    
+    public int getMedicoId(){
+        return medicoId;
     }
 
+    public void setPacienteId(Paciente paciente){
+        this.pacienteId = paciente.getId();
+    }
+    
+    public int getPacienteId(){
+        return pacienteId;
+    }
+    
     public LocalDate getData() {
         return data;
     }
@@ -56,20 +65,4 @@ public class Consulta {
         this.horario = horario;
     }
 
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
-    }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-    
 }

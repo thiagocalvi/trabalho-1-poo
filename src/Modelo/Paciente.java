@@ -10,11 +10,16 @@ import java.time.LocalDate;
  *
  * @author MatheusConsoni
  */
-public class Paciente extends Pessoa{
+public class Paciente{
     //Atributos
-    private int id;
+    private int id; //gerar id
+    private int dadosMedicosId = 0; //0 indica que o paciente não tem nenhum dado medico cadastrado
+    private String nome;
+    private LocalDate dataNascimento;
+    private String telefone;
+    private String email;
+    private String endereco;
     private tipoConvenio tipoConvenio;
-    private DadosMedicos dadosMedicos;
     
     //tipoConvenio
     public enum tipoConvenio{
@@ -23,20 +28,65 @@ public class Paciente extends Pessoa{
     };
     
     //Construtor
-    public Paciente(int id, tipoConvenio tipoConvenio, DadosMedicos dadosMedicos, String Nome, LocalDate dataNascimento, String Endereco, String telefone, String email) {
-        super(Nome, dataNascimento, Endereco, telefone, email);
-        this.id = id;
+    public Paciente(tipoConvenio tipoConvenio, String nome, LocalDate dataNascimento, String endereco, String telefone, String email) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
         this.tipoConvenio = tipoConvenio;
-        this.dadosMedicos = dadosMedicos;
     }
-    
-    //Gets e Sets
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getDadosMedicosId() {
+        return dadosMedicosId;
+    }
+    
+    public void setDadosMedicosId(DadosMedicos dadosMedicos) {
+        this.dadosMedicosId = dadosMedicos.getId();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public tipoConvenio getTipoConvenio() {
@@ -46,14 +96,5 @@ public class Paciente extends Pessoa{
     public void setTipoConvenio(tipoConvenio tipoConvenio) {
         this.tipoConvenio = tipoConvenio;
     }
-    
-    public DadosMedicos getDadosMedicos() {
-        return dadosMedicos;
-    }
-
-    public void setDadosMedicos(DadosMedicos dadosMedicos) {
-        this.dadosMedicos = dadosMedicos;
-    }
-    
     
 }
