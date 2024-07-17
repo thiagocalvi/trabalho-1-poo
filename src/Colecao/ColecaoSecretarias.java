@@ -5,24 +5,15 @@
 package Colecao;
 
 import Modelo.Secretaria;
-import java.util.List;
 import java.util.ArrayList;
 /**
  *
  * @author thiago
  */
 public class ColecaoSecretarias {
-    private List<Secretaria> secretarias;
+    private ArrayList<Secretaria> secretarias;
 
     public ColecaoSecretarias(){
         this.secretarias = new ArrayList<Secretaria>();
-    }
-
-    public List<Secretaria> getSecretarias() {
-        return secretarias;
-    }
-
-    public void setSecretarias(List<Secretaria> secretarias) {
-        this.secretarias = secretarias;
     }
 }

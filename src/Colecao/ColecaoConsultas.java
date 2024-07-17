@@ -5,27 +5,18 @@
 package Colecao;
 
 import Modelo.Consulta;
-import java.util.List;
 import java.util.ArrayList;
 
 /**
  *
  * @author thiago
  */
-public class ColecaoConsultas {
-    private List<Consulta> consultas;
+public class ColecaoConsultas{
+    private ArrayList<Consulta> consultas;
 
     
     public ColecaoConsultas(){
         this.consultas = new ArrayList<Consulta>();
-    }
-
-    public List<Consulta> getConsultas() {
-        return consultas;
-    }
-
-    public void setConsultas(List<Consulta> consultas) {
-        this.consultas = consultas;
     }
     
 }

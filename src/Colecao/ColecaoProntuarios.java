@@ -5,7 +5,6 @@
 package Colecao;
 
 import Modelo.Prontuario;
-import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -13,18 +12,9 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoProntuarios {
-    private List<Prontuario> prontuarios;
+    private ArrayList<Prontuario> prontuarios;
     
     public ColecaoProntuarios(){
         this.prontuarios = new ArrayList<Prontuario>();
     }
-
-    public List<Prontuario> getProntuarios() {
-        return prontuarios;
-    }
-
-    public void setProntuarios(List<Prontuario> prontuarios) {
-        this.prontuarios = prontuarios;
-    }
-    
 }
