@@ -11,9 +11,18 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoSecretarias {
-    private ArrayList<Secretaria> secretarias;
+    private static ArrayList<Secretaria> secretarias;
 
-    public ColecaoSecretarias(){
-        this.secretarias = new ArrayList<Secretaria>();
+    public static ArrayList getSecretarias() {
+        return secretarias;
     }
+    
+    public static void add(Secretaria secretaria){
+        secretarias.add(secretaria);
+    }
+    
+    public static void remove(Secretaria secretaria){
+        secretarias.remove(secretaria);
+    }
+    
 }

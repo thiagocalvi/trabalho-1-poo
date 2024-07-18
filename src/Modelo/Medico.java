@@ -11,12 +11,13 @@ import java.time.LocalDate;
  * @author MatheusConsoni
  */
 public class Medico{
+    private int id; //usar como identificador
     private String nome;
     private LocalDate dataNascimento;
     private String telefone;
     private String email;
     private String especialidade;
-    private int crm; //usar como identificador
+    private int crm;
     private int secretariaId = 0; // 0 indica que o medico não tem nenhuma secretaria (cada medico terá somente uma secretaria)
     
     //Construtor
@@ -29,6 +30,14 @@ public class Medico{
         this.crm = crm;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }

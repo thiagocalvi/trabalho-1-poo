@@ -3,14 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Main;
-import Modelo.Medico;
-import Modelo.Paciente;
-import Modelo.DadosMedicos;
-import Modelo.Consulta;
-import Modelo.Secretaria;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Arrays;
+
+import Colecao.*;
 
 import java.util.Scanner;
 /**
@@ -26,7 +20,15 @@ public class Main {
     
     public static void main(String[] args){
         
+        //Inicializando as coleções
+        ColecaoConsultas colecaoConsultas = new ColecaoConsultas();
+        ColecaoPacientes colecaoPacientes = new ColecaoPacientes();
+        ColecaoProntuarios colecaoProntuarios = new ColecaoProntuarios();
+        ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
+        ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
+        
         Scanner read = new Scanner(System.in);
+        
         int option = 0;
         
         while (option != 4){
@@ -48,20 +50,23 @@ public class Main {
             int option1 = 0;
             switch (option) {
                 case 1:
+                    MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
                     while (option1 != 3) {
-                      option1 = MenuAdm.usuarioAdm();
+                      option1 = menuAdm.usuarioAdm();
                       limpaTela();
                     }
                     break;
 
                 case 2:                    
+                    MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
                     while (option1 != 5){
-                        option1 = MenuSecretaria.usuariaSecretaria();
+                        option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
                     }                  
                     break;
 
-                case 3:                    
+                case 3:          
+                    MenuMedico menuMedico = new MenuMedico();
                     while (option1 != 5){
                         option1 = MenuMedico.usuarioMedico();
                         limpaTela();

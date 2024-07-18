@@ -3,60 +3,65 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Gerenciador;
+import Colecao.ColecaoMedicos;
 import Modelo.Medico;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.Scanner;
-
 /**
  *
  * @author jeanm
  */
 public class GerenciadorMedicos {
-    private String nome;
-    private int dia, mes, ano;
-    private String telefone;
-    private String email;
-    private String especialidade;
-    private int crm;
     
+    private ColecaoMedicos colecaoMedicos;
+    
+    public GerenciadorMedicos(ColecaoMedicos colecaoMedicos){
+        this.colecaoMedicos = colecaoMedicos;
+    }
     
     Scanner read = new Scanner(System.in);
     
     // MÉTODOS
     public void cadastrarMedico() {
         System.out.println("----------------------------");
-        System.out.println("TELA DE CADASTRO: ");
+        System.out.println("      TELA DE CADASTRO      ");
         System.out.println("----------------------------");
-        System.out.print("Nome: ");
-        nome = read.nextLine();
+        
+        System.out.print("Nome médico: ");
+        String nome = read.nextLine();
         
         System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        //System.out.print("00/00/0000 : ");
         String data = read.nextLine();
-        dia = Integer.parseInt(data.substring(0, 2));
-        mes = Integer.parseInt(data.substring(3, 5));
-        ano = Integer.parseInt(data.substring(6, 10));    
+        
+        int dia = Integer.parseInt(data.substring(0, 2));
+        int mes = Integer.parseInt(data.substring(3, 5));
+        int ano = Integer.parseInt(data.substring(6, 10));    
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
         
         System.out.print("Telefone: ");
-        telefone = read.nextLine();
+        String telefone = read.nextLine();
         
         System.out.print("E-mail:");
-        email = read.nextLine();
+        String email = read.nextLine();
         
         System.out.print("Especialidade: ");
-        especialidade = read.nextLine();
+        String especialidade = read.nextLine();
         
         System.out.print("CRM: ");
-        crm = read.nextInt();
+        int crm = read.nextInt();
         
-        Medico medico = new Medico(especialidade, crm, nome, dataNascimento, telefone, email);
+        Medico medico = new Medico(nome, dataNascimento, telefone, email, especialidade, crm);
+               
+        
+        colecaoMedicos.getMedicos().add(medico);
+        
+        System.out.print(colecaoMedicos.getMedicos().get(0));
         
         // Colocar o metodo colecao.medico 
         
         System.out.println("----------------------------");
-        System.out.println("Cadastro finalizado!");
+        System.out.println("    Cadastro finalizado!"    );
         System.out.println("----------------------------");
 
     }

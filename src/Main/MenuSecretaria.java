@@ -4,6 +4,13 @@
  */
 package Main;
 
+import Colecao.ColecaoConsultas;
+import Colecao.ColecaoMedicos;
+import Colecao.ColecaoPacientes;
+
+import Gerenciador.GerenciadorConsultas;
+import Gerenciador.GerenciadorProntuarios;
+
 import static Main.MenuAdm.chamaMedico;
 import static Main.MenuAdm.chamaSecretaria;
 import java.util.Scanner;
@@ -13,6 +20,16 @@ import java.util.Scanner;
  * @author geanm
  */
 public class MenuSecretaria {
+    
+    private ColecaoMedicos colecaoMedicos;
+    private ColecaoPacientes colecaoPacientes;
+    private ColecaoConsultas colecaoConsultas;
+    
+    public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas){
+        this.colecaoMedicos = colecaoMedicos;
+        this.colecaoPacientes = colecaoPacientes;
+        this.colecaoConsultas = colecaoConsultas;
+    }
     
     public static int chamaConsulta() {
         Scanner read = new Scanner(System.in);
@@ -38,6 +55,7 @@ public class MenuSecretaria {
         switch (option){
             case 1:
                 // Colocar a classe secretaria.marcarConsulta
+                
                 break;
                 
             case 2:
@@ -105,7 +123,7 @@ public class MenuSecretaria {
     }
     
       
-    public static int usuariaSecretaria() {
+    public static int usuarioSecretaria() {
         Scanner read = new Scanner(System.in);
         int option = 0;
         

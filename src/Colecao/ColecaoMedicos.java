@@ -11,12 +11,18 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoMedicos {
-    private ArrayList<Medico> medicos;
+    private static final ArrayList medicos = new ArrayList<Medico>();  
 
-    
-    public ColecaoMedicos(){
-        this.medicos = new ArrayList<Medico>();
+    public static ArrayList getMedicos() {
+        return medicos;
     }
     
+    public static void add(Medico medico){
+        medicos.add(medico);
+    }
+    
+    public static void remove(Medico medico){
+        medicos.remove(medicos);
+    }
     
 }

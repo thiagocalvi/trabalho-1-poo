@@ -4,7 +4,11 @@
  */
 package Gerenciador;
 import Modelo.Consulta;
+import Modelo.Paciente;
 import Modelo.Medico;
+
+
+import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -14,20 +18,28 @@ import java.util.ArrayList;
  * @author jeanm
  */
 public class GerenciadorConsultas {
-    private int id;
-    private LocalDate data;
-    private LocalTime horario;
+
+    private int contadorId = 0;
     
+    Scanner read = new Scanner(System.in);
     
-    
+    public int gerarId(){
+        int id = this.contadorId += 1;
+        return id;
+    }
     
     // MÉTODOS
-    public void cadastrarConsulta(Consulta consulta){
+    public void cadastrarConsulta(Paciente paciente, Medico medico){
+        /*
+            Cadastrar consulta
+            Recebe o objeto paciente e medico
+            
+        */
         System.out.println("----------------------------");
-        System.out.println("TELA DE CADASTRO: ");
+        System.out.println("     TELA DE CADASTRO:      ");
         System.out.println("----------------------------");
         System.out.print("Nome: ");
-        nome = read.nextLine();
+        String nome = read.nextLine();
         
         System.out.println("Data de nascimento DIA/MES/ANO: ");
         System.out.print("00/00/0000 : ");
@@ -37,27 +49,11 @@ public class GerenciadorConsultas {
         int ano = Integer.parseInt(data.substring(6, 10));    
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
         
-        System.out.print("Endereço: ");
-        endereco = read.nextLine(); 
-        
-        System.out.print("Telefone: ");
-        telefone = read.nextLine();
-        
-        System.out.print("E-mail:");
-        email = read.nextLine();
-        
-        System.out.print("Especialidade: ");
-        especialidade = read.nextLine();
-        
-        System.out.print("CRM: ");
-        crm = read.nextInt();
-        
-        Medico medico = new Medico(especialidade, crm, nome, dataNascimento, endereco, telefone, email);
         
         // Colocar o metodo colecao.medico 
         
         System.out.println("----------------------------");
-        System.out.println("Cadastro finalizado!");
+        System.out.println("    Consulta cadastrada!    ");
         System.out.println("----------------------------");
 
     }
