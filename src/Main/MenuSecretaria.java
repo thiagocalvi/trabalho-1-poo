@@ -4,8 +4,6 @@
  */
 package Main;
 
-import static Main.MenuAdm.chamaMedico;
-import static Main.MenuAdm.chamaSecretaria;
 import java.util.Scanner;
 
 /**
@@ -59,7 +57,7 @@ public class MenuSecretaria {
     }
     
     
-    public static int chamaPaciente(String[] args) {
+    public static int chamaPaciente() {
         Scanner read = new Scanner(System.in);
         int option = 0;
         
@@ -130,7 +128,7 @@ public class MenuSecretaria {
         switch (option){
             case 1:
                 while (option1 != 5 && option1 != 6){
-                    option1 = chamaMedico();
+                    option1 = chamaConsulta();
                     if (option1 == 6){
                         option = 3;
                     }
@@ -140,7 +138,7 @@ public class MenuSecretaria {
             
             case 2:
                 while (option1 != 5 && option1 != 6){
-                    option1 = chamaSecretaria();
+                    option1 = chamaPaciente();
                     if (option1 == 6){
                         option = 3;
                     }    

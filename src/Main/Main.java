@@ -49,8 +49,8 @@ public class Main {
             switch (option) {
                 case 1:
                     while (option1 != 3) {
-                      option1 = MenuAdm.usuarioAdm();
-                      limpaTela();
+                        option1 = MenuAdm.usuarioAdm();
+                        limpaTela();
                     }
                     break;
 
@@ -61,8 +61,8 @@ public class Main {
                     }                  
                     break;
 
-                case 3:                    
-                    while (option1 != 5){
+                case 3:     
+                    while (option1 != 2){
                         option1 = MenuMedico.usuarioMedico();
                         limpaTela();
                     }       
