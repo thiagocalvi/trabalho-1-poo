@@ -260,7 +260,6 @@ public class MenuMedico {
         System.out.println("| Opção |          Tipo            |");
         System.out.println("|----------------------------------|");
         System.out.println("|   1   |    Entrar na conta       |");
-        System.out.println("|----------------------------------|");
         System.out.println("|   2   | Voltar para tela inicial |");
         System.out.println("------------------------------------");
         System.out.println("");

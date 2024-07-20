@@ -76,10 +76,10 @@ public class GerenciadorAdm {
         System.out.println("----------------------------");
         
         System.out.print("Nome médico: ");
+        read.next();
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -101,6 +101,7 @@ public class GerenciadorAdm {
         
         this.listarSecretarias();
         
+        System.out.println("");
         System.out.print("Informe o id da secretaria: ");
         int idSecretaria = read.nextInt();
         
@@ -120,6 +121,7 @@ public class GerenciadorAdm {
     }
     
     public void listarMedicos(){
+        System.out.println("\n \n");
         System.out.println("----------------------------");
         System.out.println("       LISTA MEDICOS        ");
         System.out.println("----------------------------");
@@ -147,7 +149,7 @@ public class GerenciadorAdm {
 
     }
 
-    public void autualizarMedico(){
+    public void atualizarMedico(){
         System.out.println("----------------------------");
         System.out.println("      ATUALIZAR MEDICO      ");
         System.out.println("----------------------------");
@@ -169,8 +171,10 @@ public class GerenciadorAdm {
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
         System.out.println("+----------------------------------------+");
         
-        System.out.println("Nome médico: ");
+        System.out.print("Nome médico: ");
+        read.nextLine();
         String nome = read.nextLine();
+
         
         System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
@@ -180,21 +184,21 @@ public class GerenciadorAdm {
         int ano = Integer.parseInt(data.substring(6, 10));    
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
         
-        System.out.println("Telefone: ");
+        System.out.print("Telefone: ");
         String telefone = read.nextLine();
         
-        System.out.println("E-mail:");
+        System.out.print("E-mail:");
         String email = read.nextLine();
         
-        System.out.println("Especialidade: ");
+        System.out.print("Especialidade: ");
         String especialidade = read.nextLine();
         
-        System.out.println("CRM: ");
+        System.out.print("CRM: ");
         int crm = read.nextInt();
 
         this.listarSecretarias();
         
-        System.out.println("Informe o id da secretaria (deve ser informado um id): ");
+        System.out.print("Informe o id da secretaria (deve ser informado um id): ");
         int idSecretaria = read.nextInt();
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
@@ -229,7 +233,7 @@ public class GerenciadorAdm {
         
         this.listarMedicos();
         
-        System.out.println("Informe o id do médico que será removido: ");
+        System.out.print("Informe o id do médico que será removido: ");
         int id = read.nextInt();
         
         colecaoMedicos.removeById(id);
@@ -292,6 +296,7 @@ public class GerenciadorAdm {
     }
    
     public void listarSecretarias(){
+        System.out.println("\n \n");
         System.out.println("----------------------------");
         System.out.println("     LISTA SECRETARIAS      ");
         System.out.println("----------------------------");
@@ -337,6 +342,7 @@ public class GerenciadorAdm {
         System.out.println();
         
         System.out.print("Nome secretaria: ");
+        read.next();
         String nome = read.nextLine();
         
         System.out.println("Data de nascimento DIA/MES/ANO: ");

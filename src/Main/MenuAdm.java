@@ -48,7 +48,7 @@ public class MenuAdm {
         System.out.println("|   6   | Voltar para tela inicial  |");
         System.out.println("-------------------------------------");
         System.out.println("");
-        System.out.print("Escolha a opção: ");
+        System.out.print("Opção: ");
         option = read.nextInt();
         
         switch (option){
@@ -68,7 +68,7 @@ public class MenuAdm {
                 
             case 2:
                 //Atualizar médico
-                gerenciadorAdm.autualizarMedico();
+                gerenciadorAdm.atualizarMedico();
                 break;
                 
             case 3:
