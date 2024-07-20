@@ -207,6 +207,7 @@ public class GerenciadorAdm {
         
         medico.setSecretariaId(secretaria);
         
+        
         if(!nome.equals(medico.getNome()) && nome != ""){
             medico.setNome(nome);    
         }
@@ -225,6 +226,7 @@ public class GerenciadorAdm {
         if(crm != medico.getCrm()){
             medico.setCrm(crm);
         }
+        
         
     }
     
