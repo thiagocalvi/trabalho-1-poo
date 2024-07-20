@@ -36,7 +36,6 @@ public class ColecaoMedicos {
         
     }
     
-
     public Medico getMedicoById(int id){
         for(Medico medico : medicos){
             if(id == medico.getId()){

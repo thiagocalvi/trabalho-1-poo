@@ -12,6 +12,7 @@ import Modelo.Secretaria;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -40,7 +41,9 @@ public class GerenciadorAdm {
     
     //METODOS MEDICO
     public void cadastroMedicosInterno(){
-
+        
+        Random random = new Random();
+            
         String[] nomes = {"João Silva", "Maria Oliveira", "Carlos Souza", "Ana Santos", "Pedro Lima"};
         String[] especialidades = {"Cardiologia", "Dermatologia", "Neurologia", "Pediatria", "Ortopedia"};
         String[] telefones = {"(11) 91234-5678", "(21) 98765-4321", "(31) 99876-5432", "(41) 91234-5678", "(51) 98765-4321"};
@@ -56,6 +59,11 @@ public class GerenciadorAdm {
             Medico medico = new Medico(nomes[i], datasNascimento[i], telefones[i], emails[i], especialidades[i], crms[i]);
             this.idMedicoControle += 1;
             medico.setId(this.idMedicoControle);
+            
+            int rIdSecretaria = random.nextInt(2)+1;
+            Secretaria secretaria = this.colecaoSecretarias.getSecretariaById(rIdSecretaria);
+            
+            medico.setSecretariaId(secretaria);
             this.colecaoMedicos.add(medico);
         }
            
@@ -91,9 +99,17 @@ public class GerenciadorAdm {
         System.out.print("CRM: ");
         int crm = read.nextInt();
         
+        this.listarSecretarias();
+        
+        System.out.print("Informe o id da secretaria: ");
+        int idSecretaria = read.nextInt();
+        
+        Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
+        
         Medico medico = new Medico(nome, dataNascimento, telefone, email, especialidade, crm);
         this.idMedicoControle += 1;
         medico.setId(this.idMedicoControle);
+        medico.setSecretariaId(secretaria);
                
         colecaoMedicos.add(medico);
             
@@ -123,6 +139,7 @@ public class GerenciadorAdm {
             System.out.printf("| Email: %-22s \n", medico.getEmail());
             System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
             System.out.printf("| CRM: %-24d \n", medico.getCrm());
+            System.out.printf("| Secretaria Id: %-25s \n", medico.getSecretariaId());
             System.out.println("+----------------------------------------+");
 
             index += 1;
@@ -151,13 +168,11 @@ public class GerenciadorAdm {
         System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
         System.out.println("+----------------------------------------+");
-        System.out.println();
         
-        System.out.print("Nome médico: ");
+        System.out.println("Nome médico: ");
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -165,17 +180,26 @@ public class GerenciadorAdm {
         int ano = Integer.parseInt(data.substring(6, 10));    
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
         
-        System.out.print("Telefone: ");
+        System.out.println("Telefone: ");
         String telefone = read.nextLine();
         
-        System.out.print("E-mail:");
+        System.out.println("E-mail:");
         String email = read.nextLine();
         
-        System.out.print("Especialidade: ");
+        System.out.println("Especialidade: ");
         String especialidade = read.nextLine();
         
-        System.out.print("CRM: ");
+        System.out.println("CRM: ");
         int crm = read.nextInt();
+
+        this.listarSecretarias();
+        
+        System.out.println("Informe o id da secretaria (deve ser informado um id): ");
+        int idSecretaria = read.nextInt();
+        
+        Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
+        
+        medico.setSecretariaId(secretaria);
         
         if(!nome.equals(medico.getNome()) && nome != ""){
             medico.setNome(nome);    
@@ -216,22 +240,11 @@ public class GerenciadorAdm {
     //METODOS SECRETARIA
     public void cadastroSecretariaIterno(){
         
-        String[] nomes = {"João Silva", "Maria Oliveira", "Carlos Souza", "Ana Santos", "Pedro Lima"};
-        LocalDate[] datasNascimento = {
-            LocalDate.of(1985, 5, 15),
-            LocalDate.of(1990, 8, 20),
-            LocalDate.of(1978, 12, 10),
-            LocalDate.of(1982, 3, 5),
-            LocalDate.of(1995, 7, 22)
-        };
-        String[] telefones = {"555-1234", "555-5678", "555-8765", "555-4321", "555-6789"};
-        String[] emails = {
-            "joao.silva@example.com",
-            "maria.oliveira@example.com",
-            "carlos.souza@example.com",
-            "ana.santos@example.com",
-            "pedro.lima@example.com"
-        };
+        String[] nomes = {"João Silva", "Maria Oliveira"};
+        LocalDate[] datasNascimento = {LocalDate.of(1985, 5, 15), LocalDate.of(1990, 8, 20)};
+        String[] telefones = {"555-1234", "555-5678"};
+        String[] emails = {"joao.silva@example.com", "maria.oliveira@example.com"};
+        
         for(int i = 0; i < nomes.length; i++){
             Secretaria secretaria = new Secretaria(nomes[i], datasNascimento[i], telefones[i], emails[i]);
             this.idSecretariaControle += 1;

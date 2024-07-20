@@ -30,9 +30,10 @@ public class Main {
         ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
         ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
         
+        //Inicializando os menus
         MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
         MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
-        MenuMedico menuMedico = new MenuMedico();
+        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios);
 
 
         //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
