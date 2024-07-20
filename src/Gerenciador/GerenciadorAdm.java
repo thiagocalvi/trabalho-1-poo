@@ -168,6 +168,7 @@ public class GerenciadorAdm {
         System.out.printf("| Email: %-22s \n", medico.getEmail());
         System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
+        System.out.printf("| Secretaria Id: %-24d \n", medico.getSecretariaId());
         System.out.println("+----------------------------------------+");
         System.out.println();
         
