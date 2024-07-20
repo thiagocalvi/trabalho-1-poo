@@ -35,6 +35,10 @@ public class MenuMedico {
     static Scanner read = new Scanner(System.in);
     
     public static int menuDadosAdicionais() {
+                System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): ");
+        System.out.println("");
+        System.out.println("Paciente: xxxx  ");
         System.out.println("");
         System.out.println("---------------------------------------");
         System.out.println("|           DADOS ADICIONAIS          |");
@@ -78,7 +82,10 @@ public class MenuMedico {
     
     
     public static int menuProntuario() {
-        System.out.println("");       
+        System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): ");
+        System.out.println("");
+        System.out.println("Paciente: xxxx  ");
         System.out.println("---------------------------------------");
         System.out.println("|              PRONTUÁRIO             |");
         System.out.println("---------------------------------------");
@@ -89,8 +96,6 @@ public class MenuMedico {
         System.out.println("|   3   |           Remover           |");
         System.out.println("|   4   | Voltar para a tela anterior |");
         System.out.println("---------------------------------------");        
-        System.out.println("");
-        System.out.println("Paciente: xxxx");
         System.out.println("");
         System.out.println("Opção: ");
         int option = read.nextInt();
@@ -122,7 +127,10 @@ public class MenuMedico {
     
     
     public static int menuConsulta() {
+        System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): ");
         System.out.println("");
+        System.out.println("Paciente: xxxx  ");
         System.out.println("--------------------------------");
         System.out.println("|            Consulta          |");
         System.out.println("--------------------------------");
@@ -134,12 +142,12 @@ public class MenuMedico {
         System.out.println("|   4   |  Finalizar consulta  |");
         System.out.println("--------------------------------");        
         System.out.println("");
-        System.out.println("Paciente: xxxx  ");
-        System.out.println("");
         System.out.print("Opção: ");
         int option = read.nextInt();
         
-        Main.limpaTela();
+        if (option != 4){
+            Main.limpaTela();
+        }
         int option1 = 0;
         switch (option){
             case 1:
@@ -162,13 +170,15 @@ public class MenuMedico {
                 break;
                 
             case 4:
-                System.out.println("Você deseja realmente 'FINALIZAR' a consulta?");
-                System.out.print("[SIM/NAO]: ");
-                String resp = read.next();
+                System.out.println("Você realmente deseja 'FINALIZAR' a consulta?");
+                System.out.println("[0] - Para sim \n[1] - Para não");
+                int option2 = read.nextInt();
                 
-                if ("NAO".equals(resp.toUpperCase())){
+                if (option2 == 1){
                     System.out.println("CONSULTA NÃO FINALIZADA!");
                     option = 0;
+                } else if (option2 == 0){
+                    System.out.println("CONSULTA FINALIZADA!");
                 }
                 break;
                 
@@ -181,27 +191,32 @@ public class MenuMedico {
     }
     
     
-    public static String chamaConsultaMarcada() {
+    public static int chamaConsultaMarcada() {
+        int option = 0;
+        
+        System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): "); // nome do doutor
+        System.out.println("");
         System.out.println("--------------------------------");
         System.out.println("Consultas do dia: ");
         
         // Pegar a lista de paciente referente as consultas do dia naquele médico e exibir aqui
         
         System.out.println("--------------------------------");
-        System.out.println("");
         System.out.println("Iniciar a consulta com o paciente xxxx ?  "); // Colocar o nome do paciente que será atendido
-        System.out.print("Digite apenas, 'SIM' ou 'NAO': ");
-        String resp = read.next();
+        System.out.println("[1] - Para sim \n[2] - Para não");
+        option = read.nextInt();
         
         Main.limpaTela();
-        int option = 0;
-        if ("SIM".equals(resp.toUpperCase())){
-            while (option != 4){
-                option = menuConsulta();
-                Main.limpaTela();
+        int option1 = 0;
+        switch (option){
+            case 1:
+                while (option1 != 4){
+                    option1 = menuConsulta();
+                    Main.limpaTela();
             }            
         }
-        return resp;
+        return option;
     } 
     
     
@@ -223,11 +238,11 @@ public class MenuMedico {
         int option = read.nextInt();
         
         Main.limpaTela();
-        String resposta = "";
+        int option1 = 0;
         switch (option){
             case 1:
-                while (!"NAO".equals(resposta.toUpperCase())){
-                    resposta = chamaConsultaMarcada();
+                while (option1 != 2){
+                    option1 = chamaConsultaMarcada();
                     Main.limpaTela();
                 }
                 break;
@@ -253,15 +268,9 @@ public class MenuMedico {
         System.out.println("------------------------------------");
         System.out.print("LOGIN DO MÉDICO (IDENTIFICADOR):  ");
         int id = read.nextInt();
-        System.out.println("------------------------------------");
-        System.out.println("");    
-            
-        System.out.println("------------------------------------");
-        System.out.println("| Opção |          Tipo            |");
-        System.out.println("|----------------------------------|");
-        System.out.println("|   1   |    Entrar na conta       |");
-        System.out.println("|   2   | Voltar para tela inicial |");
-        System.out.println("------------------------------------");
+        System.out.println("------------------------------------");         
+        System.out.println("[1] - Para entrar na conta \n[2] - Para voltar na tela inicial");
+        System.out.println("------------------------------------");         
         System.out.println("");
         System.out.print("Opção: ");
         int option = read.nextInt();

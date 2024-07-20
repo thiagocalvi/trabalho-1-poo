@@ -69,14 +69,14 @@ public class Main {
                     break;
 
                 case 2:                    
-                    while (option1 != 5){
+                    while (option1 != 4){
                         option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
                     }                  
                     break;
 
                 case 3:          
-                    while (option1 != 5){
+                    while (option1 != 2){
                         option1 = menuMedico.usuarioMedico();
                         limpaTela();
                     }       

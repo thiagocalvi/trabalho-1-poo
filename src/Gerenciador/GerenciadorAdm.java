@@ -6,6 +6,7 @@ package Gerenciador;
 
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoSecretarias;
+import Main.Main;
 import Modelo.Medico;
 import Modelo.Secretaria;
 
@@ -76,7 +77,7 @@ public class GerenciadorAdm {
         System.out.println("----------------------------");
         
         System.out.print("Nome médico: ");
-        read.next();
+        read.nextLine();    
         String nome = read.nextLine();
         
         System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
@@ -101,7 +102,6 @@ public class GerenciadorAdm {
         
         this.listarSecretarias();
         
-        System.out.println("");
         System.out.print("Informe o id da secretaria: ");
         int idSecretaria = read.nextInt();
         
@@ -146,7 +146,7 @@ public class GerenciadorAdm {
 
             index += 1;
         }
-
+        System.out.println("\n \n");
     }
 
     public void atualizarMedico(){
@@ -161,6 +161,11 @@ public class GerenciadorAdm {
         
         Medico medico = colecaoMedicos.getMedicoById(id);
 
+        Main.limpaTela();
+        System.out.println("----------------------------");
+        System.out.println("       ATUALIZAR DADOS      ");
+        System.out.println("----------------------------");
+        System.out.println("");
         System.out.println("+----------------------------------------+");
         System.out.printf("| Id: %-25s \n", medico.getId());    
         System.out.printf("| Nome: %-25s \n", medico.getNome());
@@ -174,7 +179,6 @@ public class GerenciadorAdm {
         System.out.print("Nome médico: ");
         read.nextLine();
         String nome = read.nextLine();
-
         
         System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
@@ -256,8 +260,6 @@ public class GerenciadorAdm {
                
             colecaoSecretarias.add(secretaria);
         }
-    
-    
     }
     
     public void cadastrarSecretaria(){
@@ -266,10 +268,10 @@ public class GerenciadorAdm {
         System.out.println("----------------------------");
         
         System.out.print("Nome da secretaria: ");
+        read.nextLine();
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -318,6 +320,7 @@ public class GerenciadorAdm {
 
             index += 1;
         }
+        System.out.println("\n \n");
     }
     
     public void atualizarSecretaria(){
@@ -332,6 +335,11 @@ public class GerenciadorAdm {
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
 
+        Main.limpaTela();
+        System.out.println("----------------------------");
+        System.out.println("       ATUALIZAR DADOS      ");
+        System.out.println("----------------------------");
+        System.out.println("");
         System.out.println("+----------------------------------------+");
         System.out.printf("| Id: %-25s \n", secretaria.getId());    
         System.out.printf("| Nome: %-25s \n", secretaria.getNome());
@@ -342,11 +350,10 @@ public class GerenciadorAdm {
         System.out.println();
         
         System.out.print("Nome secretaria: ");
-        read.next();
+        read.nextLine();
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -386,6 +393,4 @@ public class GerenciadorAdm {
         
         colecaoSecretarias.removeById(id);
     }
-    
-
 }
