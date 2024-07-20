@@ -6,25 +6,42 @@ package Colecao;
 
 import Modelo.Paciente;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author thiago
  */
 public class ColecaoPacientes {
-    private List<Paciente> pacientes;
+    private ArrayList<Paciente> pacientes = new ArrayList();
     
-    public ColecaoPacientes(){
-        this.pacientes = new ArrayList<Paciente>();
-    }
-
-    public List<Paciente> getPacientes() {
+     public  ArrayList<Paciente> getPacientes() {
         return pacientes;
     }
-
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
+    
+    public void add(Paciente paciente){
+        pacientes.add(paciente);
+    }
+    
+    public void remove(Paciente paciente){
+        pacientes.remove(paciente);
+    }
+    
+    public void removeById(int id){
+        Paciente paciente = this.getPacienteById(id);
+        if (paciente != null){
+            this.remove(paciente);
+        }
+        
+    }
+    
+    public Paciente getPacienteById(int id){
+        for(Paciente paciente : pacientes){
+            if(id == paciente.getId()){
+                return paciente;
+            }
+        }
+        
+        return null;
     }
     
 }

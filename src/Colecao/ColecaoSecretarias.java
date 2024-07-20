@@ -5,24 +5,41 @@
 package Colecao;
 
 import Modelo.Secretaria;
-import java.util.List;
 import java.util.ArrayList;
 /**
  *
  * @author thiago
  */
 public class ColecaoSecretarias {
-    private List<Secretaria> secretarias;
+    private ArrayList<Secretaria> secretarias = new ArrayList();
 
-    public ColecaoSecretarias(){
-        this.secretarias = new ArrayList<Secretaria>();
-    }
-
-    public List<Secretaria> getSecretarias() {
+    public  ArrayList<Secretaria> getSecretarias() {
         return secretarias;
     }
-
-    public void setSecretarias(List<Secretaria> secretarias) {
-        this.secretarias = secretarias;
+    
+    public void add(Secretaria secretaria){
+        secretarias.add(secretaria);
+    }
+    
+    public void remove(Secretaria secretaria){
+        secretarias.remove(secretaria);
+    }
+    
+    public void removeById(int id){
+        Secretaria secretaria = this.getSecretariaById(id);
+        if (secretaria != null){
+            this.remove(secretaria);
+        }
+        
+    }
+    
+    public Secretaria getSecretariaById(int id){
+        for(Secretaria secretaria : secretarias){
+            if(id == secretaria.getId()){
+                return secretaria;
+            }
+        }
+        
+        return null;
     }
 }

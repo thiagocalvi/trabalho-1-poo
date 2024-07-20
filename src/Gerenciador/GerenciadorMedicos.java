@@ -3,16 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Gerenciador;
+<<<<<<< HEAD
 import Modelo.Medico;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Scanner;
+=======
+import Colecao.ColecaoConsultas;
+import Colecao.ColecaoPacientes;
+import Colecao.ColecaoProntuarios;
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
 
+import Modelo.Paciente;
+import Modelo.Consulta;
+import Modelo.Prontuario;
+
+
+import java.time.LocalDate;
+import java.util.Scanner;
 /**
  *
  * @author jeanm
  */
 public class GerenciadorMedicos {
+<<<<<<< HEAD
     private String nome;
     private int dia, mes, ano;
     private String telefone;
@@ -77,7 +91,22 @@ public class GerenciadorMedicos {
         return null;
         
     }
+=======
+    
+    private ColecaoConsultas colecaoConsultas;
+    private ColecaoPacientes colecaoPacientes;
+    private ColecaoProntuarios colecaoProntuarios;
+    
+    public GerenciadorMedicos(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios){
+        this.colecaoConsultas = colecaoConsultas;
+        this.colecaoPacientes = colecaoPacientes;
+        this.colecaoProntuarios = colecaoProntuarios;
+    }
+    
+    Scanner read = new Scanner(System.in);
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
     
     
     
+  
 }

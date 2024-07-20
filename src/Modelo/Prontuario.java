@@ -11,17 +11,15 @@ import java.time.LocalDate;
  */
 public class Prontuario {
     //Atributos
-    private int id;
-    private Paciente paciente;
+    private int id; // gerar id
+    private int pacienteId;
     private LocalDate dataConsulta;
     private String sintomas;
     private String diagnostico;
     private String tratamento;
     
     //Construtor
-    public Prontuario(int id, Paciente paciente, LocalDate dataConsulta, String sintomas, String diagnostico, String tratamento) {
-        this.id = id;
-        this.paciente = paciente;
+    public Prontuario(LocalDate dataConsulta, String sintomas, String diagnostico, String tratamento) {
         this.dataConsulta = dataConsulta;
         this.sintomas = sintomas;
         this.diagnostico = diagnostico;
@@ -33,18 +31,14 @@ public class Prontuario {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getPacienteId() {
+        return pacienteId;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public void setPacienteId(Paciente paciente){
+        this.pacienteId = paciente.getId();
     }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
+    
     public LocalDate getDataConsulta() {
         return dataConsulta;
     }

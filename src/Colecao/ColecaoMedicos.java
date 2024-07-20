@@ -5,27 +5,46 @@
 package Colecao;
 
 import Modelo.Medico;
-import java.util.List;
 import java.util.ArrayList;
 /**
  *
  * @author thiago
  */
 public class ColecaoMedicos {
-    private List<Medico> medicos;
-
     
-    public ColecaoMedicos(){
-        this.medicos = new ArrayList<Medico>();
-    }
+    private ArrayList<Medico> medicos = new ArrayList();  
 
-    public List<Medico> getMedicos() {
+      
+    public ArrayList<Medico> getMedicos() {
         return medicos;
     }
-
-    public void setMedicos(List<Medico> medicos) {
-        this.medicos = medicos;
+    
+    public void add(Medico medico){
+        medicos.add(medico);
     }
     
+    public void remove(Medico medico){
+        medicos.remove(medico);
+    }
     
+  
+    public void removeById(int id){
+        Medico medico = this.getMedicoById(id);
+        if (medico != null){
+            this.remove(medico);
+        }
+        
+    }
+    
+    public Medico getMedicoById(int id){
+        for(Medico medico : medicos){
+            if(id == medico.getId()){
+                return medico;
+            }
+        }
+        
+        return null;
+    }
+
+
 }

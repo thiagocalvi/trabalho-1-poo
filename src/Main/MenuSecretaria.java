@@ -4,6 +4,13 @@
  */
 package Main;
 
+<<<<<<< HEAD
+=======
+import Colecao.ColecaoConsultas;
+import Colecao.ColecaoMedicos;
+import Colecao.ColecaoPacientes;
+
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
 import java.util.Scanner;
 
 /**
@@ -12,8 +19,19 @@ import java.util.Scanner;
  */
 public class MenuSecretaria {
     
-    public static int chamaConsulta() {
-        Scanner read = new Scanner(System.in);
+    private ColecaoMedicos colecaoMedicos;
+    private ColecaoPacientes colecaoPacientes;
+    private ColecaoConsultas colecaoConsultas;
+    
+    public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas){
+        this.colecaoMedicos = colecaoMedicos;
+        this.colecaoPacientes = colecaoPacientes;
+        this.colecaoConsultas = colecaoConsultas;
+    }
+
+    Scanner read = new Scanner(System.in);
+    
+    public int chamaConsulta() {
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
@@ -36,6 +54,7 @@ public class MenuSecretaria {
         switch (option){
             case 1:
                 // Colocar a classe secretaria.marcarConsulta
+                
                 break;
                 
             case 2:
@@ -57,8 +76,13 @@ public class MenuSecretaria {
     }
     
     
+<<<<<<< HEAD
     public static int chamaPaciente() {
         Scanner read = new Scanner(System.in);
+=======
+    public int chamaPaciente() {
+    
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
@@ -103,8 +127,8 @@ public class MenuSecretaria {
     }
     
       
-    public static int usuariaSecretaria() {
-        Scanner read = new Scanner(System.in);
+    public int usuarioSecretaria() {
+        
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
@@ -115,7 +139,7 @@ public class MenuSecretaria {
         System.out.println("|   1   |        Consultas          |");
         System.out.println("|   2   |        Pacientes          |");
         System.out.println("|   3   |      Lista de médicos     |");
-        System.out.println("|   4   |   Lista de secretárias    |");
+        //System.out.println("|   4   |   Lista de secretárias    |"); somente adm pode fazer isso
         System.out.println("|-----------------------------------|");
         System.out.println("|   5   | Voltar para tela inicial  |");
         System.out.println("-------------------------------------");
@@ -150,9 +174,9 @@ public class MenuSecretaria {
                 // Exibir todos os médicos que estão na lista
                 break;
                 
-            case 4:
+            //case 4:
                 // Exbir todas as secretárias que estão na lista
-                break;
+                //break;
                 
             default:
                 break;

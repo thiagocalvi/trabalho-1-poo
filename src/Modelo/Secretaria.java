@@ -4,39 +4,68 @@
  */
 package Modelo;
 import java.time.LocalDate;
-import java.util.List;
+
 /**
  *
  * @author MatheusConsoni
  */
-public class Secretaria extends Pessoa{
-    //Atributos
-    private int id;
-    private List<Medico> medicos;
+public class Secretaria{
+    
+    private String nome;
+    private LocalDate dataNascimento;
+    private String telefone;
+    private String email;
+    private int id; //Para id criar um função para gerar um id, fazer de forma incremental
     
     //Construtor
-    public Secretaria(int id, List<Medico> medicos, String Nome, LocalDate dataNascimento, String Endereco, String telefone, String email) {
-        super(Nome, dataNascimento, Endereco, telefone, email);
-        this.id = id;
-        this.medicos = medicos;
+    public Secretaria(String nome, LocalDate dataNascimento, String telefone, String email) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.email = email;
     } 
     
     
      //Gets e Sets
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
+    public void setId(int id){
         this.id = id;
     }
-
-    public List<Medico> getMedicos() {
-        return medicos;
+    
+    public int getId(){
+        return id;
+    }
+    
+    public String getNome() {
+        return nome;
     }
 
-    public void setMedicos(List<Medico> medicos) {
-        this.medicos = medicos;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }

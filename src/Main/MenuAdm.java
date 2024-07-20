@@ -4,19 +4,46 @@
  */
 package Main;
 
+import Colecao.ColecaoMedicos;
+import Colecao.ColecaoSecretarias;
+
+import Gerenciador.GerenciadorAdm;
+
 import java.util.Scanner;
+<<<<<<< HEAD
 import Modelo.Medico;
 import Modelo.Secretaria;
 import Gerenciador.GerenciadorMedicos;
+=======
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
 
 /**
  *
  * @author geanm
  */
 public class MenuAdm {
+<<<<<<< HEAD
     public static int chamaMedico() {
         Scanner read = new Scanner(System.in);
         GerenciadorMedicos medicos = new GerenciadorMedicos();
+=======
+    
+    private ColecaoMedicos colecaoMedicos;
+    private ColecaoSecretarias colecaoSecretarias;
+    private GerenciadorAdm gerenciadorAdm;
+    
+    public MenuAdm(ColecaoMedicos colecaoMedicos, ColecaoSecretarias colecaoSecretarias){
+        this.colecaoMedicos = colecaoMedicos;
+        this.colecaoSecretarias = colecaoSecretarias;
+        this.gerenciadorAdm  = new GerenciadorAdm(this.colecaoMedicos, this.colecaoSecretarias); 
+    }
+    
+    
+    static Scanner read = new Scanner(System.in); 
+    
+    public int chamaMedico() {
+        
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
         int option = 0;
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
@@ -38,19 +65,36 @@ public class MenuAdm {
         
         switch (option){
             case 1:
+<<<<<<< HEAD
                 medicos.cadastrarMedico();
+=======
+               //Cadastrar médico
+                System.out.println("Gostaria de usar uma base de dados interna?");
+                System.out.println("[0] - Para sim \n[1] - Para não");
+                int opt = read.nextInt();
+                
+                if(opt == 0){
+                    gerenciadorAdm.cadastroMedicosInterno();
+                }
+                else{
+                    gerenciadorAdm.cadastrarMedico();                
+                }
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
                 break;
                 
             case 2:
-                // colocar a classe medico.atualizar
+                //Atualizar médico
+                gerenciadorAdm.autualizarMedico();
                 break;
                 
             case 3:
-                // colocar a classe medico.remover
+                //Remover médico
+                gerenciadorAdm.removerMedico();
                 break;
                 
             case 4:
-                // colocar a classe medico.lista
+                //Listar médicos
+                gerenciadorAdm.listarMedicos();
                 break;
                 
             default:
@@ -60,8 +104,8 @@ public class MenuAdm {
         return option;
     }
     
-    public static int chamaSecretaria() {
-        Scanner read = new Scanner(System.in);
+    public int chamaSecretaria() {
+        
         int option = 0;
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
@@ -83,19 +127,33 @@ public class MenuAdm {
         
         switch (option){
             case 1:
-                // Colocar a classe secretaria.cadastro
+                //Cadastrar secretaria
+                System.out.println("Gostaria de usar uma base de dados interna?");
+                System.out.println("[0] - Para sim \n[1] - Para não");
+                int opt = read.nextInt();
+                
+                if(opt == 0){
+                    gerenciadorAdm.cadastroSecretariaIterno();
+                }
+                else{
+                    gerenciadorAdm.cadastrarSecretaria();                
+                }
+               
                 break;
                 
             case 2:
-                // colocar a classe secretaria.atualizar
+                //Atualizar secretaria
+                gerenciadorAdm.atualizarSecretaria();
                 break;
                 
             case 3:
-                // colocar a classe secretaria.remover
+                //Remover secretaria
+                gerenciadorAdm.removerSecretaria();
                 break;
                 
             case 4:
-                // colocar a classe secretaria.lista
+                //Listar secretarias
+                gerenciadorAdm.listarSecretarias();
                 break;
                 
             default:
@@ -104,9 +162,8 @@ public class MenuAdm {
         return option;     
     }
    
-    
-    public static int usuarioAdm() {
-        Scanner read = new Scanner(System.in);
+    public int usuarioAdm() {
+       
         int option = 0;
     
         System.out.println("USUÁRIO: ADMINISTRADOR");
@@ -133,7 +190,9 @@ public class MenuAdm {
                     if (option1 == 6){
                         option = 3;
                     }
-                    Main.limpaTela();
+                    if (option1 != 4){
+                        Main.limpaTela();    
+                    }
                 }
                 break;
             
@@ -143,7 +202,9 @@ public class MenuAdm {
                     if (option1 == 6){
                         option = 3;
                     }
-                    Main.limpaTela();
+                    if (option1 != 4){
+                        Main.limpaTela();    
+                    }
                 }
                 break;
        

@@ -3,14 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Main;
-import Modelo.Medico;
-import Modelo.Paciente;
-import Modelo.DadosMedicos;
-import Modelo.Consulta;
-import Modelo.Secretaria;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Arrays;
+
+import Colecao.*;
+
+
+
 
 import java.util.Scanner;
 /**
@@ -26,7 +23,25 @@ public class Main {
     
     public static void main(String[] args){
         
+        //Inicializando as coleções
+        ColecaoConsultas colecaoConsultas = new ColecaoConsultas();
+        ColecaoPacientes colecaoPacientes = new ColecaoPacientes();
+        ColecaoProntuarios colecaoProntuarios = new ColecaoProntuarios();
+        ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
+        ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
+        
+        //Inicializando os menus
+        MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
+        MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
+        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios);
+
+
+        //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
+        //System.out.println("- Seretaria\n- Medico");
+        //System.out.println("Um pré cadastro desses usuarios está disponivel, para utilizar entre como administrador");
+            
         Scanner read = new Scanner(System.in);
+        
         int option = 0;
         
         while (option != 4){
@@ -49,21 +64,32 @@ public class Main {
             switch (option) {
                 case 1:
                     while (option1 != 3) {
+<<<<<<< HEAD
                         option1 = MenuAdm.usuarioAdm();
                         limpaTela();
+=======
+                      option1 = menuAdm.usuarioAdm();
+                      limpaTela();
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
                     }
                     break;
 
                 case 2:                    
                     while (option1 != 5){
-                        option1 = MenuSecretaria.usuariaSecretaria();
+                        option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
                     }                  
                     break;
 
+<<<<<<< HEAD
                 case 3:     
                     while (option1 != 2){
                         option1 = MenuMedico.usuarioMedico();
+=======
+                case 3:          
+                    while (option1 != 5){
+                        option1 = menuMedico.usuarioMedico();
+>>>>>>> 7403a44c771843187f67315dc9536788586f0da5
                         limpaTela();
                     }       
                     break;
