@@ -156,6 +156,7 @@ public class GerenciadorAdm {
         
         System.out.println("Informe o id do médico que será atualizado: ");
         int id = read.nextInt();
+        read.nextLine();
         
         Medico medico = colecaoMedicos.getMedicoById(id);
 
@@ -193,11 +194,13 @@ public class GerenciadorAdm {
         
         System.out.print("CRM: ");
         int crm = read.nextInt();
+        read.nextLine();
 
         this.listarSecretarias();
         
         System.out.print("Informe o id da secretaria (deve ser informado um id): ");
         int idSecretaria = read.nextInt();
+        read.nextLine();
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
         
@@ -326,6 +329,7 @@ public class GerenciadorAdm {
         
         System.out.println("Informe o id da secretaria que será atualizado: ");
         int id = read.nextInt();
+        read.nextLine();
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
 
