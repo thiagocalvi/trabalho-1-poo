@@ -82,6 +82,10 @@ public class Medico{
         return crm;
     }
     
+    public void setCrm(int crm){
+        this.crm = crm;
+    }
+    
     public int getSecretariaId(){
         return secretariaId;
     }

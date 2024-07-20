@@ -11,18 +11,35 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoMedicos {
-    private static final ArrayList medicos = new ArrayList<Medico>();  
+    private final ArrayList<Medico> medicos = new ArrayList<>();  
 
-    public static ArrayList getMedicos() {
+    public ArrayList<Medico> getMedicos() {
         return medicos;
     }
     
-    public static void add(Medico medico){
+    public void add(Medico medico){
         medicos.add(medico);
     }
     
-    public static void remove(Medico medico){
-        medicos.remove(medicos);
+    public void remove(Medico medico){
+        medicos.remove(medico);
     }
     
+    public void removeById(int id){
+        Medico medico = this.getMedicoById(id);
+        if (medico != null){
+            this.remove(medico);
+        }
+        
+    }
+    
+    public Medico getMedicoById(int id){
+        for(Medico medico : medicos){
+            if(id == medico.getId()){
+                return medico;
+            }
+        }
+        
+        return null;
+    }
 }

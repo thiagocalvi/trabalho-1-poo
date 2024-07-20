@@ -28,6 +28,14 @@ public class Secretaria{
     
      //Gets e Sets
 
+    public void setId(int id){
+        this.id = id;
+    }
+    
+    public int getId(){
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -58,10 +66,6 @@ public class Secretaria{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getId() {
-        return id;
     }
     
 }

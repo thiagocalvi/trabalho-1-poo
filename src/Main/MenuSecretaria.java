@@ -8,11 +8,6 @@ import Colecao.ColecaoConsultas;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
 
-import Gerenciador.GerenciadorConsultas;
-import Gerenciador.GerenciadorProntuarios;
-
-import static Main.MenuAdm.chamaMedico;
-import static Main.MenuAdm.chamaSecretaria;
 import java.util.Scanner;
 
 /**
@@ -30,9 +25,10 @@ public class MenuSecretaria {
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoConsultas = colecaoConsultas;
     }
+
+    Scanner read = new Scanner(System.in);
     
-    public static int chamaConsulta() {
-        Scanner read = new Scanner(System.in);
+    public int chamaConsulta() {
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
@@ -77,8 +73,8 @@ public class MenuSecretaria {
     }
     
     
-    public static int chamaPaciente(String[] args) {
-        Scanner read = new Scanner(System.in);
+    public int chamaPaciente() {
+    
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
@@ -123,8 +119,8 @@ public class MenuSecretaria {
     }
     
       
-    public static int usuarioSecretaria() {
-        Scanner read = new Scanner(System.in);
+    public int usuarioSecretaria() {
+        
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
@@ -135,7 +131,7 @@ public class MenuSecretaria {
         System.out.println("|   1   |        Consultas          |");
         System.out.println("|   2   |        Pacientes          |");
         System.out.println("|   3   |      Lista de médicos     |");
-        System.out.println("|   4   |   Lista de secretárias    |");
+        //System.out.println("|   4   |   Lista de secretárias    |"); somente adm pode fazer isso
         System.out.println("|-----------------------------------|");
         System.out.println("|   5   | Voltar para tela inicial  |");
         System.out.println("-------------------------------------");
@@ -148,7 +144,7 @@ public class MenuSecretaria {
         switch (option){
             case 1:
                 while (option1 != 5 && option1 != 6){
-                    option1 = chamaMedico();
+                    option1 = chamaConsulta();
                     if (option1 == 6){
                         option = 3;
                     }
@@ -158,7 +154,7 @@ public class MenuSecretaria {
             
             case 2:
                 while (option1 != 5 && option1 != 6){
-                    option1 = chamaSecretaria();
+                    option1 = chamaPaciente();
                     if (option1 == 6){
                         option = 3;
                     }    
@@ -170,9 +166,9 @@ public class MenuSecretaria {
                 // Exibir todos os médicos que estão na lista
                 break;
                 
-            case 4:
+            //case 4:
                 // Exbir todas as secretárias que estão na lista
-                break;
+                //break;
                 
             default:
                 break;

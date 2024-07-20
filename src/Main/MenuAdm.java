@@ -9,9 +9,6 @@ import Colecao.ColecaoSecretarias;
 
 import Gerenciador.GerenciadorAdm;
 
-import Modelo.Medico;
-import Modelo.Secretaria;
-
 import java.util.Scanner;
 
 /**
@@ -57,7 +54,16 @@ public class MenuAdm {
         switch (option){
             case 1:
                //Cadastrar médico
-                gerenciadorAdm.cadastrarMedico();
+                System.out.println("Gostaria de usar uma base de dados interna?");
+                System.out.println("[0] - Para sim \n[1] - Para não");
+                int opt = read.nextInt();
+                
+                if(opt == 0){
+                    gerenciadorAdm.cadastroMedicosInterno();
+                }
+                else{
+                    gerenciadorAdm.cadastrarMedico();                
+                }
                 break;
                 
             case 2:
@@ -106,6 +112,16 @@ public class MenuAdm {
         switch (option){
             case 1:
                 //Cadastrar secretaria
+                System.out.println("Gostaria de usar uma base de dados interna?");
+                System.out.println("[0] - Para sim \n[1] - Para não");
+                int opt = read.nextInt();
+                
+                if(opt == 0){
+                    gerenciadorAdm.cadastroSecretariaIterno();
+                }
+                else{
+                    gerenciadorAdm.cadastrarSecretaria();                
+                }
                 gerenciadorAdm.cadastrarSecretaria();
                 break;
                 
@@ -121,7 +137,7 @@ public class MenuAdm {
                 
             case 4:
                 //Listar secretarias
-                gerenciadorAdm.ListarSecretarias();
+                gerenciadorAdm.listarSecretarias();
                 break;
                 
             default:
@@ -130,7 +146,6 @@ public class MenuAdm {
         return option;     
     }
    
-    
     public int usuarioAdm() {
        
         int option = 0;
@@ -159,7 +174,9 @@ public class MenuAdm {
                     if (option1 == 6){
                         option = 3;
                     }
-                    Main.limpaTela();
+                    if (option1 != 4){
+                        Main.limpaTela();    
+                    }
                 }
                 break;
             

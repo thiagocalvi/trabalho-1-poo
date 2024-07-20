@@ -27,6 +27,10 @@ public class Main {
         ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
         ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
         
+        //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
+        //System.out.println("- Seretaria\n- Medico");
+        //System.out.println("Um pré cadastro desses usuarios está disponivel, para utilizar entre como administrador");
+            
         Scanner read = new Scanner(System.in);
         
         int option = 0;
