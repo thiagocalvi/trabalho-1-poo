@@ -4,13 +4,10 @@
  */
 package Main;
 
-<<<<<<< HEAD
-=======
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
 
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
 import java.util.Scanner;
 
 /**
@@ -76,13 +73,8 @@ public class MenuSecretaria {
     }
     
     
-<<<<<<< HEAD
-    public static int chamaPaciente() {
-        Scanner read = new Scanner(System.in);
-=======
     public int chamaPaciente() {
     
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");

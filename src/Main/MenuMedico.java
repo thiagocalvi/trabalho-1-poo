@@ -16,9 +16,6 @@ import java.util.Scanner;
  *
  * @author geanm
  */
-<<<<<<< HEAD
-public class MenuMedico { 
-=======
 
 public class MenuMedico { 
     
@@ -35,7 +32,6 @@ public class MenuMedico {
         
     }
     
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
     static Scanner read = new Scanner(System.in);
     
     public static int menuDadosAdicionais() {
@@ -244,7 +240,6 @@ public class MenuMedico {
                 break;  
         }        
         return option;
-<<<<<<< HEAD
     }
     
     
@@ -265,57 +260,6 @@ public class MenuMedico {
         System.out.println("| Opção |          Tipo            |");
         System.out.println("|----------------------------------|");
         System.out.println("|   1   |    Entrar na conta       |");
-        System.out.println("|----------------------------------|");
-        System.out.println("|   2   | Voltar para tela inicial |");
-        System.out.println("------------------------------------");
-        System.out.println("");
-        System.out.print("Opção: ");
-        int option = read.nextInt();
-        
-        // Fazer a busca pela ID do médico.
-        
-        
-        Main.limpaTela();
-        int option1 = 0;
-        switch (option){
-            case 1:
-                while (option1 != 2){
-                    option1 = menuInicial();
-                    Main.limpaTela();
-                }
-                break;
-            
-            case 2:
-                break;
-                
-            default:
-                System.out.println("Opção inválida!");
-                break;
-        }
-        return option;             
-=======
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
-    }
-    
-    
-    public static int usuarioMedico() {
-        
-        // Listar todos os médicos 
-
-        System.out.println("");
-        System.out.println("USUÁRIO: MÉDICO");
-        System.out.println("");
-        System.out.println("------------------------------------");
-        System.out.print("LOGIN DO MÉDICO (IDENTIFICADOR):  ");
-        int id = read.nextInt();
-        System.out.println("------------------------------------");
-        System.out.println("");    
-            
-        System.out.println("------------------------------------");
-        System.out.println("| Opção |          Tipo            |");
-        System.out.println("|----------------------------------|");
-        System.out.println("|   1   |    Entrar na conta       |");
-        System.out.println("|----------------------------------|");
         System.out.println("|   2   | Voltar para tela inicial |");
         System.out.println("------------------------------------");
         System.out.println("");

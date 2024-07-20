@@ -10,23 +10,12 @@ import Colecao.ColecaoSecretarias;
 import Gerenciador.GerenciadorAdm;
 
 import java.util.Scanner;
-<<<<<<< HEAD
-import Modelo.Medico;
-import Modelo.Secretaria;
-import Gerenciador.GerenciadorMedicos;
-=======
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
 
 /**
  *
  * @author geanm
  */
 public class MenuAdm {
-<<<<<<< HEAD
-    public static int chamaMedico() {
-        Scanner read = new Scanner(System.in);
-        GerenciadorMedicos medicos = new GerenciadorMedicos();
-=======
     
     private ColecaoMedicos colecaoMedicos;
     private ColecaoSecretarias colecaoSecretarias;
@@ -43,7 +32,6 @@ public class MenuAdm {
     
     public int chamaMedico() {
         
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
         int option = 0;
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
@@ -60,14 +48,11 @@ public class MenuAdm {
         System.out.println("|   6   | Voltar para tela inicial  |");
         System.out.println("-------------------------------------");
         System.out.println("");
-        System.out.print("Escolha a opção: ");
+        System.out.print("Opção: ");
         option = read.nextInt();
         
         switch (option){
             case 1:
-<<<<<<< HEAD
-                medicos.cadastrarMedico();
-=======
                //Cadastrar médico
                 System.out.println("Gostaria de usar uma base de dados interna?");
                 System.out.println("[0] - Para sim \n[1] - Para não");
@@ -79,12 +64,11 @@ public class MenuAdm {
                 else{
                     gerenciadorAdm.cadastrarMedico();                
                 }
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
                 break;
                 
             case 2:
                 //Atualizar médico
-                gerenciadorAdm.autualizarMedico();
+                gerenciadorAdm.atualizarMedico();
                 break;
                 
             case 3:

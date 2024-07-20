@@ -12,38 +12,9 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoProntuarios {
-    private ArrayList<Prontuario> prontuarios = new ArrayList();
+    private ArrayList<Prontuario> prontuarios;
     
-    public ArrayList<Prontuario> getProntuarios() {
-        return prontuarios;
+    public ColecaoProntuarios(){
+        this.prontuarios = new ArrayList<Prontuario>();
     }
-    
-    public void add(Prontuario prontuario){
-        prontuarios.add(prontuario);
-    }
-    
-    public void remove(Prontuario prontuario){
-        prontuarios.remove(prontuarios);
-    }
-    
-  
-    public void removeById(int id){
-        Prontuario prontuario = this.getProntuarioById(id);
-        if (prontuario != null){
-            this.remove(prontuario);
-        }
-        
-    }
-    
-    public Prontuario getProntuarioById(int id){
-        for(Prontuario prontuario : prontuarios){
-            if(id == prontuario.getId()){
-                return prontuario;
-            }
-        }
-        
-        return null;
-    }
-
-
 }

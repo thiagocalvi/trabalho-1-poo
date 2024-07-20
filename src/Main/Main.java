@@ -7,8 +7,6 @@ package Main;
 import Colecao.*;
 
 
-
-
 import java.util.Scanner;
 /**
  *
@@ -43,6 +41,7 @@ public class Main {
         Scanner read = new Scanner(System.in);
         
         int option = 0;
+               
         
         while (option != 4){
             System.out.println("TELA INICIAL");
@@ -64,13 +63,8 @@ public class Main {
             switch (option) {
                 case 1:
                     while (option1 != 3) {
-<<<<<<< HEAD
-                        option1 = MenuAdm.usuarioAdm();
-                        limpaTela();
-=======
                       option1 = menuAdm.usuarioAdm();
                       limpaTela();
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
                     }
                     break;
 
@@ -81,15 +75,9 @@ public class Main {
                     }                  
                     break;
 
-<<<<<<< HEAD
-                case 3:     
-                    while (option1 != 2){
-                        option1 = MenuMedico.usuarioMedico();
-=======
                 case 3:          
                     while (option1 != 5){
                         option1 = menuMedico.usuarioMedico();
->>>>>>> 7403a44c771843187f67315dc9536788586f0da5
                         limpaTela();
                     }       
                     break;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ColecaoSecretarias {
     private ArrayList<Secretaria> secretarias = new ArrayList();
 
-    public  ArrayList<Secretaria> getSecretarias() {
+    public  ArrayList getSecretarias() {
         return secretarias;
     }
     
