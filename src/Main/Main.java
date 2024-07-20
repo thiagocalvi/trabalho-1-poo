@@ -6,6 +6,9 @@ package Main;
 
 import Colecao.*;
 
+
+
+
 import java.util.Scanner;
 /**
  *
@@ -27,6 +30,11 @@ public class Main {
         ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
         ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
         
+        MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
+        MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
+        MenuMedico menuMedico = new MenuMedico();
+
+
         //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
         //System.out.println("- Seretaria\n- Medico");
         //System.out.println("Um pré cadastro desses usuarios está disponivel, para utilizar entre como administrador");
@@ -54,7 +62,6 @@ public class Main {
             int option1 = 0;
             switch (option) {
                 case 1:
-                    MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
                     while (option1 != 3) {
                       option1 = menuAdm.usuarioAdm();
                       limpaTela();
@@ -62,7 +69,6 @@ public class Main {
                     break;
 
                 case 2:                    
-                    MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
                     while (option1 != 5){
                         option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
@@ -70,9 +76,8 @@ public class Main {
                     break;
 
                 case 3:          
-                    MenuMedico menuMedico = new MenuMedico();
                     while (option1 != 5){
-                        option1 = MenuMedico.usuarioMedico();
+                        option1 = menuMedico.usuarioMedico();
                         limpaTela();
                     }       
                     break;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoSecretarias {
-    private final ArrayList<Secretaria> secretarias = new ArrayList<>();
+    private static final ArrayList<Secretaria> secretarias = new ArrayList();
 
     public  ArrayList getSecretarias() {
         return secretarias;

@@ -19,15 +19,15 @@ public class MenuAdm {
     
     private ColecaoMedicos colecaoMedicos;
     private ColecaoSecretarias colecaoSecretarias;
-    
+    private GerenciadorAdm gerenciadorAdm;
     
     public MenuAdm(ColecaoMedicos colecaoMedicos, ColecaoSecretarias colecaoSecretarias){
         this.colecaoMedicos = colecaoMedicos;
         this.colecaoSecretarias = colecaoSecretarias;
+        this.gerenciadorAdm  = new GerenciadorAdm(this.colecaoMedicos, this.colecaoSecretarias); 
     }
     
-    GerenciadorAdm gerenciadorAdm = new GerenciadorAdm(colecaoMedicos, colecaoSecretarias); 
-
+    
     static Scanner read = new Scanner(System.in); 
     
     public int chamaMedico() {
@@ -122,7 +122,7 @@ public class MenuAdm {
                 else{
                     gerenciadorAdm.cadastrarSecretaria();                
                 }
-                gerenciadorAdm.cadastrarSecretaria();
+               
                 break;
                 
             case 2:
@@ -186,7 +186,9 @@ public class MenuAdm {
                     if (option1 == 6){
                         option = 3;
                     }
-                    Main.limpaTela();
+                    if (option1 != 4){
+                        Main.limpaTela();    
+                    }
                 }
                 break;
        

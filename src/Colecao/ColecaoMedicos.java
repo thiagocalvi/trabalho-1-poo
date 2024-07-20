@@ -11,8 +11,10 @@ import java.util.ArrayList;
  * @author thiago
  */
 public class ColecaoMedicos {
-    private final ArrayList<Medico> medicos = new ArrayList<>();  
+    
+    private ArrayList<Medico> medicos = new ArrayList();  
 
+      
     public ArrayList<Medico> getMedicos() {
         return medicos;
     }
@@ -25,6 +27,7 @@ public class ColecaoMedicos {
         medicos.remove(medico);
     }
     
+  
     public void removeById(int id){
         Medico medico = this.getMedicoById(id);
         if (medico != null){
@@ -33,6 +36,7 @@ public class ColecaoMedicos {
         
     }
     
+
     public Medico getMedicoById(int id){
         for(Medico medico : medicos){
             if(id == medico.getId()){
@@ -42,4 +46,6 @@ public class ColecaoMedicos {
         
         return null;
     }
+
+
 }
