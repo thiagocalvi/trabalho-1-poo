@@ -7,8 +7,11 @@ package Main;
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoPacientes;
 import Colecao.ColecaoProntuarios;
+import Colecao.ColecaoMedicos;
 
 import Gerenciador.GerenciadorMedicos;
+import Modelo.Medico;
+import java.util.ArrayList;
 
 import java.util.Scanner;
 
@@ -22,12 +25,14 @@ public class MenuMedico {
     private ColecaoConsultas colecaoConsultas;
     private ColecaoPacientes colecaoPacientes;
     private ColecaoProntuarios colecaoProntuarios;
+    private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
     
-    public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios){
+    public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoMedicos colecaoMedicos){
         this.colecaoConsultas = colecaoConsultas;
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoProntuarios = colecaoProntuarios;
+        this.colecaoMedicos = colecaoMedicos;
         this.gerenciadorMedicos = new GerenciadorMedicos(colecaoConsultas, colecaoPacientes, colecaoProntuarios);
         
     }
@@ -205,11 +210,11 @@ public class MenuMedico {
     } 
     
     
-    public static int menuInicial() {
+    public int menuInicial() {
         
         System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
-        System.out.println("Doutor(a): " ); // Colocar o nome do médico
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome()); // Colocar o nome do médico
         System.out.println("");
         System.out.println("------------------------------------");
         System.out.println("| Opção |          Tipo            |");
@@ -243,9 +248,19 @@ public class MenuMedico {
     }
     
     
-    public static int usuarioMedico() {
+    public int usuarioMedico() {
         
-        // Listar todos os médicos 
+        // Listar todos os médicos
+        ArrayList<Medico> allMedicos = colecaoMedicos.getMedicos();
+        
+        for(Medico medico : allMedicos){
+            System.out.println("+----------------------------------------+");
+            System.out.printf("| Identificador: %-25s \n", medico.getId());
+            System.out.printf("| Nome: %-25s \n", medico.getNome());
+            System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
+            System.out.printf("| CRM: %-24d \n", medico.getCrm());
+            System.out.println("+----------------------------------------+");
+        }
 
         System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
@@ -254,7 +269,7 @@ public class MenuMedico {
         System.out.print("LOGIN DO MÉDICO (IDENTIFICADOR):  ");
         int id = read.nextInt();
         System.out.println("------------------------------------");
-        System.out.println("");    
+        System.out.println("");
             
         System.out.println("------------------------------------");
         System.out.println("| Opção |          Tipo            |");
@@ -269,11 +284,13 @@ public class MenuMedico {
         
         // Fazer a busca pela ID do médico.
         
-        
         Main.limpaTela();
         int option1 = 0;
         switch (option){
             case 1:
+                Medico medico = colecaoMedicos.getMedicoById(id);
+                gerenciadorMedicos.setMedico(medico);
+                
                 while (option1 != 2){
                     option1 = menuInicial();
                     Main.limpaTela();

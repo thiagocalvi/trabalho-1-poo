@@ -7,6 +7,7 @@ package Main;
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
+import Colecao.ColecaoSecretarias;
 
 import java.util.Scanner;
 
@@ -19,8 +20,9 @@ public class MenuSecretaria {
     private ColecaoMedicos colecaoMedicos;
     private ColecaoPacientes colecaoPacientes;
     private ColecaoConsultas colecaoConsultas;
+    private ColecaoSecretarias colecaoSecretarias;
     
-    public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas){
+    public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
         this.colecaoMedicos = colecaoMedicos;
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoConsultas = colecaoConsultas;

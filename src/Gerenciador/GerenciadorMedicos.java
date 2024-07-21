@@ -10,7 +10,7 @@ import Colecao.ColecaoProntuarios;
 import Modelo.Paciente;
 import Modelo.Consulta;
 import Modelo.Prontuario;
-
+import Modelo.Medico;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -23,6 +23,7 @@ public class GerenciadorMedicos {
     private ColecaoConsultas colecaoConsultas;
     private ColecaoPacientes colecaoPacientes;
     private ColecaoProntuarios colecaoProntuarios;
+    private Medico medico;
     
     public GerenciadorMedicos(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios){
         this.colecaoConsultas = colecaoConsultas;
@@ -30,9 +31,16 @@ public class GerenciadorMedicos {
         this.colecaoProntuarios = colecaoProntuarios;
     }
     
+    public Medico getMedico(){
+        return this.medico;
+    }
+    
+    public void setMedico(Medico medico){
+        this.medico = medico;
+    }
+    
     Scanner read = new Scanner(System.in);
     
     
-    
-  
+
 }

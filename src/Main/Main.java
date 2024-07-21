@@ -6,9 +6,6 @@ package Main;
 
 import Colecao.*;
 
-
-
-
 import java.util.Scanner;
 /**
  *
@@ -20,7 +17,7 @@ public class Main {
             System.out.println();
         }
     }
-    
+        
     public static void main(String[] args){
         
         //Inicializando as coleções
@@ -32,8 +29,8 @@ public class Main {
         
         //Inicializando os menus
         MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
-        MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
-        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios);
+        MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas, colecaoSecretarias);
+        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoMedicos);
 
 
         //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
