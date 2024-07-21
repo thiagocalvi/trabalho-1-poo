@@ -4,6 +4,8 @@
  */
 package Main;
 
+import Gerenciador.GerenciadorSecretarias;
+
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
@@ -21,11 +23,14 @@ public class MenuSecretaria {
     private ColecaoPacientes colecaoPacientes;
     private ColecaoConsultas colecaoConsultas;
     private ColecaoSecretarias colecaoSecretarias;
+    private GerenciadorSecretarias gerenciadorSecretarias;
     
     public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
         this.colecaoMedicos = colecaoMedicos;
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoConsultas = colecaoConsultas;
+        this.colecaoSecretarias = colecaoSecretarias; 
+        this.gerenciadorSecretarias = new GerenciadorSecretarias(colecaoConsultas, colecaoMedicos, colecaoPacientes);
     }
 
     Scanner read = new Scanner(System.in);

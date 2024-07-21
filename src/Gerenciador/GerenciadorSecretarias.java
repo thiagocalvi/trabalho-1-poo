@@ -4,30 +4,36 @@
  */
 package Gerenciador;
 import Modelo.Secretaria;
+import Modelo.Paciente;
+import Modelo.Medico;
+import Modelo.Consulta;
+
+import Colecao.ColecaoConsultas;
+import Colecao.ColecaoMedicos;
+import Colecao.ColecaoPacientes;
 
 /**
  *
  * @author jeanm
  */
 public class GerenciadorSecretarias {
-    // MÉTODOS
-    public void cadastrarSecretaria(Secretaria secretaria){
-        
+    
+    private ColecaoConsultas colecaoConsultas;
+    private ColecaoMedicos colecaoMedicos; 
+    private ColecaoPacientes colecaoPacientes;
+    private Secretaria secretaria;
+    
+    public GerenciadorSecretarias(ColecaoConsultas colecaoConsultas, ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes){
+        this.colecaoConsultas = colecaoConsultas;
+        this.colecaoMedicos = colecaoMedicos;
+        this.colecaoPacientes = colecaoPacientes;
     }
     
-    public void atualizarSecretaria(Secretaria secretaria){
-        
+    public Secretaria getSecretaria(){
+        return this.secretaria;
     }
     
-    public void removerSecretaria(Secretaria secretaria){
-        
+    public void setSecretaria(Secretaria secretaria){
+        this.secretaria = secretaria;
     }
-    
-    public Secretaria buscarPaciente(int valor){
-        
-        return null;
-        
-    }
-    
-    
 }
