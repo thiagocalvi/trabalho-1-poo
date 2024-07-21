@@ -32,6 +32,10 @@ public class Consulta {
     public int getId() {
         return id;
     }
+    
+    public void setId(int id){
+        this.id = id;
+    }
 
     public void setMedicoId(Medico medico){
         this.medicoId = medico.getCrm();
