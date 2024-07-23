@@ -27,6 +27,10 @@ public class GerenciadorMedicos {
     private ColecaoProntuarios colecaoProntuarios;
     private ColecaoDadosMedicos colecaoDadosMedicos; 
     private Medico medico;
+    private int idDadosMedicosControle = 0;
+    private int idProtuarioControle = 0;
+
+    
     
     public GerenciadorMedicos(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoDadosMedicos colecaoDadosMedicos){
         this.colecaoConsultas = colecaoConsultas;

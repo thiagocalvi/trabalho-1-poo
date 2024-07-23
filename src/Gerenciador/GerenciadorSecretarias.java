@@ -22,6 +22,7 @@ public class GerenciadorSecretarias {
     private ColecaoMedicos colecaoMedicos; 
     private ColecaoPacientes colecaoPacientes;
     private Secretaria secretaria;
+    private int idConsultaControle = 0;
     
     public GerenciadorSecretarias(ColecaoConsultas colecaoConsultas, ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes){
         this.colecaoConsultas = colecaoConsultas;
