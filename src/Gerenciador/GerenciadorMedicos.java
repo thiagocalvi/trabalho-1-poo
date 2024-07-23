@@ -6,10 +6,12 @@ package Gerenciador;
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoPacientes;
 import Colecao.ColecaoProntuarios;
+import Colecao.ColecaoDadosMedicos;
 
 import Modelo.Paciente;
 import Modelo.Consulta;
 import Modelo.Prontuario;
+import Modelo.DadosMedicos;
 import Modelo.Medico;
 
 import java.time.LocalDate;
@@ -23,12 +25,14 @@ public class GerenciadorMedicos {
     private ColecaoConsultas colecaoConsultas;
     private ColecaoPacientes colecaoPacientes;
     private ColecaoProntuarios colecaoProntuarios;
+    private ColecaoDadosMedicos colecaoDadosMedicos; 
     private Medico medico;
     
-    public GerenciadorMedicos(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios){
+    public GerenciadorMedicos(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoDadosMedicos colecaoDadosMedicos){
         this.colecaoConsultas = colecaoConsultas;
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoProntuarios = colecaoProntuarios;
+        this.colecaoDadosMedicos = colecaoDadosMedicos;
     }
     
     public Medico getMedico(){
