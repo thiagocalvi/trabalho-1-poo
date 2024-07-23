@@ -8,6 +8,7 @@ import Colecao.ColecaoConsultas;
 import Colecao.ColecaoPacientes;
 import Colecao.ColecaoProntuarios;
 import Colecao.ColecaoMedicos;
+import Colecao.ColecaoDadosMedicos;
 
 import Gerenciador.GerenciadorMedicos;
 import Modelo.Medico;
@@ -27,13 +28,14 @@ public class MenuMedico {
     private ColecaoProntuarios colecaoProntuarios;
     private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
+    private ColecaoDadosMedicos colecaoDadosMedicos; 
     
-    public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoMedicos colecaoMedicos){
+    public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoMedicos colecaoMedicos, ColecaoDadosMedicos colecaoDadosMedicos){
         this.colecaoConsultas = colecaoConsultas;
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoProntuarios = colecaoProntuarios;
         this.colecaoMedicos = colecaoMedicos;
-        this.gerenciadorMedicos = new GerenciadorMedicos(colecaoConsultas, colecaoPacientes, colecaoProntuarios);
+        this.gerenciadorMedicos = new GerenciadorMedicos(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoDadosMedicos);
         
     }
     

@@ -26,11 +26,12 @@ public class Main {
         ColecaoProntuarios colecaoProntuarios = new ColecaoProntuarios();
         ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
         ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
+        ColecaoDadosMedicos colecaoDadosMedicos = new ColecaoDadosMedicos();
         
         //Inicializando os menus
         MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
         MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas, colecaoSecretarias);
-        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoMedicos);
+        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoMedicos, colecaoDadosMedicos);
 
 
         //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
