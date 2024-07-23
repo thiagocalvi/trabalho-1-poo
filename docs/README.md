@@ -20,13 +20,9 @@ O package Coleção armazena as classes:
 Sendo elas usadas para armazenar em memória os objetos que são criador durante a execução do programa (emulando um banco de dados)
 
 O package Gerenciador armazena as classes:
-* GerenciadorConsulta
-* GerenciadorMedico
+* GerenciadorAdm
+* GerenciadorMedicos
 * GerenciadorMensagem
-* GerenciadorPaciente
-* GerenciadorProntuario
-* GerenciadorRelatoriosMedico
-* GerenciadorRelatoriosSecretaria
 * GerenciadorSecratarias
 
 :memo: Adicionar a descrição dos métodos das classes
@@ -184,20 +180,171 @@ A classe `ColecaoSecretarias` é responsável por armazenar e gerenciar uma cole
 
 
 
+## Descrição das classes
+
+### Package Gerenciador
+
+<!--Start: GerenciadorAdm-->
+#### GerenciadorAdm
+
+A classe `GerenciadorAdm` é responsével por gerenciar as operações de CRUD(Create, Read, Uptdate, Delete) dos objetos da classe `Medico` e `Secretaria`, permitindo ao administrador do sistema cadastrar, atualizar, remover e listar registros desses profissonais de forma eficiente e organizada.
+
+##### Atributos
+
+- `colecaoMedicos`
+  - **Tipo**: `ColecaoMedicos`
+  - **Descrição:** Armazena a coleção de objetos da `Medico`. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de médicos.
+
+- `colecaoSecretarias`
+  - **Tipo**: `ColecaoSecretarias`
+  - **Descrição:** Armazena a coleção de objetos da classe `Secretaria`. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de secretárias.
+
+- `idMedicoControle`
+  - **Tipo**: `int`
+  - **Descrição:** Controla os IDs únicos atribuídos aos médicos. Este contador é incrementado cada vez que um novo médico é cadastrado para garantir que cada médico tenha um ID exclusivo.
+
+- `idSecretariaControle`
+  - **Tipo**: `int`
+  - **Descrição:** Controla os IDs únicos atribuídos às secretárias. Este contador é incrementado cada vez que uma nova secretária é cadastrada para garantir que cada secretária tenha um ID exclusivo.
+
+- `read`
+  - **Tipo**: `Scanner`
+  - **Descrição:** Objeto da classe `Scanner` é usado para ler entradas do console. Ele é utilizado nos métodos que interagem com o usuário para obter informações sobre médicos e secretárias.
+
+##### Construtores
+
+- `GerenciadorAdm()`:
+  - **Descrição:** Construtor com parâmetros que é resposável por inicializar um novo objeto da classe `GerenciadorAdm` com as coleções de médicos e secretárias fornecidas como parâmetros. Ele configura as coleções que serão gerenciadas por esta instância da classe e prepara os atributos necessários para o funcionamento das operações de CRUD (Create, Read, Update, Delete) para médicos e secretárias.
+
+##### Métodos
+
+- `cadastrarMedico()`:
+  - **Descrição:** Permite ao administrador inserir manualmente os dados de um novo médico, incluindo nome, data de nascimento, telefone, email, especialidade, CRM e secretaria associada.
+  - **Tipo de Retorno:** `void`
+
+- `atualizarMedico()`:
+  - **Descrição:** Permite ao administrador atualizar os dados de um médico existente, fornecendo novos valores para os campos desejados.
+  - **Tipo de Retorno:** `void`
+
+- `removerMedico()`:
+  - **Descrição:** Permite ao administrador remover um médico do sistema com base no ID fornecido.
+  - **Tipo de Retorno:** `void`
+
+- `listarMedico()`:
+  - **Descrição:**  Exibe uma lista de todos os médicos cadastrados, mostrando detalhes como nome, data de nascimento, telefone, email, especialidade, CRM e secretaria associada.
+  - **Tipo de Retorno:** `void`
+
+- `cadastrarSecretaria()`:
+  - **Descrição:** Permite ao administrador inserir manualmente os dados de uma nova secretária, incluindo nome, data de nascimento, telefone e email.
+  - **Tipo de Retorno:** `void`
+
+- `atualizarSecretaria()`:
+  - **Descrição:** Permite ao administrador atualizar os dados de uma secretária existente, fornecendo novos valores para os campos desejados.
+  - **Tipo de Retorno:** `void`
+
+- `removerSecretaria()`:
+  - **Descrição:** Permite ao administrador remover uma secretária do sistema com base no ID fornecido.
+  - **Tipo de Retorno:** `void`
+
+- `listarSecretaria()`:
+  - **Descrição:** Exibe uma lista de todas as secretárias cadastradas, mostrando detalhes como nome, data de nascimento, telefone e email.
+  - **Tipo de Retorno:** `void`
+<!--End GerenciadorAdm-->
+
+
+<!--Start: GerenciadorMedicos-->
+#### GerenciadorMedicos
+
+
+##### Atributos
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+##### Construtores
+
+- `GerenciadorMedicos()`:
+  - **Descrição:** 
+
+##### Métodos
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+<!--End GerenciadorMedicos-->
+
+
+<!--Start: GerenciadorMensagens-->
+#### GerenciadorMensagens
+
+
+##### Atributos
+
+
+##### Construtores
+
+- `GerenciadorMensagens()`:
+  - **Descrição:** 
+
+
+##### Métodos
+
+<!--End GerenciadorMensagens-->
+
+
+<!--Start: GerenciadorSecretarias-->
+#### GerenciadorSecretarias
+
+##### Atributos
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+##### Construtores
+
+- `GerenciadorMedicos()`:
+  - **Descrição:** 
+
+##### Métodos
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+
+<!--End GerenciadorSecretarias-->
 
 
 
 
-
-
-
-
-
-
-
-
-
-### Package Medelo
+### Package Modelo
 
 #### Consulta
 
@@ -210,5 +357,4 @@ A classe `ColecaoSecretarias` é responsável por armazenar e gerenciar uma cole
 #### Pronturario
 
 #### Secretario
-
 
