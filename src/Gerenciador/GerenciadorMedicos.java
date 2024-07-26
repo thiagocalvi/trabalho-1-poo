@@ -17,7 +17,6 @@ import Modelo.Medico;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 /**

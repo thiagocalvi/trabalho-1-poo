@@ -6,6 +6,7 @@ package Gerenciador;
 
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoSecretarias;
+import Main.Main;
 import Modelo.Medico;
 import Modelo.Secretaria;
 
@@ -76,6 +77,7 @@ public class GerenciadorAdm {
         System.out.println("----------------------------");
         
         System.out.print("Nome médico: ");
+        read.nextLine();
         String nome = read.nextLine();
         
         System.out.println("Data de nascimento DIA/MES/ANO: ");
@@ -144,7 +146,8 @@ public class GerenciadorAdm {
 
             index += 1;
         }
-
+        
+        System.out.println("\n \n");
     }
 
     public void autualizarMedico(){
@@ -270,10 +273,10 @@ public class GerenciadorAdm {
         System.out.println("----------------------------");
         
         System.out.print("Nome da secretaria: ");
+        read.nextLine();
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -321,6 +324,8 @@ public class GerenciadorAdm {
 
             index += 1;
         }
+        
+        System.out.println("\n \n");
     }
     
     public void atualizarSecretaria(){
@@ -346,10 +351,10 @@ public class GerenciadorAdm {
         System.out.println();
         
         System.out.print("Nome secretaria: ");
+        read.nextLine();
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));

@@ -12,6 +12,7 @@ import Colecao.ColecaoPacientes;
 import Colecao.ColecaoSecretarias;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
@@ -138,9 +139,8 @@ public class MenuSecretaria {
         System.out.println("|   1   |        Consultas          |");
         System.out.println("|   2   |        Pacientes          |");
         System.out.println("|   3   |      Lista de médicos     |");
-        //System.out.println("|   4   |   Lista de secretárias    |"); somente adm pode fazer isso
         System.out.println("|-----------------------------------|");
-        System.out.println("|   5   | Voltar para tela inicial  |");
+        System.out.println("|   4   | Voltar para tela inicial  |");
         System.out.println("-------------------------------------");
         System.out.println("");
         System.out.print("Escolha a opção: ");
@@ -171,12 +171,8 @@ public class MenuSecretaria {
        
             case 3:
                 // Exibir todos os médicos que estão na lista
+                 gerenciadorSecretarias.listarMedicos();
                 break;
-                
-            //case 4:
-                // Exbir todas as secretárias que estão na lista
-                //break;
-                
             default:
                 break;
                 
