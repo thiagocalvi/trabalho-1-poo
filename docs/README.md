@@ -16,6 +16,7 @@ O package Coleção armazena as classes:
 * ColecaoPacientes
 * ColecaoProntuarios
 * ColecaoSecretarias
+* ColecaoDadosMedicos
 
 Sendo elas usadas para armazenar em memória os objetos que são criador durante a execução do programa (emulando um banco de dados)
 
@@ -187,7 +188,7 @@ A classe `ColecaoSecretarias` é responsável por armazenar e gerenciar uma cole
 <!--Start: GerenciadorAdm-->
 #### GerenciadorAdm
 
-A classe `GerenciadorAdm` é responsével por gerenciar as operações de CRUD(Create, Read, Uptdate, Delete) dos objetos da classe `Medico` e `Secretaria`, permitindo ao administrador do sistema cadastrar, atualizar, remover e listar registros desses profissonais de forma eficiente e organizada.
+A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(Create, Read, Uptdate, Delete) dos objetos da classe `Medico` e `Secretaria`, permitindo ao administrador do sistema cadastrar, atualizar, remover e listar registros desses profissonais de forma eficiente e organizada.
 
 ##### Atributos
 
@@ -255,7 +256,6 @@ A classe `GerenciadorAdm` é responsével por gerenciar as operações de CRUD(C
 <!--Start: GerenciadorMedicos-->
 #### GerenciadorMedicos
 
-
 ##### Atributos
 
 - ``
@@ -321,7 +321,7 @@ A classe `GerenciadorAdm` é responsével por gerenciar as operações de CRUD(C
 
 ##### Construtores
 
-- `GerenciadorMedicos()`:
+- ``:
   - **Descrição:** 
 
 ##### Métodos
@@ -344,17 +344,285 @@ A classe `GerenciadorAdm` é responsével por gerenciar as operações de CRUD(C
 
 
 
+## Descrição das classes
+
 ### Package Modelo
 
+<!--Start: Consulta-->
 #### Consulta
 
+A classe ´Consulta´ gerencia informações sobre uma consulta médica, incluindo o id da consulta, a data, o horário, o id do médico responsável, o id do paciente e o tipo de consulta(normal ou retorno). Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
+
+##### Atributos
+
+- `id`
+  - **Tipo**: `int`
+  - **Descrição:** Identificador único para cada consulta. É gerado automaticamente em ordem crescente.
+
+- `data`
+  - **Tipo**: `LocalDate`
+  - **Descrição:** Data em que a consulta está marcada. Utiliza a classe ´LocalDate´ do pacote ´java.time´ para representar uma data (ano, mês, dia) sem fuso horário.
+
+- `horario`
+  - **Tipo**: `LocalTime`
+  - **Descrição:** Horário em que a consulta está marcada. Utiliza a classe ´LocalTime´ do pacote ´java.time´ para representar um horário (hora, minuto, segundo) sem fuso horário.
+ 
+- `medicoId`
+  - **Tipo**: `int`
+  - **Descrição:**  Identificador do médico responsável pela consulta.
+ 
+- `pacienteId`
+  - **Tipo**: `int`
+  - **Descrição:** Identificador do paciente que será atendido na consulta
+ 
+- `tipo`
+  - **Tipo**: `enum`
+  - **Descrição:** Enumeração que define o tipo da consulta. Pode ser normal (uma consulta regular) ou retorno (uma consulta de acompanhamento).
+
+
+##### Construtores
+
+- `Consulta`:
+  - **Descrição:** O construtor da classe ´Consulta´ é responsável por inicializar uma nova instância da classe com uma ´data´ e um ´horário´ específicos. Quando uma nova consulta é criada, o construtor é chamado com os parâmetros data e horario, que são então atribuídos aos atributos correspondentes da instância da classe.
+
+##### Métodos
+
+- `getId()`:
+  - **Descrição:** Retorna o identificador único da consulta
+  - **Tipo de Retorno:** ´int´
+
+- `setId(int id)`:
+  - **Descrição:**  Define o identicador único da consulta 
+  - **Tipo de Retorno:** ´void´
+ 
+- `getMedicoId()`:
+  - **Descrição:** Retorna o identificador do médico(CRM) associado a consulta.
+  - **Tipo de Retorno:** ´int´ 
+ 
+- `setMedicoId(Medico medico)`:
+  - **Descrição:** Define o identificador do médico (CRM) baseado em um objeto da classe ´Medico´.
+  - **Tipo de Retorno:** ´void´
+
+- `getPacienteId()`:
+  - **Descrição:**  Retorna o identificador do paciente associado à consulta.
+  - **Tipo de Retorno:** ´int´
+
+- `setPacienteId(Paciente paciente)`:
+  - **Descrição:** Define o identificador do paciente baseado em um objeto da classe ´Paciente´.
+  - **Tipo de Retorno:** ´void´
+    
+- `getPacienteId()`:
+  - **Descrição:** Retorna o identificador do paciente associado à consulta.
+  - **Tipo de Retorno:** ´int´
+ 
+- `getData()`:
+  - **Descrição:** Retorna a data da consulta.
+  - **Tipo de Retorno:** LocalDate
+
+- `setData(LocalDate data)`:
+  - **Descrição:** Define a data da consulta.
+  - **Tipo de Retorno:** ´void´
+
+- `getHorario()`:
+  - **Descrição:** Retorna o horário da consulta.
+  - **Tipo de Retorno:** LocalTime
+
+- `setHorario(LocalTime horario)`:
+  - **Descrição:** Define o horário da consulta.
+  - **Tipo de Retorno:** ´void´
+<!--End Consulta-->
+
+
+<!--Start: DadosMedico-->
+#### DadosMedico
+
+A classe ´DadosMedico´ gerencia informações detalhadas sobre os hábitos e condições de saúde de um paciente, além de seu histórico médico. Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
+
+##### Atributos
+
+- `id`
+  - **Tipo**: `int`
+  - **Descrição:** Identificador único para os dados médicos.
+
+- `fuma`
+  - **Tipo**: `boolean`
+  - **Descrição:** Indica se o paciente fuma.
+
+- `bebe`
+  - **Tipo**: `boolean`
+  - **Descrição:** Indica se o paciente consome bebidas alcoólicas.
+
+- `colesterol`
+  - **Tipo**: `boolean`
+  - **Descrição:** Indica se o paciente tem colesterol
+ 
+- `diabetes`
+  - **Tipo**: `boolean`
+  - **Descrição:** Indica se o paciente tem diabetes
+
+- `doencaCardiaca`
+  - **Tipo**: `boolean`
+  - **Descrição:** Indica se o paciente tem doença cardíaca.
+
+- `cirurgias`
+  - **Tipo**: `List<String>`
+  - **Descrição:** Armazena uma lista de cirurgias que o paciente já realizou.
+
+- `alergias`
+  - **Tipo**: `List<String>`
+  - **Descrição:** Armazena uma lista de alergias que o paciente possui.
+
+##### Construtores
+
+- `DadosMedico`:
+  - **Descrição:**  O construtor da classe ´DadosMedicos´ é responsável por inicializar uma nova instância da classe com as informações de saúde do paciente, como hábitos de fumar e beber, níveis de colesterol, diabetes, doenças cardíacas, cirurgias realizadas e alergias.
+
+##### Métodos
+-  Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
+
+<!--End DadosMedico-->
+
+
+<!--Start: Medico-->
 #### Medico
 
+A classe ´Medico´ gerencia informações de um médico, incluindo dados pessoais, profissionais e a associação a uma secretária (se houver). . Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
+
+##### Atributos
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+    
+
+##### Construtores
+- ``:
+  - **Descrição:** 
+
+##### Métodos
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+<!--End Medico-->
+
+
+<!--Start: Paciente-->
 #### Paciente
 
-#### Pessoa
+##### Atributos
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
 
-#### Pronturario
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
 
-#### Secretario
+##### Construtores
+- ``:
+  - **Descrição:** 
+
+##### Métodos
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+<!--End Paciente-->
+
+
+<!--Start: Prontuario-->
+#### Prontuario
+
+##### Atributos
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+    
+
+##### Construtores
+- ``:
+  - **Descrição:** 
+
+##### Métodos
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+
+<!--End Prontuario-->
+
+
+
+<!--Start: Secretaria-->
+#### Secretaria
+
+##### Atributos
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+
+- ``
+  - **Tipo**: ``
+  - **Descrição:**
+ 
+    
+##### Construtores
+- ``:
+  - **Descrição:** 
+
+##### Métodos
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+<!--End Secretaria-->
+
+
+
+
+
+
 
