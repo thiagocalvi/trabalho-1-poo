@@ -216,7 +216,7 @@ public class MenuMedico {
         
         System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
-        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome()); // Colocar o nome do médico
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");
         System.out.println("------------------------------------");
         System.out.println("| Opção |          Tipo            |");
@@ -230,13 +230,11 @@ public class MenuMedico {
         int option = read.nextInt();
         
         Main.limpaTela();
-        String resposta = "";
         switch (option){
             case 1:
-                while (!"NAO".equals(resposta.toUpperCase())){
-                    resposta = chamaConsultaMarcada();
-                    Main.limpaTela();
-                }
+                gerenciadorMedicos.listaConsultasDoDia(); //mostra as consultas marcadas para o dia atual
+                //as consultas estão ordenadas pelo horario
+                //chamar o menu para iniciar uma consulta
                 break;
              
             case 2:
@@ -272,7 +270,14 @@ public class MenuMedico {
         int id = read.nextInt();
         System.out.println("------------------------------------");
         System.out.println("");
-            
+        
+        Medico medico = colecaoMedicos.getMedicoById(id);
+        
+        System.out.println("-----------------------------------------");
+        System.out.printf("| Nome: %-25s \n", medico.getNome());
+        System.out.printf("| CRM: %-24d \n", medico.getCrm());
+        System.out.println("-----------------------------------------");
+        
         System.out.println("------------------------------------");
         System.out.println("| Opção |          Tipo            |");
         System.out.println("|----------------------------------|");
@@ -290,7 +295,6 @@ public class MenuMedico {
         int option1 = 0;
         switch (option){
             case 1:
-                Medico medico = colecaoMedicos.getMedicoById(id);
                 gerenciadorMedicos.setMedico(medico);
                 
                 while (option1 != 2){

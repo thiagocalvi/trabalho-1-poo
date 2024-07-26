@@ -17,6 +17,9 @@ import Modelo.Medico;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 /**
  *
  * @author jeanm
@@ -58,6 +61,14 @@ public class GerenciadorMedicos {
                 this.consultasDoDia.add(consulta);
             }
         }
+        
+        Collections.sort(consultasDoDia, new Comparator<Consulta>() {
+            
+            public int compare(Consulta c1, Consulta c2) {
+                return c1.getHorario().compareTo(c2.getHorario());
+            }
+        });
+        
     }
     
     Scanner read = new Scanner(System.in);
@@ -85,9 +96,11 @@ public class GerenciadorMedicos {
         }
     }
     
+    
+    
+    
+    
     public void cadastrarProntuario(Consulta consulta){
-        
-        
         
         System.out.println("----------------------------");
         System.out.println("    CADASTRAR PRONTUÁRIO    ");
