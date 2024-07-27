@@ -4,11 +4,17 @@
  */
 package Main;
 
+import Gerenciador.GerenciadorSecretarias;
+
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
+import Colecao.ColecaoSecretarias;
+
+import Modelo.Secretaria;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,11 +25,15 @@ public class MenuSecretaria {
     private ColecaoMedicos colecaoMedicos;
     private ColecaoPacientes colecaoPacientes;
     private ColecaoConsultas colecaoConsultas;
+    private ColecaoSecretarias colecaoSecretarias;
+    private GerenciadorSecretarias gerenciadorSecretarias;
     
-    public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas){
+    public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
         this.colecaoMedicos = colecaoMedicos;
         this.colecaoPacientes = colecaoPacientes;
         this.colecaoConsultas = colecaoConsultas;
+        this.colecaoSecretarias = colecaoSecretarias; 
+        this.gerenciadorSecretarias = new GerenciadorSecretarias(colecaoConsultas, colecaoMedicos, colecaoPacientes);
     }
 
     Scanner read = new Scanner(System.in);
@@ -32,6 +42,7 @@ public class MenuSecretaria {
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
+        System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
         System.out.println("");
         System.out.println("-------------------------------------------------------");
         System.out.println("| Opção |                  Tipo                       |");
@@ -39,10 +50,11 @@ public class MenuSecretaria {
         System.out.println("|   1   |              Marcar consulta                |");
         System.out.println("|   2   |             Atualizar consulta              |");
         System.out.println("|   3   |              Remover consulta               |");
-        System.out.println("|   4   | Gerar relatório de consulta do dia seguinte |");
+        System.out.println("|   4   |             Lista de consultas              |");        
+        System.out.println("|   5   | Gerar relatório de consulta do dia seguinte |");
         System.out.println("|-----------------------------------------------------|");
-        System.out.println("|   5   |         Voltar para menu anterior           |");
-        System.out.println("|   6   |          Voltar para tela inicial           |");
+        System.out.println("|   6   |         Voltar para menu anterior           |");
+        System.out.println("|   7   |          Voltar para tela inicial           |");
         System.out.println("-------------------------------------------------------");
         System.out.println("");
         System.out.print("Escolha a opção: ");
@@ -50,20 +62,34 @@ public class MenuSecretaria {
         
         switch (option){
             case 1:
-                // Colocar a classe secretaria.marcarConsulta
+                // Cadastrar consulta
+                gerenciadorSecretarias.cadastrarConsulta();
                 
                 break;
                 
             case 2:
-                // colocar a classe secretaria.atualizarConsulta
+                // Atualizar consulta
+                gerenciadorSecretarias.atualizarConsulta();
                 break;
                 
             case 3:
-                // colocar a classe secretaria.removerConsulta
+                // Remover Consulta
+                gerenciadorSecretarias.removerConsulta(); ;
                 break;
                 
             case 4:
-                // colocar a classe secretaria.gerarRelatorios
+                // Lista de consultas
+                gerenciadorSecretarias.listarConsultas();
+                break;
+                
+            case 5:
+                // Gerar Relatorios
+                break;
+                
+            case 6:
+                break;
+                
+            case 7:
                 break;
                 
             default:
@@ -78,6 +104,7 @@ public class MenuSecretaria {
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
+        System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
         System.out.println("");
         System.out.println("-----------------------------------------");
         System.out.println("| Opção |             Tipo              |");
@@ -96,19 +123,29 @@ public class MenuSecretaria {
         
         switch (option){
             case 1:
-                // Colocar a classe secretaria.cadastrarPaciente
+                // Cadastrar paciente
+                gerenciadorSecretarias.cadastrarPaciente();
                 break;
                 
             case 2:
-                // colocar a classe secretaria.atualizarPaciente
+                // Atualizar paciente
+                gerenciadorSecretarias.atualizarPaciente();
                 break;
                 
             case 3:
-                // colocar a classe secretaria.removerPaciente
+                // Remover paciente
+                gerenciadorSecretarias.removerPaciente();
                 break;
                 
             case 4:
-                // colocar a classe secretaria.listaPaciente
+                // Lista paciente
+                gerenciadorSecretarias.listarPacientes();
+                break;
+             
+            case 5:
+                break;
+                
+            case 6:
                 break;
                 
             default:
@@ -118,22 +155,21 @@ public class MenuSecretaria {
         
     }
     
-      
-    public int usuarioSecretaria() {
-        
+    public int menuInicial() {
         int option = 0;
         
         System.out.println("USUÁRIO: SECRETÁRIA");
+        System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
         System.out.println("");
         System.out.println("-------------------------------------");
         System.out.println("| Opção |           Tipo            |");
         System.out.println("|-----------------------------------|");
-        System.out.println("|   1   |        Consultas          |");
-        System.out.println("|   2   |        Pacientes          |");
+        System.out.println("|   1   |         Consultas         |");
+        System.out.println("|   2   |         Pacientes         |");
         System.out.println("|   3   |      Lista de médicos     |");
-        //System.out.println("|   4   |   Lista de secretárias    |"); somente adm pode fazer isso
+        System.out.println("|   4   |      Enviar mensagens     |");
         System.out.println("|-----------------------------------|");
-        System.out.println("|   5   | Voltar para tela inicial  |");
+        System.out.println("|   5   |       Sair da conta       |");
         System.out.println("-------------------------------------");
         System.out.println("");
         System.out.print("Escolha a opção: ");
@@ -143,7 +179,8 @@ public class MenuSecretaria {
         int option1 = 0;
         switch (option){
             case 1:
-                while (option1 != 5 && option1 != 6){
+                // Menu Consulta
+                while (option1 != 6 && option1 != 7){
                     option1 = chamaConsulta();
                     if (option1 == 6){
                         option = 3;
@@ -153,6 +190,7 @@ public class MenuSecretaria {
                 break;
             
             case 2:
+                // Menu Paciente
                 while (option1 != 5 && option1 != 6){
                     option1 = chamaPaciente();
                     if (option1 == 6){
@@ -164,22 +202,78 @@ public class MenuSecretaria {
        
             case 3:
                 // Exibir todos os médicos que estão na lista
+                 gerenciadorSecretarias.listarMedicos();
                 break;
-                
-            //case 4:
-                // Exbir todas as secretárias que estão na lista
-                //break;
+                    
+            case 4: 
+                // Envia as mensagens para os clientes avisando sobre a consulta do dia seguinte
+                break;
+                        
+            case 5:
+                break;
                 
             default:
                 break;
                 
         }
-        return option; 
-        
-        
+        return option;
     }
     
     
-    
-    
+      
+    public int usuarioSecretaria() {
+        
+        //Listar todas as secretarias
+        ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
+        
+        System.out.println("+----------------------------------------+");
+        for(Secretaria secretaria : allSecretarias){
+            System.out.printf("| Identificador: %-25s \n", secretaria.getId());
+            System.out.printf("| Nome: %-25s \n", secretaria.getNome());
+            System.out.println("+----------------------------------------+");
+        } 
+        System.out.println("\n \n");
+        System.out.println("USUÁRIO: SECRETÁRIA");
+        System.out.println("");
+        System.out.print("LOGIN DA SECRETARIA (IDENTIFICADOR) ou (0 para sair):");
+        int id = read.nextInt();
+        System.out.println("");
+        
+        if(id == 0){
+            return 2;
+        }
+        
+        Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
+        
+        System.out.println("-----------------------------------------");
+        System.out.printf("| Nome: %-25s \n", secretaria.getNome());
+        System.out.println("-----------------------------------------");
+        System.out.println("[1] - Para entrar na conta \n[2] - Para voltar na tela inicial");
+        System.out.println("-----------------------------------------");  
+        System.out.println("");
+        System.out.print("Opção: ");
+        int option = read.nextInt();    
+        
+        
+        Main.limpaTela();   
+        int option1 = 0;
+        switch (option){
+            case 1:
+                gerenciadorSecretarias.setSecretaria(secretaria);
+                
+                while (option1 != 5){
+                    option1 = menuInicial();
+                    Main.limpaTela();
+                }
+                break;
+            
+            case 2:
+                break;
+                
+            default:
+                break;
+            
+        }
+        return option; 
+    } 
 }

@@ -5,8 +5,6 @@
 package Main;
 
 import Colecao.*;
-
-
 import java.util.Scanner;
 /**
  *
@@ -18,7 +16,7 @@ public class Main {
             System.out.println();
         }
     }
-    
+        
     public static void main(String[] args){
         
         //Inicializando as coleções
@@ -27,11 +25,12 @@ public class Main {
         ColecaoProntuarios colecaoProntuarios = new ColecaoProntuarios();
         ColecaoMedicos colecaoMedicos = new ColecaoMedicos();
         ColecaoSecretarias colecaoSecretarias = new ColecaoSecretarias();
+        ColecaoDadosMedicos colecaoDadosMedicos = new ColecaoDadosMedicos();
         
         //Inicializando os menus
         MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
-        MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas);
-        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios);
+        MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas, colecaoSecretarias);
+        MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoMedicos, colecaoDadosMedicos);
 
 
         //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
@@ -69,24 +68,26 @@ public class Main {
                     break;
 
                 case 2:                    
-                    while (option1 != 5){
+                    while (option1 != 2){
                         option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
                     }                  
                     break;
 
                 case 3:          
-                    while (option1 != 5){
+                    while (option1 != 2){
                         option1 = menuMedico.usuarioMedico();
                         limpaTela();
                     }       
+                    break;
+                    
+                case 4:
                     break;
                     
                 default:
                     break;
             }
         } 
-               
     }      
 }  
 

@@ -14,7 +14,7 @@ public class DadosMedicos {
     private int id; //gerar id
     private boolean fuma;
     private boolean bebe;
-    private String colesterol;
+    private boolean colesterol;
     private boolean diabete;
     private boolean doencaCardiaca;
     private List<String> cirurgias;
@@ -22,7 +22,7 @@ public class DadosMedicos {
 
     //Construtor
     
-    public DadosMedicos(boolean fuma, boolean bebe, String colesterol, boolean diabete, boolean doencaCardiaca, List<String> cirurgias, List<String> alergias) {
+    public DadosMedicos(boolean fuma, boolean bebe, boolean colesterol, boolean diabete, boolean doencaCardiaca, List<String> cirurgias, List<String> alergias) {
         this.fuma = fuma;
         this.bebe = bebe;
         this.colesterol = colesterol;
@@ -34,6 +34,10 @@ public class DadosMedicos {
 
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
     
     public boolean isFuma() {
@@ -52,11 +56,11 @@ public class DadosMedicos {
         this.bebe = bebe;
     }
 
-    public String getColesterol() {
+    public boolean getColesterol() {
         return colesterol;
     }
 
-    public void setColesterol(String colesterol) {
+    public void setColesterol(boolean colesterol) {
         this.colesterol = colesterol;
     }
 

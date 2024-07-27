@@ -6,6 +6,7 @@ package Gerenciador;
 
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoSecretarias;
+import Main.Main;
 import Modelo.Medico;
 import Modelo.Secretaria;
 
@@ -79,7 +80,7 @@ public class GerenciadorAdm {
         read.next();
         String nome = read.nextLine();
         
-        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
+        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -99,11 +100,13 @@ public class GerenciadorAdm {
         System.out.print("CRM: ");
         int crm = read.nextInt();
         
+        // Listar as secretárias
         this.listarSecretarias();
         
         System.out.println("");
-        System.out.print("Informe o id da secretaria: ");
+        System.out.print("Informe o ID da secretaria: ");
         int idSecretaria = read.nextInt();
+        read.nextLine();
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
         
@@ -121,10 +124,10 @@ public class GerenciadorAdm {
     }
     
     public void listarMedicos(){
-        System.out.println("\n \n");
-        System.out.println("----------------------------");
-        System.out.println("       LISTA MEDICOS        ");
-        System.out.println("----------------------------");
+        System.out.println("\n");
+        System.out.println("+----------------------------------------+");
+        System.out.println("              LISTA MEDICOS               ");
+        System.out.println("+----------------------------------------+");
         
         ArrayList<Medico> allMedicos = colecaoMedicos.getMedicos();
         
@@ -132,7 +135,6 @@ public class GerenciadorAdm {
         
         for(Medico medico : allMedicos){
 
-            System.out.println("+----------------------------------------+");
             System.out.printf("| Index: %-25s \n", index);
             System.out.printf("| Id: %-25s \n", medico.getId());
             System.out.printf("| Nome: %-25s \n", medico.getNome());
@@ -145,23 +147,25 @@ public class GerenciadorAdm {
             System.out.println("+----------------------------------------+");
 
             index += 1;
-        }
-
+        }   
+        System.out.println("\n");
     }
 
     public void atualizarMedico(){
-        System.out.println("----------------------------");
-        System.out.println("      ATUALIZAR MEDICO      ");
-        System.out.println("----------------------------");
+
+        System.out.println("--------------------------------");
+        System.out.println("        ATUALIZAR MEDICO        ");
+        System.out.println("--------------------------------");
         
         this.listarMedicos();
         
         System.out.println("Informe o id do médico que será atualizado: ");
         int id = read.nextInt();
+        read.nextLine();
         
         Medico medico = colecaoMedicos.getMedicoById(id);
 
-        System.out.println("+----------------------------------------+");
+        System.out.println("+-------------------------------------------+");
         System.out.printf("| Id: %-25s \n", medico.getId());    
         System.out.printf("| Nome: %-25s \n", medico.getNome());
         System.out.printf("| Data de nascimento: %-10s \n", medico.getDataNascimento());
@@ -169,14 +173,15 @@ public class GerenciadorAdm {
         System.out.printf("| Email: %-22s \n", medico.getEmail());
         System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
-        System.out.println("+----------------------------------------+");
+        System.out.printf("| Secretaria Id: %-24d \n", medico.getSecretariaId());
+        System.out.println("+-------------------------------------------+");
+        System.out.println();
         
         System.out.print("Nome médico: ");
-        read.nextLine();
         String nome = read.nextLine();
 
         
-        System.out.print("Data de nascimento DIA/MES/ANO (00/00/0000): ");
+        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -198,12 +203,15 @@ public class GerenciadorAdm {
 
         this.listarSecretarias();
         
-        System.out.print("Informe o id da secretaria (deve ser informado um id): ");
+
+        System.out.print("Informe o ID da secretaria (deve ser informado um id): ");
         int idSecretaria = read.nextInt();
+        read.nextLine();
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
         
         medico.setSecretariaId(secretaria);
+        
         
         if(!nome.equals(medico.getNome()) && nome != ""){
             medico.setNome(nome);    
@@ -224,17 +232,19 @@ public class GerenciadorAdm {
             medico.setCrm(crm);
         }
         
+        
     }
     
     public void removerMedico(){
-        System.out.println("----------------------------");
-        System.out.println("       REMOVER MEDICO       ");
-        System.out.println("----------------------------");
+        System.out.println("--------------------------------");
+        System.out.println("         REMOVER MEDICO         ");
+        System.out.println("--------------------------------");
         
         this.listarMedicos();
-        
-        System.out.print("Informe o id do médico que será removido: ");
+
+        System.out.print("Informe o ID do médico que será removido: ");
         int id = read.nextInt();
+        read.nextLine();
         
         colecaoMedicos.removeById(id);
     }
@@ -268,8 +278,7 @@ public class GerenciadorAdm {
         System.out.print("Nome da secretaria: ");
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -296,10 +305,11 @@ public class GerenciadorAdm {
     }
    
     public void listarSecretarias(){
-        System.out.println("\n \n");
-        System.out.println("----------------------------");
-        System.out.println("     LISTA SECRETARIAS      ");
-        System.out.println("----------------------------");
+
+        System.out.println("\n");
+        System.out.println("+----------------------------------------+");
+        System.out.println("            LISTA SECRETARIAS             ");
+        System.out.println("+----------------------------------------+");
         
         ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
         
@@ -307,7 +317,6 @@ public class GerenciadorAdm {
         
         for(Secretaria secretaria : allSecretarias){
 
-            System.out.println("+----------------------------------------+");
             System.out.printf("| Index: %-25s \n", index);
             System.out.printf("| Id: %-25s \n", secretaria.getId());
             System.out.printf("| Nome: %-25s \n", secretaria.getNome());
@@ -317,36 +326,37 @@ public class GerenciadorAdm {
             System.out.println("+----------------------------------------+");
 
             index += 1;
-        }
+        }       
+        System.out.println("\n");
     }
     
     public void atualizarSecretaria(){
-        System.out.println("----------------------------");
-        System.out.println("    ATUALIZAR SECRETARIA    ");
-        System.out.println("----------------------------");
+        System.out.println("--------------------------------");
+        System.out.println("      ATUALIZAR SECRETARIA      ");
+        System.out.println("--------------------------------");
         
         this.listarSecretarias();
         
-        System.out.println("Informe o id da secretaria que será atualizado: ");
+        System.out.print("Informe o ID da secretaria que será atualizado: ");
         int id = read.nextInt();
+        read.nextLine();
         
         Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
 
-        System.out.println("+----------------------------------------+");
+        System.out.println("+------------------------------------------+");
         System.out.printf("| Id: %-25s \n", secretaria.getId());    
         System.out.printf("| Nome: %-25s \n", secretaria.getNome());
         System.out.printf("| Data de nascimento: %-10s \n", secretaria.getDataNascimento());
         System.out.printf("| Telefone: %-19s \n", secretaria.getTelefone());
         System.out.printf("| Email: %-22s \n", secretaria.getEmail());
-        System.out.println("+----------------------------------------+");
+        System.out.println("+------------------------------------------+");
         System.out.println();
         
         System.out.print("Nome secretaria: ");
         read.next();
         String nome = read.nextLine();
         
-        System.out.println("Data de nascimento DIA/MES/ANO: ");
-        System.out.print("00/00/0000 : ");
+        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -375,14 +385,15 @@ public class GerenciadorAdm {
     }
     
     public void removerSecretaria(){
-        System.out.println("----------------------------");
-        System.out.println("     REMOVER SCRETARIA      ");
-        System.out.println("----------------------------");
+        System.out.println("--------------------------------");
+        System.out.println("       REMOVER SCRETARIA        ");
+        System.out.println("--------------------------------");
         
         this.listarSecretarias();
         
-        System.out.println("Informe o id do secretaria que será removido: ");
+        System.out.print("Informe o ID da secretaria que será removido: ");
         int id = read.nextInt();
+        read.nextLine();
         
         colecaoSecretarias.removeById(id);
     }

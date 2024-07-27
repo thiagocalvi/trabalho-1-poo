@@ -11,16 +11,18 @@ import java.time.LocalTime;
  * @author MatheusConsoni
  */
 public class Consulta {
+    private enum Tipo{
+        NORMAL,
+        RETORNO
+    };
+    
     //Atributos
     private int id; //gerar id
     private LocalDate data;
     private LocalTime horario;
     private int medicoId;
     private int pacienteId;
-    private enum tipo{
-        normal,
-        retorno
-    };
+    private Tipo tipo;
     
     //Construtor
     public Consulta(LocalDate data, LocalTime horario) {
@@ -31,6 +33,10 @@ public class Consulta {
     //Gets e Sets
     public int getId() {
         return id;
+    }
+    
+    public void setId(int id){
+        this.id = id;
     }
 
     public void setMedicoId(Medico medico){
@@ -65,4 +71,16 @@ public class Consulta {
         this.horario = horario;
     }
 
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        if (tipo == Tipo.NORMAL.name()){
+            this.tipo = Tipo.NORMAL;
+        } else {
+            this.tipo = Tipo.RETORNO;
+        }
+    }
+   
 }
