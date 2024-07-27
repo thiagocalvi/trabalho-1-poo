@@ -63,6 +63,7 @@ public class GerenciadorMedicos {
         
         Collections.sort(consultasDoDia, new Comparator<Consulta>() {
             
+            @Override
             public int compare(Consulta c1, Consulta c2) {
                 return c1.getHorario().compareTo(c2.getHorario());
             }
