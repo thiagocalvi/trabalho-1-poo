@@ -17,6 +17,7 @@ import Modelo.Medico;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 /**
@@ -135,6 +136,8 @@ public class GerenciadorMedicos {
     }
     
     public void atualizarProntuario() {
+        //Listar todos os prontuarios do paciente
+        
         System.out.println("----------------------------");
         System.out.println("    ATUALIZAR PRONTUÁRIO    ");
         System.out.println("----------------------------");
@@ -211,83 +214,127 @@ public class GerenciadorMedicos {
     public void cadastrarDados(){
         
         System.out.println("----------------------------");
-        System.out.println("      DADOS ADICIONAIS      ");
+        System.out.println("  CADRASTRAR DADOS MÉDICOS  ");
         System.out.println("----------------------------");
         
-        System.out.println("Insira um dado adicional:");
-        String info = read.nextLine();
-        
-        System.out.println("Inserir outro dado?");
-        System.out.println("[0] - Para sim \n[1] - Para não");
-        String resposta = read.nextLine();
-        
-        while (resposta != "1"){
-            System.out.println("----------------------------");
-            System.out.println("      DADOS ADICIONAIS      ");
-            System.out.println("----------------------------");
+        System.out.println("O paciente fuma? (true/false)");
+        boolean fuma = Boolean.parseBoolean(read.nextLine());
 
-            System.out.println("Insira um dado adicional:");
-            String infoAdicional = read.nextLine();
+        System.out.println("O paciente bebe? (true/false)");
+        boolean bebe = Boolean.parseBoolean(read.nextLine());
 
-            System.out.println("Inserir outro dado?");
-            System.out.println("[0] - Para sim \n[1] - Para não");
-            String respostaAdicional = read.nextLine();
-        }
+        System.out.println("Nível de colesterol:");
+        String colesterol = read.nextLine();
+
+        System.out.println("O paciente é diabético? (true/false)");
+        boolean diabete = Boolean.parseBoolean(read.nextLine());
+
+        System.out.println("O paciente tem doença cardíaca? (true/false)");
+        boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+
+        System.out.println("Informe as cirurgias realizadas (separadas por vírgula):");
+        List<String> cirurgias = List.of(read.nextLine().split(","));
+
+        System.out.println("Informe as alergias (separadas por vírgula):");
+        List<String> alergias = List.of(read.nextLine().split(","));
+
+        DadosMedicos dadosMedicos = new DadosMedicos(fuma, bebe, colesterol, diabete, doencaCardiaca, cirurgias, alergias);
+        this.idDadosMedicosControle += 1;
+        dadosMedicos.setId(idDadosMedicosControle);
+        colecaoDadosMedicos.add(dadosMedicos);
+
+        System.out.println("Dados médicos cadastrados com sucesso!");
     }
     
     public void  atualizarDados(){
         
         System.out.println("----------------------------");
-        System.out.println("      DADOS ADICIONAIS      ");
+        System.out.println("   ATUALIZAR DADOS MÉDICOS  ");
         System.out.println("----------------------------");
-        
-        System.out.println("Selecione um dado para alteração:");
-        String info = read.nextLine();
-        
-        System.out.println("Alterar outro dado?");
-        System.out.println("[0] - Para sim \n[1] - Para não");
-        String resposta = read.nextLine();
-        
-        while (resposta != "1"){
-            System.out.println("----------------------------");
-            System.out.println("      DADOS ADICIONAIS      ");
-            System.out.println("----------------------------");
 
-            System.out.println("Selecione um dado para alteração:");
-            String infoAdicional = read.nextLine();
+        System.out.println("Informe o ID dos dados médicos a serem atualizados:");
+        int id = Integer.parseInt(read.nextLine());
+        DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(id);
 
-            System.out.println("Alterar outro dado?");
-            System.out.println("[0] - Para sim \n[1] - Para não");
-            String respostaAdicional = read.nextLine();
+        if (dadosMedicos == null) {
+            System.out.println("Dados médicos não encontrados!");
+            return;
         }
+
+        System.out.println("Dados atuais:");
+        System.out.println("Fuma: " + dadosMedicos.isFuma());
+        System.out.println("Bebe: " + dadosMedicos.isBebe());
+        System.out.println("Colesterol: " + dadosMedicos.getColesterol());
+        System.out.println("Diabete: " + dadosMedicos.isDiabete());
+        System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
+        System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
+        System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
+
+        System.out.println("Atualizar fuma? (true/false) - Atual: " + dadosMedicos.isFuma());
+        boolean fuma = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setFuma(fuma);
+
+        System.out.println("Atualizar bebe? (true/false) - Atual: " + dadosMedicos.isBebe());
+        boolean bebe = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setBebe(bebe);
+
+        System.out.println("Atualizar colesterol - Atual: " + dadosMedicos.getColesterol());
+        String colesterol = read.nextLine();
+        dadosMedicos.setColesterol(colesterol);
+
+        System.out.println("Atualizar diabete? (true/false) - Atual: " + dadosMedicos.isDiabete());
+        boolean diabete = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setDiabete(diabete);
+
+        System.out.println("Atualizar doença cardíaca? (true/false) - Atual: " + dadosMedicos.isDoencaCardiaca());
+        boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setDoencaCardiaca(doencaCardiaca);
+
+        System.out.println("Atualizar cirurgias (separadas por vírgula) - Atual: " + String.join(", ", dadosMedicos.getCirurgias()));
+        List<String> cirurgias = List.of(read.nextLine().split(","));
+        dadosMedicos.setCirurgias(cirurgias);
+
+        System.out.println("Atualizar alergias (separadas por vírgula) - Atual: " + String.join(", ", dadosMedicos.getAlergias()));
+        List<String> alergias = List.of(read.nextLine().split(","));
+        dadosMedicos.setAlergias(alergias);
+
+        System.out.println("Dados médicos atualizados com sucesso!");
     }
     
     public void removerDados(){
         System.out.println("----------------------------");
-        System.out.println("      DADOS ADICIONAIS      ");
+        System.out.println("    REMOVER DADOS MÉDICOS   ");
         System.out.println("----------------------------");
-        
-        System.out.println("Selecione um dado para remoção:");
-        String info = read.nextLine();
-        
-        System.out.println("Remover outro dado?");
-        System.out.println("[0] - Para sim \n[1] - Para não");
-        String resposta = read.nextLine();
-        
-        while (resposta != "1"){
-            System.out.println("----------------------------");
-            System.out.println("      DADOS ADICIONAIS      ");
-            System.out.println("----------------------------");
 
-            System.out.println("Selecione um dado para remoção:");
-            String infoAdicional = read.nextLine();
+        System.out.println("Informe o ID dos dados médicos a serem removidos:");
+        int id = Integer.parseInt(read.nextLine());
+        colecaoDadosMedicos.removeById(id);
 
-            System.out.println("Alterar outro dado?");
-            System.out.println("[0] - Para sim \n[1] - Para não");
-            String respostaAdicional = read.nextLine();
+        System.out.println("Dados médicos removidos com sucesso!");
+    }
+
+    
+    public void listarDados() {
+        System.out.println("----------------------------");
+        System.out.println("    LISTAR DADOS MÉDICOS    ");
+        System.out.println("----------------------------");
+
+        ArrayList<DadosMedicos> todosDados = colecaoDadosMedicos.getConsultas();
+        for (DadosMedicos dadosMedicos : todosDados) {
+            System.out.println("ID: " + dadosMedicos.getId());
+            System.out.println("Fuma: " + dadosMedicos.isFuma());
+            System.out.println("Bebe: " + dadosMedicos.isBebe());
+            System.out.println("Colesterol: " + dadosMedicos.getColesterol());
+            System.out.println("Diabete: " + dadosMedicos.isDiabete());
+            System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
+            System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
+            System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
+            System.out.println("----------------------------");
         }
     }
 
+    
+    
     public void listarAllConsultas(){
         //Listas todas as consultas associadas ao medico
         ArrayList<Consulta> allConsultas = colecaoConsultas.getConsultas();
