@@ -11,6 +11,8 @@ import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
 import Colecao.ColecaoSecretarias;
 
+import Modelo.Secretaria;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -128,6 +130,30 @@ public class MenuSecretaria {
     
       
     public int usuarioSecretaria() {
+        
+        //Listar todas as secretarias
+        ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
+        
+        for(Secretaria secretaria : allSecretarias){
+            System.out.println("+----------------------------------------+");
+            System.out.printf("| Identificador: %-25s \n", secretaria.getId());
+            System.out.printf("| Nome: %-25s \n", secretaria.getNome());
+            System.out.println("+----------------------------------------+");
+        } 
+        
+        System.out.print("LOGIN DA SECRETARIA (IDENTIFICADOR) ou (0 para sair):");
+        int id = read.nextInt();
+        
+        if(id == 0){
+            return 4;
+        }
+        
+        
+        Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
+        
+        if(secretaria != null){
+            gerenciadorSecretarias.setSecretaria(secretaria);
+        }
         
         int option = 0;
         
