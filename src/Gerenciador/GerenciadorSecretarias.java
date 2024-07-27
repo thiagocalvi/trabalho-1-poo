@@ -46,12 +46,12 @@ public class GerenciadorSecretarias {
     }
     
     public void cadastrarConsulta() {
-        System.out.println("----------------------------");
-        System.out.println("     CADASTRAR CONSULTA     ");
-        System.out.println("----------------------------");
+        System.out.println("+------------------------------+");
+        System.out.println("       CADASTRAR CONSULTA       ");
+        System.out.println("+------------------------------+");
 
         // Coleta de dados
-        System.out.println("Informe a data da consulta (formato: DD/MM/YYYY):");
+        System.out.print("Informe a data da consulta (formato: DD/MM/YYYY):");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -60,7 +60,7 @@ public class GerenciadorSecretarias {
         
         LocalDate dataConsulta = LocalDate.of(ano, mes, dia);
 
-        System.out.println("Informe o horário da consulta (formato: HH:MM):");
+        System.out.print("Informe o horário da consulta (formato: HH:MM):");
         String horario = read.nextLine();
         
         int hora = Integer.parseInt(horario.substring(0, 2));
@@ -70,16 +70,25 @@ public class GerenciadorSecretarias {
 
         //Listar os medicos
         this.listarMedicos();
-        System.out.println("Informe o ID do médico:");
-        int medicoId = Integer.parseInt(read.nextLine());
-        Medico medico = colecaoMedicos.getMedicoById(medicoId);
-
+        
+        System.out.print("Informe o ID do médico:");
+        int idMedico = read.nextInt();
+        
+        Medico medico = colecaoMedicos.getMedicoById(idMedico);
+        
         
         //Listar os pacientes
         this.listarPacientes();
-        System.out.println("Informe o ID do paciente:");
-        int pacienteId = Integer.parseInt(read.nextLine());
-        Paciente paciente = colecaoPacientes.getPacienteById(pacienteId);
+        
+        System.out.print("Informe o ID do paciente:");
+        int idPaciente = read.nextInt();
+        read.nextLine();
+        
+        Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
+        
+        // Tipo da consulta
+        System.out.print("Informe o tipo da consulta(Normal/Retorno): ");
+        String tipoStr = read.nextLine();
         
         // Cria a consulta
         Consulta consulta = new Consulta(dataConsulta, horarioConsulta);
@@ -87,18 +96,21 @@ public class GerenciadorSecretarias {
         consulta.setId(idConsultaControle);
         consulta.setMedicoId(medico);
         consulta.setPacienteId(paciente);
+        consulta.setTipo(tipoStr.toUpperCase());
 
         // Adiciona a consulta à coleção
         colecaoConsultas.add(consulta);
 
-        System.out.println("Consulta cadastrada com sucesso!");
+        System.out.println("+----------------------------------+");
+        System.out.println("  CONSULTA CADASTRADA COM SUCESSO!  ");
+        System.out.println("+----------------------------------+");
     }
     
     public void atualizarConsulta() {
         
-        System.out.println("----------------------------");
-        System.out.println("     ATUALIZAR CONSULTA     ");
-        System.out.println("----------------------------");
+        System.out.println("+------------------------------+");
+        System.out.println("       ATUALIZAR CONSULTA       ");
+        System.out.println("+------------------------------+");
 
         this.listarConsultas();
         
@@ -116,6 +128,7 @@ public class GerenciadorSecretarias {
             System.out.println("[0] - Para sim \n[1] - Para não");
             String resposta = read.nextLine();
             if (resposta.equals("0")) {
+                System.out.println("");
                 System.out.println("Informe a nova data da consulta (formato: DD/MM/YYYY):");
                 String data = read.nextLine();
                 
@@ -131,8 +144,8 @@ public class GerenciadorSecretarias {
             System.out.println("[0] - Para sim \n[1] - Para não");
             resposta = read.nextLine();
             if (resposta.equals("0")) {
+                System.out.println("");
                 System.out.println("Informe o novo horário da consulta (formato: HH:MM):");
-                System.out.println("Informe o horário da consulta (formato: HH:MM):");
                 String horario = read.nextLine();
                 
                 int hora = Integer.parseInt(horario.substring(0, 2));
@@ -153,16 +166,21 @@ public class GerenciadorSecretarias {
                 consulta.setMedicoId(medico);
             }
             
-            System.out.println("Consulta atualizada com sucesso!");
+            System.out.println("+----------------------------------+");
+            System.out.println("  CONSULTA ATUALIZADA COM SUCESSO!  ");
+            System.out.println("+----------------------------------+");    
+            
         } catch (NumberFormatException e) {
-            System.out.println("Erro: o ID informado não é válido.");
+            System.out.println("+-------------------------------------+");
+            System.out.println("   ERRO: O ID informado não é válido   ");
+            System.out.println("+-------------------------------------+");
         }
     }
     
     public void removerConsulta() {
-        System.out.println("----------------------------");
-        System.out.println("      REMOVER CONSULTA      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------+");
+        System.out.println("       REMOVER CONSULTA       ");
+        System.out.println("+----------------------------+");
         
         this.listarConsultas();
         
@@ -178,24 +196,30 @@ public class GerenciadorSecretarias {
 
             colecaoConsultas.remove(consulta);
 
-            System.out.println("Consulta removida com sucesso!");
+           
+            System.out.println("+-------------------------------------+");
+            System.out.println("     CONSULTA REMOVIDA COM SUCESSO     ");
+            System.out.println("+-------------------------------------+");
+            
         } catch (NumberFormatException e) {
-            System.out.println("Erro: o ID informado não é válido.");
-        } 
+            System.out.println("+-------------------------------------+");
+            System.out.println("   ERRO: O ID informado não é válido   ");
+            System.out.println("+-------------------------------------+");        } 
     }
     
     public void listarConsultas() {
         
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
+        System.out.println("\n");
         
         if (consultas.isEmpty()) {
             System.out.println("Nenhuma consulta cadastrada.");
             return;
         }
-
-        System.out.println("----------------------------");
-        System.out.println("     LISTA DE CONSULTAS     ");
-        System.out.println("----------------------------");
+        
+        System.out.println("+----------------------------+");
+        System.out.println("      LISTA DE CONSULTAS      ");
+        System.out.println("+----------------------------+");
 
         for (Consulta consulta : consultas) {
             System.out.println("ID: " + consulta.getId());
@@ -203,15 +227,16 @@ public class GerenciadorSecretarias {
             System.out.println("Horário: " + consulta.getHorario());
             System.out.println("Médico ID: " + consulta.getMedicoId());
             System.out.println("Paciente ID: " + consulta.getPacienteId());
-            System.out.println("----------------------------");
+            System.out.println("------------------------------");
         }
+        System.out.println("\n");
     }
     
     public void cadastrarPaciente(){
         
-        System.out.println("----------------------------");
-        System.out.println("     CADASTRAR PACIENTE     ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------+");
+        System.out.println("      CADASTRAR PACIENTE      ");
+        System.out.println("+----------------------------+");
 
         System.out.println("Informe o nome do paciente:");
         String nome = read.nextLine();
@@ -240,14 +265,16 @@ public class GerenciadorSecretarias {
         Paciente paciente = new Paciente(tipoConvenio, nome, dataNascimento, endereco, telefone, email);
         colecaoPacientes.add(paciente);
 
-        System.out.println("Paciente cadastrado com sucesso!");
+        System.out.println("+-------------------------------------+");
+        System.out.println("    PACIENTE CADASTRADO COM SUCESSO!   ");
+        System.out.println("+-------------------------------------+");
     }
     
     public void atualizarPaciente(){
         
-        System.out.println("----------------------------");
-        System.out.println("     ATUALIZAR PACIENTE     ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------+");
+        System.out.println("      ATUALIZAR PACIENTE      ");
+        System.out.println("+----------------------------+");
 
         System.out.println("Informe o ID do paciente a ser atualizado:");
         int id = Integer.parseInt(read.nextLine());
@@ -307,14 +334,17 @@ public class GerenciadorSecretarias {
             paciente.setTipoConvenio(Paciente.tipoConvenio.valueOf(read.nextLine().toUpperCase()));
         }
 
-        System.out.println("Paciente atualizado com sucesso!");
+        System.out.println("+----------------------------------+");
+        System.out.println("  PACIENTE ATUALIZADO COM SUCESSO!  ");
+        System.out.println("+----------------------------------+");  
+        
     }
     
     public void removerPaciente(){
         
-        System.out.println("----------------------------");
-        System.out.println("      REMOVER PACIENTE      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------+");
+        System.out.println("       REMOVER PACIENTE       ");
+        System.out.println("+----------------------------+");
 
         System.out.println("Informe o ID do paciente a ser removido:");
         int id = Integer.parseInt(read.nextLine());
@@ -326,20 +356,25 @@ public class GerenciadorSecretarias {
         }
 
         colecaoPacientes.remove(paciente);
-        System.out.println("Paciente removido com sucesso!");
+        
+        System.out.println("+----------------------------------+");
+        System.out.println("   PACIENTE REMOVIDO COM SUCESSO!   ");
+        System.out.println("+----------------------------------+");   
     }
     
     public void listarPacientes(){
         
+        System.out.println("\n");
         ArrayList<Paciente> pacientes = colecaoPacientes.getPacientes();
+        
         if (pacientes.isEmpty()) {
             System.out.println("Nenhum paciente cadastrado.");
             return;
         }
         
-        System.out.println("----------------------------");
-        System.out.println("     LISTA DE PACIENTES     ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------+");
+        System.out.println("      LISTA DE PACIENTES      ");
+        System.out.println("+----------------------------+");
 
         for (Paciente paciente : pacientes) {
             System.out.println("ID: " + paciente.getId());
@@ -349,22 +384,24 @@ public class GerenciadorSecretarias {
             System.out.println("E-mail: " + paciente.getEmail());
             System.out.println("Endereço: " + paciente.getEndereco());
             System.out.println("Tipo de Convênio: " + paciente.getTipoConvenio());
-            System.out.println("----------------------------");
+            System.out.println("------------------------------");
         }
+        System.out.println("\n");
     }
     
     public void listarMedicos(){
         
         ArrayList<Medico> medicos = colecaoMedicos.getMedicos();
+        System.out.println("\n");
         
         if (medicos.isEmpty()) {
             System.out.println("Nenhum médico cadastrado.");
             return;
         }
         
-        System.out.println("----------------------------");
-        System.out.println("      LISTA DE MÉDICOS      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------+");
+        System.out.println("       LISTA DE MÉDICOS       ");
+        System.out.println("+----------------------------+");
         
         for (Medico medico : medicos) {
             
@@ -377,9 +414,9 @@ public class GerenciadorSecretarias {
                 System.out.println("Especialidade: " + medico.getEspecialidade());
                 System.out.println("CRM: " + medico.getCrm());
                 System.out.println("ID da Secretaria: " + medico.getSecretariaId());
-                System.out.println("----------------------------");
+                System.out.println("------------------------------");
             }
-            
         }
+        System.out.println("\n");
     }
 }

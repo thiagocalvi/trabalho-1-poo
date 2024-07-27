@@ -196,16 +196,18 @@ public class MenuMedico {
         int option = 0;
 
         System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");
         System.out.println("--------------------------------");
         System.out.println("Consultas do dia: ");
+        System.out.println("");
         
         // Pegar a lista de paciente referente as consultas do dia naquele médico e exibir aqui
         gerenciadorMedicos.listaConsultasDoDia();
         
         System.out.println("--------------------------------");
         System.out.println("");
-        System.out.println("Iniciar primeira consulta do dia?"); // Colocar o nome do paciente que será atendido
+        System.out.println("Iniciar consulta ?"); // Colocar o nome do paciente que será atendido
         System.out.println("[1] - Para sim \n[2] - Para não");
         option = read.nextInt();
         
@@ -254,7 +256,6 @@ public class MenuMedico {
                 break;
                      
             default:
-                System.out.println("Opção inválida!");
                 break;  
         }        
         return option;
@@ -266,22 +267,20 @@ public class MenuMedico {
         // Listar todos os médicos
         ArrayList<Medico> allMedicos = colecaoMedicos.getMedicos();
         
+        System.out.println("+-----------------------------------------+");
         for(Medico medico : allMedicos){
-            System.out.println("+----------------------------------------+");
             System.out.printf("| Identificador: %-25s \n", medico.getId());
             System.out.printf("| Nome: %-25s \n", medico.getNome());
             System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
             System.out.printf("| CRM: %-24d \n", medico.getCrm());
-            System.out.println("+----------------------------------------+");
+            System.out.println("+-----------------------------------------+");
         }
 
-        System.out.println("");
+        System.out.println("\n \n");
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("");
-        System.out.println("------------------------------------");
         System.out.print("LOGIN DO MÉDICO (IDENTIFICADOR) ou (0 para sair):");
         int id = read.nextInt();
-        System.out.println("------------------------------------");
         System.out.println("");
         
         if(id == 0){
@@ -294,20 +293,12 @@ public class MenuMedico {
         System.out.printf("| Nome: %-25s \n", medico.getNome());
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
         System.out.println("-----------------------------------------");
-        
-        System.out.println("------------------------------------");
-        System.out.println("| Opção |          Tipo            |");
-        System.out.println("|----------------------------------|");
-        System.out.println("|   1   |    Entrar na conta       |");
-        System.out.println("|----------------------------------|");
-        System.out.println("|   2   | Voltar para tela inicial |");
-        System.out.println("------------------------------------");
+        System.out.println("[1] - Para entrar na conta \n[2] - Para voltar na tela inicial");
+        System.out.println("------------------------------------");  
         System.out.println("");
         System.out.print("Opção: ");
         int option = read.nextInt();
-        
-        // Fazer a busca pela ID do médico.
-        
+                
         Main.limpaTela();
         int option1 = 0;
         switch (option){
@@ -324,7 +315,6 @@ public class MenuMedico {
                 break;
                 
             default:
-                System.out.println("Opção inválida!");
                 break;
         }
         return option;             

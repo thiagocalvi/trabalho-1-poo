@@ -68,7 +68,7 @@ public class Main {
                     break;
 
                 case 2:                    
-                    while (option1 != 4){
+                    while (option1 != 2){
                         option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
                     }                  
@@ -81,11 +81,13 @@ public class Main {
                     }       
                     break;
                     
+                case 4:
+                    break;
+                    
                 default:
                     break;
             }
         } 
-               
     }      
 }  
 

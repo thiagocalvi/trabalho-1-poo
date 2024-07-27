@@ -68,7 +68,7 @@ public class MenuAdm {
                 
             case 2:
                 //Atualizar médico
-                gerenciadorAdm.autualizarMedico();
+                gerenciadorAdm.atualizarMedico();
                 break;
                 
             case 3:
