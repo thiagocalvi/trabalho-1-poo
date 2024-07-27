@@ -5,7 +5,6 @@
 package Main;
 
 import Colecao.*;
-
 import java.util.Scanner;
 /**
  *
@@ -41,6 +40,7 @@ public class Main {
         Scanner read = new Scanner(System.in);
         
         int option = 0;
+               
         
         while (option != 4){
             System.out.println("TELA INICIAL");
@@ -68,7 +68,7 @@ public class Main {
                     break;
 
                 case 2:                    
-                    while (option1 != 4){
+                    while (option1 != 2){
                         option1 = menuSecretaria.usuarioSecretaria();
                         limpaTela();
                     }                  
@@ -81,11 +81,13 @@ public class Main {
                     }       
                     break;
                     
+                case 4:
+                    break;
+                    
                 default:
                     break;
             }
         } 
-               
     }      
 }  
 
