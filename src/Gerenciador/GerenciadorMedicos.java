@@ -319,7 +319,8 @@ public class GerenciadorMedicos {
         System.out.println("    LISTAR DADOS MÉDICOS    ");
         System.out.println("----------------------------");
 
-        ArrayList<DadosMedicos> todosDados = colecaoDadosMedicos.getConsultas();
+        ArrayList<DadosMedicos> todosDados = colecaoDadosMedicos.getDadosMedicos();
+        
         for (DadosMedicos dadosMedicos : todosDados) {
             System.out.println("ID: " + dadosMedicos.getId());
             System.out.println("Fuma: " + dadosMedicos.isFuma());

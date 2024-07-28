@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ColecaoDadosMedicos{
     private ArrayList<DadosMedicos> dadosMedicos = new ArrayList();
     
-    public ArrayList<DadosMedicos> getConsultas(){
+    public ArrayList<DadosMedicos> getDadosMedicos(){
         return dadosMedicos;
     }
     
