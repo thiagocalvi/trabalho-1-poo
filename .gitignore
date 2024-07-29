@@ -55,12 +55,3 @@ tmp/
 
 # Arquivos do sistema operacional
 *.sublime-*
-
-# Diretórios específicos do NetBeans
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
