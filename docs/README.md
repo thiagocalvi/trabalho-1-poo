@@ -348,41 +348,25 @@ A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(C
   - **Descrição:** Permite ao usuário cadastrar os dados médicos de um paciente. Verifica se o paciente já possui dados médicos cadastrados. Se não possuir, coleta as informações necessárias (como se fuma, bebe, nível de colesterol, etc.) e cria um novo registro de dados médicos para o paciente.
   - **Tipo de Retorno:** `void`
  
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
+- `atualizarDados()`:
+  - **Descrição:** Permite ao usuário atualizar os dados médicos de um paciente. Exibe os dados atuais e permite modificá-los conforme necessário.
+  - **Tipo de Retorno:** `void`
 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
+- `removerDados()`:
+  - **Descrição:** Permite ao usuário remover os dados médicos de um paciente. Utiliza o ID dos dados médicos do paciente da consulta atual para removê-los da coleção de dados médicos.
+  - **Tipo de Retorno:** `void`
  
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
+- `listarDados()`:
+  - **Descrição:** Lista os dados médicos do paciente da consulta atual. Exibe detalhes como se fuma, bebe, nível de colesterol, se é diabético, se tem doença cardíaca, cirurgias realizadas e alergias.
+  - **Tipo de Retorno:** `void`
  
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
+- `listarAllConsultas()`:
+  - **Descrição:** Lista todas as consultas associadas ao médico. Exibe detalhes como ID da consulta, data, horário, tipo e nome do paciente.
+  - **Tipo de Retorno:** `void`
 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
-
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:** ``
+- `gerarRelatoriosMedicos()`:
+  - **Descrição:** Gera relatórios médicos, incluindo receita, atestado, declaração de acompanhamento e lista de clientes atendidos no mês.
+  - **Tipo de Retorno:** `void`
 
 <!--End GerenciadorMedicos-->
 
@@ -392,21 +376,62 @@ A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(C
 
 ##### Atributos
 
-- ``
-  - **Tipo**: ``
-  - **Descrição:**
+- `colecaoConsultas`
+  - **Tipo**: `ColecaoConsultas`
+  - **Descrição:** Armazena a coleção de consultas. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de consultas.
 
-- ``
-  - **Tipo**: ``
-  - **Descrição:**
+- `colecaoMedicos`
+  - **Tipo**: `ColecaoMedicos`
+  - **Descrição:** Armazena a coleção de médicos. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de médicos.
 
+- `colecaoPacientes`
+  - **Tipo**: `ColecaoPacientes`
+  - **Descrição:** Armazena a coleção de pacientes. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de pacientes.
+
+- `secretaria`
+  - **Tipo**: `Secretaria`
+  - **Descrição:** Representa um objeto `Secretaria`, utilizado para realizar operações administrativas, como agendamento de consultas e notificação de pacientes.
+ 
+- `idConsultaControle`
+  - **Tipo**: `int`
+  - **Descrição:** Controla e gera identificadores únicos para as consultas, sendo incrementado a cada nova consulta criada.
+
+- `idPacienteControle`
+  - **Tipo**: `int`
+  - **Descrição:** Controla e gera identificadores únicos para os pacientes, sendo incrementado a cada novo paciente adicionado ao sistema.
+ 
 ##### Construtores
 
-- ``:
-  - **Descrição:** 
+- `GerenciadorSecretarias`:
+  - **Descrição:** Construtor da classe `GerenciadorSecretarias` que inicializa os atributos `colecaoConsultas`, `colecaoMedicos` e `colecaoPacientes` com as instâncias fornecidas como parâmetros. Este construtor é utilizado para criar uma nova instância de `GerenciadorSecretarias` com as coleções de consultas, médicos e pacientes fornecidas.
 
 ##### Métodos
 
+- `getSecretaria()`:
+  - **Descrição:** `Secretaria`
+  - **Tipo de Retorno:** Retorna o objeto `Secretaria` atualmente associado a esta instância da classe. Este método é utilizado para acessar a secretaria vinculada.
+
+
+- `setSecretaria()`:
+  - **Descrição:** `void`
+  - **Tipo de Retorno:** Define a secretaria associada a esta instância da classe com o objeto `Secretaria` fornecido como parâmetro. Este método é utilizado para alterar ou inicializar a secretaria vinculada.
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:**
+ 
 - `()`:
   - **Descrição:** 
   - **Tipo de Retorno:**
@@ -419,7 +444,21 @@ A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(C
   - **Descrição:** 
   - **Tipo de Retorno:**
 
-
+- `gerarRelatorioConsultasDiaSeguinte()`:
+  - **Descrição:** Gera um relatório das consultas agendadas para o dia seguinte, separando-as em duas categorias: com e sem e-mail/celular.
+  - **Tipo de Retorno:** `void`
+ 
+- `enviarLembretesConsultasDiaSeguinte()`:
+  - **Descrição:**  Envia lembretes por e-mail e/ou SMS para os pacientes com consultas agendadas para o dia seguinte.
+  - **Tipo de Retorno:** `void`
+ 
+    - `enviarEmail()`:
+      - **Descrição:** Envia um lembrete por e-mail para o paciente.
+      - **Tipo de Retorno:** `void`
+    
+    - `enviarSms()`:
+      - **Descrição:** Envia um lembrete por SMS para o paciente.
+      - **Tipo de Retorno:** `void`
 <!--End GerenciadorSecretarias-->
 
 
