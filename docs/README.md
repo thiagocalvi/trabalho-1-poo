@@ -472,10 +472,12 @@ A classe GerenciadorSecretarias é responsável por gerenciar diversas operaçõ
 
 ### Package Modelo
 
+Aqui está a documentação atualizada para a classe `Consulta`, incluindo os tipos de retorno formatados e a correção de um pequeno erro:
+
 <!--Start: Consulta-->
 #### Consulta
 
-A classe ´Consulta´ gerencia informações sobre uma consulta médica, incluindo o id da consulta, a data, o horário, o id do médico responsável, o id do paciente e o tipo de consulta(normal ou retorno). Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
+A classe `Consulta` gerencia informações sobre uma consulta médica, incluindo o ID da consulta, a data, o horário, o ID do médico responsável, o ID do paciente e o tipo de consulta (normal ou retorno). Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
 
 ##### Atributos
 
@@ -485,75 +487,79 @@ A classe ´Consulta´ gerencia informações sobre uma consulta médica, incluin
 
 - `data`
   - **Tipo**: `LocalDate`
-  - **Descrição:** Data em que a consulta está marcada. Utiliza a classe ´LocalDate´ do pacote ´java.time´ para representar uma data (ano, mês, dia) sem fuso horário.
+  - **Descrição:** Data em que a consulta está marcada. Utiliza a classe `LocalDate` do pacote `java.time` para representar uma data (ano, mês, dia) sem fuso horário.
 
 - `horario`
   - **Tipo**: `LocalTime`
-  - **Descrição:** Horário em que a consulta está marcada. Utiliza a classe ´LocalTime´ do pacote ´java.time´ para representar um horário (hora, minuto, segundo) sem fuso horário.
- 
+  - **Descrição:** Horário em que a consulta está marcada. Utiliza a classe `LocalTime` do pacote `java.time` para representar um horário (hora, minuto, segundo) sem fuso horário.
+
 - `medicoId`
   - **Tipo**: `int`
-  - **Descrição:**  Identificador do médico responsável pela consulta.
- 
+  - **Descrição:** Identificador do médico responsável pela consulta.
+
 - `pacienteId`
   - **Tipo**: `int`
-  - **Descrição:** Identificador do paciente que será atendido na consulta
- 
-- `tipo`
-  - **Tipo**: `enum`
-  - **Descrição:** Enumeração que define o tipo da consulta. Pode ser normal (uma consulta regular) ou retorno (uma consulta de acompanhamento).
+  - **Descrição:** Identificador do paciente que será atendido na consulta.
 
+- `tipo`
+  - **Tipo**: `TipoConsulta` (enum)
+  - **Descrição:** Enumeração que define o tipo da consulta. Pode ser `NORMAL` (uma consulta regular) ou `RETORNO` (uma consulta de acompanhamento).
 
 ##### Construtores
 
 - `Consulta`:
-  - **Descrição:** O construtor da classe ´Consulta´ é responsável por inicializar uma nova instância da classe com uma ´data´ e um ´horário´ específicos. Quando uma nova consulta é criada, o construtor é chamado com os parâmetros data e horario, que são então atribuídos aos atributos correspondentes da instância da classe.
+  - **Descrição:** O construtor da classe `Consulta` é responsável por inicializar uma nova instância da classe com uma `data`, um `horario`, um `medicoId`, um `pacienteId` e um `tipo` específicos. Quando uma nova consulta é criada, o construtor é chamado com os parâmetros dados, que são então atribuídos aos atributos correspondentes da instância da classe.
 
 ##### Métodos
 
 - `getId()`:
-  - **Descrição:** Retorna o identificador único da consulta
-  - **Tipo de Retorno:** ´int´
+  - **Descrição:** Retorna o identificador único da consulta.
+  - **Tipo de Retorno:** `int`
 
 - `setId(int id)`:
-  - **Descrição:**  Define o identicador único da consulta 
-  - **Tipo de Retorno:** ´void´
- 
+  - **Descrição:** Define o identificador único da consulta.
+  - **Tipo de Retorno:** `void`
+
 - `getMedicoId()`:
-  - **Descrição:** Retorna o identificador do médico(CRM) associado a consulta.
-  - **Tipo de Retorno:** ´int´ 
- 
-- `setMedicoId(Medico medico)`:
-  - **Descrição:** Define o identificador do médico (CRM) baseado em um objeto da classe ´Medico´.
-  - **Tipo de Retorno:** ´void´
+  - **Descrição:** Retorna o identificador do médico (CRM) associado à consulta.
+  - **Tipo de Retorno:** `int`
 
-- `getPacienteId()`:
-  - **Descrição:**  Retorna o identificador do paciente associado à consulta.
-  - **Tipo de Retorno:** ´int´
+- `setMedicoId(int medicoId)`:
+  - **Descrição:** Define o identificador do médico (CRM) associado à consulta.
+  - **Tipo de Retorno:** `void`
 
-- `setPacienteId(Paciente paciente)`:
-  - **Descrição:** Define o identificador do paciente baseado em um objeto da classe ´Paciente´.
-  - **Tipo de Retorno:** ´void´
-    
 - `getPacienteId()`:
   - **Descrição:** Retorna o identificador do paciente associado à consulta.
-  - **Tipo de Retorno:** ´int´
- 
+  - **Tipo de Retorno:** `int`
+
+- `setPacienteId(int pacienteId)`:
+  - **Descrição:** Define o identificador do paciente associado à consulta.
+  - **Tipo de Retorno:** `void`
+
 - `getData()`:
   - **Descrição:** Retorna a data da consulta.
-  - **Tipo de Retorno:** LocalDate
+  - **Tipo de Retorno:** `LocalDate`
 
 - `setData(LocalDate data)`:
   - **Descrição:** Define a data da consulta.
-  - **Tipo de Retorno:** ´void´
+  - **Tipo de Retorno:** `void`
 
 - `getHorario()`:
   - **Descrição:** Retorna o horário da consulta.
-  - **Tipo de Retorno:** LocalTime
+  - **Tipo de Retorno:** `LocalTime`
 
 - `setHorario(LocalTime horario)`:
   - **Descrição:** Define o horário da consulta.
-  - **Tipo de Retorno:** ´void´
+  - **Tipo de Retorno:** `void`
+
+- `getTipo()`:
+  - **Descrição:** Retorna o tipo da consulta.
+  - **Tipo de Retorno:** `TipoConsulta`
+
+- `setTipo(TipoConsulta tipo)`:
+  - **Descrição:** Define o tipo da consulta.
+  - **Tipo de Retorno:** `void`
+
 <!--End Consulta-->
 
 <!--Start: DadosMedico-->
@@ -602,67 +608,67 @@ A classe `DadosMedicos` gerencia informações médicas de um paciente, incluind
 
 - `getId()`:
   - **Descrição:** Retorna o identificador dos dados médicos.
-  - **Tipo de Retorno:** int
+  - **Tipo de Retorno:** `int`
 
 - `setId(int id)`:
   - **Descrição:** Define o identificador dos dados médicos.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `isFuma()`:
   - **Descrição:** Retorna se o paciente fuma.
-  - **Tipo de Retorno:** boolean
+  - **Tipo de Retorno:** `boolean`
 
 - `setFuma(boolean fuma)`:
   - **Descrição:** Define se o paciente fuma.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `isBebe()`:
   - **Descrição:** Retorna se o paciente consome bebidas alcoólicas.
-  - **Tipo de Retorno:** boolean
+  - **Tipo de Retorno:** `boolean`
 
 - `setBebe(boolean bebe)`:
   - **Descrição:** Define se o paciente consome bebidas alcoólicas.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getColesterol()`:
   - **Descrição:** Retorna o nível de colesterol do paciente.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setColesterol(String colesterol)`:
   - **Descrição:** Define o nível de colesterol do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `isDiabete()`:
   - **Descrição:** Retorna se o paciente tem diabetes.
-  - **Tipo de Retorno:** boolean
+  - **Tipo de Retorno:** `boolean`
 
 - `setDiabete(boolean diabete)`:
   - **Descrição:** Define se o paciente tem diabetes.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `isDoencaCardiaca()`:
   - **Descrição:** Retorna se o paciente tem alguma doença cardíaca.
-  - **Tipo de Retorno:** boolean
+  - **Tipo de Retorno:** `boolean`
 
 - `setDoencaCardiaca(boolean doencaCardiaca)`:
   - **Descrição:** Define se o paciente tem alguma doença cardíaca.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getCirurgias()`:
   - **Descrição:** Retorna a lista de cirurgias pelas quais o paciente já passou.
-  - **Tipo de Retorno:** List<String>
+  - **Tipo de Retorno:** `List<String>`
 
 - `setCirurgias(List<String> cirurgias)`:
   - **Descrição:** Define a lista de cirurgias pelas quais o paciente já passou.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getAlergias()`:
   - **Descrição:** Retorna a lista de alergias do paciente.
-  - **Tipo de Retorno:** List<String>
+  - **Tipo de Retorno:** `List<String>`
 
 - `setAlergias(List<String> alergias)`:
   - **Descrição:** Define a lista de alergias do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 <!--End DadosMedico-->
 
@@ -670,7 +676,7 @@ A classe `DadosMedicos` gerencia informações médicas de um paciente, incluind
 <!--Start: Medico-->
 #### Medico
 
-A classe ´Medico´ gerencia informações de um médico, incluindo dados pessoais, profissionais e a associação a uma secretária (se houver). . Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
+A classe `Medico` gerencia informações de um médico, incluindo dados pessoais, profissionais e a associação a uma secretária (se houver). Os métodos get e set permitem acessar e modificar esses atributos de forma controlada.
 
 ##### Atributos
 - `id`
@@ -695,7 +701,7 @@ A classe ´Medico´ gerencia informações de um médico, incluindo dados pessoa
 
 - `especialidade`
   - **Tipo**: `String`
-  - **Descrição:** Área de atuação/ especialização do médico.
+  - **Descrição:** Área de atuação/especialização do médico.
 
 - `crm`
   - **Tipo**: `int`
@@ -703,69 +709,69 @@ A classe ´Medico´ gerencia informações de um médico, incluindo dados pessoa
 
 - `secretariaId`
   - **Tipo**: `int`
-  - **Descrição:** id da secretária associada ao médico.
+  - **Descrição:** ID da secretária associada ao médico.
 
 ##### Construtores
 - `Medico`:
-  - **Descrição:** O construtor da classe ´Medico´ é responsável por inicializar uma nova instância da classe com ´nome´, ´dataNascimento´, ´telefone´, ´email´, ´especialidade´, ´crm´ específicos. Quando um novo médico é cadastrado, o construtor é chamado com os parâmetros dados, que serão atribuídos ao novo médico. 
+  - **Descrição:** O construtor da classe `Medico` é responsável por inicializar uma nova instância da classe com `nome`, `dataNascimento`, `telefone`, `email`, `especialidade`, `crm` específicos. Quando um novo médico é cadastrado, o construtor é chamado com os parâmetros dados, que serão atribuídos ao novo médico. 
 
 ##### Métodos
 
 - `setId(int id)`:
   - **Descrição:** Define o identificador do médico.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getId()`:
   - **Descrição:** Retorna o identificador do médico.
-  - **Tipo de Retorno:** int
+  - **Tipo de Retorno:** `int`
  
 - `setNome(String nome)`:
   - **Descrição:** Define o nome do médico.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getNome()`:
   - **Descrição:** Retorna o nome do médico.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setDataNascimento(LocalDate dataNascimento)`:
   - **Descrição:** Define a data de nascimento do médico.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
  
 - `getDataNascimento()`:
-  - **Descrição:** Retorna a data de nascimeto do médico.
-  - **Tipo de Retorno:** LocalDate
+  - **Descrição:** Retorna a data de nascimento do médico.
+  - **Tipo de Retorno:** `LocalDate`
 
 - `setTelefone(String telefone)`:
-  - **Descrição:** Define o telefone do médico. 
-  - **Tipo de Retorno:** void
+  - **Descrição:** Define o telefone do médico.
+  - **Tipo de Retorno:** `void`
 
 - `getTelefone()`:
   - **Descrição:** Retorna o telefone do médico.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
  
 - `setEmail(String email)`:
   - **Descrição:** Define o email do médico.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getEmail()`:
   - **Descrição:** Retorna o email do médico.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setCrm(int crm)`:
-  - **Descrição:** Define o crm do médico.
-  - **Tipo de Retorno:** void
+  - **Descrição:** Define o CRM do médico.
+  - **Tipo de Retorno:** `void`
  
 - `getCrm()`:
-  - **Descrição:** Retorna o crm do médico.
-  - **Tipo de Retorno:** int
+  - **Descrição:** Retorna o CRM do médico.
+  - **Tipo de Retorno:** `int`
 
 - `setSecretariaId(int secretariaId)`:
-  - **Descrição:** Define o id da secretária associada.
-  - **Tipo de Retorno:** void
+  - **Descrição:** Define o ID da secretária associada.
+  - **Tipo de Retorno:** `void`
 
 - `getSecretariaId()`:
-  - **Descrição:** Retorna o id da secretária associada.
-  - **Tipo de Retorno:** int
+  - **Descrição:** Retorna o ID da secretária associada.
+  - **Tipo de Retorno:** `int`
 
 <!--End Medico-->
 
@@ -773,7 +779,7 @@ A classe ´Medico´ gerencia informações de um médico, incluindo dados pessoa
 <!--Start: Paciente-->
 #### Paciente
 
-A classe ´Paciente´ gerencia informações sobre os pacientes, incluindo dados pessoais, meios de contato e dados médicos. Os métodos `get` e `set` permitem acessar e modificar esses atributos de forma controlada.
+A classe `Paciente` gerencia informações sobre os pacientes, incluindo dados pessoais, meios de contato e dados médicos. Os métodos `get` e `set` permitem acessar e modificar esses atributos de forma controlada.
 
 ##### Atributos
 - `id`
@@ -802,84 +808,74 @@ A classe ´Paciente´ gerencia informações sobre os pacientes, incluindo dados
  
 - `endereco`
   - **Tipo**: `String`
-  - **Descrição:** Endereço residencial do paciente.
- 
-- `tipoConvenio`
-  - **Tipo**: `enum`
-  - **Descrição:** Tipo de convênio do paciente (PARTICULAR ou PLANOSAUDE).
+  - **Descrição:** Endereço completo do paciente.
 
 ##### Construtores
 - `Paciente`:
-  - **Descrição:** O construtor da classe Paciente é responsável por inicializar uma nova instância da classe com `tipoConvenio`, `nome`, `dataNascimento`, `endereco`, `telefone`, `email` específicos. Quando um novo paciente é cadastrado, o construtor é chamado com os parâmetros dados, que serão atribuídos ao novo paciente.
+  - **Descrição:** O construtor da classe `Paciente` é responsável por inicializar uma nova instância da classe com `nome`, `dataNascimento`, `telefone`, `email`, `endereco` e `dadosMedicosId` específicos. Quando um novo paciente é cadastrado, o construtor é chamado com os parâmetros dados, que serão atribuídos ao novo paciente.
 
 ##### Métodos
 
-- `getId()`:
-  - **Descrição:** Retorna o identificador do paciente.
-  - **Tipo de Retorno:** int
-
 - `setId(int id)`:
   - **Descrição:** Define o identificador do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
-- `getDadosMedicosId()`:
-  - **Descrição:** Retorna o identificador dos dados médicos associados ao paciente.
-  - **Tipo de Retorno:** int
-
-- `setDadosMedicosId(DadosMedicos dadosMedicos)`:
-  - **Descrição:** Define o identificador dos dados médicos associados ao paciente.
-  - **Tipo de Retorno:** void
-
-- `getNome()`:
-  - **Descrição:** Retorna o nome do paciente.
-  - **Tipo de Retorno:** String
+- `getId()`:
+  - **Descrição:** Retorna o identificador do paciente.
+  - **Tipo de Retorno:** `int`
 
 - `setNome(String nome)`:
   - **Descrição:** Define o nome do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
-- `getDataNascimento()`:
-  - **Descrição:** Retorna a data de nascimento do paciente.
-  - **Tipo de Retorno:** LocalDate
+- `getNome()`:
+  - **Descrição:** Retorna o nome do paciente.
+  - **Tipo de Retorno:** `String`
 
 - `setDataNascimento(LocalDate dataNascimento)`:
   - **Descrição:** Define a data de nascimento do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
-- `getTelefone()`:
-  - **Descrição:** Retorna o telefone do paciente.
-  - **Tipo de Retorno:** String
+- `getDataNascimento()`:
+  - **Descrição:** Retorna a data de nascimento do paciente.
+  - **Tipo de Retorno:** `LocalDate`
 
 - `setTelefone(String telefone)`:
   - **Descrição:** Define o telefone do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
-- `getEmail()`:
-  - **Descrição:** Retorna o email do paciente.
-  - **Tipo de Retorno:** String
+- `getTelefone()`:
+  - **Descrição:** Retorna o telefone do paciente.
+  - **Tipo de Retorno:** `String`
 
 - `setEmail(String email)`:
   - **Descrição:** Define o email do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
-- `getEndereco()`:
-  - **Descrição:** Retorna o endereço do paciente.
-  - **Tipo de Retorno:** String
+- `getEmail()`:
+  - **Descrição:** Retorna o email do paciente.
+  - **Tipo de Retorno:** `String`
 
 - `setEndereco(String endereco)`:
   - **Descrição:** Define o endereço do paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
-- `getTipoConvenio()`:
-  - **Descrição:** Retorna o tipo de convênio do paciente.
-  - **Tipo de Retorno:** tipoConvenio
+- `getEndereco()`:
+  - **Descrição:** Retorna o endereço do paciente.
+  - **Tipo de Retorno:** `String`
 
-- `setTipoConvenio(tipoConvenio tipoConvenio)`:
-  - **Descrição:** Define o tipo de convênio do paciente.
-  - **Tipo de Retorno:** void
-    
+- `setDadosMedicosId(int dadosMedicosId)`:
+  - **Descrição:** Define o ID dos dados médicos associados ao paciente.
+  - **Tipo de Retorno:** `void`
+
+- `getDadosMedicosId()`:
+  - **Descrição:** Retorna o ID dos dados médicos associados ao paciente.
+  - **Tipo de Retorno:** `int`
+  
 <!--End Paciente-->
 
+
+Aqui está a documentação atualizada para as classes `Prontuario` e `Secretaria`, incluindo os tipos de retorno formatados:
 
 <!--Start: Prontuario-->
 #### Prontuario
@@ -919,54 +915,53 @@ A classe `Prontuario` gerencia informações de prontuários médicos, incluindo
 
 - `getId()`:
   - **Descrição:** Retorna o identificador do prontuário.
-  - **Tipo de Retorno:** int
+  - **Tipo de Retorno:** `int`
 
 - `setId(int id)`:
   - **Descrição:** Define o identificador do prontuário.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getPacienteId()`:
   - **Descrição:** Retorna o identificador do paciente associado ao prontuário.
-  - **Tipo de Retorno:** int
+  - **Tipo de Retorno:** `int`
 
-- `setPacienteId(Paciente paciente)`:
+- `setPacienteId(int pacienteId)`:
   - **Descrição:** Define o identificador do paciente associado ao prontuário.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getDataConsulta()`:
   - **Descrição:** Retorna a data da consulta médica.
-  - **Tipo de Retorno:** LocalDate
+  - **Tipo de Retorno:** `LocalDate`
 
 - `setDataConsulta(LocalDate dataConsulta)`:
   - **Descrição:** Define a data da consulta médica.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getSintomas()`:
   - **Descrição:** Retorna os sintomas apresentados pelo paciente.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setSintomas(String sintomas)`:
   - **Descrição:** Define os sintomas apresentados pelo paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getDiagnostico()`:
   - **Descrição:** Retorna o diagnóstico dado ao paciente.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setDiagnostico(String diagnostico)`:
   - **Descrição:** Define o diagnóstico dado ao paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getTratamento()`:
   - **Descrição:** Retorna o tratamento prescrito ao paciente.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setTratamento(String tratamento)`:
   - **Descrição:** Define o tratamento prescrito ao paciente.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 <!--End Prontuario-->
-
 
 <!--Start: Secretaria-->
 #### Secretaria
@@ -1002,42 +997,42 @@ A classe `Secretaria` gerencia informações de uma secretária, incluindo dados
 
 - `getId()`:
   - **Descrição:** Retorna o identificador da secretária.
-  - **Tipo de Retorno:** int
+  - **Tipo de Retorno:** `int`
 
 - `setId(int id)`:
   - **Descrição:** Define o identificador da secretária.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getNome()`:
   - **Descrição:** Retorna o nome da secretária.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setNome(String nome)`:
   - **Descrição:** Define o nome da secretária.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getDataNascimento()`:
   - **Descrição:** Retorna a data de nascimento da secretária.
-  - **Tipo de Retorno:** LocalDate
+  - **Tipo de Retorno:** `LocalDate`
 
 - `setDataNascimento(LocalDate dataNascimento)`:
   - **Descrição:** Define a data de nascimento da secretária.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getTelefone()`:
   - **Descrição:** Retorna o telefone da secretária.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setTelefone(String telefone)`:
   - **Descrição:** Define o telefone da secretária.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 - `getEmail()`:
   - **Descrição:** Retorna o email da secretária.
-  - **Tipo de Retorno:** String
+  - **Tipo de Retorno:** `String`
 
 - `setEmail(String email)`:
   - **Descrição:** Define o email da secretária.
-  - **Tipo de Retorno:** void
+  - **Tipo de Retorno:** `void`
 
 <!--End Secretaria-->
