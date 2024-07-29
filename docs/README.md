@@ -25,7 +25,7 @@ O package Gerenciador armazena as classes:
 * GerenciadorMedicos
 * GerenciadorSecratarias
 
-:memo: Adicionar a descrição dos métodos das classes
+
 
 ## Descrição das classes
 
@@ -174,9 +174,6 @@ A classe `ColecaoSecretarias` é responsável por armazenar e gerenciar uma cole
     - `secretarias`: Nova lista de secretárias a ser definida.
   - **Tipo de Retorno:** `void`
 <!--End ColecaoSecretarias-->
-
-
-
 
 
 
@@ -471,7 +468,6 @@ A classe GerenciadorSecretarias é responsável por gerenciar diversas operaçõ
       - **Descrição:** Envia um lembrete por SMS para o paciente.
       - **Tipo de Retorno:** `void`
 <!--End GerenciadorSecretarias-->
-
 
 
 
