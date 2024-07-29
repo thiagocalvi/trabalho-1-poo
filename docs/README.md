@@ -412,41 +412,48 @@ A classe GerenciadorSecretarias é responsável por gerenciar diversas operaçõ
 ##### Métodos
 
 - `getSecretaria()`:
-  - **Descrição:** `Secretaria`
-  - **Tipo de Retorno:** Retorna o objeto `Secretaria` atualmente associado a esta instância da classe. Este método é utilizado para acessar a secretaria vinculada.
+  - **Descrição:** Retorna a secretaria atual.
+  - **Tipo de Retorno:** `Secretaria`
 
+- `setSecretaria(Secretaria secretaria)`:
+  - **Descrição:** Define a secretaria atual.
+  - **Tipo de Retorno:** `void`
 
-- `setSecretaria()`:
-  - **Descrição:** `void`
-  - **Tipo de Retorno:** Define a secretaria associada a esta instância da classe com o objeto `Secretaria` fornecido como parâmetro. Este método é utilizado para alterar ou inicializar a secretaria vinculada.
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
+- `cadastrarConsulta()`:
+  - **Descrição:** Coleta informações do usuário e cadastra uma nova consulta. Atualiza o ID de controle e adiciona a consulta à coleção.
+  - **Tipo de Retorno:** `void`
 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
+- `atualizarConsulta()`:
+  - **Descrição:** Atualiza uma consulta existente com base no ID fornecido pelo usuário. Permite a atualização de data, horário e médico.
+  - **Tipo de Retorno:** `void`
 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
- 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
+- `removerConsulta()`:
+  - **Descrição:** Remove uma consulta existente com base no ID fornecido pelo usuário.
+  - **Tipo de Retorno:** `void`
+
+- `listarConsultas()`:
+  - **Descrição:** Lista todas as consultas cadastradas, mostrando seus detalhes.
+  - **Tipo de Retorno:** `void`
+
+- `cadastrarPaciente()`:
+  - **Descrição:** Coleta informações do usuário e cadastra um novo paciente. Adiciona o paciente à coleção.
+  - **Tipo de Retorno:** `void`
+
+- `atualizarPaciente()`:
+  - **Descrição:** Atualiza um paciente existente com base no ID fornecido pelo usuário. Permite a atualização de nome, data de nascimento, telefone, e-mail, endereço e tipo de convênio.
+  - **Tipo de Retorno:** `void`
+
+- `removerPaciente()`:
+  - **Descrição:** Remove um paciente existente com base no ID fornecido pelo usuário.
+  - **Tipo de Retorno:** `void`
+
+- `listarPacientes()`:
+  - **Descrição:** Lista todos os pacientes cadastrados, mostrando seus detalhes.
+  - **Tipo de Retorno:** `void`
+
+- `listarMedicos()`:
+  - **Descrição:** Lista todos os médicos cadastrados, mostrando seus detalhes. Filtra os médicos pela secretaria atual.
+  - **Tipo de Retorno:** `void`
 
 - `gerarRelatorioConsultasDiaSeguinte()`:
   - **Descrição:** Gera um relatório das consultas agendadas para o dia seguinte, separando-as em duas categorias: com e sem e-mail/celular.
