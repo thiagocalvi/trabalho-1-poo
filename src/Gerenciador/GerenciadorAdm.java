@@ -77,6 +77,7 @@ public class GerenciadorAdm {
         System.out.println("----------------------------");
         
         System.out.print("Nome médico: ");
+        read.next();
         String nome = read.nextLine();
         
         System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
@@ -102,6 +103,7 @@ public class GerenciadorAdm {
         // Listar as secretárias
         this.listarSecretarias();
         
+        System.out.println("");
         System.out.print("Informe o ID da secretaria: ");
         int idSecretaria = read.nextInt();
         read.nextLine();
@@ -150,6 +152,7 @@ public class GerenciadorAdm {
     }
 
     public void atualizarMedico(){
+
         System.out.println("--------------------------------");
         System.out.println("        ATUALIZAR MEDICO        ");
         System.out.println("--------------------------------");
@@ -176,6 +179,7 @@ public class GerenciadorAdm {
         
         System.out.print("Nome médico: ");
         String nome = read.nextLine();
+
         
         System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
         String data = read.nextLine();
@@ -199,6 +203,7 @@ public class GerenciadorAdm {
 
         this.listarSecretarias();
         
+
         System.out.print("Informe o ID da secretaria (deve ser informado um id): ");
         int idSecretaria = read.nextInt();
         read.nextLine();
@@ -236,7 +241,7 @@ public class GerenciadorAdm {
         System.out.println("--------------------------------");
         
         this.listarMedicos();
-        
+
         System.out.print("Informe o ID do médico que será removido: ");
         int id = read.nextInt();
         read.nextLine();
@@ -300,6 +305,7 @@ public class GerenciadorAdm {
     }
    
     public void listarSecretarias(){
+
         System.out.println("\n");
         System.out.println("+----------------------------------------+");
         System.out.println("            LISTA SECRETARIAS             ");
@@ -347,6 +353,7 @@ public class GerenciadorAdm {
         System.out.println();
         
         System.out.print("Nome secretaria: ");
+        read.next();
         String nome = read.nextLine();
         
         System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");

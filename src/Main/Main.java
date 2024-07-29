@@ -5,7 +5,6 @@
 package Main;
 
 import Colecao.*;
-
 import java.util.Scanner;
 /**
  *
@@ -41,6 +40,7 @@ public class Main {
         Scanner read = new Scanner(System.in);
         
         int option = 0;
+               
         
         while (option != 4){
             System.out.println("TELA INICIAL");

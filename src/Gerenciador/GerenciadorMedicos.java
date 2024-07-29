@@ -17,6 +17,7 @@ import Modelo.Medico;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
 /**
@@ -30,6 +31,7 @@ public class GerenciadorMedicos {
     private ColecaoProntuarios colecaoProntuarios;
     private ColecaoDadosMedicos colecaoDadosMedicos;
     private Medico medico;
+    private Consulta consultaAtual;
     private ArrayList<Consulta> consultasDoDia = new ArrayList();
     private int idDadosMedicosControle = 0;
     private int idProtuarioControle = 0;
@@ -52,6 +54,21 @@ public class GerenciadorMedicos {
         this.medico = medico;
     }
     
+    public Consulta getConsultaAtual(){
+        return this.consultaAtual;
+    }
+    
+    public void setConsultaAtual(){
+        Consulta consulta = consultasDoDia.remove(0);
+        if(consulta != null){
+            this.consultaAtual = consulta;    
+        }
+    }
+    
+    public void resetConsultaAtual(){
+        this.consultaAtual = null;
+    }
+    
     private void setConsultasDoDia(){
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
         LocalDate dataAtual = LocalDate.now();
@@ -63,6 +80,7 @@ public class GerenciadorMedicos {
         
         Collections.sort(consultasDoDia, new Comparator<Consulta>() {
             
+            @Override
             public int compare(Consulta c1, Consulta c2) {
                 return c1.getHorario().compareTo(c2.getHorario());
             }
@@ -99,7 +117,7 @@ public class GerenciadorMedicos {
     
     
     
-    public void cadastrarProntuario(Consulta consulta){
+    public void cadastrarProntuario(){
         
         System.out.println("----------------------------");
         System.out.println("    CADASTRAR PRONTUÁRIO    ");
@@ -109,7 +127,7 @@ public class GerenciadorMedicos {
         //System.out.println("Informe a data da consulta (formato: YYYY-MM-DD):");
         //LocalDate dataConsulta = LocalDate.parse(read.nextLine());
         
-        LocalDate dataConsulta = consulta.getData();
+        LocalDate dataConsulta = consultaAtual.getData();
         
         System.out.println("Informe os sintomas:");
         String sintomas = read.nextLine();
@@ -126,14 +144,20 @@ public class GerenciadorMedicos {
         // Adiciona o prontuário à coleção de prontuários
         this.idProtuarioControle += 1;
         prontuario.setId(idProtuarioControle);
-        prontuario.setPacienteId(colecaoPacientes.getPacienteById(consulta.getPacienteId()));
+        prontuario.setPacienteId(colecaoPacientes.getPacienteById(consultaAtual.getPacienteId()));
         
+        consultaAtual.setProtuarioId(prontuario);
         colecaoProntuarios.add(prontuario);
 
         System.out.println("Prontuário cadastrado com sucesso!");
     }
     
     public void atualizarProntuario() {
+        //Seria melhor permitir que somente protuario da consulta atual seja atualizado?
+        //Listar todos os prontuarios do paciente
+        
+        //TO-DO
+        
         System.out.println("----------------------------");
         System.out.println("    ATUALIZAR PRONTUÁRIO    ");
         System.out.println("----------------------------");
@@ -188,6 +212,9 @@ public class GerenciadorMedicos {
     }
     
     public void removerProntuario() {
+        
+        //Acredito que essa função seja desnecessário
+        
         System.out.println("----------------------------");
         System.out.println("     REMOVER PRONTUÁRIO     ");
         System.out.println("----------------------------");
@@ -208,83 +235,180 @@ public class GerenciadorMedicos {
     }
 
     public void cadastrarDados(){
+        Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         
-        System.out.println("----------------------------");
-        System.out.println("      DADOS ADICIONAIS      ");
-        System.out.println("----------------------------");
+        //Como uma paciente pode ter somente um dado medico deve se fazer essa verifica
         
-        System.out.println("Insira um dado adicional:");
-        String info = read.nextLine();
-        
-        System.out.println("Inserir outro dado?");
-        System.out.println("[0] - Para sim \n[1] - Para não");
-        String resposta = read.nextLine();
-        
-        while (resposta != "1"){
-            System.out.println("----------------------------");
-            System.out.println("      DADOS ADICIONAIS      ");
-            System.out.println("----------------------------");
-
-            System.out.println("Insira um dado adicional:");
-            String infoAdicional = read.nextLine();
-
-            System.out.println("Inserir outro dado?");
-            System.out.println("[0] - Para sim \n[1] - Para não");
-            String respostaAdicional = read.nextLine();
+        //Não sei se essa é a melhor solução
+        if(paciente.getDadosMedicosId() != 0){
+            System.out.println("O paciente " + paciente.getNome() + " já possui dados médicos cadastrados");
+            //Provavelmem sera nescessario um return aqui 
+            //Agora o valor que deve se retorna não sei
         }
+        else{
+            
+            System.out.println("----------------------------");
+            System.out.println("  CADRASTRAR DADOS MÉDICOS  ");
+            System.out.println("----------------------------");
+
+            System.out.println("O paciente fuma? (true/false)");
+            boolean fuma = Boolean.parseBoolean(read.nextLine());
+
+            System.out.println("O paciente bebe? (true/false)");
+            boolean bebe = Boolean.parseBoolean(read.nextLine());
+
+            System.out.println("Nível de colesterol:");
+            String colesterol = read.nextLine();
+
+            System.out.println("O paciente é diabético? (true/false)");
+            boolean diabete = Boolean.parseBoolean(read.nextLine());
+
+            System.out.println("O paciente tem doença cardíaca? (true/false)");
+            boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+
+            System.out.println("Informe as cirurgias realizadas (separadas por vírgula):");
+            List<String> cirurgias = List.of(read.nextLine().split(","));
+
+            System.out.println("Informe as alergias (separadas por vírgula):");
+            List<String> alergias = List.of(read.nextLine().split(","));
+
+            DadosMedicos dadosMedicos = new DadosMedicos(fuma, bebe, colesterol, diabete, doencaCardiaca, cirurgias, alergias);
+            this.idDadosMedicosControle += 1;
+            dadosMedicos.setId(idDadosMedicosControle);
+            paciente.setDadosMedicosId(dadosMedicos);
+            colecaoDadosMedicos.add(dadosMedicos);
+
+            System.out.println("Dados médicos cadastrados com sucesso!");
+            
+        }
+        
     }
     
     public void  atualizarDados(){
         
         System.out.println("----------------------------");
-        System.out.println("      DADOS ADICIONAIS      ");
+        System.out.println("   ATUALIZAR DADOS MÉDICOS  ");
         System.out.println("----------------------------");
-        
-        System.out.println("Selecione um dado para alteração:");
-        String info = read.nextLine();
-        
-        System.out.println("Alterar outro dado?");
-        System.out.println("[0] - Para sim \n[1] - Para não");
-        String resposta = read.nextLine();
-        
-        while (resposta != "1"){
-            System.out.println("----------------------------");
-            System.out.println("      DADOS ADICIONAIS      ");
-            System.out.println("----------------------------");
 
-            System.out.println("Selecione um dado para alteração:");
-            String infoAdicional = read.nextLine();
+        //Não é nescessario pedir o ID dos dados medicos esse dado já esta viculado 
+        //ao paciente da consulta atual
+        
+        //System.out.println("Informe o ID dos dados médicos a serem atualizados:");
+        //int id = Integer.parseInt(read.nextLine());
+        //DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(id);
 
-            System.out.println("Alterar outro dado?");
-            System.out.println("[0] - Para sim \n[1] - Para não");
-            String respostaAdicional = read.nextLine();
+        Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
+        DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(paciente.getDadosMedicosId());
+        
+        //Vericar se o paciente da consulta atual tem dados medicos já cadastrados
+        if (paciente.getDadosMedicosId() == 0) {
+            System.out.println("O paciente não possui dados medicos cadastrados!");
+            return;
         }
+
+        System.out.println("Dados atuais:");
+        System.out.println("Fuma: " + dadosMedicos.isFuma());
+        System.out.println("Bebe: " + dadosMedicos.isBebe());
+        System.out.println("Colesterol: " + dadosMedicos.getColesterol());
+        System.out.println("Diabete: " + dadosMedicos.isDiabete());
+        System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
+        System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
+        System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
+
+        System.out.println("Atualizar fuma? (true/false) - Atual: " + dadosMedicos.isFuma());
+        boolean fuma = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setFuma(fuma);
+
+        System.out.println("Atualizar bebe? (true/false) - Atual: " + dadosMedicos.isBebe());
+        boolean bebe = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setBebe(bebe);
+
+        System.out.println("Atualizar colesterol - Atual: " + dadosMedicos.getColesterol());
+        String colesterol = read.nextLine();
+        dadosMedicos.setColesterol(colesterol);
+
+        System.out.println("Atualizar diabete? (true/false) - Atual: " + dadosMedicos.isDiabete());
+        boolean diabete = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setDiabete(diabete);
+
+        System.out.println("Atualizar doença cardíaca? (true/false) - Atual: " + dadosMedicos.isDoencaCardiaca());
+        boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+        dadosMedicos.setDoencaCardiaca(doencaCardiaca);
+
+        System.out.println("Atualizar cirurgias (separadas por vírgula) - Atual: " + String.join(", ", dadosMedicos.getCirurgias()));
+        List<String> cirurgias = List.of(read.nextLine().split(","));
+        dadosMedicos.setCirurgias(cirurgias);
+
+        System.out.println("Atualizar alergias (separadas por vírgula) - Atual: " + String.join(", ", dadosMedicos.getAlergias()));
+        List<String> alergias = List.of(read.nextLine().split(","));
+        dadosMedicos.setAlergias(alergias);
+
+        System.out.println("Dados médicos atualizados com sucesso!");
     }
     
     public void removerDados(){
         System.out.println("----------------------------");
-        System.out.println("      DADOS ADICIONAIS      ");
+        System.out.println("    REMOVER DADOS MÉDICOS   ");
         System.out.println("----------------------------");
-        
-        System.out.println("Selecione um dado para remoção:");
-        String info = read.nextLine();
-        
-        System.out.println("Remover outro dado?");
-        System.out.println("[0] - Para sim \n[1] - Para não");
-        String resposta = read.nextLine();
-        
-        while (resposta != "1"){
-            System.out.println("----------------------------");
-            System.out.println("      DADOS ADICIONAIS      ");
-            System.out.println("----------------------------");
 
-            System.out.println("Selecione um dado para remoção:");
-            String infoAdicional = read.nextLine();
+        //Não é nescessario informar o id essa informação já está no paciente da consulta atual
+        
+        //System.out.println("Informe o ID dos dados médicos a serem removidos:");
+        //int id = Integer.parseInt(read.nextLine());
+        //colecaoDadosMedicos.removeById(id);
+        
+        Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
+        colecaoDadosMedicos.removeById(paciente.getDadosMedicosId());
+        
+        //TO-DO
+        //Quando remover os dados medicos de um paciente deve se setar a atributo dadosMedicosId do paciente para 0
+        //Provavelmente criar um set na classes paciente para fazer isso dever resolver
+        
+        System.out.println("Dados médicos removidos com sucesso!");
+    }
 
-            System.out.println("Alterar outro dado?");
-            System.out.println("[0] - Para sim \n[1] - Para não");
-            String respostaAdicional = read.nextLine();
+    
+    public void listarDados() {
+        //TO-DO > FEITO
+        //Implementar a correção
+        //Listar somente os dados medicos do paciente da consulta atual
+        
+        System.out.println("----------------------------");
+        System.out.println("    LISTAR DADOS MÉDICOS    ");
+        System.out.println("----------------------------");
+
+        //Como cada paciente terá somente um dado medico associado a ele
+        //não é nescessario listar todos os dados medicos de colecaoDadosMedicos
+        
+        /*
+        ArrayList<DadosMedicos> todosDados = colecaoDadosMedicos.getDadosMedicos();
+
+        
+        for (DadosMedicos dadosMedicos : todosDados) {
+            System.out.println("ID: " + dadosMedicos.getId());
+            System.out.println("Fuma: " + dadosMedicos.isFuma());
+            System.out.println("Bebe: " + dadosMedicos.isBebe());
+            System.out.println("Colesterol: " + dadosMedicos.getColesterol());
+            System.out.println("Diabete: " + dadosMedicos.isDiabete());
+            System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
+            System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
+            System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
+            System.out.println("----------------------------");
         }
+        */
+        
+        Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
+        DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(paciente.getDadosMedicosId());
+        
+        System.out.println("ID: " + dadosMedicos.getId());
+        System.out.println("Fuma: " + dadosMedicos.isFuma());
+        System.out.println("Bebe: " + dadosMedicos.isBebe());
+        System.out.println("Colesterol: " + dadosMedicos.getColesterol());
+        System.out.println("Diabete: " + dadosMedicos.isDiabete());
+        System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
+        System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
+        System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
+        System.out.println("----------------------------");
     }
 
     public void listarAllConsultas(){
@@ -295,11 +419,13 @@ public class GerenciadorMedicos {
                 System.out.println("ID: " + consulta.getId());
                 System.out.println("Data: " + consulta.getData());
                 System.out.println("Horário: " + consulta.getHorario());
+                System.out.println("Tipo: " + consulta.getTipo());
                 System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
                 System.out.println("----------------------------");
             }
         }
     }
-
-
 }
+
+//TO-DO
+//Implementar os métodos para gerar os relatórios

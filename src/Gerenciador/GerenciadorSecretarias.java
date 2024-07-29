@@ -28,6 +28,7 @@ public class GerenciadorSecretarias {
     private ColecaoPacientes colecaoPacientes;
     private Secretaria secretaria;
     private int idConsultaControle = 0;
+    private int idPacienteControle = 0;
     
     public GerenciadorSecretarias(ColecaoConsultas colecaoConsultas, ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes){
         this.colecaoConsultas = colecaoConsultas;
@@ -209,6 +210,9 @@ public class GerenciadorSecretarias {
     
     public void listarConsultas() {
         
+        //TO-DO - FEITO
+        //Lista somente as consultas dos medicos qua a secretaria gerencia
+        
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
         System.out.println("\n");
         
@@ -222,12 +226,15 @@ public class GerenciadorSecretarias {
         System.out.println("+----------------------------+");
 
         for (Consulta consulta : consultas) {
-            System.out.println("ID: " + consulta.getId());
-            System.out.println("Data: " + consulta.getData());
-            System.out.println("Horário: " + consulta.getHorario());
-            System.out.println("Médico ID: " + consulta.getMedicoId());
-            System.out.println("Paciente ID: " + consulta.getPacienteId());
-            System.out.println("------------------------------");
+            if(colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()){
+                System.out.println("ID: " + consulta.getId());
+                System.out.println("Data: " + consulta.getData());
+                System.out.println("Horário: " + consulta.getHorario());
+                System.out.println("Médico ID: " + consulta.getMedicoId());
+                System.out.println("Paciente ID: " + consulta.getPacienteId());
+                System.out.println("------------------------------");
+                
+            }
         }
         System.out.println("\n");
     }
@@ -263,6 +270,8 @@ public class GerenciadorSecretarias {
         Paciente.tipoConvenio tipoConvenio = Paciente.tipoConvenio.valueOf(read.nextLine().toUpperCase());
 
         Paciente paciente = new Paciente(tipoConvenio, nome, dataNascimento, endereco, telefone, email);
+        this.idPacienteControle += 1;
+        paciente.setId(idPacienteControle);
         colecaoPacientes.add(paciente);
 
         System.out.println("+-------------------------------------+");
@@ -342,6 +351,8 @@ public class GerenciadorSecretarias {
     
     public void removerPaciente(){
         
+        this.listarPacientes();
+        
         System.out.println("+----------------------------+");
         System.out.println("       REMOVER PACIENTE       ");
         System.out.println("+----------------------------+");
@@ -390,6 +401,8 @@ public class GerenciadorSecretarias {
     }
     
     public void listarMedicos(){
+        //TO-DO - FEITO
+        //Deve se listar somente os medicos que a secretaria gerencia
         
         ArrayList<Medico> medicos = colecaoMedicos.getMedicos();
         System.out.println("\n");
@@ -420,3 +433,7 @@ public class GerenciadorSecretarias {
         System.out.println("\n");
     }
 }
+
+//TO-DO
+//Implementar os métodos para gerar os relatórios
+//Implomentar os métodos para envir as mensagens

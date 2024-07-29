@@ -22,16 +22,16 @@ import java.util.ArrayList;
  */
 public class MenuSecretaria {
     
-    private ColecaoMedicos colecaoMedicos;
-    private ColecaoPacientes colecaoPacientes;
-    private ColecaoConsultas colecaoConsultas;
+    //private ColecaoMedicos colecaoMedicos;
+    //private ColecaoPacientes colecaoPacientes;
+    //private ColecaoConsultas colecaoConsultas;
     private ColecaoSecretarias colecaoSecretarias;
     private GerenciadorSecretarias gerenciadorSecretarias;
     
     public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
-        this.colecaoMedicos = colecaoMedicos;
-        this.colecaoPacientes = colecaoPacientes;
-        this.colecaoConsultas = colecaoConsultas;
+        //this.colecaoMedicos = colecaoMedicos;
+        //this.colecaoPacientes = colecaoPacientes;
+        //this.colecaoConsultas = colecaoConsultas;
         this.colecaoSecretarias = colecaoSecretarias; 
         this.gerenciadorSecretarias = new GerenciadorSecretarias(colecaoConsultas, colecaoMedicos, colecaoPacientes);
     }
@@ -226,8 +226,9 @@ public class MenuSecretaria {
         //Listar todas as secretarias
         ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
         
-        System.out.println("+----------------------------------------+");
+        
         for(Secretaria secretaria : allSecretarias){
+            System.out.println("+----------------------------------------+");
             System.out.printf("| Identificador: %-25s \n", secretaria.getId());
             System.out.printf("| Nome: %-25s \n", secretaria.getNome());
             System.out.println("+----------------------------------------+");

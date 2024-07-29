@@ -23,6 +23,7 @@ public class Consulta {
     private int medicoId;
     private int pacienteId;
     private Tipo tipo;
+    private int protuarioId = 0;
     
     //Construtor
     public Consulta(LocalDate data, LocalTime horario) {
@@ -31,6 +32,14 @@ public class Consulta {
     }
     
     //Gets e Sets
+    public int getProtuarioId() {
+        return protuarioId;
+    }
+    
+    public void setProtuarioId(Prontuario prontuario){
+        this.protuarioId = prontuario.getId();
+    }
+    
     public int getId() {
         return id;
     }
@@ -40,7 +49,7 @@ public class Consulta {
     }
 
     public void setMedicoId(Medico medico){
-        this.medicoId = medico.getCrm();
+        this.medicoId = medico.getId();
     }
     
     public int getMedicoId(){
