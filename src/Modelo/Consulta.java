@@ -49,7 +49,7 @@ public class Consulta {
     }
 
     public void setMedicoId(Medico medico){
-        this.medicoId = medico.getCrm();
+        this.medicoId = medico.getId();
     }
     
     public int getMedicoId(){

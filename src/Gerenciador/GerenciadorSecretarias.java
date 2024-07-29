@@ -210,7 +210,7 @@ public class GerenciadorSecretarias {
     
     public void listarConsultas() {
         
-        //TO-DO
+        //TO-DO - FEITO
         //Lista somente as consultas dos medicos qua a secretaria gerencia
         
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
@@ -226,12 +226,15 @@ public class GerenciadorSecretarias {
         System.out.println("+----------------------------+");
 
         for (Consulta consulta : consultas) {
-            System.out.println("ID: " + consulta.getId());
-            System.out.println("Data: " + consulta.getData());
-            System.out.println("Horário: " + consulta.getHorario());
-            System.out.println("Médico ID: " + consulta.getMedicoId());
-            System.out.println("Paciente ID: " + consulta.getPacienteId());
-            System.out.println("------------------------------");
+            if(colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()){
+                System.out.println("ID: " + consulta.getId());
+                System.out.println("Data: " + consulta.getData());
+                System.out.println("Horário: " + consulta.getHorario());
+                System.out.println("Médico ID: " + consulta.getMedicoId());
+                System.out.println("Paciente ID: " + consulta.getPacienteId());
+                System.out.println("------------------------------");
+                
+            }
         }
         System.out.println("\n");
     }
@@ -348,6 +351,8 @@ public class GerenciadorSecretarias {
     
     public void removerPaciente(){
         
+        this.listarPacientes();
+        
         System.out.println("+----------------------------+");
         System.out.println("       REMOVER PACIENTE       ");
         System.out.println("+----------------------------+");
@@ -396,7 +401,7 @@ public class GerenciadorSecretarias {
     }
     
     public void listarMedicos(){
-        //TO-DO
+        //TO-DO - FEITO
         //Deve se listar somente os medicos que a secretaria gerencia
         
         ArrayList<Medico> medicos = colecaoMedicos.getMedicos();
