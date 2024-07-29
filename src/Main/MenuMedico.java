@@ -23,17 +23,17 @@ import java.util.Scanner;
 
 public class MenuMedico { 
     
-    private ColecaoConsultas colecaoConsultas;
-    private ColecaoPacientes colecaoPacientes;
-    private ColecaoProntuarios colecaoProntuarios;
+    //private ColecaoConsultas colecaoConsultas;
+    //private ColecaoPacientes colecaoPacientes;
+    //private ColecaoProntuarios colecaoProntuarios;
     private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
-    private ColecaoDadosMedicos colecaoDadosMedicos; 
+    //private ColecaoDadosMedicos colecaoDadosMedicos; 
     
     public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoMedicos colecaoMedicos, ColecaoDadosMedicos colecaoDadosMedicos){
-        this.colecaoConsultas = colecaoConsultas;
-        this.colecaoPacientes = colecaoPacientes;
-        this.colecaoProntuarios = colecaoProntuarios;
+        //this.colecaoConsultas = colecaoConsultas;
+        //this.colecaoPacientes = colecaoPacientes;
+        //this.colecaoProntuarios = colecaoProntuarios;
         this.colecaoMedicos = colecaoMedicos;
         this.gerenciadorMedicos = new GerenciadorMedicos(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoDadosMedicos);
         
@@ -41,7 +41,7 @@ public class MenuMedico {
     
     static Scanner read = new Scanner(System.in);
     
-    public static int menuDadosAdicionais() {
+    public int menuDadosAdicionais() {
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("");
         System.out.println("---------------------------------------");
@@ -63,14 +63,18 @@ public class MenuMedico {
         switch (option){
             case 1:
                 // Implementar o cadastro dos dados adicionais
+                gerenciadorMedicos.cadastrarDados();
                 break;
                 
             case 2:
                 // Implementar o atualizar
+                gerenciadorMedicos.atualizarDados();
                 break;
                 
             case 3:
                 // Implementar o remover
+                gerenciadorMedicos.removerDados();
+                //Fazer o TO-DO
                 break;
                 
             case 4:
@@ -84,7 +88,7 @@ public class MenuMedico {
     }
     
     
-    public static int menuProntuario() {
+    public int menuProntuario() {
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("");       
         System.out.println("---------------------------------------");
@@ -106,14 +110,17 @@ public class MenuMedico {
         switch (option){
             case 1:
                 // Implementar o cadastro
+                gerenciadorMedicos.cadastrarProntuario();
                 break;
                 
             case 2:
                 // Implementar o atualizar
+                gerenciadorMedicos.atualizarProntuario();
                 break;
                 
             case 3:
                 // Implementar o remover
+                gerenciadorMedicos.removerProntuario();
                 break;
                 
             case 4:
