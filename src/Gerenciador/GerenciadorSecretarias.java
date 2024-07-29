@@ -428,3 +428,7 @@ public class GerenciadorSecretarias {
         System.out.println("\n");
     }
 }
+
+//TO-DO
+//Implementar os métodos para gerar os relatórios
+//Implomentar os métodos para envir as mensagens

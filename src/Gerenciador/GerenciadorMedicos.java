@@ -426,3 +426,6 @@ public class GerenciadorMedicos {
         }
     }
 }
+
+//TO-DO
+//Implementar os métodos para gerar os relatórios
