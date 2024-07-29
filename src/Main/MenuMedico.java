@@ -128,7 +128,7 @@ public class MenuMedico {
     
     
     
-    public static int menuConsulta() {
+    public int menuConsulta() {
         System.out.println("");
         System.out.println("--------------------------------");
         System.out.println("|            Consulta          |");
@@ -179,6 +179,7 @@ public class MenuMedico {
                     System.out.println("CONSULTA NÃO FINALIZADA!");
                     option = 0;
                 } else if (option2 == 0){
+                    gerenciadorMedicos.resetConsultaAtual();
                     System.out.println("CONSULTA FINALIZADA!");
                 }
                 break;
@@ -216,6 +217,7 @@ public class MenuMedico {
         int option1 = 0;
         switch (option){
             case 1:
+                gerenciadorMedicos.setConsultaAtual();
                 while (option1 != 4){
                     option1 = menuConsulta();
                     Main.limpaTela();
