@@ -255,6 +255,8 @@ A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(C
 <!--Start: GerenciadorMedicos-->
 #### GerenciadorMedicos
 
+A classe `GerenciadorMedicos` é responsável por gerenciar as operações relacionadas a consultas médicas e registros de prontuários e dados médicos. Ela permite ao médico ou ao sistema cadastrar, atualizar, remover e listar consultas, prontuários e dados médicos de forma eficiente. A classe interage com coleções de dados (`ColecaoConsultas`, `ColecaoPacientes`, `ColecaoProntuarios`, e `ColecaoDadosMedicos`) para manter e manipular informações sobre pacientes e suas consultas.
+
 ##### Atributos
 
 - `colecaoConsultas`
@@ -373,6 +375,8 @@ A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(C
 
 <!--Start: GerenciadorSecretarias-->
 #### GerenciadorSecretarias
+
+A classe GerenciadorSecretarias é responsável por gerenciar diversas operações relacionadas a consultas médicas, pacientes e médicos dentro de um sistema. Ela atua como um intermediário entre as coleções de consultas, médicos e pacientes, além de permitir a interação de uma secretaria com essas entidades.
 
 ##### Atributos
 
