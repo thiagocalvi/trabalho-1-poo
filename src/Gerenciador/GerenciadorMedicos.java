@@ -78,6 +78,7 @@ public class GerenciadorMedicos {
             }
         }
         
+        
         Collections.sort(consultasDoDia, new Comparator<Consulta>() {
             
             @Override
@@ -85,6 +86,7 @@ public class GerenciadorMedicos {
                 return c1.getHorario().compareTo(c2.getHorario());
             }
         });
+        
         
     }
     
@@ -356,10 +358,17 @@ public class GerenciadorMedicos {
         //System.out.println("Informe o ID dos dados médicos a serem removidos:");
         //int id = Integer.parseInt(read.nextLine());
         //colecaoDadosMedicos.removeById(id);
-        
+
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         colecaoDadosMedicos.removeById(paciente.getDadosMedicosId());
+
         
+        //Vericar se o paciente da consulta atual tem dados medicos já cadastrados
+        if (paciente.getDadosMedicosId() == 0) {
+            System.out.println("O paciente não possui dados medicos cadastrados!");
+            return;
+        }
+                
         //TO-DO
         //Quando remover os dados medicos de um paciente deve se setar a atributo dadosMedicosId do paciente para 0
         //Provavelmente criar um set na classes paciente para fazer isso dever resolver
