@@ -28,6 +28,7 @@ public class GerenciadorSecretarias {
     private ColecaoPacientes colecaoPacientes;
     private Secretaria secretaria;
     private int idConsultaControle = 0;
+    private int idPacienteControle = 0;
     
     public GerenciadorSecretarias(ColecaoConsultas colecaoConsultas, ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes){
         this.colecaoConsultas = colecaoConsultas;
@@ -209,6 +210,9 @@ public class GerenciadorSecretarias {
     
     public void listarConsultas() {
         
+        //TO-DO
+        //Lista somente as consultas dos medicos qua a secretaria gerencia
+        
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
         System.out.println("\n");
         
@@ -263,6 +267,8 @@ public class GerenciadorSecretarias {
         Paciente.tipoConvenio tipoConvenio = Paciente.tipoConvenio.valueOf(read.nextLine().toUpperCase());
 
         Paciente paciente = new Paciente(tipoConvenio, nome, dataNascimento, endereco, telefone, email);
+        this.idPacienteControle += 1;
+        paciente.setId(idPacienteControle);
         colecaoPacientes.add(paciente);
 
         System.out.println("+-------------------------------------+");
@@ -390,6 +396,8 @@ public class GerenciadorSecretarias {
     }
     
     public void listarMedicos(){
+        //TO-DO
+        //Deve se listar somente os medicos que a secretaria gerencia
         
         ArrayList<Medico> medicos = colecaoMedicos.getMedicos();
         System.out.println("\n");

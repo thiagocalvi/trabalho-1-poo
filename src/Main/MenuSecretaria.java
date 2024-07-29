@@ -226,8 +226,9 @@ public class MenuSecretaria {
         //Listar todas as secretarias
         ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
         
-        System.out.println("+----------------------------------------+");
+        
         for(Secretaria secretaria : allSecretarias){
+            System.out.println("+----------------------------------------+");
             System.out.printf("| Identificador: %-25s \n", secretaria.getId());
             System.out.printf("| Nome: %-25s \n", secretaria.getNome());
             System.out.println("+----------------------------------------+");
