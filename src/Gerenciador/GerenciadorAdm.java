@@ -71,6 +71,7 @@ public class GerenciadorAdm {
         System.out.println("Processo finalizado!");
     }
     
+    
     public void cadastrarMedico() {
         System.out.println("----------------------------");
         System.out.println("      TELA DE CADASTRO      ");
@@ -117,9 +118,7 @@ public class GerenciadorAdm {
                
         colecaoMedicos.add(medico);
             
-        System.out.println("----------------------------");
-        System.out.println("    Cadastro finalizado!"    );
-        System.out.println("----------------------------");
+        System.out.println("Médico cadastrado com sucesso!");
 
     }
     
@@ -153,9 +152,9 @@ public class GerenciadorAdm {
 
     public void atualizarMedico(){
 
-        System.out.println("--------------------------------");
-        System.out.println("        ATUALIZAR MEDICO        ");
-        System.out.println("--------------------------------");
+        System.out.println("----------------------------");
+        System.out.println("      ATUALIZAR MEDICO      ");
+        System.out.println("----------------------------");
         
         this.listarMedicos();
         
@@ -164,8 +163,13 @@ public class GerenciadorAdm {
         read.nextLine();
         
         Medico medico = colecaoMedicos.getMedicoById(id);
+        
+        if (medico == null) {
+            System.out.println("Médico não encontrado!");
+            return;
+        }
 
-        System.out.println("+-------------------------------------------+");
+        System.out.println("+----------------------------------------+");
         System.out.printf("| Id: %-25s \n", medico.getId());    
         System.out.printf("| Nome: %-25s \n", medico.getNome());
         System.out.printf("| Data de nascimento: %-10s \n", medico.getDataNascimento());
@@ -174,85 +178,115 @@ public class GerenciadorAdm {
         System.out.printf("| Especialidade: %-15s \n", medico.getEspecialidade());
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
         System.out.printf("| Secretaria Id: %-24d \n", medico.getSecretariaId());
-        System.out.println("+-------------------------------------------+");
+        System.out.println("+----------------------------------------+");
         System.out.println();
         
-        System.out.print("Nome médico: ");
-        String nome = read.nextLine();
+        System.out.println("Atualizar nome? (atual: " + medico.getNome() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        String resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("Nome médico: ");
+            String nome = read.nextLine();
+            if (!nome.equals(medico.getNome()) && !nome.isEmpty()) {
+                medico.setNome(nome);
+            }
+        }
+        
+        System.out.println("Atualizar data de nascimento? (atual: " + medico.getDataNascimento() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Data de nascimento DIA/MES/ANO: ");
+            System.out.print("00/00/0000 : ");
+            String data = read.nextLine();
+            int dia = Integer.parseInt(data.substring(0, 2));
+            int mes = Integer.parseInt(data.substring(3, 5));
+            int ano = Integer.parseInt(data.substring(6, 10));
+            LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+            if (!dataNascimento.equals(medico.getDataNascimento())) {
+                medico.setDataNascimento(dataNascimento);
+            }
+        }
+        
+        System.out.println("Atualizar telefone? (atual: " + medico.getTelefone() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("Telefone: ");
+            String telefone = read.nextLine();
+            if (!telefone.equals(medico.getTelefone()) && !telefone.isEmpty()) {
+                medico.setTelefone(telefone);
+            }
+        }
+        
+        System.out.println("Atualizar email? (atual: " + medico.getEmail() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("E-mail: ");
+            String email = read.nextLine();
+            if (!email.equals(medico.getEmail()) && !email.isEmpty()) {
+                medico.setEmail(email);
+            }
+        }
 
-        
-        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
-        String data = read.nextLine();
-        
-        int dia = Integer.parseInt(data.substring(0, 2));
-        int mes = Integer.parseInt(data.substring(3, 5));
-        int ano = Integer.parseInt(data.substring(6, 10));    
-        LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
-        
-        System.out.print("Telefone: ");
-        String telefone = read.nextLine();
-        
-        System.out.print("E-mail:");
-        String email = read.nextLine();
-        
-        System.out.print("Especialidade: ");
-        String especialidade = read.nextLine();
-        
-        System.out.print("CRM: ");
-        int crm = read.nextInt();
-
-        this.listarSecretarias();
-        
-
-        System.out.print("Informe o ID da secretaria (deve ser informado um id): ");
-        int idSecretaria = read.nextInt();
-        read.nextLine();
-        
-        Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
-        
-        medico.setSecretariaId(secretaria);
-        
-        
-        if(!nome.equals(medico.getNome()) && nome != ""){
-            medico.setNome(nome);    
-        }
-        if(!dataNascimento.equals(medico.getDataNascimento())){
-            medico.setDataNascimento(dataNascimento);
-        }
-        if(!telefone.equals(medico.getTelefone()) && telefone != ""){
-            medico.setTelefone(telefone);
-        }
-        if(!email.equals(medico.getEmail()) && email != ""){
-            medico.setEmail(email);
-        }
-        if(!especialidade.equals(medico.getEspecialidade()) && especialidade != ""){
-            medico.setEspecialidade(especialidade);
-        }
-        if(crm != medico.getCrm()){
-            medico.setCrm(crm);
+        System.out.println("Atualizar especialidade? (atual: " + medico.getEspecialidade() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("Especialidade: ");
+            String especialidade = read.nextLine();
+            if (!especialidade.equals(medico.getEspecialidade()) && !especialidade.isEmpty()) {
+                medico.setEspecialidade(especialidade);
+            }
         }
         
+        System.out.println("Atualizar CRM? (atual: " + medico.getCrm() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("CRM: ");
+            int crm = read.nextInt();
+            read.nextLine();
+            if (crm != medico.getCrm()) {
+                medico.setCrm(crm);
+            }
+        }
         
+        System.out.println("Atualizar secretaria? (atual: " + colecaoSecretarias.getSecretariaById(medico.getSecretariaId()).getNome() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            this.listarSecretarias();
+            System.out.print("Informe o id da secretaria (deve ser informado um id): ");
+            int idSecretaria = read.nextInt();
+            read.nextLine();
+            Secretaria secretaria = colecaoSecretarias.getSecretariaById(idSecretaria);
+            if (secretaria != null) {
+                medico.setSecretariaId(secretaria);
+            }
+        }
+        System.out.println("Médico atualizado com sucesso!");
     }
     
     public void removerMedico(){
-        System.out.println("--------------------------------");
-        System.out.println("         REMOVER MEDICO         ");
-        System.out.println("--------------------------------");
+        System.out.println("----------------------------");
+        System.out.println("       REMOVER MEDICO       ");
+        System.out.println("----------------------------");
         
         this.listarMedicos();
-
-        System.out.print("Informe o ID do médico que será removido: ");
+        
+        System.out.println("Informe o id do médico que será removido: ");
         int id = read.nextInt();
-        read.nextLine();
         
         colecaoMedicos.removeById(id);
+        
+        System.out.println("Médico removido com sucesso!");
     }
     
-
     
     //METODOS SECRETARIA
-    public void cadastroSecretariaIterno(){
+    public void cadastroSecretariaInterno(){
         
         String[] nomes = {"João Silva", "Maria Oliveira"};
         LocalDate[] datasNascimento = {LocalDate.of(1985, 5, 15), LocalDate.of(1990, 8, 20)};
@@ -265,10 +299,12 @@ public class GerenciadorAdm {
             secretaria.setId(this.idSecretariaControle);
                
             colecaoSecretarias.add(secretaria);
+            
+            System.out.println("Processo finalizado!");
         }
     
-    
     }
+    
     
     public void cadastrarSecretaria(){
         System.out.println("----------------------------");
@@ -278,7 +314,8 @@ public class GerenciadorAdm {
         System.out.print("Nome da secretaria: ");
         String nome = read.nextLine();
         
-        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
+        System.out.println("Data de nascimento DIA/MES/ANO: ");
+        System.out.print("00/00/0000 : ");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
@@ -299,11 +336,103 @@ public class GerenciadorAdm {
         
         colecaoSecretarias.add(secretaria);
             
-        System.out.println("----------------------------");
-        System.out.println("    Cadastro finalizado!"    );
-        System.out.println("----------------------------");        
+        System.out.println("Secretária cadastrada com sucesso!");      
     }
-   
+       
+    public void atualizarSecretaria(){
+        System.out.println("----------------------------");
+        System.out.println("    ATUALIZAR SECRETARIA    ");
+        System.out.println("----------------------------");
+        
+        this.listarSecretarias();
+        
+        System.out.println("Informe o id da secretaria que será atualizado: ");
+        int id = read.nextInt();
+        read.nextLine();
+        
+        Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
+        
+        if (secretaria == null) {
+        System.out.println("Secretaria não encontrada!");
+        return;
+        }
+
+        System.out.println("+----------------------------------------+");
+        System.out.printf("| Id: %-25s \n", secretaria.getId());    
+        System.out.printf("| Nome: %-25s \n", secretaria.getNome());
+        System.out.printf("| Data de nascimento: %-10s \n", secretaria.getDataNascimento());
+        System.out.printf("| Telefone: %-19s \n", secretaria.getTelefone());
+        System.out.printf("| Email: %-22s \n", secretaria.getEmail());
+        System.out.println("+----------------------------------------+");
+        System.out.println();
+        
+        System.out.println("Atualizar nome? (atual: " + secretaria.getNome() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        String resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("Nome secretaria: ");
+            String nome = read.nextLine();
+            if (!nome.equals(secretaria.getNome()) && !nome.isEmpty()) {
+                secretaria.setNome(nome);
+            }
+        }
+        
+        System.out.println("Atualizar data de nascimento? (atual: " + secretaria.getDataNascimento() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Data de nascimento DIA/MES/ANO: ");
+            System.out.print("00/00/0000 : ");
+            String data = read.nextLine();
+            int dia = Integer.parseInt(data.substring(0, 2));
+            int mes = Integer.parseInt(data.substring(3, 5));
+            int ano = Integer.parseInt(data.substring(6, 10));
+            LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+            if (!dataNascimento.equals(secretaria.getDataNascimento())) {
+                secretaria.setDataNascimento(dataNascimento);
+            }
+        }
+        
+        System.out.println("Atualizar telefone? (atual: " + secretaria.getTelefone() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("Telefone: ");
+            String telefone = read.nextLine();
+            if (!telefone.equals(secretaria.getTelefone()) && !telefone.isEmpty()) {
+                secretaria.setTelefone(telefone);
+            }
+        }
+        
+        System.out.println("Atualizar email? (atual: " + secretaria.getEmail() + ")");
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.print("E-mail: ");
+            String email = read.nextLine();
+            if (!email.equals(secretaria.getEmail()) && !email.isEmpty()) {
+                secretaria.setEmail(email);
+            }
+        }
+
+        System.out.println("Secretaria atualizada com sucesso!");
+    }
+    
+    public void removerSecretaria(){
+        System.out.println("----------------------------");
+        System.out.println("     REMOVER SCRETARIA      ");
+        System.out.println("----------------------------");
+        
+        this.listarSecretarias();
+        
+        System.out.println("Informe o id do secretaria que será removido: ");
+        int id = read.nextInt();
+        
+        colecaoSecretarias.removeById(id);
+        
+        System.out.println("Secretaria removida com sucesso!");
+    }
+
     public void listarSecretarias(){
 
         System.out.println("\n");
@@ -330,73 +459,4 @@ public class GerenciadorAdm {
         System.out.println("\n");
     }
     
-    public void atualizarSecretaria(){
-        System.out.println("--------------------------------");
-        System.out.println("      ATUALIZAR SECRETARIA      ");
-        System.out.println("--------------------------------");
-        
-        this.listarSecretarias();
-        
-        System.out.print("Informe o ID da secretaria que será atualizado: ");
-        int id = read.nextInt();
-        read.nextLine();
-        
-        Secretaria secretaria = colecaoSecretarias.getSecretariaById(id);
-
-        System.out.println("+------------------------------------------+");
-        System.out.printf("| Id: %-25s \n", secretaria.getId());    
-        System.out.printf("| Nome: %-25s \n", secretaria.getNome());
-        System.out.printf("| Data de nascimento: %-10s \n", secretaria.getDataNascimento());
-        System.out.printf("| Telefone: %-19s \n", secretaria.getTelefone());
-        System.out.printf("| Email: %-22s \n", secretaria.getEmail());
-        System.out.println("+------------------------------------------+");
-        System.out.println();
-        
-        System.out.print("Nome secretaria: ");
-        read.next();
-        String nome = read.nextLine();
-        
-        System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
-        String data = read.nextLine();
-        
-        int dia = Integer.parseInt(data.substring(0, 2));
-        int mes = Integer.parseInt(data.substring(3, 5));
-        int ano = Integer.parseInt(data.substring(6, 10));    
-        LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
-        
-        System.out.print("Telefone: ");
-        String telefone = read.nextLine();
-        
-        System.out.print("E-mail:");
-        String email = read.nextLine();
-        
-        if(!nome.equals(secretaria.getNome()) && nome != ""){
-            secretaria.setNome(nome);    
-        }
-        if(!dataNascimento.equals(secretaria.getDataNascimento())){
-            secretaria.setDataNascimento(dataNascimento);
-        }
-        if(!telefone.equals(secretaria.getTelefone()) && telefone != ""){
-            secretaria.setTelefone(telefone);
-        }
-        if(!email.equals(secretaria.getEmail()) && email != ""){
-            secretaria.setEmail(email);
-        }
-    }
-    
-    public void removerSecretaria(){
-        System.out.println("--------------------------------");
-        System.out.println("       REMOVER SCRETARIA        ");
-        System.out.println("--------------------------------");
-        
-        this.listarSecretarias();
-        
-        System.out.print("Informe o ID da secretaria que será removido: ");
-        int id = read.nextInt();
-        read.nextLine();
-        
-        colecaoSecretarias.removeById(id);
-    }
-    
-
 }
