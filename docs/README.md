@@ -23,7 +23,6 @@ Sendo elas usadas para armazenar em memória os objetos que são criador durante
 O package Gerenciador armazena as classes:
 * GerenciadorAdm
 * GerenciadorMedicos
-* GerenciadorMensagem
 * GerenciadorSecratarias
 
 :memo: Adicionar a descrição dos métodos das classes
@@ -258,52 +257,134 @@ A classe `GerenciadorAdm` é responsável por gerenciar as operações de CRUD(C
 
 ##### Atributos
 
-- ``
-  - **Tipo**: ``
-  - **Descrição:**
+- `colecaoConsultas`
+  - **Tipo**: `ColecaoConsultas`
+  - **Descrição:** Armazena a coleção de consultas. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de consultas.
 
-- ``
-  - **Tipo**: ``
-  - **Descrição:**
+- `colecaoPacientes`
+  - **Tipo**: `ColecaoPacientes`
+  - **Descrição:** Armazena a coleção de pacientes. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de pacientes.
+ 
+- `colecaoProntuarios`
+  - **Tipo**: `ColecaoProntuarios`
+  - **Descrição:** Armazena a coleção de prontuários. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de prontuários.
+
+- `colecaoDadosMedicos`
+  - **Tipo**: `ColecaoDadosMedicos`
+  - **Descrição:** Armazena a coleção de dados médicos. Esta coleção é usada para realizar operações de CRUD (Create, Read, Update, Delete) nos registros de dados médicos.
+ 
+- `medico`
+  - **Tipo**: `Medico`
+  - **Descrição:** Instância do objeto `Medico` associado à classe. Representa o médico responsável ou atualmente em foco na classe.
+ 
+- `consultaAtual`
+  - **Tipo**: `Consulta`
+  - **Descrição:** Instância da consulta que está atualmente em andamento.
+ 
+- `consultasDoDia`
+  - **Tipo**: `ArrayList<Consulta>`
+  - **Descrição:** Lista que contém todas as consultas agendadas para o dia de um determinado médico.
+ 
+- `idDadosMedicosControle`
+  - **Tipo**: `int`
+  - **Descrição:** Controle de ID dos dados médicos. Utilizado para gerenciar de forma única cada entrada de dados médicos.
+ 
+- `idProtuarioControle`
+  - **Tipo**: `int`
+  - **Descrição:** Controle de ID dos prontuários. Utilizado para gerenciar de forma única cada prontuário.
 
 ##### Construtores
 
 - `GerenciadorMedicos()`:
-  - **Descrição:** 
+  - **Descrição:** O construtor da classe `GerenciadorMedicos` inicializa o objeto com as coleções necessárias para gerenciar consultas, pacientes, prontuários e dados médicos. Ele recebe quatro parâmetros e os atribui aos atributos correspondentes da classe.
 
 ##### Métodos
 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
+- `getMedico()`:
+  - **Descrição:** Retorna a instância do objeto `Medico` associado à classe.
+  - **Tipo de Retorno:** `Medico`
 
-- `()`:
-  - **Descrição:** 
-  - **Tipo de Retorno:**
+- `setMedico()`:
+  - **Descrição:** Define a instância do objeto Medico associado à classe com o valor passado como parâmetro.
+  - **Tipo de Retorno:** `void`
+ 
+- `getConsultaAtual()`:
+  - **Descrição:** Retorna a instância da consulta que está atualmente em andamento.
+  - **Tipo de Retorno:** `Consulta`
+ 
+- `setConsultaAtual()`:
+  - **Descrição:** Define a consulta atual removendo a primeira consulta da lista `consultasDoDia` e atribuindo-a ao atributo `consultaAtual`, caso exista.
+  - **Tipo de Retorno:** `void`
+
+- `resetConsultaAtual()`:
+  - **Descrição:** Reseta a consulta atual, atribuindo `null` ao atributo `consultaAtual`.
+  - **Tipo de Retorno:** `void`
+ 
+- `setConsultasDoDia()`:
+  - **Descrição:** Popula a lista consultasDoDia com as consultas do médico associado à classe para a data atual. Ordena as consultas por horário.
+  - **Tipo de Retorno:** `void`
+ 
+    - `compare()`:
+      - **Descrição:** Compara duas instâncias de `Consulta` com base no horário das consultas.
+      - **Tipo de Retorno:** `int`
+
+- `listaConsultasDoDia()`:
+  - **Descrição:** Lista todas as consultas do dia do médico. Se não houver consultas na lista `consultasDoDia`, chama o método `setConsultasDoDia` para preenchê-la. Se a lista ainda estiver vazia após isso, exibe uma mensagem indicando que não há consultas para hoje. Caso contrário, exibe os detalhes de cada consulta do dia.
+  - **Tipo de Retorno:** `void`
+ 
+- `cadastrarProntuario()`:
+  - **Descrição:**  Permite ao usuário cadastrar um novo prontuário para a consulta atual. Coleta os dados da consulta, sintomas, diagnóstico e tratamento, e cria um novo prontuário. Adiciona o prontuário à coleção de prontuários e atualiza a consulta atual com o ID do prontuário.
+  - **Tipo de Retorno:** `void`
+ 
+- `atualizarProntuario()`:
+  - **Descrição:** Permite ao usuário atualizar um prontuário existente. Solicita o ID do prontuário a ser atualizado e permite modificar a data da consulta, sintomas, diagnóstico e tratamento.
+  - **Tipo de Retorno:** `void`
+
+- `removerProntuario()`:
+  - **Descrição:** Permite ao usuário remover um prontuário da coleção de prontuários. Solicita o ID do prontuário a ser removido e o exclui da coleção.
+  - **Tipo de Retorno:** `void`
+ 
+- `cadastrarDados()`:
+  - **Descrição:** Permite ao usuário cadastrar os dados médicos de um paciente. Verifica se o paciente já possui dados médicos cadastrados. Se não possuir, coleta as informações necessárias (como se fuma, bebe, nível de colesterol, etc.) e cria um novo registro de dados médicos para o paciente.
+  - **Tipo de Retorno:** `void`
  
 - `()`:
   - **Descrição:** 
-  - **Tipo de Retorno:**
+  - **Tipo de Retorno:** ``
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
+ 
+- `()`:
+  - **Descrição:** 
+  - **Tipo de Retorno:** ``
 
 <!--End GerenciadorMedicos-->
-
-
-<!--Start: GerenciadorMensagens-->
-#### GerenciadorMensagens
-
-
-##### Atributos
-
-
-##### Construtores
-
-- `GerenciadorMensagens()`:
-  - **Descrição:** 
-
-
-##### Métodos
-
-<!--End GerenciadorMensagens-->
 
 
 <!--Start: GerenciadorSecretarias-->
