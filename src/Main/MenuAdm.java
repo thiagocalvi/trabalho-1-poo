@@ -117,7 +117,7 @@ public class MenuAdm {
                 int opt = read.nextInt();
                 
                 if(opt == 0){
-                    gerenciadorAdm.cadastroSecretariaIterno();
+                    gerenciadorAdm.cadastroSecretariaInterno();
                 }
                 else{
                     gerenciadorAdm.cadastrarSecretaria();                

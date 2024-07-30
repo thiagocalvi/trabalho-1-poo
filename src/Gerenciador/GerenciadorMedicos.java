@@ -78,6 +78,7 @@ public class GerenciadorMedicos {
             }
         }
         
+        
         Collections.sort(consultasDoDia, new Comparator<Consulta>() {
             
             @Override
@@ -85,6 +86,7 @@ public class GerenciadorMedicos {
                 return c1.getHorario().compareTo(c2.getHorario());
             }
         });
+        
         
     }
     
@@ -316,32 +318,67 @@ public class GerenciadorMedicos {
         System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
 
         System.out.println("Atualizar fuma? (true/false) - Atual: " + dadosMedicos.isFuma());
-        boolean fuma = Boolean.parseBoolean(read.nextLine());
-        dadosMedicos.setFuma(fuma);
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        String resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe a condição do paciente:");
+            boolean fuma = Boolean.parseBoolean(read.nextLine());
+            dadosMedicos.setFuma(fuma);
+        }
 
         System.out.println("Atualizar bebe? (true/false) - Atual: " + dadosMedicos.isBebe());
-        boolean bebe = Boolean.parseBoolean(read.nextLine());
-        dadosMedicos.setBebe(bebe);
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe a condição do paciente:");
+            boolean bebe = Boolean.parseBoolean(read.nextLine());
+            dadosMedicos.setBebe(bebe);
+        }
 
         System.out.println("Atualizar colesterol - Atual: " + dadosMedicos.getColesterol());
-        String colesterol = read.nextLine();
-        dadosMedicos.setColesterol(colesterol);
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe o novo nível de colesterol:");
+            String colesterol = read.nextLine();
+            dadosMedicos.setColesterol(colesterol);
+        }
 
         System.out.println("Atualizar diabete? (true/false) - Atual: " + dadosMedicos.isDiabete());
-        boolean diabete = Boolean.parseBoolean(read.nextLine());
-        dadosMedicos.setDiabete(diabete);
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe a condição do paciente:");
+            boolean diabete = Boolean.parseBoolean(read.nextLine());
+            dadosMedicos.setDiabete(diabete);
+        }
 
         System.out.println("Atualizar doença cardíaca? (true/false) - Atual: " + dadosMedicos.isDoencaCardiaca());
-        boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
-        dadosMedicos.setDoencaCardiaca(doencaCardiaca);
-
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe a condição do paciente:");
+            boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+            dadosMedicos.setDoencaCardiaca(doencaCardiaca);
+        }
+        
         System.out.println("Atualizar cirurgias (separadas por vírgula) - Atual: " + String.join(", ", dadosMedicos.getCirurgias()));
-        List<String> cirurgias = List.of(read.nextLine().split(","));
-        dadosMedicos.setCirurgias(cirurgias);
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe as novas cirurgias (separadas por vírgula):");
+            List<String> cirurgias = List.of(read.nextLine().split(","));
+            dadosMedicos.setCirurgias(cirurgias);
+        }
 
         System.out.println("Atualizar alergias (separadas por vírgula) - Atual: " + String.join(", ", dadosMedicos.getAlergias()));
-        List<String> alergias = List.of(read.nextLine().split(","));
-        dadosMedicos.setAlergias(alergias);
+        System.out.println("[0] - Para sim \n[1] - Para não");
+        resposta = read.nextLine();
+        if (resposta.equals("0")) {
+            System.out.println("Informe as novas alergias (separadas por vírgula):");
+            List<String> alergias = List.of(read.nextLine().split(","));
+            dadosMedicos.setAlergias(alergias);
+        }
 
         System.out.println("Dados médicos atualizados com sucesso!");
     }
@@ -356,10 +393,17 @@ public class GerenciadorMedicos {
         //System.out.println("Informe o ID dos dados médicos a serem removidos:");
         //int id = Integer.parseInt(read.nextLine());
         //colecaoDadosMedicos.removeById(id);
-        
+
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         colecaoDadosMedicos.removeById(paciente.getDadosMedicosId());
+
         
+        //Vericar se o paciente da consulta atual tem dados medicos já cadastrados
+        if (paciente.getDadosMedicosId() == 0) {
+            System.out.println("O paciente não possui dados medicos cadastrados!");
+            return;
+        }
+                
         //TO-DO
         //Quando remover os dados medicos de um paciente deve se setar a atributo dadosMedicosId do paciente para 0
         //Provavelmente criar um set na classes paciente para fazer isso dever resolver

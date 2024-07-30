@@ -179,33 +179,25 @@ public class GerenciadorSecretarias {
     }
     
     public void removerConsulta() {
-        System.out.println("+----------------------------+");
-        System.out.println("       REMOVER CONSULTA       ");
-        System.out.println("+----------------------------+");
+        System.out.println("----------------------------");
+        System.out.println("      REMOVER CONSULTA      ");
+        System.out.println("----------------------------");
         
         this.listarConsultas();
         
         System.out.println("Informe o ID da consulta a ser removida:");
-        try {
-            int id = Integer.parseInt(read.nextLine());
-            Consulta consulta = colecaoConsultas.getConsultaById(id);
+        int id = Integer.parseInt(read.nextLine());
+        Consulta consulta = colecaoConsultas.getConsultaById(id);
 
-            if (consulta == null) {
-                System.out.println("Consulta não encontrada!");
-                return;
-            }
+        if (consulta == null) {
+            System.out.println("Consulta não encontrada!");
+            return;
+        }
 
-            colecaoConsultas.remove(consulta);
+        colecaoConsultas.remove(consulta);
 
-           
-            System.out.println("+-------------------------------------+");
-            System.out.println("     CONSULTA REMOVIDA COM SUCESSO     ");
-            System.out.println("+-------------------------------------+");
-            
-        } catch (NumberFormatException e) {
-            System.out.println("+-------------------------------------+");
-            System.out.println("   ERRO: O ID informado não é válido   ");
-            System.out.println("+-------------------------------------+");        } 
+        System.out.println("Consulta removida com sucesso!");
+        
     }
     
     public void listarConsultas() {
