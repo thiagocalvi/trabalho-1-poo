@@ -84,6 +84,7 @@ public class MenuSecretaria {
                 
             case 5:
                 // Gerar Relatorios
+                gerenciadorSecretarias.gerarRelatorioConsultasDiaSeguinte();
                 break;
                 
             case 6:

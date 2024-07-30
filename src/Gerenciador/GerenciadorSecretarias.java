@@ -424,8 +424,37 @@ public class GerenciadorSecretarias {
         }
         System.out.println("\n");
     }
+    
+    public void gerarRelatorioConsultasDiaSeguinte() {
+    System.out.println("+----------------------------------------+");
+    System.out.println("  RELATÓRIO DE CONSULTAS DO DIA SEGUINTE  ");
+    System.out.println("+----------------------------------------+");
+
+    LocalDate hoje = LocalDate.now();
+    LocalDate amanha = hoje.plusDays(1);
+
+    ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
+    boolean temConsultas = false;
+
+    for (Consulta consulta : consultas) {
+        if (consulta.getData().equals(amanha) && 
+            colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()) {
+            temConsultas = true;
+            System.out.println("ID: " + consulta.getId());
+            System.out.println("Data: " + consulta.getData());
+            System.out.println("Horário: " + consulta.getHorario());
+            System.out.println("Médico: " + colecaoMedicos.getMedicoById(consulta.getMedicoId()).getNome());
+            System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+            System.out.println("------------------------------");
+        }
+    }
+
+    if (!temConsultas) {
+        System.out.println("Nenhuma consulta marcada para o dia seguinte.");
+        }
+    }
 }
 
 //TO-DO
 //Implementar os métodos para gerar os relatórios
-//Implomentar os métodos para envir as mensagens
+//Implomentar os métodos para enviar as mensagens
