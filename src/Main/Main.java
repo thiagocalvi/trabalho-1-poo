@@ -6,11 +6,24 @@ package Main;
 
 import Colecao.*;
 import java.util.Scanner;
+import java.util.Timer;
+
 /**
  *
  * @author thiago
  */
 public class Main {
+    
+    public static void temporizador() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+
+    
+    
     public static void limpaTela() {
         for (int i = 0; i < 30; i++) {
             System.out.println();
@@ -45,14 +58,15 @@ public class Main {
         while (option != 4){
             System.out.println("TELA INICIAL");
             System.out.println("");
-            System.out.println("----------------------------");
+            System.out.println("+-------+------------------+");
             System.out.println("| Opção |      Tipo        |");
-            System.out.println("|--------------------------|");
+            System.out.println("+-------+------------------+");
             System.out.println("|   1   |  Administrador   |");
             System.out.println("|   2   |    Secretária    |");
             System.out.println("|   3   |      Médico      |");
+            System.out.println("+-------+------------------+");        
             System.out.println("|   4   | Sair do Programa |");
-            System.out.println("----------------------------");
+            System.out.println("+-------+------------------+");
             System.out.println("");
             System.out.print("Qual usuário você vai logar (Opção): ");
             option = read.nextInt();

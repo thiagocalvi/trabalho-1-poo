@@ -73,9 +73,9 @@ public class GerenciadorAdm {
     
     
     public void cadastrarMedico() {
-        System.out.println("----------------------------");
-        System.out.println("      TELA DE CADASTRO      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("          TELA DE CADASTRO          ");
+        System.out.println("+----------------------------------+");
         
         System.out.print("Nome médico: ");
         read.next();
@@ -117,13 +117,14 @@ public class GerenciadorAdm {
         medico.setSecretariaId(secretaria);
                
         colecaoMedicos.add(medico);
-            
-        System.out.println("Médico cadastrado com sucesso!");
+        System.out.println("+==================================+");
+        System.out.println("    MÉDICO CADASTRO COM SUCESSO!    ");
+        System.out.println("+==================================+");
 
     }
     
     public void listarMedicos(){
-        System.out.println("\n");
+        System.out.println("");
         System.out.println("+----------------------------------------+");
         System.out.println("              LISTA MEDICOS               ");
         System.out.println("+----------------------------------------+");
@@ -147,14 +148,14 @@ public class GerenciadorAdm {
 
             index += 1;
         }   
-        System.out.println("\n");
+        System.out.println("");
     }
 
     public void atualizarMedico(){
 
-        System.out.println("----------------------------");
-        System.out.println("      ATUALIZAR MEDICO      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("          ATUALIZAR MEDICO          ");
+        System.out.println("+----------------------------------+");
         
         this.listarMedicos();
         
@@ -266,13 +267,16 @@ public class GerenciadorAdm {
                 medico.setSecretariaId(secretaria);
             }
         }
-        System.out.println("Médico atualizado com sucesso!");
+        System.out.println("+====================================+");
+        System.out.println("    MÉDICO ATUALIZADO COM SUCESSO!    ");
+        System.out.println("+====================================+");
+        Main.temporizador();
     }
     
     public void removerMedico(){
-        System.out.println("----------------------------");
-        System.out.println("       REMOVER MEDICO       ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("           REMOVER MEDICO           ");
+        System.out.println("+----------------------------------+");
         
         this.listarMedicos();
         
@@ -281,7 +285,9 @@ public class GerenciadorAdm {
         
         colecaoMedicos.removeById(id);
         
-        System.out.println("Médico removido com sucesso!");
+        System.out.println("+==================================+");
+        System.out.println("    MÉDICO REMOVIDO COM SUCESSO!    ");
+        System.out.println("+==================================+");
     }
     
     
@@ -307,9 +313,9 @@ public class GerenciadorAdm {
     
     
     public void cadastrarSecretaria(){
-        System.out.println("----------------------------");
-        System.out.println("      TELA DE CADASTRO      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("          TELA DE CADASTRO          ");
+        System.out.println("+----------------------------------+");
         
         System.out.print("Nome da secretaria: ");
         String nome = read.nextLine();
@@ -336,13 +342,15 @@ public class GerenciadorAdm {
         
         colecaoSecretarias.add(secretaria);
             
-        System.out.println("Secretária cadastrada com sucesso!");      
+        System.out.println("+======================================+");
+        System.out.println("   SECRETÁRIA CADASTRADO COM SUCESSO!   ");
+        System.out.println("+======================================+");
     }
        
     public void atualizarSecretaria(){
-        System.out.println("----------------------------");
-        System.out.println("    ATUALIZAR SECRETARIA    ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("        ATUALIZAR SECRETARIA        ");
+        System.out.println("+----------------------------------+");
         
         this.listarSecretarias();
         
@@ -415,12 +423,14 @@ public class GerenciadorAdm {
             }
         }
 
-        System.out.println("Secretaria atualizada com sucesso!");
+        System.out.println("+======================================+");
+        System.out.println("   SECRETÁRIA ATUALIZADA COM SUCESSO!   ");
+        System.out.println("+======================================+");
     }
     
     public void removerSecretaria(){
         System.out.println("----------------------------");
-        System.out.println("     REMOVER SCRETARIA      ");
+        System.out.println("     REMOVER SECRETARIA      ");
         System.out.println("----------------------------");
         
         this.listarSecretarias();
@@ -430,12 +440,13 @@ public class GerenciadorAdm {
         
         colecaoSecretarias.removeById(id);
         
-        System.out.println("Secretaria removida com sucesso!");
+        System.out.println("+======================================+");
+        System.out.println("    SECRETÁRIA REMOVIDA COM SUCESSO!    ");
+        System.out.println("+======================================+");
     }
 
     public void listarSecretarias(){
-
-        System.out.println("\n");
+        System.out.println("");
         System.out.println("+----------------------------------------+");
         System.out.println("            LISTA SECRETARIAS             ");
         System.out.println("+----------------------------------------+");
@@ -456,7 +467,7 @@ public class GerenciadorAdm {
 
             index += 1;
         }       
-        System.out.println("\n");
+        System.out.println("");
     }
     
 }

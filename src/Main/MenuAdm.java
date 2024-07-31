@@ -36,17 +36,17 @@ public class MenuAdm {
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
-        System.out.println("-------------------------------------");
+        System.out.println("+-------+---------------------------+");
         System.out.println("| Opção |           Tipo            |");
-        System.out.println("|-----------------------------------|");
+        System.out.println("+-------+---------------------------+");
         System.out.println("|   1   |      Cadastrar médico     |");
         System.out.println("|   2   |      Atualizar médico     |");
         System.out.println("|   3   |       Remover médico      |");
         System.out.println("|   4   |      Lista de médicos     |");
-        System.out.println("|-----------------------------------|");
+        System.out.println("+-------+---------------------------+");
         System.out.println("|   5   | Voltar para menu anterior |");
         System.out.println("|   6   | Voltar para tela inicial  |");
-        System.out.println("-------------------------------------");
+        System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Opção: ");
         option = read.nextInt();
@@ -62,23 +62,30 @@ public class MenuAdm {
                     gerenciadorAdm.cadastroMedicosInterno();
                 }
                 else{
-                    gerenciadorAdm.cadastrarMedico();                
+                    gerenciadorAdm.cadastrarMedico();
+                    Main.temporizador();
+                    Main.limpaTela();
                 }
                 break;
                 
             case 2:
                 //Atualizar médico
                 gerenciadorAdm.atualizarMedico();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 3:
                 //Remover médico
                 gerenciadorAdm.removerMedico();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 4:
                 //Listar médicos
                 gerenciadorAdm.listarMedicos();
+                Main.temporizador();
                 break;
                 
             default:
@@ -94,21 +101,22 @@ public class MenuAdm {
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
-        System.out.println("-------------------------------------");
+        System.out.println("+-------+---------------------------+");
         System.out.println("| Opção |           Tipo            |");
-        System.out.println("|-----------------------------------|");
+        System.out.println("+-------+---------------------------+");
         System.out.println("|   1   |    Cadastrar secretária   |");
         System.out.println("|   2   |    Atualizar secretária   |");
         System.out.println("|   3   |     Remover secretária    |");
         System.out.println("|   4   |     Lista de secretária   |");
-        System.out.println("|-----------------------------------|");
+        System.out.println("+-------+---------------------------+");
         System.out.println("|   5   | Voltar para menu anterior |");
         System.out.println("|   6   | Voltar para tela inicial  |");
-        System.out.println("-------------------------------------");
+        System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
         
+        Main.limpaTela();
         switch (option){
             case 1:
                 //Cadastrar secretaria
@@ -120,7 +128,9 @@ public class MenuAdm {
                     gerenciadorAdm.cadastroSecretariaInterno();
                 }
                 else{
-                    gerenciadorAdm.cadastrarSecretaria();                
+                    gerenciadorAdm.cadastrarSecretaria();   
+                    Main.temporizador();
+                    Main.limpaTela();
                 }
                
                 break;
@@ -128,16 +138,21 @@ public class MenuAdm {
             case 2:
                 //Atualizar secretaria
                 gerenciadorAdm.atualizarSecretaria();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 3:
                 //Remover secretaria
                 gerenciadorAdm.removerSecretaria();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 4:
                 //Listar secretarias
                 gerenciadorAdm.listarSecretarias();
+                Main.temporizador();
                 break;
                 
             default:
@@ -152,14 +167,14 @@ public class MenuAdm {
     
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
-        System.out.println("-----------------------------------");
+        System.out.println("+-------+-------------------------+");
         System.out.println("| Opção |          Tipo           |");
-        System.out.println("|---------------------------------|");
+        System.out.println("+-------+-------------------------+");
         System.out.println("|   1   |         Médicos         |");
         System.out.println("|   2   |       Secretárias       |");
-        System.out.println("|---------------------------------|");
+        System.out.println("+-------+-------------------------+");
         System.out.println("|   3   | Volta para tela Inicial |");
-        System.out.println("-----------------------------------");
+        System.out.println("+-------+-------------------------+");
         System.out.println("");
         System.out.println("Qual dos funcionários você irá modificar ? :  ");
         System.out.print("Opção: ");

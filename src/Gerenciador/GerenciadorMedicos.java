@@ -102,16 +102,16 @@ public class GerenciadorMedicos {
             }
         }
 
-        System.out.println("----------------------------");
-        System.out.println("     LISTA DE CONSULTAS     ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("         LISTA DE CONSULTAS         ");
+        System.out.println("+----------------------------------+");
 
         for (Consulta consulta : consultasDoDia) {
             System.out.println("ID: " + consulta.getId());
             System.out.println("Data: " + consulta.getData());
             System.out.println("Horário: " + consulta.getHorario());
             System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-            System.out.println("----------------------------");
+            System.out.println("+----------------------------------+");
         }
     }
     
@@ -121,9 +121,9 @@ public class GerenciadorMedicos {
     
     public void cadastrarProntuario(){
         
-        System.out.println("----------------------------");
-        System.out.println("    CADASTRAR PRONTUÁRIO    ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("        CADASTRAR PRONTUÁRIO        ");
+        System.out.println("+----------------------------------+");
 
         // Coletar dados do prontuário
         //System.out.println("Informe a data da consulta (formato: YYYY-MM-DD):");
@@ -151,7 +151,9 @@ public class GerenciadorMedicos {
         consultaAtual.setProtuarioId(prontuario);
         colecaoProntuarios.add(prontuario);
 
-        System.out.println("Prontuário cadastrado com sucesso!");
+        System.out.println("+====================================+");
+        System.out.println("  PRONTUARIO CADASTRADO COM SUCESSO!  ");
+        System.out.println("+====================================+"); 
     }
     
     public void atualizarProntuario() {
@@ -160,9 +162,9 @@ public class GerenciadorMedicos {
         
         //TO-DO
         
-        System.out.println("----------------------------");
-        System.out.println("    ATUALIZAR PRONTUÁRIO    ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("        ATUALIZAR PRONTUÁRIO        ");
+        System.out.println("+----------------------------------+");
 
         System.out.println("Informe o ID do prontuário a ser atualizado:");
         int id = Integer.parseInt(read.nextLine());
@@ -210,16 +212,18 @@ public class GerenciadorMedicos {
             prontuario.setTratamento(tratamento);
         }
 
-        System.out.println("Prontuário atualizado com sucesso!");
+        System.out.println("+====================================+");
+        System.out.println("  PRONTUARIO ATUALIZADO COM SUCESSO!  ");
+        System.out.println("+====================================+"); 
     }
     
     public void removerProntuario() {
         
         //Acredito que essa função seja desnecessário
         
-        System.out.println("----------------------------");
-        System.out.println("     REMOVER PRONTUÁRIO     ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("         REMOVER PRONTUÁRIO         ");
+        System.out.println("+----------------------------------+");
 
         System.out.println("Informe o ID do prontuário a ser removido:");
         int id = Integer.parseInt(read.nextLine());
@@ -233,7 +237,9 @@ public class GerenciadorMedicos {
 
         colecaoProntuarios.remove(prontuario);
 
-        System.out.println("Prontuário removido com sucesso!");
+        System.out.println("+==================================+");
+        System.out.println("  PRONTUARIO REMOVIDO COM SUCESSO!  ");
+        System.out.println("+==================================+"); 
     }
 
     public void cadastrarDados(){
@@ -249,9 +255,9 @@ public class GerenciadorMedicos {
         }
         else{
             
-            System.out.println("----------------------------");
-            System.out.println("  CADRASTRAR DADOS MÉDICOS  ");
-            System.out.println("----------------------------");
+            System.out.println("+----------------------------------+");
+            System.out.println("      CADRASTRAR DADOS MÉDICOS      ");
+            System.out.println("+----------------------------------+");
 
             System.out.println("O paciente fuma? (true/false)");
             boolean fuma = Boolean.parseBoolean(read.nextLine());
@@ -280,17 +286,18 @@ public class GerenciadorMedicos {
             paciente.setDadosMedicosId(dadosMedicos);
             colecaoDadosMedicos.add(dadosMedicos);
 
-            System.out.println("Dados médicos cadastrados com sucesso!");
-            
+            System.out.println("+=======================================+");
+            System.out.println("  DADOS MÉDICOS CADASTRADO COM SUCESSO!  ");
+            System.out.println("+=======================================+");             
         }
         
     }
     
     public void  atualizarDados(){
         
-        System.out.println("----------------------------");
-        System.out.println("   ATUALIZAR DADOS MÉDICOS  ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("       ATUALIZAR DADOS MÉDICOS      ");
+        System.out.println("+----------------------------------+");
 
         //Não é nescessario pedir o ID dos dados medicos esse dado já esta viculado 
         //ao paciente da consulta atual
@@ -380,13 +387,14 @@ public class GerenciadorMedicos {
             dadosMedicos.setAlergias(alergias);
         }
 
-        System.out.println("Dados médicos atualizados com sucesso!");
-    }
+        System.out.println("+=======================================+");
+        System.out.println("  DADOS MÉDICOS ATUALIZADO COM SUCESSO!  ");
+        System.out.println("+=======================================+");       }
     
     public void removerDados(){
-        System.out.println("----------------------------");
-        System.out.println("    REMOVER DADOS MÉDICOS   ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("        REMOVER DADOS MÉDICOS       ");
+        System.out.println("+----------------------------------+");
 
         //Não é nescessario informar o id essa informação já está no paciente da consulta atual
         
@@ -408,8 +416,9 @@ public class GerenciadorMedicos {
         //Quando remover os dados medicos de um paciente deve se setar a atributo dadosMedicosId do paciente para 0
         //Provavelmente criar um set na classes paciente para fazer isso dever resolver
         
-        System.out.println("Dados médicos removidos com sucesso!");
-    }
+        System.out.println("+=====================================+");
+        System.out.println("  DADOS MÉDICOS REMOVIDO COM SUCESSO!  ");
+        System.out.println("+=====================================+");       }
 
     
     public void listarDados() {
@@ -417,9 +426,9 @@ public class GerenciadorMedicos {
         //Implementar a correção
         //Listar somente os dados medicos do paciente da consulta atual
         
-        System.out.println("----------------------------");
-        System.out.println("    LISTAR DADOS MÉDICOS    ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
+        System.out.println("        LISTAR DADOS MÉDICOS        ");
+        System.out.println("+----------------------------------+");
 
         //Como cada paciente terá somente um dado medico associado a ele
         //não é nescessario listar todos os dados medicos de colecaoDadosMedicos
@@ -452,7 +461,7 @@ public class GerenciadorMedicos {
         System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
         System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
         System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------+");
     }
 
     public void listarAllConsultas(){
@@ -465,7 +474,7 @@ public class GerenciadorMedicos {
                 System.out.println("Horário: " + consulta.getHorario());
                 System.out.println("Tipo: " + consulta.getTipo());
                 System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-                System.out.println("----------------------------");
+                System.out.println("+----------------------------------+");
             }
         }
     }
