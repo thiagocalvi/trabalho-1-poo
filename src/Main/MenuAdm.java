@@ -147,7 +147,33 @@ public class MenuAdm {
     }
    
     public int usuarioAdm() {
-       
+      
+        try{
+            if(colecaoMedicos.size() == 0 && colecaoSecretarias.size() == 0){
+
+                System.out.println("Atenção: Gostaria de inicializar com uma base de dados pré cadastrada? 5 Médicos e 2 Secretarias cadastrados:"); 
+                System.out.print("[1] - Sim \n[2] - Não \nOpção: ");
+                int op;
+                op = read.nextInt();
+                if(op == 1){
+                    gerenciadorAdm.cadastroSecretariaInterno();
+                    gerenciadorAdm.cadastroMedicosInterno();
+                    //Cadastrar previamente os pacientes, ao menos uns 20
+                    //Vou deixar esse metodo no menuSecretaria
+                    System.out.println("5 Médicos e 2 Secretarias cadastrados.");
+                    Thread.sleep(2000);
+                }
+                else{
+                    System.out.println("Cadastro manual, cadastre primeiro as secretarias para o correto funcionamento do sistema.");
+                    Thread.sleep(2000);
+                }
+            }        
+        }
+        catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        
+        
         int option = 0;
     
         System.out.println("USUÁRIO: ADMINISTRADOR");

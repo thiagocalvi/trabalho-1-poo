@@ -6,7 +6,7 @@ package Gerenciador;
 
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoSecretarias;
-import Main.Main;
+
 import Modelo.Medico;
 import Modelo.Secretaria;
 
@@ -68,7 +68,7 @@ public class GerenciadorAdm {
             this.colecaoMedicos.add(medico);
         }
            
-        System.out.println("Processo finalizado!");
+        System.out.println("Processo finalizado! Médicos cadastrados");
     }
     
     
@@ -300,9 +300,9 @@ public class GerenciadorAdm {
                
             colecaoSecretarias.add(secretaria);
             
-            System.out.println("Processo finalizado!");
         }
-    
+        
+        System.out.println("Processo finalizado! Secretarias cadastradas");
     }
     
     
@@ -458,5 +458,4 @@ public class GerenciadorAdm {
         }       
         System.out.println("\n");
     }
-    
 }

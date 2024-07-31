@@ -44,4 +44,8 @@ public class ColecaoPacientes {
         return null;
     }
     
+    public int size(){
+        return pacientes.size();
+    }
+    
 }

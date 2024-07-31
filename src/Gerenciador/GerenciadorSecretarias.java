@@ -232,23 +232,21 @@ public class GerenciadorSecretarias {
     }
     
     public void cadastrarPaciente(){
-        
         System.out.println("+----------------------------+");
         System.out.println("      CADASTRAR PACIENTE      ");
         System.out.println("+----------------------------+");
-
+        
         System.out.println("Informe o nome do paciente:");
         String nome = read.nextLine();
-
+        
         System.out.println("Informe a data de nascimento (formato: DD/MM/YYYY):");
         String data = read.nextLine();
         
         int dia = Integer.parseInt(data.substring(0, 2));
         int mes = Integer.parseInt(data.substring(3, 5));
-        int ano = Integer.parseInt(data.substring(6, 10)); 
+        int ano = Integer.parseInt(data.substring(6, 10));
         
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
-
         System.out.println("Informe o telefone do paciente:");
         String telefone = read.nextLine();
 
@@ -265,10 +263,11 @@ public class GerenciadorSecretarias {
         this.idPacienteControle += 1;
         paciente.setId(idPacienteControle);
         colecaoPacientes.add(paciente);
-
+            
         System.out.println("+-------------------------------------+");
         System.out.println("    PACIENTE CADASTRADO COM SUCESSO!   ");
-        System.out.println("+-------------------------------------+");
+        System.out.println("+-------------------------------------+");    
+        
     }
     
     public void atualizarPaciente(){
@@ -453,8 +452,77 @@ public class GerenciadorSecretarias {
         System.out.println("Nenhuma consulta marcada para o dia seguinte.");
         }
     }
+
+    public void cadastroPacientesInterno(){
+        String[] nomes = {
+            "Ana Clara Silva", "Carlos Alberto Souza", "Mariana Lima", "João Pedro Rocha", 
+            "Fernanda Gomes", "Rafael Oliveira", "Julia Carvalho", "Lucas Fernandes", 
+            "Amanda Costa", "Felipe Santos", "Isabela Souza", "Ricardo Lima", 
+            "Tatiana Rodrigues", "Thiago Barros", "Letícia Araujo", "Pedro Martins", 
+            "Gabriela Nunes", "Marcos Vieira", "Patrícia Almeida", "Rodrigo Pereira"
+        };
+
+        LocalDate[] datasNascimento = {
+            LocalDate.of(1990, 5, 12), LocalDate.of(1985, 8, 23), LocalDate.of(1992, 11, 5), 
+            LocalDate.of(1978, 3, 15), LocalDate.of(2000, 6, 21), LocalDate.of(1989, 9, 30), 
+            LocalDate.of(1995, 7, 18), LocalDate.of(1982, 10, 8), LocalDate.of(1994, 2, 25), 
+            LocalDate.of(1987, 12, 12), LocalDate.of(1991, 1, 4), LocalDate.of(1979, 11, 28), 
+            LocalDate.of(1983, 5, 17), LocalDate.of(1998, 8, 24), LocalDate.of(1986, 4, 11), 
+            LocalDate.of(1993, 9, 1), LocalDate.of(1997, 12, 22), LocalDate.of(1981, 6, 6), 
+            LocalDate.of(1984, 7, 14), LocalDate.of(1977, 3, 9)
+        };
+
+        String[] telefones = {
+            "(11) 91234-5678", "(21) 98765-4321", "(31) 99876-5432", "(41) 96543-2109", 
+            "(51) 91234-7890", "(61) 93456-7812", "(71) 91234-5678", "(81) 94321-6789", 
+            "(91) 98765-4321", "(11) 95678-4321", "(21) 93456-7890", "(31) 98765-4321", 
+            "(41) 93421-0987", "(51) 98765-4321", "(61) 91234-5678", "(71) 94567-8901", 
+            "(81) 97654-3210", "(91) 93456-7890", "(11) 98765-4321", "(21) 97654-3210"
+        };
+
+        String[] emails = {
+            "ana.clara@gmail.com", "carlos.alberto@outlook.com", "mariana.lima@yahoo.com", 
+            "joao.pedro@live.com", "fernanda.gomes@gmail.com", "rafael.oliveira@gmail.com", 
+            "julia.carvalho@gmail.com", "lucas.fernandes@hotmail.com", "amanda.costa@outlook.com", 
+            "felipe.santos@gmail.com", "isabela.souza@gmail.com", "ricardo.lima@hotmail.com", 
+            "tatiana.rodrigues@gmail.com", "thiago.barros@outlook.com", "leticia.araujo@gmail.com", 
+            "pedro.martins@gmail.com", "gabriela.nunes@gmail.com", "marcos.vieira@gmail.com", 
+            "patricia.almeida@hotmail.com", "rodrigo.pereira@gmail.com"
+        };
+
+        String[] enderecos = {
+            "Rua das Flores, 123", "Avenida Brasil, 45", "Rua do Comércio, 89", "Rua das Oliveiras, 456", 
+            "Avenida Central, 200", "Rua dos Pinheiros, 78", "Rua das Palmeiras, 15", "Avenida Atlântica, 789", 
+            "Rua do Lago, 123", "Avenida Paulista, 300", "Rua das Acácias, 100", "Rua do Sol, 456", 
+            "Rua das Américas, 678", "Rua do Mar, 234", "Avenida São João, 500", "Rua das Hortênsias, 789", 
+            "Rua do Campo, 345", "Avenida Independência, 678", "Rua do Bosque, 123", "Avenida Presidente, 345"
+        };
+
+        String[] tiposConvenio = {
+            "PARTICULAR","PLANOSAUDE","PLANOSAUDE","PARTICULAR", 
+            "PLANOSAUDE", "PARTICULAR","PLANOSAUDE","PLANOSAUDE", 
+            "PARTICULAR", "PLANOSAUDE","PARTICULAR","PLANOSAUDE", 
+            "PARTICULAR", "PLANOSAUDE","PLANOSAUDE","PARTICULAR", 
+            "PARTICULAR", "PLANOSAUDE","PARTICULAR","PLANOSAUDE"
+        };
+        
+        for(int i = 0; i < nomes.length; i++){
+            Paciente.tipoConvenio tipoConvenio = Paciente.tipoConvenio.valueOf(tiposConvenio[i]);
+            
+            Paciente paciente = new Paciente(tipoConvenio,nomes[i], datasNascimento[i], enderecos[i], telefones[i], emails[i]);
+            
+            
+            this.idPacienteControle += 1;
+            paciente.setId(idPacienteControle);
+            colecaoPacientes.add(paciente);
+        }
+        
+    }
+
+
 }
 
+
 //TO-DO
-//Implementar os métodos para gerar os relatórios
+//Implementar os métodos para gerar os relatórios - Feito
 //Implomentar os métodos para enviar as mensagens

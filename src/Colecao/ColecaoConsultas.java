@@ -43,4 +43,8 @@ public class ColecaoConsultas{
         
         return null;
     }
+    
+    public int size(){
+        return consultas.size();
+    }
 }

@@ -23,14 +23,14 @@ import java.util.ArrayList;
 public class MenuSecretaria {
     
     //private ColecaoMedicos colecaoMedicos;
-    //private ColecaoPacientes colecaoPacientes;
+    private ColecaoPacientes colecaoPacientes;
     //private ColecaoConsultas colecaoConsultas;
     private ColecaoSecretarias colecaoSecretarias;
     private GerenciadorSecretarias gerenciadorSecretarias;
     
     public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
         //this.colecaoMedicos = colecaoMedicos;
-        //this.colecaoPacientes = colecaoPacientes;
+        this.colecaoPacientes = colecaoPacientes;
         //this.colecaoConsultas = colecaoConsultas;
         this.colecaoSecretarias = colecaoSecretarias; 
         this.gerenciadorSecretarias = new GerenciadorSecretarias(colecaoConsultas, colecaoMedicos, colecaoPacientes);
@@ -262,6 +262,18 @@ public class MenuSecretaria {
         switch (option){
             case 1:
                 gerenciadorSecretarias.setSecretaria(secretaria);
+                
+                if(colecaoPacientes.size() == 0){
+                    int op;
+                    System.out.println("Um pré cadastro de 20 pacientes está disponivel, gostaria de utilizalo?");
+                    System.out.print("[1] - Sim\n[2] - Não\nOpção: ");
+                    op = read.nextInt();
+                    if(op == 1){
+                        gerenciadorSecretarias.cadastroPacientesInterno();
+                        System.out.println("20 Pacientes cadastrados!");
+                    }
+                
+                }
                 
                 while (option1 != 5){
                     option1 = menuInicial();

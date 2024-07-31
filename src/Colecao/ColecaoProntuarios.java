@@ -44,6 +44,9 @@ public class ColecaoProntuarios {
         
         return null;
     }
-
+    
+    public int size(){
+        return prontuarios.size();
+    }
 
 }

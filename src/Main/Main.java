@@ -31,12 +31,25 @@ public class Main {
         MenuAdm menuAdm = new MenuAdm(colecaoMedicos, colecaoSecretarias);
         MenuSecretaria menuSecretaria = new MenuSecretaria(colecaoMedicos, colecaoPacientes, colecaoConsultas, colecaoSecretarias);
         MenuMedico menuMedico = new MenuMedico(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoMedicos, colecaoDadosMedicos);
-
-
-        //System.out.println("Atenção: Para o correto funcionamento  do sistema é necessario cadastrar pelomenos 1 de cada usuarios:");
-        //System.out.println("- Seretaria\n- Medico");
-        //System.out.println("Um pré cadastro desses usuarios está disponivel, para utilizar entre como administrador");
+        
+        boolean firstInit = true;
+        
+        if(firstInit){
+            System.out.println("Na primeira inicialização do sistema é necessario logar como Administrador para fazer as devidas configurações.\n");
             
+            try{
+                firstInit = false;
+                System.out.print("Redirecionando para página do Administrador\n");
+                Thread.sleep(2000);
+                menuAdm.usuarioAdm();
+
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            
+        }
+        
+        
         Scanner read = new Scanner(System.in);
         
         int option = 0;

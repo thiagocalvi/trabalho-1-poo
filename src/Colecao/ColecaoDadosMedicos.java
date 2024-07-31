@@ -43,4 +43,8 @@ public class ColecaoDadosMedicos{
         
         return null;
     }
+
+    public int size(){
+        return dadosMedicos.size();
+    }
 }
