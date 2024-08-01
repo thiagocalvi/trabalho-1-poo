@@ -6,7 +6,6 @@ package Main;
 
 import Colecao.*;
 import java.util.Scanner;
-import java.util.Timer;
 
 /**
  *
