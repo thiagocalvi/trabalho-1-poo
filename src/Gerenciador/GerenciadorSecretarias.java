@@ -280,6 +280,8 @@ public class GerenciadorSecretarias {
         System.out.println("      ATUALIZAR PACIENTE      ");
         System.out.println("+----------------------------+");
 
+        this.listarPacientes();
+        
         System.out.println("Informe o ID do paciente a ser atualizado:");
         int id = Integer.parseInt(read.nextLine());
         Paciente paciente = colecaoPacientes.getPacienteById(id);
