@@ -89,6 +89,7 @@ public class MenuSecretaria {
                 
             case 5:
                 // Gerar Relatorios
+                gerenciadorSecretarias.gerarRelatorioConsultasDiaSeguinte();
                 Main.temporizador(4000);
                 break;
                 
