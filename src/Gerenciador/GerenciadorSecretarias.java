@@ -229,6 +229,7 @@ public class GerenciadorSecretarias {
                 System.out.println("Médico: " + colecaoMedicos.getMedicoById(consulta.getMedicoId()).getNome());
                 System.out.println("Paciente ID: " + consulta.getPacienteId());
                 System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+                System.out.println((consulta.getConsutaFinalizada()) ? "Consulta realizada: Sim" : "Consulta realizada: Não");
                 System.out.println("+----------------------------------+");
                 
             }
@@ -253,9 +254,15 @@ public class GerenciadorSecretarias {
         int ano = Integer.parseInt(data.substring(6, 10));
         
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+        
         System.out.println("Informe o telefone do paciente:");
         String telefone = read.nextLine();
 
+        while(telefone.isEmpty()){
+            System.out.println("Informe o telefone do paciente (essa informação é obrigatoria):");
+            telefone = read.nextLine();
+        }
+        
         System.out.println("Informe o e-mail do paciente:");
         String email = read.nextLine();
 
