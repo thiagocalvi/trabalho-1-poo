@@ -253,9 +253,15 @@ public class GerenciadorSecretarias {
         int ano = Integer.parseInt(data.substring(6, 10));
         
         LocalDate dataNascimento = LocalDate.of(ano, mes, dia);
+        
         System.out.println("Informe o telefone do paciente:");
         String telefone = read.nextLine();
 
+        while(telefone.isEmpty()){
+            System.out.println("Informe o telefone do paciente (essa informação é obrigatoria):");
+            telefone = read.nextLine();
+        }
+        
         System.out.println("Informe o e-mail do paciente:");
         String email = read.nextLine();
 
