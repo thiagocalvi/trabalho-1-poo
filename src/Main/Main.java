@@ -13,9 +13,9 @@ import java.util.Scanner;
  */
 public class Main {
     
-    public static void temporizador() {
+    public static void temporizador(int tempo) {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(tempo);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -48,7 +48,7 @@ public class Main {
             System.out.println("Na primeira inicialização do sistema é necessario logar como Administrador para fazer as devidas configurações.\n");
             firstInit = false;
             System.out.print("Redirecionando para página do Administrador\n");
-            Main.temporizador();
+            Main.temporizador(2000);
             menuAdm.usuarioAdm();
             
         }
@@ -59,8 +59,10 @@ public class Main {
         int option = 0;
                
         
-        while (option != 4){
+         do {
+            System.out.println("");
             System.out.println("TELA INICIAL");
+            System.out.println("");
             System.out.println("+-------+------------------+");
             System.out.println("| Opção |      Tipo        |");
             System.out.println("+-------+------------------+");
@@ -102,9 +104,11 @@ public class Main {
                     break;
                     
                 default:
+                    System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                    Main.temporizador(2000);
                     break;
             }
-        } 
+        } while (option != 4); 
     }      
 }  
 

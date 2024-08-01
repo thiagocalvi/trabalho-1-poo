@@ -10,6 +10,8 @@ import Colecao.ColecaoProntuarios;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoDadosMedicos;
 
+import Modelo.Paciente;
+
 import Gerenciador.GerenciadorMedicos;
 import Modelo.Medico;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import java.util.Scanner;
 public class MenuMedico { 
     
     //private ColecaoConsultas colecaoConsultas;
-    //private ColecaoPacientes colecaoPacientes;
+    private ColecaoPacientes colecaoPacientes;
     //private ColecaoProntuarios colecaoProntuarios;
     private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
@@ -42,7 +44,9 @@ public class MenuMedico {
     static Scanner read = new Scanner(System.in);
     
     public int menuDadosAdicionais() {
+        System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");
         System.out.println("+-------------------------------------+");
         System.out.println("|           DADOS ADICIONAIS          |");
@@ -56,35 +60,38 @@ public class MenuMedico {
         System.out.println("|   4   | Voltar para a tela anterior |");
         System.out.println("+-------+-----------------------------+");        
         System.out.println("");
-
         System.out.println("Opção: ");
-        int option = read.nextInt();
+        int option = Integer.parseInt(read.next());
         
         Main.limpaTela();
         switch (option){
             case 1:
                 // Implementar o cadastro dos dados adicionais
                 gerenciadorMedicos.cadastrarDados();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 2:
                 // Implementar o atualizar
                 gerenciadorMedicos.atualizarDados();
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 3:
                 // Implementar o remover
                 gerenciadorMedicos.removerDados();
-                //Fazer o TO-DO
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 4:
                 break;
                 
             default:
-                System.out.println("Opção Inválida!");
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;
         }
         return option;
@@ -92,7 +99,9 @@ public class MenuMedico {
     
     
     public int menuProntuario() {
+        System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");       
         System.out.println("+-------------------------------------+");
         System.out.println("|              PRONTUÁRIO             |");
@@ -106,7 +115,6 @@ public class MenuMedico {
         System.out.println("|   4   | Voltar para a tela anterior |");
         System.out.println("+-------+-----------------------------+");
         System.out.println("");
-        
         System.out.println("Opção: ");
         int option = read.nextInt();
         
@@ -115,23 +123,30 @@ public class MenuMedico {
             case 1:
                 // Implementar o cadastro
                 gerenciadorMedicos.cadastrarProntuario();
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 2:
                 // Implementar o atualizar
                 gerenciadorMedicos.atualizarProntuario();
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 3:
                 // Implementar o remover
                 gerenciadorMedicos.removerProntuario();
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 4:
                 break;
                 
             default:
-                System.out.println("Opção Inválida!");
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;
         }
         return option;
@@ -139,6 +154,9 @@ public class MenuMedico {
     
     public int menuLaudos() {
         
+        System.out.println("");
+        System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");
         System.out.println("========== LAUDOS MÉDICOS =========");
         System.out.println("");
@@ -150,23 +168,32 @@ public class MenuMedico {
         System.out.print("Escolha uma das opções (0 para sair): ");
         int option = read.nextInt();
         
+        Main.limpaTela();
         switch (option){
             case 1:
                 // Gera uma receita médica
+                gerenciadorMedicos.receitaMedica();
+                Main.temporizador(3000);
                 break;
                 
             case 2:
                 // Gera um atestado médico
+                gerenciadorMedicos.atestadoMedico();
+                Main.temporizador(3000);
                 break;
                 
             case 3:
                 // Gera uma declaração de acompanhamento
+                gerenciadorMedicos.declaracaoAcompanhamento();
+                Main.temporizador(3000);
                 break;
                 
             case 0:
                 break;
                 
             default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;            
         }        
         return option;
@@ -176,6 +203,9 @@ public class MenuMedico {
     
     
     public int menuConsulta() {
+        System.out.println("");
+        System.out.println("USUÁRIO: MÉDICO");
+        System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");
         System.out.println("+------------------------------+");
         System.out.println("|            Consulta          |");
@@ -189,15 +219,14 @@ public class MenuMedico {
         System.out.println("|   4   |  Finalizar consulta  |");
         System.out.println("+-------+----------------------+");        
         System.out.println("");
-
         System.out.print("Opção: ");
         int option = read.nextInt();
 
-        if (option != 4){
+        if (option >= 1 && option <= 3){
             Main.limpaTela();
         }
 
-        int option1 = 0;
+        int option1 = -1;
         switch (option){
             case 1:
                 while (option1 != 4){
@@ -215,13 +244,16 @@ public class MenuMedico {
                 
             case 3:
                 // Implementar os gerenciadores de relatórios.
-                Main.limpaTela();
+                while (option1 != 0){
+                    option1 = menuLaudos();
+                    Main.limpaTela();
+                }
                 break;
                 
             case 4:
                 System.out.println("Você realmente deseja 'FINALIZAR' a consulta?");
                 System.out.println("[0] - Para sim \n[1] - Para não");
-                int option2 = read.nextInt();
+                int option2 = Integer.parseInt(read.next());
                 
                 if (option2 == 1){
                     System.out.println("CONSULTA NÃO FINALIZADA!");
@@ -230,10 +262,12 @@ public class MenuMedico {
                     gerenciadorMedicos.resetConsultaAtual();
                     System.out.println("CONSULTA FINALIZADA!");
                 }
+                Main.temporizador(3000);
                 break;
                 
             default:
-                System.out.println("Opção inválida!");
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;
         }
  
@@ -242,34 +276,45 @@ public class MenuMedico {
     
     
     public int chamaConsultaMarcada() {
-        int option = 0;
-
+        gerenciadorMedicos.setConsultaAtual();
+        int IdPaciente = gerenciadorMedicos.getConsultaAtual().getPacienteId();
+        Paciente paciente = colecaoPacientes.getPacienteById(IdPaciente);
+        gerenciadorMedicos.setPaciente(paciente);
+        
+        System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
         System.out.println("");
-        System.out.println("+=====================================+");
+        System.out.println("+=====================================+");        
         System.out.println("Consultas do dia: ");
         System.out.println("");
         
         // Pegar a lista de paciente referente as consultas do dia naquele médico e exibir aqui
         gerenciadorMedicos.listaConsultasDoDia();
-        
-        System.out.println("--------------------------------");
+
+        System.out.println("+=====================================+");
         System.out.println("");
-        System.out.println("Iniciar consulta ?"); // Colocar o nome do paciente que será atendido
+        System.out.println("Iniciar consulta com o paciente: " + gerenciadorMedicos.getPaciente().getNome()); // Colocar o nome do paciente que será atendido
         System.out.println("[1] - Para sim \n[2] - Para não");
-        option = read.nextInt();
+        int option = read.nextInt();
         
         Main.limpaTela();
         
         int option1 = 0;
         switch (option){
             case 1:
-                gerenciadorMedicos.setConsultaAtual();
+//                gerenciadorMedicos.setConsultaAtual();
                 while (option1 != 4){
                     option1 = menuConsulta();
                     Main.limpaTela();
-            }            
+            }     
+            case 2:
+                break;
+                
+            default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
+                break;
         }
         return option;
     } 
@@ -304,12 +349,16 @@ public class MenuMedico {
                 break;
              
             case 2:
+                // Gera os relatórios dos clientes atendidos no mês
+                Main.temporizador(5000);
                 break;
-            
+                
             case 3:
                 break;
                      
             default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;  
         }        
         return option;
@@ -321,6 +370,7 @@ public class MenuMedico {
         // Listar todos os médicos
         ArrayList<Medico> allMedicos = colecaoMedicos.getMedicos();
         
+        System.out.println("");
         System.out.println("+-----------------------------------------+");
         for(Medico medico : allMedicos){
             System.out.printf("| Identificador: %-25s \n", medico.getId());
@@ -334,7 +384,7 @@ public class MenuMedico {
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("");
         System.out.print("LOGIN DO MÉDICO (IDENTIFICADOR) ou (0 para sair):");
-        int id = read.nextInt();
+        int id = Integer.parseInt(read.next());
         System.out.println("");
         
         if(id == 0){
@@ -343,15 +393,15 @@ public class MenuMedico {
 
         Medico medico = colecaoMedicos.getMedicoById(id);
         
-        System.out.println("-----------------------------------------");
+        System.out.println("+---------------------------------------+");
         System.out.printf("| Nome: %-25s \n", medico.getNome());
         System.out.printf("| CRM: %-24d \n", medico.getCrm());
-        System.out.println("-----------------------------------------");
+        System.out.println("+---------------------------------------+");
         System.out.println("[1] - Para entrar na conta \n[2] - Para voltar na tela inicial");
-        System.out.println("------------------------------------");  
+        System.out.println("+---------------------------------------+");  
         System.out.println("");
         System.out.print("Opção: ");
-        int option = read.nextInt();
+        int option = Integer.parseInt(read.next());
                 
         Main.limpaTela();
         int option1 = 0;
@@ -359,7 +409,7 @@ public class MenuMedico {
             case 1:
                 gerenciadorMedicos.setMedico(medico);
                 
-                while (option1 != 2){
+                while (option1 != 3){
                     option1 = menuInicial();
                     Main.limpaTela();
                 }
@@ -369,8 +419,10 @@ public class MenuMedico {
                 break;
                 
             default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;
         }
-        return option;             
+        return option;              
     }
 }

@@ -31,9 +31,7 @@ public class MenuAdm {
     static Scanner read = new Scanner(System.in); 
     
     public int chamaMedico() {
-        
-        int option = 0;
-        
+                
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
         System.out.println("+-------+---------------------------+");
@@ -49,7 +47,7 @@ public class MenuAdm {
         System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Opção: ");
-        option = read.nextInt();
+        int option  = read.nextInt();
         
         switch (option){
             case 1:
@@ -63,7 +61,7 @@ public class MenuAdm {
                 }
                 else{
                     gerenciadorAdm.cadastrarMedico();  
-                    Main.temporizador();
+                    Main.temporizador(3000);
                     Main.limpaTela();
                 }
                 break;
@@ -71,24 +69,26 @@ public class MenuAdm {
             case 2:
                 //Atualizar médico
                 gerenciadorAdm.atualizarMedico();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 3:
                 //Remover médico
                 gerenciadorAdm.removerMedico();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 4:
                 //Listar médicos
                 gerenciadorAdm.listarMedicos();
-                Main.temporizador();
+                Main.temporizador(4000);
                 break;
                 
             default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;   
         }
         
@@ -96,8 +96,6 @@ public class MenuAdm {
     }
     
     public int chamaSecretaria() {
-        
-        int option = 0;
         
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
@@ -114,7 +112,7 @@ public class MenuAdm {
         System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Escolha a opção: ");
-        option = read.nextInt();
+        int option = read.nextInt();
         
         switch (option){
             case 1:
@@ -127,7 +125,9 @@ public class MenuAdm {
                     gerenciadorAdm.cadastroSecretariaInterno();
                 }
                 else{
-                    gerenciadorAdm.cadastrarSecretaria();                
+                    gerenciadorAdm.cadastrarSecretaria();
+                    Main.temporizador(3000);
+                    Main.limpaTela();
                 }
                
                 break;
@@ -135,30 +135,39 @@ public class MenuAdm {
             case 2:
                 //Atualizar secretaria
                 gerenciadorAdm.atualizarSecretaria();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 3:
                 //Remover secretaria
                 gerenciadorAdm.removerSecretaria();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 4:
                 //Listar secretarias
                 gerenciadorAdm.listarSecretarias();
-                Main.temporizador();
+                Main.temporizador(4000);
                 break;
                 
+            case 5:
+                break;
+                
+            case 6:
+                break;
+                               
             default:
-                break;   
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
+                break;  
         }
         return option;     
     }
    
     public int usuarioAdm() {
+        
         if(colecaoMedicos.size() == 0 && colecaoSecretarias.size() == 0){
             System.out.println("Atenção: Gostaria de inicializar com uma base de dados pré cadastrada? 5 Médicos e 2 Secretarias cadastrados:");
             System.out.print("[1] - Sim \n[2] - Não \nOpção: ");
@@ -172,18 +181,16 @@ public class MenuAdm {
                 //Cadastrar previamente os pacientes, ao menos uns 20
                 //Vou deixar esse metodo no menuSecretaria
                 System.out.println("5 Médicos e 2 Secretarias cadastrados.");
-                Main.temporizador();
+                Main.temporizador(3000);
                 }
             
             else{
                 System.out.println("Cadastro manual, cadastre primeiro as secretarias para o correto funcionamento do sistema.");
-                Main.temporizador();
+                Main.temporizador(3000);
                 
             }
         }
                    
-        
-        int option = 0;
     
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
@@ -198,7 +205,7 @@ public class MenuAdm {
         System.out.println("");
         System.out.println("Qual dos funcionários você irá modificar ? :  ");
         System.out.print("Opção: ");
-        option = read.nextInt();
+        int option = read.nextInt();
 
         Main.limpaTela();
         int option1 = 0;
@@ -225,6 +232,11 @@ public class MenuAdm {
                         Main.limpaTela();    
                     }
                 }
+                break;
+            
+            default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;
        
         }
