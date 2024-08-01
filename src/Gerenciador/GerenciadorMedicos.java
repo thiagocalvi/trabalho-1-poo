@@ -34,8 +34,8 @@ public class GerenciadorMedicos {
     private ColecaoProntuarios colecaoProntuarios;
     private ColecaoDadosMedicos colecaoDadosMedicos;
     private Medico medico;
-    private Paciente paciente;
-    private Consulta consultaAtual;
+    private Paciente paciente = null;
+    private Consulta consultaAtual = null;
     private ArrayList<Consulta> consultasDoDia = new ArrayList();
     private int idDadosMedicosControle = 0;
     private int idProtuarioControle = 0;
@@ -55,7 +55,7 @@ public class GerenciadorMedicos {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) {
+    private void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
     
@@ -72,51 +72,55 @@ public class GerenciadorMedicos {
     }
     
     public void setConsultaAtual(){
-        Consulta consulta = consultasDoDia.remove(0);
-        if(consulta != null){
-            this.consultaAtual = consulta;    
-        }
+        Consulta consulta = this.consultasDoDia.get(0);
+        this.consultasDoDia.remove(consulta);
+        this.consultaAtual = consulta;
+        this.setPaciente(colecaoPacientes.getPacienteById(consultaAtual.getPacienteId()));
     }
     
     public void resetConsultaAtual(){
         this.consultaAtual.setConsutaFinalizada(true);
+        
         this.consultaAtual = null;
+        this.paciente = null;
     }
     
-    private void setConsultasDoDia(){
+    public ArrayList<Consulta> getConsultasDoDia(){
+        return this.consultasDoDia;
+    }
+    
+    public void setConsultasDoDia(){
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
+        
         LocalDate dataAtual = LocalDate.now();
+        
         for (Consulta consulta : consultas){
-            if(consulta.getMedicoId() == medico.getId() && consulta.getData().equals(dataAtual)){
-                this.consultasDoDia.add(consulta);
+            if(consulta.getMedicoId() == medico.getId() && consulta.getData().equals(dataAtual) && !consulta.getConsutaFinalizada()){
+                if(!consultasDoDia.contains(consulta)){
+                    this.consultasDoDia.add(consulta);    
+                }
             }
         }
         
         
-        Collections.sort(consultasDoDia, new Comparator<Consulta>() {
+        //Collections.sort(this.consultasDoDia, new Comparator<Consulta>() {
             
-            @Override
-            public int compare(Consulta c1, Consulta c2) {
-                return c1.getHorario().compareTo(c2.getHorario());
-            }
-        });
+          //  @Override
+          //  public int compare(Consulta c1, Consulta c2) {
+          //      return c1.getHorario().compareTo(c2.getHorario());
+          //  }
+        //});
         
         
     }
-    
-    Scanner read = new Scanner(System.in);
-    
+        
     public void listaConsultasDoDia(){
-         
-        if (consultasDoDia.isEmpty()) {
-            this.setConsultasDoDia();
-            if(consultasDoDia.isEmpty()){
-                System.out.println("Nenhuma consulta para hoje.");
-                return;        
-            }
+        if (this.consultasDoDia.isEmpty()) {
+            System.out.println("Nenhuma consulta para hoje.");
+            return;        
+            
         }
-
-
+       
         System.out.println("+----------------------------------+");
         System.out.println("         LISTA DE CONSULTAS         ");
         System.out.println("+----------------------------------+");
@@ -132,7 +136,8 @@ public class GerenciadorMedicos {
         }
     }
     
-    
+    Scanner read = new Scanner(System.in);
+
     
     public void cadastrarProntuario(){
         
