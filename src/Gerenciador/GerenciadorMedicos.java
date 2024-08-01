@@ -102,13 +102,14 @@ public class GerenciadorMedicos {
         }
         
         
-        //Collections.sort(this.consultasDoDia, new Comparator<Consulta>() {
+        Collections.sort(this.consultasDoDia, new Comparator<Consulta>() {
             
-          //  @Override
-          //  public int compare(Consulta c1, Consulta c2) {
-          //      return c1.getHorario().compareTo(c2.getHorario());
-          //  }
-        //});
+            @Override
+            public int compare(Consulta c1, Consulta c2) {
+                return c1.getHorario().compareTo(c2.getHorario());
+           }
+            
+        });
         
         
     }
