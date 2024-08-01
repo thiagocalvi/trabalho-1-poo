@@ -10,7 +10,7 @@ import Colecao.ColecaoProntuarios;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoDadosMedicos;
 
-import Modelo.Paciente;
+//import Modelo.Paciente;
 
 import Gerenciador.GerenciadorMedicos;
 import Modelo.Medico;
@@ -26,7 +26,7 @@ import java.util.Scanner;
 public class MenuMedico { 
     
     //private ColecaoConsultas colecaoConsultas;
-    private ColecaoPacientes colecaoPacientes;
+    //private ColecaoPacientes colecaoPacientes;
     //private ColecaoProntuarios colecaoProntuarios;
     private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
@@ -276,10 +276,6 @@ public class MenuMedico {
     
     
     public int chamaConsultaMarcada() {
-        gerenciadorMedicos.setConsultaAtual();
-        int IdPaciente = gerenciadorMedicos.getConsultaAtual().getPacienteId();
-        Paciente paciente = colecaoPacientes.getPacienteById(IdPaciente);
-        gerenciadorMedicos.setPaciente(paciente);
         
         System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
@@ -290,11 +286,18 @@ public class MenuMedico {
         System.out.println("");
         
         // Pegar a lista de paciente referente as consultas do dia naquele médico e exibir aqui
+        gerenciadorMedicos.setConsultasDoDia();
+        
+        
+        if(gerenciadorMedicos.getConsultasDoDia().isEmpty()){
+            return 2;
+        }
+        
         gerenciadorMedicos.listaConsultasDoDia();
-
+        
         System.out.println("+=====================================+");
         System.out.println("");
-        System.out.println("Iniciar consulta com o paciente: " + gerenciadorMedicos.getPaciente().getNome()); // Colocar o nome do paciente que será atendido
+        System.out.println("Iniciar consulta"); 
         System.out.println("[1] - Para sim \n[2] - Para não");
         int option = read.nextInt();
         
@@ -303,7 +306,7 @@ public class MenuMedico {
         int option1 = 0;
         switch (option){
             case 1:
-//                gerenciadorMedicos.setConsultaAtual();
+                gerenciadorMedicos.setConsultaAtual();
                 while (option1 != 4){
                     option1 = menuConsulta();
                     Main.limpaTela();
@@ -350,6 +353,7 @@ public class MenuMedico {
              
             case 2:
                 // Gera os relatórios dos clientes atendidos no mês
+                gerenciadorMedicos.relatorioMensal();
                 Main.temporizador(5000);
                 break;
                 
