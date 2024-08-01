@@ -27,13 +27,11 @@ public class MenuAdm {
         this.gerenciadorAdm  = new GerenciadorAdm(this.colecaoMedicos, this.colecaoSecretarias); 
     }
     
-    
     static Scanner read = new Scanner(System.in); 
     
     public int chamaMedico() {
-        
-        int option = 0;
-        
+                
+        System.out.println("");
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
         System.out.println("+-------+---------------------------+");
@@ -49,7 +47,7 @@ public class MenuAdm {
         System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Opção: ");
-        option = read.nextInt();
+        int option = read.nextInt();
         
         switch (option){
             case 1:
@@ -63,7 +61,7 @@ public class MenuAdm {
                 }
                 else{
                     gerenciadorAdm.cadastrarMedico();
-                    Main.temporizador();
+                    Main.temporizador(3000);
                     Main.limpaTela();
                 }
                 break;
@@ -71,24 +69,26 @@ public class MenuAdm {
             case 2:
                 //Atualizar médico
                 gerenciadorAdm.atualizarMedico();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 3:
                 //Remover médico
                 gerenciadorAdm.removerMedico();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 4:
                 //Listar médicos
                 gerenciadorAdm.listarMedicos();
-                Main.temporizador();
+                Main.temporizador(4000);
                 break;
                 
             default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;   
         }
         
@@ -96,9 +96,8 @@ public class MenuAdm {
     }
     
     public int chamaSecretaria() {
-        
-        int option = 0;
-        
+                
+        System.out.println("");
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
         System.out.println("+-------+---------------------------+");
@@ -114,7 +113,7 @@ public class MenuAdm {
         System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Escolha a opção: ");
-        option = read.nextInt();
+        int option = read.nextInt();
         
         Main.limpaTela();
         switch (option){
@@ -129,7 +128,7 @@ public class MenuAdm {
                 }
                 else{
                     gerenciadorAdm.cadastrarSecretaria();   
-                    Main.temporizador();
+                    Main.temporizador(3000);
                     Main.limpaTela();
                 }
                
@@ -138,24 +137,32 @@ public class MenuAdm {
             case 2:
                 //Atualizar secretaria
                 gerenciadorAdm.atualizarSecretaria();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 3:
                 //Remover secretaria
                 gerenciadorAdm.removerSecretaria();
-                Main.temporizador();
+                Main.temporizador(3000);
                 Main.limpaTela();
                 break;
                 
             case 4:
                 //Listar secretarias
                 gerenciadorAdm.listarSecretarias();
-                Main.temporizador();
+                Main.temporizador(4000);
                 break;
                 
+            case 5:
+                break;
+                
+            case 6:
+                break;
+                               
             default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
                 break;   
         }
         return option;     
@@ -163,8 +170,7 @@ public class MenuAdm {
    
     public int usuarioAdm() {
        
-        int option = 0;
-    
+        System.out.println("");
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
         System.out.println("+-------+-------------------------+");
@@ -178,7 +184,7 @@ public class MenuAdm {
         System.out.println("");
         System.out.println("Qual dos funcionários você irá modificar ? :  ");
         System.out.print("Opção: ");
-        option = read.nextInt();
+        int option = read.nextInt();
 
         Main.limpaTela();
         int option1 = 0;
@@ -206,7 +212,14 @@ public class MenuAdm {
                     }
                 }
                 break;
-       
+                
+            case 3:
+                break;
+                
+            default:
+                System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                Main.temporizador(2000);
+                break;
         }
         return option; 
     }

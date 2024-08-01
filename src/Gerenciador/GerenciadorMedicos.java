@@ -7,6 +7,7 @@ import Colecao.ColecaoConsultas;
 import Colecao.ColecaoPacientes;
 import Colecao.ColecaoProntuarios;
 import Colecao.ColecaoDadosMedicos;
+import Main.Main;
 
 import Modelo.Paciente;
 import Modelo.Consulta;
@@ -31,6 +32,7 @@ public class GerenciadorMedicos {
     private ColecaoProntuarios colecaoProntuarios;
     private ColecaoDadosMedicos colecaoDadosMedicos;
     private Medico medico;
+    private Paciente paciente;
     private Consulta consultaAtual;
     private ArrayList<Consulta> consultasDoDia = new ArrayList();
     private int idDadosMedicosControle = 0;
@@ -53,7 +55,16 @@ public class GerenciadorMedicos {
     public void setMedico(Medico medico){
         this.medico = medico;
     }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
     
+   
     public Consulta getConsultaAtual(){
         return this.consultaAtual;
     }
@@ -478,7 +489,107 @@ public class GerenciadorMedicos {
             }
         }
     }
-}
+    
+    
+    public void receitaMedica() {
 
-//TO-DO
-//Implementar os métodos para gerar os relatórios
+        System.out.println("Separe os medicamentos por virgula(',')!");
+        System.out.print("Informe os medicamentos para colocar na receita: ");
+        String medicamentos = read.nextLine();
+        String[] arrayMedicamentos = medicamentos.split(",");
+        System.out.println("");        
+        
+        System.out.println("Gerando receita... ");
+        Main.temporizador(3000);
+        
+        System.out.println("");
+        System.out.println("+=========================================+");
+        System.out.println("              RECEITA MÉDICA               ");
+        System.out.println("+=========================================+");
+        System.out.println("Consultório: +Melhor");
+        System.out.println("Doutor: " + medico.getNome());
+        System.out.println("Data: " + LocalDate.now()); 
+        System.out.println("Paciente: " + paciente.getNome());
+        System.out.println("");
+        System.out.println("Medicamentos: ");
+        
+        for (String medicamento : arrayMedicamentos){
+            System.out.println("         " + medicamento);
+        }
+
+        System.out.println("+=========================================+");
+    }
+    
+    
+    public void atestadoMedico() {
+
+        
+        System.out.println("Motivo da ausência: ");
+        String ausencia = read.nextLine();
+        
+        System.out.println("Quantos dias de afastamento?");
+        int afastamento = read.nextInt();
+        
+        System.out.println("Gerando atestado...");
+        Main.temporizador(3000);
+        
+        System.out.println("+=========================================+");
+        System.out.println("             ATESTADO MÉDICO               ");
+        System.out.println("+=========================================+");
+        System.out.println("Paciente: " + paciente.getNome());
+        System.out.println("Data: " + LocalDate.now());
+        System.out.println("Dias de repouso: " + afastamento);
+        System.out.println("Médico responsável: " + medico.getNome());
+        System.out.println("+=========================================+");
+    }
+    
+    
+    public void declaracaoAcompanhamento(){
+        System.out.println("Nome do acompanhante: ");
+        String acompanhante = read.nextLine();
+        
+        System.out.println("Motivo do acompanhante: ");
+        String motivo = read.nextLine();
+        
+        System.out.println("Gerando declaraçao de acompanhamento...");
+        Main.temporizador(3000);
+        
+        System.out.println("+=========================================+");
+        System.out.println("        DECLARAÇÃO DE ACOMPANHAMENTO       ");
+        System.out.println("+=========================================+");
+        System.out.println("Paciente: " + paciente.getNome());
+        System.out.println("Acompanhante: " + acompanhante);
+        System.out.println("Motivo do acompanhante: " + motivo);
+        System.out.println("");
+        System.out.println("Data: " + LocalDate.now());
+        System.out.println("Médico responsável: " + medico.getNome());
+        System.out.println("+=========================================+");
+        
+    }
+    
+    public void relatorioMensal(){
+        
+        int totalClientes = 0;
+        
+        System.out.println("+=========================================+");
+        System.out.println("        RELATÓRIO MENSAL DE CLIENTES       ");
+        System.out.println("+=========================================+");
+        
+        int mesAtual = LocalDate.now().getMonthValue();
+        for (Consulta consulta : colecaoConsultas.getConsultas()){
+            if (consulta.getconsultaFinalizada == true){
+                if (consulta.getData().getMonthValue() == mesAtual){
+                    totalClientes ++;
+                    
+                    System.out.println(colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+                    System.out.println(colecaoPacientes.getPacienteById(consulta.getPacienteId()).getTipoConvenio());
+                    System.out.println("+------------------------------------------+");
+                }
+            }
+        }
+        System.out.println("+=========================================+");
+        System.out.println("Total de Clientes atendidos nesse mês: " + totalClientes);
+        
+    }
+        
+}

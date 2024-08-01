@@ -36,7 +36,6 @@ public class GerenciadorAdm {
         this.colecaoSecretarias = colecaoSecretarias;
     }
     
-    
     Scanner read = new Scanner(System.in);
     
     
@@ -78,7 +77,6 @@ public class GerenciadorAdm {
         System.out.println("+----------------------------------+");
         
         System.out.print("Nome médico: ");
-        read.next();
         String nome = read.nextLine();
         
         System.out.print("Data de nascimento (formato: DD/MM/YYYY): ");
@@ -270,7 +268,6 @@ public class GerenciadorAdm {
         System.out.println("+====================================+");
         System.out.println("    MÉDICO ATUALIZADO COM SUCESSO!    ");
         System.out.println("+====================================+");
-        Main.temporizador();
     }
     
     public void removerMedico(){
@@ -282,6 +279,7 @@ public class GerenciadorAdm {
         
         System.out.println("Informe o id do médico que será removido: ");
         int id = read.nextInt();
+        read.nextLine();
         
         colecaoMedicos.removeById(id);
         
@@ -429,14 +427,15 @@ public class GerenciadorAdm {
     }
     
     public void removerSecretaria(){
-        System.out.println("----------------------------");
-        System.out.println("     REMOVER SECRETARIA      ");
-        System.out.println("----------------------------");
+        System.out.println("+----------------------------------------+");
+        System.out.println("            REMOVER SECRETARIA            ");
+        System.out.println("+----------------------------------------+");
         
         this.listarSecretarias();
         
         System.out.println("Informe o id do secretaria que será removido: ");
         int id = read.nextInt();
+        read.nextLine();
         
         colecaoSecretarias.removeById(id);
         

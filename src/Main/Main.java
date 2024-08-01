@@ -14,14 +14,13 @@ import java.util.Timer;
  */
 public class Main {
     
-    public static void temporizador() {
+    public static void temporizador(int tempo) {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(tempo);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
     }
-
     
     
     public static void limpaTela() {
@@ -30,6 +29,7 @@ public class Main {
         }
     }
         
+    
     public static void main(String[] args){
         
         //Inicializando as coleções
@@ -51,11 +51,10 @@ public class Main {
         //System.out.println("Um pré cadastro desses usuarios está disponivel, para utilizar entre como administrador");
             
         Scanner read = new Scanner(System.in);
+        int option;        
         
-        int option = 0;
-               
-        
-        while (option != 4){
+        do {
+            System.out.println("");
             System.out.println("TELA INICIAL");
             System.out.println("");
             System.out.println("+-------+------------------+");
@@ -99,9 +98,11 @@ public class Main {
                     break;
                     
                 default:
+                    System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
+                    Main.temporizador(2000);
                     break;
             }
-        } 
+        } while (option != 4);
     }      
 }  
 
