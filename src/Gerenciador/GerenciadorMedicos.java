@@ -114,8 +114,6 @@ public class GerenciadorMedicos {
         }
 
         System.out.println("+----------------------------------+");
-        System.out.println("         LISTA DE CONSULTAS         ");
-        System.out.println("+----------------------------------+");
 
         for (Consulta consulta : consultasDoDia) {
             System.out.println("ID: " + consulta.getId());
@@ -523,7 +521,6 @@ public class GerenciadorMedicos {
     
     public void atestadoMedico() {
 
-        
         System.out.println("Motivo da ausência: ");
         String ausencia = read.nextLine();
         
