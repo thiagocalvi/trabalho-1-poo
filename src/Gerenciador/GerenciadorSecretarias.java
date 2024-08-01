@@ -229,6 +229,7 @@ public class GerenciadorSecretarias {
                 System.out.println("Médico: " + colecaoMedicos.getMedicoById(consulta.getMedicoId()).getNome());
                 System.out.println("Paciente ID: " + consulta.getPacienteId());
                 System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+                System.out.println((consulta.getConsutaFinalizada()) ? "Consulta realizada: Sim" : "Consulta realizada: Não");
                 System.out.println("+----------------------------------+");
                 
             }
