@@ -277,11 +277,6 @@ public class MenuMedico {
     
     public int chamaConsultaMarcada() {
 
-        gerenciadorMedicos.setConsultaAtual();
-        int IdPaciente = gerenciadorMedicos.getConsultaAtual().getPacienteId();
-        Paciente paciente = colecaoPacientes.getPacienteById(IdPaciente);
-        gerenciadorMedicos.setPaciente(paciente);
-        
         System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
