@@ -10,6 +10,8 @@ import Colecao.ColecaoProntuarios;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoDadosMedicos;
 
+import Modelo.Paciente;
+
 import Gerenciador.GerenciadorMedicos;
 import Modelo.Medico;
 import Modelo.Paciente;
@@ -83,7 +85,6 @@ public class MenuMedico {
                 gerenciadorMedicos.removerDados();
                 Main.temporizador(3000);
                 Main.limpaTela();
-                //Fazer o TO-DO
                 break;
                 
             case 4:
@@ -99,7 +100,7 @@ public class MenuMedico {
     
     
     public int menuProntuario() {
-        
+
         System.out.println("");
         System.out.println("USUÁRIO: MÉDICO");
         System.out.println("Doutor(a): " + gerenciadorMedicos.getMedico().getNome());
@@ -152,7 +153,6 @@ public class MenuMedico {
         }
         return option;
     }
-    
     
     public int menuLaudos() {
         
@@ -243,6 +243,7 @@ public class MenuMedico {
                 break;
                 
             case 3:
+                // Implementar os gerenciadores de relatórios.
                 while (option1 != 0){
                     option1 = menuLaudos();
                     Main.limpaTela();
@@ -275,7 +276,7 @@ public class MenuMedico {
     
     
     public int chamaConsultaMarcada() {
-        
+
         gerenciadorMedicos.setConsultaAtual();
         int IdPaciente = gerenciadorMedicos.getConsultaAtual().getPacienteId();
         Paciente paciente = colecaoPacientes.getPacienteById(IdPaciente);
@@ -423,6 +424,6 @@ public class MenuMedico {
                 Main.temporizador(2000);
                 break;
         }
-        return option;             
+        return option;              
     }
 }

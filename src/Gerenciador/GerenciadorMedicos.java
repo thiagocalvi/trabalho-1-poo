@@ -15,6 +15,8 @@ import Modelo.Prontuario;
 import Modelo.DadosMedicos;
 import Modelo.Medico;
 
+import Main.Main;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -48,14 +50,7 @@ public class GerenciadorMedicos {
         
     }
     
-    public Medico getMedico(){
-        return this.medico;
-    }
     
-    public void setMedico(Medico medico){
-        this.medico = medico;
-    }
-
     public Paciente getPaciente() {
         return paciente;
     }
@@ -64,6 +59,13 @@ public class GerenciadorMedicos {
         this.paciente = paciente;
     }
     
+    public Medico getMedico(){
+        return this.medico;
+    }
+    
+    public void setMedico(Medico medico){
+        this.medico = medico;
+    }   
    
     public Consulta getConsultaAtual(){
         return this.consultaAtual;
@@ -77,6 +79,7 @@ public class GerenciadorMedicos {
     }
     
     public void resetConsultaAtual(){
+        this.consultaAtual.setConsutaFinalizada(true);
         this.consultaAtual = null;
     }
     
@@ -113,18 +116,21 @@ public class GerenciadorMedicos {
             }
         }
 
+
+        System.out.println("+----------------------------------+");
+        System.out.println("         LISTA DE CONSULTAS         ");
         System.out.println("+----------------------------------+");
 
         for (Consulta consulta : consultasDoDia) {
-            System.out.println("ID: " + consulta.getId());
-            System.out.println("Data: " + consulta.getData());
-            System.out.println("Horário: " + consulta.getHorario());
-            System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-            System.out.println("+----------------------------------+");
+            if(!consulta.getConsutaFinalizada()){
+                System.out.println("ID: " + consulta.getId());
+                System.out.println("Data: " + consulta.getData());
+                System.out.println("Horário: " + consulta.getHorario());
+                System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+                System.out.println("+----------------------------------+");
+            }
         }
     }
-    
-    
     
     
     
@@ -295,9 +301,11 @@ public class GerenciadorMedicos {
             paciente.setDadosMedicosId(dadosMedicos);
             colecaoDadosMedicos.add(dadosMedicos);
 
+
             System.out.println("+=======================================+");
             System.out.println("  DADOS MÉDICOS CADASTRADO COM SUCESSO!  ");
-            System.out.println("+=======================================+");             
+            System.out.println("+=======================================+");    
+            
         }
         
     }
@@ -398,7 +406,8 @@ public class GerenciadorMedicos {
 
         System.out.println("+=======================================+");
         System.out.println("  DADOS MÉDICOS ATUALIZADO COM SUCESSO!  ");
-        System.out.println("+=======================================+");       }
+        System.out.println("+=======================================+");   
+    }
     
     public void removerDados(){
         System.out.println("+----------------------------------+");
@@ -427,7 +436,8 @@ public class GerenciadorMedicos {
         
         System.out.println("+=====================================+");
         System.out.println("  DADOS MÉDICOS REMOVIDO COM SUCESSO!  ");
-        System.out.println("+=====================================+");       }
+        System.out.println("+=====================================+");  
+    }
 
     
     public void listarDados() {
@@ -574,7 +584,7 @@ public class GerenciadorMedicos {
         
         int mesAtual = LocalDate.now().getMonthValue();
         for (Consulta consulta : colecaoConsultas.getConsultas()){
-            if (consulta.getconsultaFinalizada == true){
+            if (consulta.getConsutaFinalizada() == true){
                 if (consulta.getData().getMonthValue() == mesAtual){
                     totalClientes ++;
                     
@@ -590,3 +600,6 @@ public class GerenciadorMedicos {
     }
         
 }
+
+//TO-DO - FEITO
+//Implementar os métodos para gerar os relatórios

@@ -42,4 +42,8 @@ public class ColecaoSecretarias {
         
         return null;
     }
+    
+    public int size(){
+        return secretarias.size();
+    }
 }

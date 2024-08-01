@@ -6,9 +6,11 @@ package Gerenciador;
 
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoSecretarias;
-import Main.Main;
+
 import Modelo.Medico;
 import Modelo.Secretaria;
+
+import Main.Main;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -67,7 +69,7 @@ public class GerenciadorAdm {
             this.colecaoMedicos.add(medico);
         }
            
-        System.out.println("Processo finalizado!");
+        System.out.println("Processo finalizado! Médicos cadastrados");
     }
     
     
@@ -115,6 +117,7 @@ public class GerenciadorAdm {
         medico.setSecretariaId(secretaria);
                
         colecaoMedicos.add(medico);
+
         System.out.println("+==================================+");
         System.out.println("    MÉDICO CADASTRO COM SUCESSO!    ");
         System.out.println("+==================================+");
@@ -265,9 +268,11 @@ public class GerenciadorAdm {
                 medico.setSecretariaId(secretaria);
             }
         }
+
         System.out.println("+====================================+");
         System.out.println("    MÉDICO ATUALIZADO COM SUCESSO!    ");
         System.out.println("+====================================+");
+        
     }
     
     public void removerMedico(){
@@ -304,9 +309,9 @@ public class GerenciadorAdm {
                
             colecaoSecretarias.add(secretaria);
             
-            System.out.println("Processo finalizado!");
         }
-    
+        
+        System.out.println("Processo finalizado! Secretarias cadastradas");
     }
     
     
@@ -342,7 +347,7 @@ public class GerenciadorAdm {
             
         System.out.println("+======================================+");
         System.out.println("   SECRETÁRIA CADASTRADO COM SUCESSO!   ");
-        System.out.println("+======================================+");
+        System.out.println("+======================================+");   
     }
        
     public void atualizarSecretaria(){
@@ -427,6 +432,10 @@ public class GerenciadorAdm {
     }
     
     public void removerSecretaria(){
+
+        //TODO
+        //Quando uma secretaria é removida o id dela deve ser
+        //retirado dos medicos que ela gerenciava
         System.out.println("+----------------------------------------+");
         System.out.println("            REMOVER SECRETARIA            ");
         System.out.println("+----------------------------------------+");
@@ -445,6 +454,7 @@ public class GerenciadorAdm {
     }
 
     public void listarSecretarias(){
+
         System.out.println("");
         System.out.println("+----------------------------------------+");
         System.out.println("            LISTA SECRETARIAS             ");
@@ -456,7 +466,7 @@ public class GerenciadorAdm {
         
         for(Secretaria secretaria : allSecretarias){
 
-            System.out.printf("| Index: %-25s \n", index);
+            System.out.println("+----------------------------------------+");
             System.out.printf("| Id: %-25s \n", secretaria.getId());
             System.out.printf("| Nome: %-25s \n", secretaria.getNome());
             System.out.printf("| Data de nascimento: %-10s \n", secretaria.getDataNascimento());
@@ -468,5 +478,4 @@ public class GerenciadorAdm {
         }       
         System.out.println("");
     }
-    
 }

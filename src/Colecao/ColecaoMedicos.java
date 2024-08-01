@@ -45,6 +45,10 @@ public class ColecaoMedicos {
         
         return null;
     }
+    
+    public int size(){
+        return medicos.size();
+    }
 
 
 }

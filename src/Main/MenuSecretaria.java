@@ -23,14 +23,14 @@ import java.util.ArrayList;
 public class MenuSecretaria {
     
     //private ColecaoMedicos colecaoMedicos;
-    //private ColecaoPacientes colecaoPacientes;
+    private ColecaoPacientes colecaoPacientes;
     //private ColecaoConsultas colecaoConsultas;
     private ColecaoSecretarias colecaoSecretarias;
     private GerenciadorSecretarias gerenciadorSecretarias;
     
     public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
         //this.colecaoMedicos = colecaoMedicos;
-        //this.colecaoPacientes = colecaoPacientes;
+        this.colecaoPacientes = colecaoPacientes;
         //this.colecaoConsultas = colecaoConsultas;
         this.colecaoSecretarias = colecaoSecretarias; 
         this.gerenciadorSecretarias = new GerenciadorSecretarias(colecaoConsultas, colecaoMedicos, colecaoPacientes);
@@ -39,7 +39,7 @@ public class MenuSecretaria {
     Scanner read = new Scanner(System.in);
     
     public int chamaConsulta() {
-        
+
         System.out.println("");
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
@@ -90,6 +90,8 @@ public class MenuSecretaria {
                 
             case 5:
                 // Gerar Relatorios
+
+                gerenciadorSecretarias.gerarRelatorioConsultasDiaSeguinte();
                 Main.temporizador(4000);
                 break;
                 
@@ -110,7 +112,7 @@ public class MenuSecretaria {
     
     
     public int chamaPaciente() {
-            
+
         System.out.println("");
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
@@ -174,7 +176,7 @@ public class MenuSecretaria {
     }
     
     public int menuInicial() {
-        
+
         System.out.println("");
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
@@ -255,6 +257,7 @@ public class MenuSecretaria {
             System.out.printf("| Nome: %-25s \n", secretaria.getNome());
             System.out.println("+----------------------------------------+");
         } 
+        
         System.out.println("\n \n");
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("");
@@ -276,13 +279,25 @@ public class MenuSecretaria {
         System.out.println("");
         System.out.print("Opção: ");
         int option = read.nextInt();
-        read.nextLine();
+        read.nextLine();  
         
         Main.limpaTela();   
         int option1 = 0;
         switch (option){
             case 1:
                 gerenciadorSecretarias.setSecretaria(secretaria);
+                
+                if(colecaoPacientes.size() == 0){
+                    int op;
+                    System.out.println("Um pré cadastro de 20 pacientes está disponivel, gostaria de utilizalo?");
+                    System.out.print("[1] - Sim\n[2] - Não\nOpção: ");
+                    op = read.nextInt();
+                    if(op == 1){
+                        gerenciadorSecretarias.cadastroPacientesInterno();
+                        System.out.println("20 Pacientes cadastrados!");
+                    }
+                
+                }
                 
                 while (option1 != 5){
                     option1 = menuInicial();
