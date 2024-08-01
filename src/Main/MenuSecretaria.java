@@ -43,19 +43,19 @@ public class MenuSecretaria {
         
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
-        System.out.println("");
-        System.out.println("-------------------------------------------------------");
+         System.out.println("");
+        System.out.println("+-------+---------------------------------------------+");
         System.out.println("| Opção |                  Tipo                       |");
-        System.out.println("|-----------------------------------------------------|");
+        System.out.println("+-------+---------------------------------------------+");
         System.out.println("|   1   |              Marcar consulta                |");
         System.out.println("|   2   |             Atualizar consulta              |");
         System.out.println("|   3   |              Remover consulta               |");
         System.out.println("|   4   |             Lista de consultas              |");        
         System.out.println("|   5   | Gerar relatório de consulta do dia seguinte |");
-        System.out.println("|-----------------------------------------------------|");
+        System.out.println("+-------+---------------------------------------------+");
         System.out.println("|   6   |         Voltar para menu anterior           |");
         System.out.println("|   7   |          Voltar para tela inicial           |");
-        System.out.println("-------------------------------------------------------");
+        System.out.println("+-------+---------------------------------------------+");
         System.out.println("");
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
@@ -64,27 +64,34 @@ public class MenuSecretaria {
             case 1:
                 // Cadastrar consulta
                 gerenciadorSecretarias.cadastrarConsulta();
-                
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 2:
                 // Atualizar consulta
                 gerenciadorSecretarias.atualizarConsulta();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 3:
                 // Remover Consulta
                 gerenciadorSecretarias.removerConsulta(); ;
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 4:
                 // Lista de consultas
                 gerenciadorSecretarias.listarConsultas();
+                Main.temporizador();
                 break;
                 
             case 5:
                 // Gerar Relatorios
                 gerenciadorSecretarias.gerarRelatorioConsultasDiaSeguinte();
+                Main.temporizador();
                 break;
                 
             case 6:
@@ -107,17 +114,17 @@ public class MenuSecretaria {
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
         System.out.println("");
-        System.out.println("-----------------------------------------");
+        System.out.println("+-------+-------------------------------+");
         System.out.println("| Opção |             Tipo              |");
-        System.out.println("|---------------------------------------|");
+        System.out.println("+-------+-------------------------------+");
         System.out.println("|   1   |       Cadastrar paciente      |");
         System.out.println("|   2   |       Atualizar paciente      |");
         System.out.println("|   3   |        Remover paciente       |");
         System.out.println("|   4   |       Lista de pacientes      |");
-        System.out.println("|---------------------------------------|");
+        System.out.println("+-------+-------------------------------+");
         System.out.println("|   5   |  Voltar para menu anterior    |");
         System.out.println("|   6   |   Voltar para tela inicial    |");
-        System.out.println("-----------------------------------------");
+        System.out.println("+-------+-------------------------------+");
         System.out.println("");
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
@@ -126,21 +133,28 @@ public class MenuSecretaria {
             case 1:
                 // Cadastrar paciente
                 gerenciadorSecretarias.cadastrarPaciente();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 2:
                 // Atualizar paciente
                 gerenciadorSecretarias.atualizarPaciente();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 3:
                 // Remover paciente
                 gerenciadorSecretarias.removerPaciente();
+                Main.temporizador();
+                Main.limpaTela();
                 break;
                 
             case 4:
                 // Lista paciente
                 gerenciadorSecretarias.listarPacientes();
+                Main.temporizador();
                 break;
              
             case 5:
@@ -162,16 +176,16 @@ public class MenuSecretaria {
         System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("Secretária: " + gerenciadorSecretarias.getSecretaria().getNome());
         System.out.println("");
-        System.out.println("-------------------------------------");
+        System.out.println("+-------+---------------------------+");
         System.out.println("| Opção |           Tipo            |");
-        System.out.println("|-----------------------------------|");
+        System.out.println("+-------+---------------------------+");
         System.out.println("|   1   |         Consultas         |");
         System.out.println("|   2   |         Pacientes         |");
         System.out.println("|   3   |      Lista de médicos     |");
         System.out.println("|   4   |      Enviar mensagens     |");
-        System.out.println("|-----------------------------------|");
+        System.out.println("+-------+---------------------------+");
         System.out.println("|   5   |       Sair da conta       |");
-        System.out.println("-------------------------------------");
+        System.out.println("+-------+---------------------------+");
         System.out.println("");
         System.out.print("Escolha a opção: ");
         option = read.nextInt();
@@ -204,6 +218,7 @@ public class MenuSecretaria {
             case 3:
                 // Exibir todos os médicos que estão na lista
                  gerenciadorSecretarias.listarMedicos();
+                 Main.temporizador();
                 break;
                     
             case 4: 
