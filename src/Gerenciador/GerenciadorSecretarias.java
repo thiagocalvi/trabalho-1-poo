@@ -98,7 +98,8 @@ public class GerenciadorSecretarias {
         consulta.setMedicoId(medico);
         consulta.setPacienteId(paciente);
         consulta.setTipo(tipoStr.toUpperCase());
-
+        consulta.setConsutaFinalizada(false);
+        
         // Adiciona a consulta à coleção
         colecaoConsultas.add(consulta);
 

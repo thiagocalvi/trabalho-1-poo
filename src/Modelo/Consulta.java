@@ -24,6 +24,7 @@ public class Consulta {
     private int pacienteId;
     private Tipo tipo;
     private int protuarioId = 0;
+    private boolean consutaFinalizada;
     
     //Construtor
     public Consulta(LocalDate data, LocalTime horario) {
@@ -32,6 +33,15 @@ public class Consulta {
     }
     
     //Gets e Sets
+
+    public boolean getConsutaFinalizada() {
+        return consutaFinalizada;
+    }
+    
+    public void setConsutaFinalizada(boolean status){
+        this.consutaFinalizada = status;
+    }
+    
     public int getProtuarioId() {
         return protuarioId;
     }

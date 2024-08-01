@@ -66,6 +66,7 @@ public class GerenciadorMedicos {
     }
     
     public void resetConsultaAtual(){
+        this.consultaAtual.setConsutaFinalizada(true);
         this.consultaAtual = null;
     }
     
