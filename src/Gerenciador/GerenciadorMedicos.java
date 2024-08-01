@@ -109,11 +109,13 @@ public class GerenciadorMedicos {
         System.out.println("+----------------------------------+");
 
         for (Consulta consulta : consultasDoDia) {
-            System.out.println("ID: " + consulta.getId());
-            System.out.println("Data: " + consulta.getData());
-            System.out.println("Horário: " + consulta.getHorario());
-            System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-            System.out.println("----------------------------");
+            if(!consulta.getConsutaFinalizada()){
+                System.out.println("ID: " + consulta.getId());
+                System.out.println("Data: " + consulta.getData());
+                System.out.println("Horário: " + consulta.getHorario());
+                System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+                System.out.println("----------------------------");    
+            }
         }
     }
     
