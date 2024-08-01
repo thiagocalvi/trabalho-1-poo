@@ -233,7 +233,10 @@ public class MenuAdm {
                     }
                 }
                 break;
-            
+                
+            case 3:
+                break;
+                
             default:
                 System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
                 Main.temporizador(2000);
