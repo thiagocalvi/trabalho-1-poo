@@ -112,6 +112,10 @@ public class GerenciadorMedicos {
         
         
     }
+    
+    public void resetConultasDoDia(){
+        this.consultasDoDia.clear();
+    }
         
     public void listaConsultasDoDia(){
         if (this.consultasDoDia.isEmpty()) {
@@ -533,11 +537,12 @@ public class GerenciadorMedicos {
     public void atestadoMedico() {
 
 
-        System.out.println("Motivo da ausência: ");
+        System.out.print("Motivo da ausência: ");
         String ausencia = read.nextLine();
 
-        System.out.println("Quantos dias de afastamento?");
+        System.out.print("Quantos dias de afastamento?");
         int afastamento = read.nextInt();
+        read.nextLine();
 
         System.out.println("Gerando atestado...");
         Main.temporizador(3000);
@@ -553,10 +558,10 @@ public class GerenciadorMedicos {
     }
     
     public void declaracaoAcompanhamento(){
-        System.out.println("Nome do acompanhante: ");
+        System.out.print("Nome do acompanhante: ");
         String acompanhante = read.nextLine();
 
-        System.out.println("Motivo do acompanhante: ");
+        System.out.print("Motivo do acompanhante: ");
         String motivo = read.nextLine();
 
         System.out.println("Gerando declaraçao de acompanhamento...");
@@ -585,15 +590,16 @@ public class GerenciadorMedicos {
         
         int mesAtual = LocalDate.now().getMonthValue();
         for (Consulta consulta : colecaoConsultas.getConsultas()){
-            if (consulta.getConsutaFinalizada()){
-                if (consulta.getData().getMonthValue() == mesAtual){
-                    totalClientes ++;
-                    
-                    System.out.println(colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-                    System.out.println(colecaoPacientes.getPacienteById(consulta.getPacienteId()).getTipoConvenio());
-                    System.out.println("+------------------------------------------+");
+            if (consulta.getMedicoId() == medico.getId())
+                if (consulta.getConsutaFinalizada()){
+                    if (consulta.getData().getMonthValue() == mesAtual){
+                        totalClientes ++;
+
+                        System.out.println(colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
+                        System.out.println(colecaoPacientes.getPacienteById(consulta.getPacienteId()).getTipoConvenio());
+                        System.out.println("+------------------------------------------+");
+                    }
                 }
-            }
         }
         System.out.println("+=========================================+");
         System.out.println("Total de Clientes atendidos nesse mês: " + totalClientes);

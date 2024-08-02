@@ -168,24 +168,23 @@ public class MenuMedico {
         System.out.print("Escolha uma das opções (0 para sair): ");
         int option = read.nextInt();
         
-        Main.limpaTela();
         switch (option){
             case 1:
                 // Gera uma receita médica
                 gerenciadorMedicos.receitaMedica();
-                Main.temporizador(3000);
+                Main.temporizador(4000);
                 break;
                 
             case 2:
                 // Gera um atestado médico
                 gerenciadorMedicos.atestadoMedico();
-                Main.temporizador(3000);
+                Main.temporizador(4000);
                 break;
                 
             case 3:
                 // Gera uma declaração de acompanhamento
                 gerenciadorMedicos.declaracaoAcompanhamento();
-                Main.temporizador(3000);
+                Main.temporizador(4000);
                 break;
                 
             case 0:
@@ -297,7 +296,7 @@ public class MenuMedico {
         
         System.out.println("+=====================================+");
         System.out.println("");
-        System.out.println("Iniciar consulta"); 
+        System.out.println("Iniciar a próxima consulta ?"); 
         System.out.println("[1] - Para sim \n[2] - Para não");
         int option = read.nextInt();
         
@@ -354,10 +353,11 @@ public class MenuMedico {
             case 2:
                 // Gera os relatórios dos clientes atendidos no mês
                 gerenciadorMedicos.relatorioMensal();
-                Main.temporizador(5000);
+                Main.temporizador(3000);
                 break;
                 
             case 3:
+                gerenciadorMedicos.resetConultasDoDia();
                 break;
                      
             default:
