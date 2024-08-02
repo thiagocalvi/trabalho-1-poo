@@ -14,6 +14,7 @@ import Colecao.ColecaoPacientes;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.format.DateTimeFormatter;
@@ -53,22 +54,51 @@ public class GerenciadorSecretarias {
         System.out.println("+------------------------------+");
 
         // Coleta de dados
-        System.out.print("Informe a data da consulta (formato: DD/MM/YYYY):");
-        String data = read.nextLine();
-        
-        int dia = Integer.parseInt(data.substring(0, 2));
-        int mes = Integer.parseInt(data.substring(3, 5));
-        int ano = Integer.parseInt(data.substring(6, 10));    
-        
-        LocalDate dataConsulta = LocalDate.of(ano, mes, dia);
+        LocalDate dataConsulta = null;
+        LocalTime horarioConsulta = null;
+        boolean dataValida = false;
+        boolean horaValida = false;
 
-        System.out.print("Informe o horário da consulta (formato: HH:MM):");
-        String horario = read.nextLine();
-        
-        int hora = Integer.parseInt(horario.substring(0, 2));
-        int minuto = Integer.parseInt(horario.substring(3, 5));
-        
-        LocalTime horarioConsulta = LocalTime.of(hora, minuto);
+        while (!dataValida) {
+            System.out.print("Informe a data da consulta (formato: DD/MM/YYYY): ");
+            String data = read.nextLine();
+
+            try {
+                int dia = Integer.parseInt(data.substring(0, 2));
+                int mes = Integer.parseInt(data.substring(3, 5));
+                int ano = Integer.parseInt(data.substring(6, 10));
+                dataConsulta = LocalDate.of(ano, mes, dia);
+
+                if (dataConsulta.isBefore(LocalDate.now())) {
+                    System.out.println("A data da consulta não pode ser anterior à data atual.");
+                } else {
+                    dataValida = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Data inválida. Por favor, use o formato DD/MM/YYYY.");
+            }
+        }
+
+        while (!horaValida) {
+            System.out.print("Informe o horário da consulta (formato: HH:MM): ");
+            String horario = read.nextLine();
+
+            try {
+                int hora = Integer.parseInt(horario.substring(0, 2));
+                int minuto = Integer.parseInt(horario.substring(3, 5));
+                horarioConsulta = LocalTime.of(hora, minuto);
+
+                // Combina data e hora para comparar com o momento atual
+                LocalDateTime dataHoraConsulta = LocalDateTime.of(dataConsulta, horarioConsulta);
+                if (dataHoraConsulta.isBefore(LocalDateTime.now())) {
+                    System.out.println("O horário da consulta não pode ser anterior ao horário atual.");
+                } else {
+                    horaValida = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Horário inválido. Por favor, use o formato HH:MM.");
+            }
+        }
 
         //Listar os medicos
         this.listarMedicos();
@@ -91,6 +121,11 @@ public class GerenciadorSecretarias {
         // Tipo da consulta
         System.out.print("Informe o tipo da consulta(Normal/Retorno): ");
         String tipoStr = read.nextLine();
+        while (!tipoStr.equalsIgnoreCase("Normal") && !tipoStr.equalsIgnoreCase("Retorno")) {
+            System.out.println("Tipo inválido. Por favor, informe 'Normal' ou 'Retorno'.");
+            System.out.print("Informe o tipo da consulta (Normal/Retorno): ");
+            tipoStr = read.nextLine();
+        }
         
         // Cria a consulta
         Consulta consulta = new Consulta(dataConsulta, horarioConsulta);
