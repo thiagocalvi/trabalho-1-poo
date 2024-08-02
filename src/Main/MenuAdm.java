@@ -48,21 +48,13 @@ public class MenuAdm {
         System.out.print("Opção: ");
         int option  = read.nextInt();
         
+        Main.limpaTela();
         switch (option){
             case 1:
                //Cadastrar médico
-                System.out.println("Gostaria de usar uma base de dados interna?");
-                System.out.println("[0] - Para sim \n[1] - Para não");
-                int opt = read.nextInt();
-                
-                if(opt == 0){
-                    gerenciadorAdm.cadastroMedicosInterno();
-                }
-                else{
-                    gerenciadorAdm.cadastrarMedico();  
-                    Main.temporizador(3000);
-                    Main.limpaTela();
-                }
+                gerenciadorAdm.cadastrarMedico();  
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 2:
@@ -83,6 +75,12 @@ public class MenuAdm {
                 //Listar médicos
                 gerenciadorAdm.listarMedicos();
                 Main.temporizador(4000);
+                break;
+                
+            case 5:
+                break;
+                
+            case 6:
                 break;
                 
             default:
@@ -113,22 +111,13 @@ public class MenuAdm {
         System.out.print("Escolha a opção: ");
         int option = read.nextInt();
         
+        Main.limpaTela();
         switch (option){
             case 1:
                 //Cadastrar secretaria
-                System.out.println("Gostaria de usar uma base de dados interna?");
-                System.out.println("[0] - Para sim \n[1] - Para não");
-                int opt = read.nextInt();
-                
-                if(opt == 0){
-                    gerenciadorAdm.cadastroSecretariaInterno();
-                }
-                else{
-                    gerenciadorAdm.cadastrarSecretaria();
-                    Main.temporizador(3000);
-                    Main.limpaTela();
-                }
-               
+                gerenciadorAdm.cadastrarSecretaria();
+                Main.temporizador(3000);
+                Main.limpaTela();
                 break;
                 
             case 2:
@@ -188,7 +177,8 @@ public class MenuAdm {
                 
             }
         }
-
+        
+        System.out.println("");
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
         System.out.println("+-------+-------------------------+");

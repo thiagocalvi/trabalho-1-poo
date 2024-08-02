@@ -28,6 +28,7 @@ import java.util.Comparator;
  */
 public class GerenciadorMedicos {
     
+    // Atributos
     private ColecaoConsultas colecaoConsultas;
     private ColecaoPacientes colecaoPacientes;
     private ColecaoProntuarios colecaoProntuarios;
@@ -39,8 +40,7 @@ public class GerenciadorMedicos {
     private int idDadosMedicosControle = 0;
     private int idProtuarioControle = 0;
 
-    
-    
+    // Constructor
     public GerenciadorMedicos(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoDadosMedicos colecaoDadosMedicos){
         this.colecaoConsultas = colecaoConsultas;
         this.colecaoPacientes = colecaoPacientes;
@@ -101,17 +101,13 @@ public class GerenciadorMedicos {
             }
         }
         
-        
         Collections.sort(this.consultasDoDia, new Comparator<Consulta>() {
             
             @Override
             public int compare(Consulta c1, Consulta c2) {
                 return c1.getHorario().compareTo(c2.getHorario());
            }
-            
         });
-        
-        
     }
     
 
@@ -140,7 +136,6 @@ public class GerenciadorMedicos {
     }
     
     Scanner read = new Scanner(System.in);
-
     
     public void cadastrarProntuario(){
         
@@ -175,6 +170,7 @@ public class GerenciadorMedicos {
             consultaAtual.setProtuarioId(prontuario);
             colecaoProntuarios.add(prontuario);
 
+            System.out.println("");
             System.out.println("+====================================+");
             System.out.println("  PRONTUARIO CADASTRADO COM SUCESSO!  ");
             System.out.println("+====================================+");     
@@ -188,11 +184,9 @@ public class GerenciadorMedicos {
         System.out.println("+----------------------------------+");
         
         if(this.listarProntuarios() == 0){
-            System.out.println("Nenhum prontuario cadastrado");
             return;
         }
-        
-        
+               
         System.out.println("Informe o ID do prontuário a ser atualizado:");
         int id = Integer.parseInt(read.nextLine());
 
@@ -246,6 +240,45 @@ public class GerenciadorMedicos {
         System.out.println("+====================================+"); 
     }
     
+    
+    public void removerProntuario() {
+        
+        System.out.println("+----------------------------------+");
+        System.out.println("         REMOVER PRONTUÁRIO         ");
+        System.out.println("+----------------------------------+");
+
+        if(this.listarProntuarios() == 0){
+            return;
+        }
+        
+        System.out.println("Informe o ID do prontuário a ser removido:");
+        int id = read.nextInt();
+        read.nextLine();
+
+        Prontuario prontuario = colecaoProntuarios.getProntuarioById(id);
+        System.out.println(prontuario.getId());
+            
+        if (prontuario == null) {
+            System.out.println("Prontuário não encontrado!");
+            return;
+        }
+
+        for(Consulta consulta : colecaoConsultas.getConsultas()){
+            if(consulta.getProtuarioId() == id){
+                consulta.setProtuarioId();
+                colecaoProntuarios.remove(prontuario);
+            }
+        }
+            
+        //consultaAtual.setProtuarioId();
+
+        System.out.println("+==================================+");
+        System.out.println("  PRONTUARIO REMOVIDO COM SUCESSO!  ");
+        System.out.println("+==================================+"); 
+
+    }
+
+    
     public int listarProntuarios(){
         
         int cont = 0;
@@ -261,49 +294,15 @@ public class GerenciadorMedicos {
                 System.out.println("Tratamento: " + prontuario.getTratamento());
             }
         }
-        
+        System.out.println("+-------------------------------------------------+");
+        System.out.println("");
         if(cont == 0){
             System.out.println("Nenhum prontuario cadastrado");
         }
         return cont;
-
     }
     
-    public void removerProntuario() {
         
-        System.out.println("+----------------------------------+");
-        System.out.println("         REMOVER PRONTUÁRIO         ");
-        System.out.println("+----------------------------------+");
-
-        if(this.listarProntuarios() == 0){
-            //System.out.println("Nenhum prontuario cadastrado");
-            return;
-        }
-        
-        System.out.println("Informe o ID do prontuário a ser removido:");
-        int id = read.nextInt();
-        read.nextLine();
-
-        Prontuario prontuario = colecaoProntuarios.getProntuarioById(id);
-        System.out.println(prontuario.getId());
-            
-        if (prontuario == null) {
-            System.out.println("Prontuário não encontrado!");
-            return;
-        }
-        else{
-            for(Consulta consulta : colecaoConsultas.getConsultas()){
-                if(consulta.getProtuarioId() == id){
-                    consulta.setProtuarioId();
-                    colecaoProntuarios.remove(prontuario);
-                    System.out.println("+==================================+");
-                    System.out.println("  PRONTUARIO REMOVIDO COM SUCESSO!  ");
-                    System.out.println("+==================================+");
-                }
-            }      
-        }
-    }
-
     public void cadastrarDados(){
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         
@@ -353,10 +352,9 @@ public class GerenciadorMedicos {
             System.out.println("+=======================================+");
             System.out.println("  DADOS MÉDICOS CADASTRADO COM SUCESSO!  ");
             System.out.println("+=======================================+");    
-            
         }
-        
     }
+    
     
     public void  atualizarDados(){
         
@@ -380,7 +378,9 @@ public class GerenciadorMedicos {
             System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
             System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
             System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
-
+            System.out.println("+----------------------------------+");
+            System.out.println("");
+            
             System.out.println("Atualizar fumar? - Atual: " + dadosMedicos.isFuma());
             System.out.println("[0] - Para sim \n[1] - Para não");
             String resposta = read.nextLine();
@@ -463,12 +463,7 @@ public class GerenciadorMedicos {
             return;
         }
         else{
-            System.out.println("+----------------------------------+");
-            System.out.println("        REMOVER DADOS MÉDICOS       ");
-            System.out.println("+----------------------------------+");
-
             colecaoDadosMedicos.removeById(paciente.getDadosMedicosId());
-
 
             paciente.setDadosMedicosId();
 
@@ -476,14 +471,12 @@ public class GerenciadorMedicos {
             System.out.println("  DADOS MÉDICOS REMOVIDO COM SUCESSO!  ");
             System.out.println("+=====================================+");
         }
-          
     }
 
     
     public void listarDados() {
         
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
-
         
         if(paciente.getDadosMedicosId() == 0){
             System.out.println("O paciente " + paciente.getNome() + " não possui dados médicos cadastrados");
@@ -505,10 +498,9 @@ public class GerenciadorMedicos {
             System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
             System.out.println("+----------------------------------+");
         }
-        
-        
     }
 
+    
     public void listarAllConsultas(){
         //Listas todas as consultas associadas ao medico
         ArrayList<Consulta> allConsultas = colecaoConsultas.getConsultas();
@@ -519,7 +511,7 @@ public class GerenciadorMedicos {
                 System.out.println("Horário: " + consulta.getHorario());
                 System.out.println("Tipo: " + consulta.getTipo());
                 System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-                System.out.println("----------------------------");
+                System.out.println("+----------------------------------+");
             }
         }
     }

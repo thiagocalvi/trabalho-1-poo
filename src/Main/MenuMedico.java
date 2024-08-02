@@ -49,7 +49,7 @@ public class MenuMedico {
         System.out.println("|   1   |          Cadastrar          |");
         System.out.println("|   2   |          Atualizar          |");
         System.out.println("|   3   |           Remover           |");
-        System.out.println("|   4   |            Lista            |");
+        System.out.println("|   4   |           Listar            |");
         System.out.println("+-------+-----------------------------+");        
         System.out.println("|   5   | Voltar para a tela anterior |");
         System.out.println("+-------+-----------------------------+");        
@@ -83,7 +83,6 @@ public class MenuMedico {
             case 4:
                 gerenciadorMedicos.listarDados();
                 Main.temporizador(3000);
-                Main.limpaTela();
                 
             case 5:
                 break;
@@ -144,7 +143,6 @@ public class MenuMedico {
             case 4:
                 gerenciadorMedicos.listarProntuarios();
                 Main.temporizador(3000);
-                Main.limpaTela();
                 break;
             case 5:
                 break;
@@ -225,6 +223,7 @@ public class MenuMedico {
         System.out.println("");
         System.out.print("Opção: ");
         int option = read.nextInt();
+        System.out.println("");
 
         if (option >= 1 && option <= 3){
             Main.limpaTela();
@@ -256,13 +255,13 @@ public class MenuMedico {
                 
             case 4:
                 System.out.println("Você realmente deseja 'FINALIZAR' a consulta?");
-                System.out.println("[0] - Para sim \n[1] - Para não");
+                System.out.println("[1] - Para sim \n[2] - Para não");
                 int option2 = Integer.parseInt(read.next());
                 
-                if (option2 == 1){
+                if (option2 == 2){
                     System.out.println("CONSULTA NÃO FINALIZADA!");
                     option = 0;
-                } else if (option2 == 0){
+                } else if (option2 == 1){
                     gerenciadorMedicos.resetConsultaAtual();
                     System.out.println("CONSULTA FINALIZADA!");
                 }
@@ -289,14 +288,14 @@ public class MenuMedico {
         System.out.println("Consultas do dia: ");
         System.out.println("");
         
-        // Pegar a lista de paciente referente as consultas do dia naquele médico e exibir aqui
         gerenciadorMedicos.setConsultasDoDia();
         
-        
         if(gerenciadorMedicos.getConsultasDoDia().isEmpty()){
+            System.out.println("Nenhuma consulta marcada para hoje");
+            Main.temporizador(3000);
             return 2;
         }
-        
+        // Lista as consultas do dia referente ao login do médico
         gerenciadorMedicos.listaConsultasDoDia();
         
         System.out.println("+=====================================+");
@@ -336,7 +335,7 @@ public class MenuMedico {
         System.out.println("+-------+-----------------------------+");
         System.out.println("| Opção |            Tipo             |");
         System.out.println("+-------+-----------------------------+");
-        System.out.println("|   1   |     Consulta marcadas       |");
+        System.out.println("|   1   |     Consultas marcadas      |");
         System.out.println("|   2   |  Relatório mensal/clientes  |");
         System.out.println("+-------+-----------------------------+");
         System.out.println("|   3   |        Sair da conta        |");
@@ -362,6 +361,7 @@ public class MenuMedico {
                 break;
                 
             case 3:
+                // Reseta a coleçãoDoDia quando o médico sai da conta 
                 gerenciadorMedicos.resetConsultasDoDia();
                 break;
                      

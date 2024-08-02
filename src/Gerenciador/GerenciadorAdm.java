@@ -38,9 +38,7 @@ public class GerenciadorAdm {
         this.colecaoSecretarias = colecaoSecretarias;
     }
     
-    
     Scanner read = new Scanner(System.in);
-    
     
     //METODOS MEDICO
     public void cadastroMedicosInterno(){
