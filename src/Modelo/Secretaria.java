@@ -19,7 +19,7 @@ public class Secretaria{
     
     //Construtor
 
-    public Secretaria{
+    public Secretaria(){
 
     }
 

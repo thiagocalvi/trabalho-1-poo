@@ -20,7 +20,7 @@ public class Prontuario {
     
     //Construtor
 
-    public Prontuario{
+    public Prontuario(){
 
     }
 
@@ -79,6 +79,5 @@ public class Prontuario {
     public void setTratamento(String tratamento) {
         this.tratamento = tratamento;
     }
-    
     
 }

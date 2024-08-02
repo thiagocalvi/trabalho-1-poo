@@ -29,7 +29,7 @@ public class Paciente{
     
     //Construtor
 
-    public Paciente{
+    public Paciente(){
 
     }
 
@@ -42,6 +42,10 @@ public class Paciente{
         this.tipoConvenio = tipoConvenio;
     }
 
+    public void setDadosMedicosId(){
+        this.dadosMedicosId = 0;
+    }
+    
     public int getId() {
         return id;
     }

@@ -22,7 +22,7 @@ public class Medico{
     
     //Construtor
 
-    public Medico{
+    public Medico(){
         
     }
 
