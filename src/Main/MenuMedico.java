@@ -357,7 +357,7 @@ public class MenuMedico {
                 break;
                 
             case 3:
-                gerenciadorMedicos.resetConultasDoDia();
+                gerenciadorMedicos.resetConsultasDoDia();
                 break;
                      
             default:

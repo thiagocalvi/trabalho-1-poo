@@ -102,21 +102,23 @@ public class GerenciadorMedicos {
         }
         
         
-        //Collections.sort(this.consultasDoDia, new Comparator<Consulta>() {
+        Collections.sort(this.consultasDoDia, new Comparator<Consulta>() {
             
-          //  @Override
-          //  public int compare(Consulta c1, Consulta c2) {
-          //      return c1.getHorario().compareTo(c2.getHorario());
-          //  }
-        //});
+            @Override
+            public int compare(Consulta c1, Consulta c2) {
+                return c1.getHorario().compareTo(c2.getHorario());
+           }
+            
+        });
         
         
     }
     
-    public void resetConultasDoDia(){
-        this.consultasDoDia.clear();
+
+    public void resetConsultasDoDia(){
+        this.consultasDoDia = new ArrayList<Consulta>();
     }
-        
+            
     public void listaConsultasDoDia(){
         if (this.consultasDoDia.isEmpty()) {
             System.out.println("Nenhuma consulta para hoje.");
