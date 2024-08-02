@@ -18,6 +18,11 @@ public class Secretaria{
     private int id; //Para id criar um função para gerar um id, fazer de forma incremental
     
     //Construtor
+
+    public Secretaria{
+
+    }
+
     public Secretaria(String nome, LocalDate dataNascimento, String telefone, String email) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;

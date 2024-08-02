@@ -28,6 +28,11 @@ public class Paciente{
     };
     
     //Construtor
+
+    public Paciente{
+
+    }
+
     public Paciente(tipoConvenio tipoConvenio, String nome, LocalDate dataNascimento, String endereco, String telefone, String email) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;

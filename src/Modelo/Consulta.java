@@ -27,6 +27,11 @@ public class Consulta {
     private boolean consutaFinalizada;
     
     //Construtor
+    
+    public Consulta{
+
+    }
+
     public Consulta(LocalDate data, LocalTime horario) {
         this.data = data;
         this.horario = horario;
