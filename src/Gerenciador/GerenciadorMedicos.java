@@ -317,25 +317,25 @@ public class GerenciadorMedicos {
 
             System.out.println("O paciente fuma? \n[1] Para sim \n[2] Para não");
             int resp = read.nextInt();
-            boolean fuma = (resp == 1)? true : false;
+            boolean fuma = (resp == 1);
 
             System.out.println("O paciente bebe? \n[1] Para sim \n[2] Para não");
             int resp1 = read.nextInt();
             read.nextLine();
-            boolean bebe = (resp1 == 1)? true : false;
+            boolean bebe = (resp1 == 1);
 
             System.out.println("Nível de colesterol:");
             String colesterol = read.nextLine();
 
             System.out.println("O paciente é diabético? \n[1] Para sim \n[2] Para não");
             int resp2 = read.nextInt();
-            boolean diabete = (resp2 == 1)? true : false;
+            boolean diabete = (resp2 == 1);
 
             System.out.println("O paciente tem doença cardíaca? \n[1] Para sim \n[2] Para não");
             int resp3 = read.nextInt();
             read.nextLine();
-            boolean doencaCardiaca = (resp3 == 1)? true : false;
-
+            boolean doencaCardiaca = (resp3 == 1);
+            
             System.out.println("Informe as cirurgias realizadas (separadas por vírgula):");
             List<String> cirurgias = List.of(read.nextLine().split(","));
 
@@ -387,16 +387,19 @@ public class GerenciadorMedicos {
             if (resposta.equals("0")) {
                 System.out.println("O paciente fuma? \n[1] Para sim \n[2] Para não");
                 int resp = read.nextInt();
-                boolean fuma = (resp == 1)? true : false;
+                read.nextLine(); // Consumir a nova linha restante
+                boolean fuma = (resp == 1);
                 dadosMedicos.setFuma(fuma);
             }
 
-            System.out.println("Atualizar bebe? (true/false) - Atual: " + dadosMedicos.isBebe());
+            System.out.println("Atualizar bebe? - Atual: " + dadosMedicos.isBebe());
             System.out.println("[0] - Para sim \n[1] - Para não");
             resposta = read.nextLine();
             if (resposta.equals("0")) {
-                System.out.println("Informe a condição do paciente:");
-                boolean bebe = Boolean.parseBoolean(read.nextLine());
+                System.out.println("O paciente bebe? \n[1] Para sim \n[2] Para não");
+                int resp = read.nextInt();
+                read.nextLine(); // Consumir a nova linha restante
+                boolean bebe = (resp == 1);
                 dadosMedicos.setBebe(bebe);
             }
 
@@ -409,21 +412,25 @@ public class GerenciadorMedicos {
                 dadosMedicos.setColesterol(colesterol);
             }
 
-            System.out.println("Atualizar diabete? (true/false) - Atual: " + dadosMedicos.isDiabete());
+            System.out.println("Atualizar diabete? - Atual: " + dadosMedicos.isDiabete());
             System.out.println("[0] - Para sim \n[1] - Para não");
             resposta = read.nextLine();
             if (resposta.equals("0")) {
-                System.out.println("Informe a condição do paciente:");
-                boolean diabete = Boolean.parseBoolean(read.nextLine());
+                System.out.println("O paciente é diabético? \n[1] Para sim \n[2] Para não");
+                int resp = read.nextInt();
+                read.nextLine(); // Consumir a nova linha restante
+                boolean diabete = (resp == 1);
                 dadosMedicos.setDiabete(diabete);
             }
 
-            System.out.println("Atualizar doença cardíaca? (true/false) - Atual: " + dadosMedicos.isDoencaCardiaca());
+            System.out.println("Atualizar doença cardíaca? - Atual: " + dadosMedicos.isDoencaCardiaca());
             System.out.println("[0] - Para sim \n[1] - Para não");
             resposta = read.nextLine();
             if (resposta.equals("0")) {
-                System.out.println("Informe a condição do paciente:");
-                boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+                System.out.println("O paciente tem doença cardíaca? \n[1] Para sim \n[2] Para não");
+                int resp = read.nextInt();
+                read.nextLine(); // Consumir a nova linha restante
+                boolean doencaCardiaca = (resp == 1);
                 dadosMedicos.setDoencaCardiaca(doencaCardiaca);
             }
 
