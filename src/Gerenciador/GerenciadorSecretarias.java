@@ -573,4 +573,66 @@ public class GerenciadorSecretarias {
             colecaoPacientes.add(paciente);
         }   
     }    
+    
+    public void cadastroConsultasInterno(){
+        //Esse método é somente para fins de teste, os código a seguir não seguem as definições do projeto
+        //Esse método cadastra 20 consultas (os 20 pacientes devem ser criados previamente)
+        //Serão cadastrados 10 consultas para 2 médicos com os respectivos id's 1 e 2
+        //3 consultas serão para o dia atual
+        //2 consultas serão para o dia seguinte
+        //5 consultas serão para dois dias a frente
+        
+        int idPaciente = 1;
+        LocalDate hoje = LocalDate.now();
+        LocalDate amanha = hoje.plusDays(1);
+        LocalDate doisDias = hoje.plusDays(2);
+        LocalTime horaConsulta = LocalTime.of(13, 30);
+
+        for(int i = 1; i <= 2; i++){
+            Medico medico = colecaoMedicos.getMedicoById(i);
+
+            //3 consultas para o dia atual
+            for(int j = 0; j < 3; j++){
+                Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
+                Consulta consulta = new Consulta(hoje, horaConsulta);
+                this.idConsultaControle += 1;
+                consulta.setId(idConsultaControle);
+                consulta.setMedicoId(medico);
+                consulta.setPacienteId(paciente);
+                consulta.setTipo("NORMAL");
+                consulta.setConsutaFinalizada(false);
+                colecaoConsultas.add(consulta);
+                idPaciente += 1;
+            }
+                
+            //2 consultas para o dia seguinte
+            for(int j = 0; j < 2; j++){
+                Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
+                Consulta consulta = new Consulta(amanha, horaConsulta);
+                this.idConsultaControle += 1;
+                consulta.setId(idConsultaControle);
+                consulta.setMedicoId(medico);
+                consulta.setPacienteId(paciente);
+                consulta.setTipo("NORMAL");
+                consulta.setConsutaFinalizada(false);
+                colecaoConsultas.add(consulta);
+                idPaciente += 1;
+            }
+                            
+            //5 consultas para o dois dias a frente
+            for(int j = 0; j < 5; j++){
+                Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
+                Consulta consulta = new Consulta(doisDias, horaConsulta);
+                this.idConsultaControle += 1;
+                consulta.setId(idConsultaControle);
+                consulta.setMedicoId(medico);
+                consulta.setPacienteId(paciente);
+                consulta.setTipo("NORMAL");
+                consulta.setConsutaFinalizada(false);
+                colecaoConsultas.add(consulta);
+                idPaciente += 1;
+            }
+        }
+        
+    }
 }

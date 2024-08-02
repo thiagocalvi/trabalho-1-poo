@@ -276,32 +276,32 @@ public class GerenciadorMedicos {
         System.out.println("+----------------------------------+");
 
         if(this.listarProntuarios() == 0){
-            System.out.println("Nenhum prontuario cadastrado");
+            //System.out.println("Nenhum prontuario cadastrado");
             return;
         }
         
         System.out.println("Informe o ID do prontuário a ser removido:");
-        int id = Integer.parseInt(read.nextLine());
+        int id = read.nextInt();
+        read.nextLine();
 
         Prontuario prontuario = colecaoProntuarios.getProntuarioById(id);
-
+        System.out.println(prontuario.getId());
+            
         if (prontuario == null) {
             System.out.println("Prontuário não encontrado!");
             return;
         }
-
-        for(Consulta consulta : colecaoConsultas.getConsultas()){
-            if(consulta.getProtuarioId() == id){
-                consulta.setProtuarioId();
-            }
+        else{
+            for(Consulta consulta : colecaoConsultas.getConsultas()){
+                if(consulta.getProtuarioId() == id){
+                    consulta.setProtuarioId();
+                    colecaoProntuarios.remove(prontuario);
+                    System.out.println("+==================================+");
+                    System.out.println("  PRONTUARIO REMOVIDO COM SUCESSO!  ");
+                    System.out.println("+==================================+");
+                }
+            }      
         }
-            
-        colecaoProntuarios.remove(prontuario);
-        //consultaAtual.setProtuarioId();
-
-        System.out.println("+==================================+");
-        System.out.println("  PRONTUARIO REMOVIDO COM SUCESSO!  ");
-        System.out.println("+==================================+"); 
     }
 
     public void cadastrarDados(){

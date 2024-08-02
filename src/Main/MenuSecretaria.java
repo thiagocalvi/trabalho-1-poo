@@ -282,7 +282,7 @@ public class MenuSecretaria {
             case 1:
                 gerenciadorSecretarias.setSecretaria(secretaria);
                 
-                if(colecaoPacientes.size() == 0){
+                if(colecaoPacientes.size() == 0){ //Verificar se a colecao de consultas está vazia
                     int op;
                     System.out.println("Um pré cadastro de 20 pacientes está disponivel, gostaria de utilizalo?");
                     System.out.print("[1] - Sim\n[2] - Não\nOpção: ");
@@ -290,6 +290,19 @@ public class MenuSecretaria {
                     if(op == 1){
                         gerenciadorSecretarias.cadastroPacientesInterno();
                         System.out.println("20 Pacientes cadastrados!");
+                        
+                        //Start - A partir daqui não estara na versão final
+                        
+                        //Pedir se quer cadastrar 20 consultas
+                        System.out.println("Um pré cadastro de 20 consultas para os medicos de Id's 1 e 2 está disponivel, gostaria de utilizalo?");
+                        System.out.print("[1] - Sim\n[2] - Não\nOpção: ");
+                        op = read.nextInt();
+                        
+                        if(op == 1){
+                            //Codificar esse metodo no gerenciador secretaria
+                            gerenciadorSecretarias.cadastroConsultasInterno();
+                        }
+                        //End - Até aqui não estara na versão final
                     }
                 
                 }
