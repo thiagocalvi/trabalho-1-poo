@@ -583,4 +583,4 @@ public class GerenciadorSecretarias {
 
 //TO-DO
 //Implementar os métodos para gerar os relatórios - Feito
-//Implomentar os métodos para enviar as mensagens
+//Implomentar os métodos para enviar as mensagens - Feito
