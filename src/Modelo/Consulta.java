@@ -26,6 +26,8 @@ public class Consulta {
     private int protuarioId = 0;
     private boolean consutaFinalizada;
     
+     public Consulta(){}
+    
     //Construtor
     public Consulta(LocalDate data, LocalTime horario) {
         this.data = data;
@@ -48,6 +50,10 @@ public class Consulta {
     
     public void setProtuarioId(Prontuario prontuario){
         this.protuarioId = prontuario.getId();
+    }
+    
+    public void setProtuarioId(){
+        this.protuarioId = 0;
     }
     
     public int getId() {

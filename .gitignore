@@ -6,6 +6,9 @@ dist/
 nbdist/
 .nb-gradle/
 
+# Arquivos de classe
+*.class
+
 # Arquivos de log
 *.log
 

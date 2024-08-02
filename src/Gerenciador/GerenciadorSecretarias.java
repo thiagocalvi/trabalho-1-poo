@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -204,9 +205,6 @@ public class GerenciadorSecretarias {
     }
     
     public void listarConsultas() {
-        
-        //TO-DO - FEITO
-        //Lista somente as consultas dos medicos qua a secretaria gerencia
         
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
         System.out.println("\n");
@@ -407,8 +405,6 @@ public class GerenciadorSecretarias {
     }
     
     public void listarMedicos(){
-        //TO-DO - FEITO
-        //Deve se listar somente os medicos que a secretaria gerencia
         
         ArrayList<Medico> medicos = colecaoMedicos.getMedicos();
         System.out.println("\n");
@@ -439,7 +435,7 @@ public class GerenciadorSecretarias {
         System.out.println("\n");
     }
     
-    public ArrayList<Consulta> gerarRelatorioConsultasDiaSeguinte() {
+    public void gerarRelatorioConsultasDiaSeguinte() {
         System.out.println("+----------------------------------------+");
         System.out.println("  RELATÓRIO DE CONSULTAS DO DIA SEGUINTE  ");
         System.out.println("+----------------------------------------+");
@@ -448,14 +444,12 @@ public class GerenciadorSecretarias {
         LocalDate amanha = hoje.plusDays(1);
 
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
-        ArrayList<Consulta> consultasNextDay = new ArrayList<Consulta>();
         
         boolean temConsultas = false;
 
         for (Consulta consulta : consultas) {
             if (consulta.getData().equals(amanha) && 
                 colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()) {
-                consultasNextDay.add(consulta);
                 temConsultas = true;
                 System.out.println("ID: " + consulta.getId());
                 System.out.println("Data: " + consulta.getData());
@@ -470,7 +464,6 @@ public class GerenciadorSecretarias {
         if (!temConsultas) {
             System.out.println("Nenhuma consulta marcada para o dia seguinte.");
             }
-        return consultasNextDay;
     }
 
     public void cadastroPacientesInterno(){
@@ -540,7 +533,20 @@ public class GerenciadorSecretarias {
     }
     
     public void enviarMensagensConsultasDiaSeguinte(){
-        ArrayList<Consulta> consultasNextDay = this.gerarRelatorioConsultasDiaSeguinte();
+        LocalDate hoje = LocalDate.now();
+        LocalDate amanha = hoje.plusDays(1);
+        
+        ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
+        ArrayList<Consulta> consultasNextDay = new ArrayList<Consulta>();
+        
+        
+        for (Consulta consulta : consultas) {
+            if (consulta.getData().equals(amanha) && 
+                colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()) {
+                consultasNextDay.add(consulta);
+            }
+        }
+        
         
         if(consultasNextDay.isEmpty()){
             System.out.println("Nenhuma consulta marcada para o dia seguinte.");
@@ -549,19 +555,19 @@ public class GerenciadorSecretarias {
             for(Consulta consulta : consultasNextDay){
                 Paciente paciente = colecaoPacientes.getPacienteById(consulta.getPacienteId());
                 Medico medico = colecaoMedicos.getMedicoById(consulta.getMedicoId());
-                
+                System.out.println("+==============================================================================================================================+");
                 System.out.println((paciente.getEmail().isEmpty()) ? "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() : "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() + " e email: " + paciente.getEmail() );
+                System.out.println("+------------------------------------------------------------------------------------------------------------------------------+");
                 System.out.println("Confirmação de Consulta Médica");
                 System.out.println("Prezado(a)" + paciente.getNome() + ",");
-                System.out.println("Existe uma consulta médica agendada para " + consulta.getData() + " em seu nome. Aqui estão os detalhes da sua consulta:");
-                System.out.println("Data: " + consulta.getData());
+                System.out.println("Existe uma consulta médica agendada para " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " em seu nome. Aqui estão os detalhes da sua consulta:");
+                System.out.println("Data: " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                 System.out.println("Hora: " + consulta.getHorario());
                 System.out.println("Médico: Dr(a). " + medico.getNome());
                 System.out.println("Especialidade: " + medico.getEspecialidade());
-                System.out.println("Agradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
+                System.out.println("\nAgradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
                 System.out.println("Atenciosamente,");
                 System.out.println(secretaria.getNome());
-                
                 
             }
         }
@@ -569,7 +575,3 @@ public class GerenciadorSecretarias {
 
 
 }
-
-//TO-DO
-//Implementar os métodos para gerar os relatórios - Feito
-//Implomentar os métodos para enviar as mensagens

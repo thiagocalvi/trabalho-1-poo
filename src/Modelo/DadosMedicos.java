@@ -22,6 +22,8 @@ public class DadosMedicos {
 
     //Construtor
     
+    public DadosMedicos(){}
+
     public DadosMedicos(boolean fuma, boolean bebe, String colesterol, boolean diabete, boolean doencaCardiaca, List<String> cirurgias, List<String> alergias) {
         this.fuma = fuma;
         this.bebe = bebe;

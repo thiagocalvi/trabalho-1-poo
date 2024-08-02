@@ -21,6 +21,11 @@ public class Medico{
     private int secretariaId = 0; // 0 indica que o medico não tem nenhuma secretaria (cada medico terá somente uma secretaria)
     
     //Construtor
+
+    public Medico(){
+        
+    }
+
     public Medico(String nome, LocalDate dataNascimento, String telefone, String email, String especialidade, int crm) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;

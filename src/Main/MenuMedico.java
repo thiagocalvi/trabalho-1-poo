@@ -20,22 +20,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 
 public class MenuMedico { 
     
-    //private ColecaoConsultas colecaoConsultas;
-    //private ColecaoPacientes colecaoPacientes;
-    //private ColecaoProntuarios colecaoProntuarios;
     private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
-    //private ColecaoDadosMedicos colecaoDadosMedicos; 
     
     public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoMedicos colecaoMedicos, ColecaoDadosMedicos colecaoDadosMedicos){
-        //this.colecaoConsultas = colecaoConsultas;
-        //this.colecaoPacientes = colecaoPacientes;
-        //this.colecaoProntuarios = colecaoProntuarios;
         this.colecaoMedicos = colecaoMedicos;
         this.gerenciadorMedicos = new GerenciadorMedicos(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoDadosMedicos);
         
@@ -56,8 +49,9 @@ public class MenuMedico {
         System.out.println("|   1   |          Cadastrar          |");
         System.out.println("|   2   |          Atualizar          |");
         System.out.println("|   3   |           Remover           |");
+        System.out.println("|   4   |            Lista            |");
         System.out.println("+-------+-----------------------------+");        
-        System.out.println("|   4   | Voltar para a tela anterior |");
+        System.out.println("|   5   | Voltar para a tela anterior |");
         System.out.println("+-------+-----------------------------+");        
         System.out.println("");
         System.out.println("Opção: ");
@@ -87,6 +81,11 @@ public class MenuMedico {
                 break;
                 
             case 4:
+                gerenciadorMedicos.listarDados();
+                Main.temporizador(3000);
+                Main.limpaTela();
+                
+            case 5:
                 break;
                 
             default:
@@ -111,8 +110,9 @@ public class MenuMedico {
         System.out.println("|   1   |          Cadastrar          |");
         System.out.println("|   2   |          Atualizar          |");
         System.out.println("|   3   |           Remover           |");
+        System.out.println("|   4   |           Listar            |");
         System.out.println("+-------+-----------------------------+");        
-        System.out.println("|   4   | Voltar para a tela anterior |");
+        System.out.println("|   5   | Voltar para a tela anterior |");
         System.out.println("+-------+-----------------------------+");
         System.out.println("");
         System.out.println("Opção: ");
@@ -135,13 +135,18 @@ public class MenuMedico {
                 break;
                 
             case 3:
-                // Implementar o remover
-                gerenciadorMedicos.removerProntuario();
+               // Implementar o remover
+               gerenciadorMedicos.removerProntuario();
+               Main.temporizador(3000);
+               Main.limpaTela();
+               break;
+
+            case 4:
+                gerenciadorMedicos.listarProntuarios();
                 Main.temporizador(3000);
                 Main.limpaTela();
                 break;
-                
-            case 4:
+            case 5:
                 break;
                 
             default:
@@ -228,14 +233,14 @@ public class MenuMedico {
         int option1 = -1;
         switch (option){
             case 1:
-                while (option1 != 4){
+                while (option1 != 5){
                     option1 = menuDadosAdicionais();
                     Main.limpaTela();
                 }
                 break;
                 
             case 2:
-                while (option1 != 4){
+                while (option1 != 5){
                     option1 = menuProntuario();
                     Main.limpaTela();
                 }

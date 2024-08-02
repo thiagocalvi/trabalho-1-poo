@@ -19,6 +19,11 @@ public class Prontuario {
     private String tratamento;
     
     //Construtor
+
+    public Prontuario(){
+
+    }
+
     public Prontuario(LocalDate dataConsulta, String sintomas, String diagnostico, String tratamento) {
         this.dataConsulta = dataConsulta;
         this.sintomas = sintomas;
@@ -74,6 +79,5 @@ public class Prontuario {
     public void setTratamento(String tratamento) {
         this.tratamento = tratamento;
     }
-    
     
 }

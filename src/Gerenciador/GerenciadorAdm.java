@@ -434,9 +434,6 @@ public class GerenciadorAdm {
     }
     
     public void removerSecretaria(){
-        //TODO
-        //Quando uma secretaria é removida o id dela deve ser
-        //retirado dos medicos que ela gerenciava
         System.out.println("+----------------------------------------+");
         System.out.println("            REMOVER SECRETARIA            ");
         System.out.println("+----------------------------------------+");

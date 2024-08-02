@@ -363,10 +363,22 @@ A classe `GerenciadorMedicos` é responsável por gerenciar as operações relac
   - **Descrição:** Lista todas as consultas associadas ao médico. Exibe detalhes como ID da consulta, data, horário, tipo e nome do paciente.
   - **Tipo de Retorno:** `void`
 
-- `gerarRelatoriosMedicos()`:
-  - **Descrição:** Gera relatórios médicos, incluindo receita, atestado, declaração de acompanhamento e lista de clientes atendidos no mês.
+- `receitaMedica()`:
+  - **Descrição:** Gera receita dos médicamentos recomendados pelo médico.
+  - **Tipo de Retorno:** `void`
+ 
+- `atestadoMedico()`:
+  - **Descrição:** Gera atestado de afastamento fornecido pelo médico.
+  - **Tipo de Retorno:** `void`
+ 
+- `declaracaoAcompanhamento()`:
+  - **Descrição:** Gera uma declaração que assegura acompanhamento médico para o paciente.
   - **Tipo de Retorno:** `void`
 
+- `relatorioMensal()`:
+  - **Descrição:** Gera relatório de clientes atendidos pelo médico durante o mês.
+  - **Tipo de Retorno:** `void`
+    
 <!--End GerenciadorMedicos-->
 
 
@@ -453,20 +465,13 @@ A classe GerenciadorSecretarias é responsável por gerenciar diversas operaçõ
   - **Tipo de Retorno:** `void`
 
 - `gerarRelatorioConsultasDiaSeguinte()`:
-  - **Descrição:** Gera um relatório das consultas agendadas para o dia seguinte, separando-as em duas categorias: com e sem e-mail/celular.
+  - **Descrição:** Gera um relatório das consultas agendadas para o dia seguinte.
   - **Tipo de Retorno:** `void`
  
-- `enviarLembretesConsultasDiaSeguinte()`:
+- `enviarMensagensConsultasDiaSeguinte()`:
   - **Descrição:**  Envia lembretes por e-mail e/ou SMS para os pacientes com consultas agendadas para o dia seguinte.
   - **Tipo de Retorno:** `void`
  
-    - `enviarEmail()`:
-      - **Descrição:** Envia um lembrete por e-mail para o paciente.
-      - **Tipo de Retorno:** `void`
-    
-    - `enviarSms()`:
-      - **Descrição:** Envia um lembrete por SMS para o paciente.
-      - **Tipo de Retorno:** `void`
 <!--End GerenciadorSecretarias-->
 
 

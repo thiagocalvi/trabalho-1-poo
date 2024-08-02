@@ -178,8 +178,6 @@ public class MenuAdm {
             if(op == 1){
                 gerenciadorAdm.cadastroSecretariaInterno();
                 gerenciadorAdm.cadastroMedicosInterno();
-                //Cadastrar previamente os pacientes, ao menos uns 20
-                //Vou deixar esse metodo no menuSecretaria
                 System.out.println("5 Médicos e 2 Secretarias cadastrados.");
                 Main.temporizador(3000);
                 }
