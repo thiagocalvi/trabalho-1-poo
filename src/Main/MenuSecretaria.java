@@ -225,6 +225,7 @@ public class MenuSecretaria {
             case 4: 
                 // Envia as mensagens para os clientes avisando sobre a consulta do dia seguinte
                 gerenciadorSecretarias.enviarMensagensConsultasDiaSeguinte();
+                Main.temporizador(3000);
                 break;
                         
             case 5:

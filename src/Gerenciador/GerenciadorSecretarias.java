@@ -560,8 +560,9 @@ public class GerenciadorSecretarias {
             for(Consulta consulta : consultasNextDay){
                 Paciente paciente = colecaoPacientes.getPacienteById(consulta.getPacienteId());
                 Medico medico = colecaoMedicos.getMedicoById(consulta.getMedicoId());
-                
+                System.out.println("+==============================================================================================================================+");
                 System.out.println((paciente.getEmail().isEmpty()) ? "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() : "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() + " e email: " + paciente.getEmail() );
+                System.out.println("+------------------------------------------------------------------------------------------------------------------------------+");
                 System.out.println("Confirmação de Consulta Médica");
                 System.out.println("Prezado(a)" + paciente.getNome() + ",");
                 System.out.println("Existe uma consulta médica agendada para " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " em seu nome. Aqui estão os detalhes da sua consulta:");
@@ -569,10 +570,9 @@ public class GerenciadorSecretarias {
                 System.out.println("Hora: " + consulta.getHorario());
                 System.out.println("Médico: Dr(a). " + medico.getNome());
                 System.out.println("Especialidade: " + medico.getEspecialidade());
-                System.out.println("Agradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
+                System.out.println("\nAgradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
                 System.out.println("Atenciosamente,");
                 System.out.println(secretaria.getNome());
-                
                 
             }
         }
