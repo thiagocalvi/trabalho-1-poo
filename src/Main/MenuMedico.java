@@ -379,6 +379,7 @@ public class MenuMedico {
         // Listar todos os médicos
         ArrayList<Medico> allMedicos = colecaoMedicos.getMedicos();
         
+        Main.limpaTela();
         System.out.println("");
         System.out.println("+-----------------------------------------+");
         for(Medico medico : allMedicos){

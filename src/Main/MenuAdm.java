@@ -27,7 +27,6 @@ public class MenuAdm {
         this.gerenciadorAdm  = new GerenciadorAdm(this.colecaoMedicos, this.colecaoSecretarias); 
     }
     
-    
     static Scanner read = new Scanner(System.in); 
     
     public int chamaMedico() {
@@ -168,6 +167,7 @@ public class MenuAdm {
    
     public int usuarioAdm() {
         
+        Main.limpaTela();
         if(colecaoMedicos.size() == 0 && colecaoSecretarias.size() == 0){
             System.out.println("Atenção: Gostaria de inicializar com uma base de dados pré cadastrada? 5 Médicos e 2 Secretarias cadastrados:");
             System.out.print("[1] - Sim \n[2] - Não \nOpção: ");
@@ -188,8 +188,7 @@ public class MenuAdm {
                 
             }
         }
-                   
-    
+
         System.out.println("USUÁRIO: ADMINISTRADOR");
         System.out.println("");
         System.out.println("+-------+-------------------------+");
@@ -239,9 +238,7 @@ public class MenuAdm {
                 System.out.println("OPÇÃO INVÁLIDA, DIGITE UMA DAS OPÇÕES!");
                 Main.temporizador(2000);
                 break;
-       
         }
         return option; 
     }
-    
 }

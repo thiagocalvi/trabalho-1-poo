@@ -53,12 +53,9 @@ public class Main {
             
         }
         
-        
         Scanner read = new Scanner(System.in);
-        
-        int option = 0;
+        int option;
                
-        
          do {
             System.out.println("");
             System.out.println("TELA INICIAL");
@@ -76,7 +73,6 @@ public class Main {
             System.out.print("Qual usuário você vai logar (Opção): ");
             option = read.nextInt();
 
-            limpaTela();
             int option1 = 0;
             switch (option) {
                 case 1:
@@ -101,6 +97,16 @@ public class Main {
                     break;
                     
                 case 4:
+                    System.out.println("Você realmente deseja 'SAIR' do programa?");
+                    System.out.println("[1] Para sim \n[2] Para não");
+                    int resp = read.nextInt();
+                    
+                    if (resp == 2){
+                        option = 0;
+                    } else if (resp == 1) {
+                        System.out.println("Saindo do programa...");
+                        temporizador(2000);
+                    }
                     break;
                     
                 default:
@@ -111,4 +117,3 @@ public class Main {
         } while (option != 4); 
     }      
 }  
-

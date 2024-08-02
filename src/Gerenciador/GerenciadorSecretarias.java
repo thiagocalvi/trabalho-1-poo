@@ -456,7 +456,7 @@ public class GerenciadorSecretarias {
                 System.out.println("Horário: " + consulta.getHorario());
                 System.out.println("Médico: " + colecaoMedicos.getMedicoById(consulta.getMedicoId()).getNome());
                 System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-                System.out.println("------------------------------");
+        System.out.println("+----------------------------------------+");
                 
             }
         }
@@ -466,6 +466,49 @@ public class GerenciadorSecretarias {
             }
     }
 
+    
+    public void enviarMensagensConsultasDiaSeguinte(){
+        LocalDate hoje = LocalDate.now();
+        LocalDate amanha = hoje.plusDays(1);
+        
+        ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
+        ArrayList<Consulta> consultasNextDay = new ArrayList<Consulta>();
+        
+        
+        for (Consulta consulta : consultas) {
+            if (consulta.getData().equals(amanha) && 
+                colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()) {
+                consultasNextDay.add(consulta);
+            }
+        }
+        
+        
+        if(consultasNextDay.isEmpty()){
+            System.out.println("Nenhuma consulta marcada para o dia seguinte.");
+        }
+        else{
+            for(Consulta consulta : consultasNextDay){
+                Paciente paciente = colecaoPacientes.getPacienteById(consulta.getPacienteId());
+                Medico medico = colecaoMedicos.getMedicoById(consulta.getMedicoId());
+                System.out.println("+==============================================================================================================================+");
+                System.out.println((paciente.getEmail().isEmpty()) ? "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() : "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() + " e email: " + paciente.getEmail() );
+                System.out.println("+------------------------------------------------------------------------------------------------------------------------------+");
+                System.out.println("Confirmação de Consulta Médica");
+                System.out.println("Prezado(a)" + paciente.getNome() + ",");
+                System.out.println("Existe uma consulta médica agendada para " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " em seu nome. Aqui estão os detalhes da sua consulta:");
+                System.out.println("Data: " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                System.out.println("Hora: " + consulta.getHorario());
+                System.out.println("Médico: Dr(a). " + medico.getNome());
+                System.out.println("Especialidade: " + medico.getEspecialidade());
+                System.out.println("\nAgradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
+                System.out.println("Atenciosamente,");
+                System.out.println(secretaria.getNome());
+                
+            }
+        }
+    }
+
+    
     public void cadastroPacientesInterno(){
         String[] nomes = {
             "Ana Clara Silva", "Carlos Alberto Souza", "Mariana Lima", "João Pedro Rocha", 
@@ -528,50 +571,6 @@ public class GerenciadorSecretarias {
             this.idPacienteControle += 1;
             paciente.setId(idPacienteControle);
             colecaoPacientes.add(paciente);
-        }
-        
-    }
-    
-    public void enviarMensagensConsultasDiaSeguinte(){
-        LocalDate hoje = LocalDate.now();
-        LocalDate amanha = hoje.plusDays(1);
-        
-        ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
-        ArrayList<Consulta> consultasNextDay = new ArrayList<Consulta>();
-        
-        
-        for (Consulta consulta : consultas) {
-            if (consulta.getData().equals(amanha) && 
-                colecaoMedicos.getMedicoById(consulta.getMedicoId()).getSecretariaId() == secretaria.getId()) {
-                consultasNextDay.add(consulta);
-            }
-        }
-        
-        
-        if(consultasNextDay.isEmpty()){
-            System.out.println("Nenhuma consulta marcada para o dia seguinte.");
-        }
-        else{
-            for(Consulta consulta : consultasNextDay){
-                Paciente paciente = colecaoPacientes.getPacienteById(consulta.getPacienteId());
-                Medico medico = colecaoMedicos.getMedicoById(consulta.getMedicoId());
-                System.out.println("+==============================================================================================================================+");
-                System.out.println((paciente.getEmail().isEmpty()) ? "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() : "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() + " e email: " + paciente.getEmail() );
-                System.out.println("+------------------------------------------------------------------------------------------------------------------------------+");
-                System.out.println("Confirmação de Consulta Médica");
-                System.out.println("Prezado(a)" + paciente.getNome() + ",");
-                System.out.println("Existe uma consulta médica agendada para " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " em seu nome. Aqui estão os detalhes da sua consulta:");
-                System.out.println("Data: " + consulta.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                System.out.println("Hora: " + consulta.getHorario());
-                System.out.println("Médico: Dr(a). " + medico.getNome());
-                System.out.println("Especialidade: " + medico.getEspecialidade());
-                System.out.println("\nAgradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
-                System.out.println("Atenciosamente,");
-                System.out.println(secretaria.getNome());
-                
-            }
-        }
-    }
-
-
+        }   
+    }    
 }

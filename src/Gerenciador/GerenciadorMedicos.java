@@ -135,7 +135,7 @@ public class GerenciadorMedicos {
             System.out.println("Data: " + consulta.getData());
             System.out.println("Horário: " + consulta.getHorario());
             System.out.println("Paciente: " + colecaoPacientes.getPacienteById(consulta.getPacienteId()).getNome());
-            System.out.println("----------------------------");    
+            System.out.println("+----------------------------------+");
         }
     }
     
@@ -316,20 +316,26 @@ public class GerenciadorMedicos {
             System.out.println("      CADRASTRAR DADOS MÉDICOS      ");
             System.out.println("+----------------------------------+");
 
-            System.out.println("O paciente fuma? (true/false)");
-            boolean fuma = Boolean.parseBoolean(read.nextLine());
+            System.out.println("O paciente fuma? \n[1] Para sim \n[2] Para não");
+            int resp = read.nextInt();
+            boolean fuma = (resp == 1)? true : false;
 
-            System.out.println("O paciente bebe? (true/false)");
-            boolean bebe = Boolean.parseBoolean(read.nextLine());
+            System.out.println("O paciente bebe? \n[1] Para sim \n[2] Para não");
+            int resp1 = read.nextInt();
+            read.nextLine();
+            boolean bebe = (resp1 == 1)? true : false;
 
             System.out.println("Nível de colesterol:");
             String colesterol = read.nextLine();
 
-            System.out.println("O paciente é diabético? (true/false)");
-            boolean diabete = Boolean.parseBoolean(read.nextLine());
+            System.out.println("O paciente é diabético? \n[1] Para sim \n[2] Para não");
+            int resp2 = read.nextInt();
+            boolean diabete = (resp2 == 1)? true : false;
 
-            System.out.println("O paciente tem doença cardíaca? (true/false)");
-            boolean doencaCardiaca = Boolean.parseBoolean(read.nextLine());
+            System.out.println("O paciente tem doença cardíaca? \n[1] Para sim \n[2] Para não");
+            int resp3 = read.nextInt();
+            read.nextLine();
+            boolean doencaCardiaca = (resp3 == 1)? true : false;
 
             System.out.println("Informe as cirurgias realizadas (separadas por vírgula):");
             List<String> cirurgias = List.of(read.nextLine().split(","));
@@ -375,12 +381,13 @@ public class GerenciadorMedicos {
             System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
             System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
 
-            System.out.println("Atualizar fuma? (true/false) - Atual: " + dadosMedicos.isFuma());
+            System.out.println("Atualizar fumar? - Atual: " + dadosMedicos.isFuma());
             System.out.println("[0] - Para sim \n[1] - Para não");
             String resposta = read.nextLine();
             if (resposta.equals("0")) {
-                System.out.println("Informe a condição do paciente:");
-                boolean fuma = Boolean.parseBoolean(read.nextLine());
+                System.out.println("O paciente fuma? \n[1] Para sim \n[2] Para não");
+                int resp = read.nextInt();
+                boolean fuma = (resp == 1)? true : false;
                 dadosMedicos.setFuma(fuma);
             }
 
@@ -496,7 +503,7 @@ public class GerenciadorMedicos {
             System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
             System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
             System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
-            System.out.println("----------------------------");    
+            System.out.println("+----------------------------------+");
         }
         
         

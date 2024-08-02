@@ -243,6 +243,7 @@ public class MenuSecretaria {
         //Listar todas as secretarias
         ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
         
+        Main.limpaTela();
         System.out.println("");
         System.out.println("+----------------------------------------+");
         for(Secretaria secretaria : allSecretarias){
