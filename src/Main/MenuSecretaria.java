@@ -55,6 +55,7 @@ public class MenuSecretaria {
         System.out.print("Escolha a opção: ");
         int option = read.nextInt();
         
+        Main.limpaTela();
         switch (option){
             case 1:
                 // Cadastrar consulta
@@ -84,7 +85,7 @@ public class MenuSecretaria {
                 break;
                 
             case 5:
-                // Gerar Relatorios
+                // Gera Relatorios do dia seguintes
                 gerenciadorSecretarias.gerarRelatorioConsultasDiaSeguinte();
                 Main.temporizador(4000);
                 break;
@@ -125,6 +126,7 @@ public class MenuSecretaria {
         System.out.print("Escolha a opção: ");
         int option = read.nextInt();
         
+        Main.limpaTela();
         switch (option){
             case 1:
                 // Cadastrar paciente
@@ -148,7 +150,7 @@ public class MenuSecretaria {
                 break;
                 
             case 4:
-                // Lista paciente
+                // Listar paciente
                 gerenciadorSecretarias.listarPacientes();
                 Main.temporizador(4000);
                 break;
@@ -244,6 +246,7 @@ public class MenuSecretaria {
         ArrayList<Secretaria> allSecretarias = colecaoSecretarias.getSecretarias();
         
         Main.limpaTela();
+        System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("");
         System.out.println("+----------------------------------------+");
         for(Secretaria secretaria : allSecretarias){
@@ -252,8 +255,6 @@ public class MenuSecretaria {
             System.out.println("+----------------------------------------+");
         } 
         
-        System.out.println("\n \n");
-        System.out.println("USUÁRIO: SECRETÁRIA");
         System.out.println("");
         System.out.print("LOGIN DA SECRETARIA (IDENTIFICADOR) ou (0 para sair):");
         int id = read.nextInt();
@@ -275,7 +276,6 @@ public class MenuSecretaria {
         int option = read.nextInt();
         read.nextLine();  
         
-        
         Main.limpaTela();   
         int option1 = 0;
         switch (option){
@@ -291,7 +291,6 @@ public class MenuSecretaria {
                         gerenciadorSecretarias.cadastroPacientesInterno();
                         System.out.println("20 Pacientes cadastrados!");
                     }
-                
                 }
                 
                 while (option1 != 5){

@@ -23,7 +23,7 @@ public class ColecaoProntuarios {
     }
     
     public void remove(Prontuario prontuario){
-        prontuarios.remove(prontuarios);
+        prontuarios.remove(prontuario);
     }
     
   

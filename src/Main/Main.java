@@ -22,7 +22,7 @@ public class Main {
     }
     
     public static void limpaTela() {
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 25; i++) {
             System.out.println();
         }
     }
@@ -99,11 +99,13 @@ public class Main {
                 case 4:
                     System.out.println("Você realmente deseja 'SAIR' do programa?");
                     System.out.println("[1] Para sim \n[2] Para não");
+                    System.out.print("Opção: ");
                     int resp = read.nextInt();
                     
                     if (resp == 2){
                         option = 0;
                     } else if (resp == 1) {
+                        System.out.println("");
                         System.out.println("Saindo do programa...");
                         temporizador(2000);
                     }
