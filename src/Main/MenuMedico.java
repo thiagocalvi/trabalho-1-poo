@@ -354,10 +354,11 @@ public class MenuMedico {
             case 2:
                 // Gera os relatórios dos clientes atendidos no mês
                 gerenciadorMedicos.relatorioMensal();
-                Main.temporizador(5000);
+                Main.temporizador(3000);
                 break;
                 
             case 3:
+                gerenciadorMedicos.resetConsultasDoDia();
                 break;
                      
             default:

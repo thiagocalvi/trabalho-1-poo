@@ -113,6 +113,11 @@ public class GerenciadorMedicos {
         
         
     }
+    
+    public void resetConsultasDoDia(){
+        this.consultasDoDia = new ArrayList<Consulta>();
+    }
+    
         
     public void listaConsultasDoDia(){
         if (this.consultasDoDia.isEmpty()) {
