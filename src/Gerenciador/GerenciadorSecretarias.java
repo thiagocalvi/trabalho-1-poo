@@ -550,19 +550,18 @@ public class GerenciadorSecretarias {
                 Paciente paciente = colecaoPacientes.getPacienteById(consulta.getPacienteId());
                 Medico medico = colecaoMedicos.getMedicoById(consulta.getMedicoId());
                 
-                if(!paciente.getEmail().isEmpty() && !paciente.getTelefone().isEmpty()){
-                    System.out.println("Mensagem de confirmação envida para telefone: " + paciente.getTelefone() + " e email: " + paciente.getEmail() );
-                    System.out.println("Confirmação de Consulta Médica");
-                    System.out.println("Prezado(a)" + paciente.getNome() + ",");
-                    System.out.println("Existe uma consulta médica agendada para " + consulta.getData() + " em seu nome. Aqui estão os detalhes da sua consulta:");
-                    System.out.println("Data: " + consulta.getData());
-                    System.out.println("Hora: " + consulta.getHorario());
-                    System.out.println("Médico: Dr(a). " + medico.getNome());
-                    System.out.println("Especialidade: " + medico.getEspecialidade());
-                    System.out.println("Agradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
-                    System.out.println("Atenciosamente,");
-                    System.out.println(secretaria.getNome());
-                }
+                System.out.println((paciente.getEmail().isEmpty()) ? "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() : "Mensagem de confirmação envida para telefone: " + paciente.getTelefone() + " e email: " + paciente.getEmail() );
+                System.out.println("Confirmação de Consulta Médica");
+                System.out.println("Prezado(a)" + paciente.getNome() + ",");
+                System.out.println("Existe uma consulta médica agendada para " + consulta.getData() + " em seu nome. Aqui estão os detalhes da sua consulta:");
+                System.out.println("Data: " + consulta.getData());
+                System.out.println("Hora: " + consulta.getHorario());
+                System.out.println("Médico: Dr(a). " + medico.getNome());
+                System.out.println("Especialidade: " + medico.getEspecialidade());
+                System.out.println("Agradecemos por escolher nossa clínica e estamos à disposição para qualquer dúvida.");
+                System.out.println("Atenciosamente,");
+                System.out.println(secretaria.getNome());
+                
                 
             }
         }
