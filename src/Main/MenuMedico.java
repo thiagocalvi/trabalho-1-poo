@@ -20,22 +20,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 
 public class MenuMedico { 
     
-    //private ColecaoConsultas colecaoConsultas;
-    //private ColecaoPacientes colecaoPacientes;
-    //private ColecaoProntuarios colecaoProntuarios;
     private ColecaoMedicos colecaoMedicos;
     private GerenciadorMedicos gerenciadorMedicos;
-    //private ColecaoDadosMedicos colecaoDadosMedicos; 
     
     public MenuMedico(ColecaoConsultas colecaoConsultas, ColecaoPacientes colecaoPacientes, ColecaoProntuarios colecaoProntuarios, ColecaoMedicos colecaoMedicos, ColecaoDadosMedicos colecaoDadosMedicos){
-        //this.colecaoConsultas = colecaoConsultas;
-        //this.colecaoPacientes = colecaoPacientes;
-        //this.colecaoProntuarios = colecaoProntuarios;
         this.colecaoMedicos = colecaoMedicos;
         this.gerenciadorMedicos = new GerenciadorMedicos(colecaoConsultas, colecaoPacientes, colecaoProntuarios, colecaoDadosMedicos);
         

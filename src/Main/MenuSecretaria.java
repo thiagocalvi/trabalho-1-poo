@@ -18,20 +18,16 @@ import java.util.ArrayList;
 
 /**
  *
- * @author geanm
+ * @author jeanm
  */
 public class MenuSecretaria {
     
-    //private ColecaoMedicos colecaoMedicos;
     private ColecaoPacientes colecaoPacientes;
-    //private ColecaoConsultas colecaoConsultas;
     private ColecaoSecretarias colecaoSecretarias;
     private GerenciadorSecretarias gerenciadorSecretarias;
     
     public MenuSecretaria(ColecaoMedicos colecaoMedicos, ColecaoPacientes colecaoPacientes, ColecaoConsultas colecaoConsultas, ColecaoSecretarias colecaoSecretarias){
-        //this.colecaoMedicos = colecaoMedicos;
         this.colecaoPacientes = colecaoPacientes;
-        //this.colecaoConsultas = colecaoConsultas;
         this.colecaoSecretarias = colecaoSecretarias; 
         this.gerenciadorSecretarias = new GerenciadorSecretarias(colecaoConsultas, colecaoMedicos, colecaoPacientes);
     }

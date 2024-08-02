@@ -147,10 +147,6 @@ public class GerenciadorMedicos {
         System.out.println("+----------------------------------+");
         System.out.println("        CADASTRAR PRONTUÁRIO        ");
         System.out.println("+----------------------------------+");
-
-        // Coletar dados do prontuário
-        //System.out.println("Informe a data da consulta (formato: YYYY-MM-DD):");
-        //LocalDate dataConsulta = LocalDate.parse(read.nextLine());
         
         LocalDate dataConsulta = consultaAtual.getData();
         
@@ -180,10 +176,6 @@ public class GerenciadorMedicos {
     }
     
     public void atualizarProntuario() {
-        //Seria melhor permitir que somente protuario da consulta atual seja atualizado?
-        //Listar todos os prontuarios do paciente
-        
-        //TO-DO
         
         System.out.println("+----------------------------------+");
         System.out.println("        ATUALIZAR PRONTUÁRIO        ");
@@ -242,11 +234,11 @@ public class GerenciadorMedicos {
     
     public void removerProntuario() {
         
-        //Acredito que essa função seja desnecessário
-        
         System.out.println("+----------------------------------+");
         System.out.println("         REMOVER PRONTUÁRIO         ");
         System.out.println("+----------------------------------+");
+
+        //Revisar(listar prontuários)
 
         System.out.println("Informe o ID do prontuário a ser removido:");
         int id = Integer.parseInt(read.nextLine());
@@ -268,13 +260,8 @@ public class GerenciadorMedicos {
     public void cadastrarDados(){
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         
-        //Como uma paciente pode ter somente um dado medico deve se fazer essa verifica
-        
-        //Não sei se essa é a melhor solução
         if(paciente.getDadosMedicosId() != 0){
             System.out.println("O paciente " + paciente.getNome() + " já possui dados médicos cadastrados");
-            //Provavelmem sera nescessario um return aqui 
-            //Agora o valor que deve se retorna não sei
         }
         else{
             
@@ -323,13 +310,6 @@ public class GerenciadorMedicos {
         System.out.println("+----------------------------------+");
         System.out.println("       ATUALIZAR DADOS MÉDICOS      ");
         System.out.println("+----------------------------------+");
-
-        //Não é nescessario pedir o ID dos dados medicos esse dado já esta viculado 
-        //ao paciente da consulta atual
-        
-        //System.out.println("Informe o ID dos dados médicos a serem atualizados:");
-        //int id = Integer.parseInt(read.nextLine());
-        //DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(id);
 
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(paciente.getDadosMedicosId());
@@ -422,15 +402,8 @@ public class GerenciadorMedicos {
         System.out.println("        REMOVER DADOS MÉDICOS       ");
         System.out.println("+----------------------------------+");
 
-        //Não é nescessario informar o id essa informação já está no paciente da consulta atual
-        
-        //System.out.println("Informe o ID dos dados médicos a serem removidos:");
-        //int id = Integer.parseInt(read.nextLine());
-        //colecaoDadosMedicos.removeById(id);
-
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         colecaoDadosMedicos.removeById(paciente.getDadosMedicosId());
-
         
         //Vericar se o paciente da consulta atual tem dados medicos já cadastrados
         if (paciente.getDadosMedicosId() == 0) {
@@ -438,10 +411,7 @@ public class GerenciadorMedicos {
             return;
         }
                 
-        //TO-DO
-        //Quando remover os dados medicos de um paciente deve se setar a atributo dadosMedicosId do paciente para 0
-        //Provavelmente criar um set na classes paciente para fazer isso dever resolver
-        
+       
         System.out.println("+=====================================+");
         System.out.println("  DADOS MÉDICOS REMOVIDO COM SUCESSO!  ");
         System.out.println("+=====================================+");  
@@ -449,33 +419,10 @@ public class GerenciadorMedicos {
 
     
     public void listarDados() {
-        //TO-DO > FEITO
-        //Implementar a correção
-        //Listar somente os dados medicos do paciente da consulta atual
         
         System.out.println("+----------------------------------+");
         System.out.println("        LISTAR DADOS MÉDICOS        ");
         System.out.println("+----------------------------------+");
-        
-        //Como cada paciente terá somente um dado medico associado a ele
-        //não é nescessario listar todos os dados medicos de colecaoDadosMedicos
-        
-        /*
-        ArrayList<DadosMedicos> todosDados = colecaoDadosMedicos.getDadosMedicos();
-
-        
-        for (DadosMedicos dadosMedicos : todosDados) {
-            System.out.println("ID: " + dadosMedicos.getId());
-            System.out.println("Fuma: " + dadosMedicos.isFuma());
-            System.out.println("Bebe: " + dadosMedicos.isBebe());
-            System.out.println("Colesterol: " + dadosMedicos.getColesterol());
-            System.out.println("Diabete: " + dadosMedicos.isDiabete());
-            System.out.println("Doença Cardíaca: " + dadosMedicos.isDoencaCardiaca());
-            System.out.println("Cirurgias: " + String.join(", ", dadosMedicos.getCirurgias()));
-            System.out.println("Alergias: " + String.join(", ", dadosMedicos.getAlergias()));
-            System.out.println("----------------------------");
-        }
-        */
         
         Paciente paciente  = colecaoPacientes.getPacienteById(consultaAtual.getPacienteId());
         DadosMedicos dadosMedicos = colecaoDadosMedicos.getDadosMedicosById(paciente.getDadosMedicosId());
@@ -608,6 +555,3 @@ public class GerenciadorMedicos {
         
     }
 }
-
-//TO-DO - FEITO
-//Implementar os métodos para gerar os relatórios

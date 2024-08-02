@@ -206,9 +206,6 @@ public class GerenciadorSecretarias {
     
     public void listarConsultas() {
         
-        //TO-DO - FEITO
-        //Lista somente as consultas dos medicos qua a secretaria gerencia
-        
         ArrayList<Consulta> consultas = colecaoConsultas.getConsultas();
         System.out.println("\n");
         
@@ -408,8 +405,6 @@ public class GerenciadorSecretarias {
     }
     
     public void listarMedicos(){
-        //TO-DO - FEITO
-        //Deve se listar somente os medicos que a secretaria gerencia
         
         ArrayList<Medico> medicos = colecaoMedicos.getMedicos();
         System.out.println("\n");
@@ -580,7 +575,3 @@ public class GerenciadorSecretarias {
 
 
 }
-
-//TO-DO
-//Implementar os métodos para gerar os relatórios - Feito
-//Implomentar os métodos para enviar as mensagens - Feito
