@@ -615,7 +615,7 @@ public class GerenciadorSecretarias {
     
     public static LocalTime gerarHorarioAleatorio(LocalTime inicio, LocalTime fim) {
         Random random = new Random();
-        
+
         // Verifica se o intervalo é suficientemente grande
         Duration intervalo = Duration.between(inicio, fim);
         if (intervalo.toHours() < 1) {
@@ -630,8 +630,16 @@ public class GerenciadorSecretarias {
         long fimAjustadoEmSegundos = fimAjustado.toSecondOfDay();
         
         // Gera um valor aleatório entre o início e o fim ajustado
-        long horarioAleatorioEmSegundos = inicioEmSegundos + random.nextLong() % (fimAjustadoEmSegundos - inicioEmSegundos + 1);
+        long intervaloEmSegundos = fimAjustadoEmSegundos - inicioEmSegundos;
+        if (intervaloEmSegundos <= 0) {
+            throw new IllegalArgumentException("O intervalo entre início e fim ajustado deve ser positivo.");
+        }
         
+        long horarioAleatorioEmSegundos = inicioEmSegundos + random.nextLong() % intervaloEmSegundos;
+        if (horarioAleatorioEmSegundos < 0) {
+            horarioAleatorioEmSegundos += intervaloEmSegundos;
+        }
+
         // Converte de volta para LocalTime
         return LocalTime.ofSecondOfDay(horarioAleatorioEmSegundos);
     }
@@ -656,7 +664,7 @@ public class GerenciadorSecretarias {
         LocalDate doisDias = hoje.plusDays(2);
         //LocalTime horaConsulta = LocalTime.of(13, 30);
 
-        for(int i = 1; i <= 2; i++){
+        for(int i = 1; i < 3; i++){
             Medico medico = colecaoMedicos.getMedicoById(i);
 
             //3 consultas para o dia atual
