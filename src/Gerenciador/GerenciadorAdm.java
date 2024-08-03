@@ -10,7 +10,6 @@ import Colecao.ColecaoSecretarias;
 import Modelo.Medico;
 import Modelo.Secretaria;
 
-import Main.Main;
 
 import java.time.LocalDate;
 import java.util.Scanner;
