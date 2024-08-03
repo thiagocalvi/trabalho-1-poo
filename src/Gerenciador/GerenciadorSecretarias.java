@@ -11,6 +11,7 @@ import Modelo.Consulta;
 import Colecao.ColecaoConsultas;
 import Colecao.ColecaoMedicos;
 import Colecao.ColecaoPacientes;
+import java.time.Duration;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 /**
  *
@@ -611,6 +613,31 @@ public class GerenciadorSecretarias {
         }   
     }    
     
+    public static LocalTime gerarHorarioAleatorio(LocalTime inicio, LocalTime fim) {
+        Random random = new Random();
+        
+        // Verifica se o intervalo é suficientemente grande
+        Duration intervalo = Duration.between(inicio, fim);
+        if (intervalo.toHours() < 1) {
+            throw new IllegalArgumentException("O intervalo entre início e fim deve ser de pelo menos 1 hora.");
+        }
+
+        // Ajusta o horário final para garantir que o intervalo seja de pelo menos 1 hora
+        LocalTime fimAjustado = fim.minusHours(1);
+
+        // Converte os horários em segundos desde o início do dia
+        long inicioEmSegundos = inicio.toSecondOfDay();
+        long fimAjustadoEmSegundos = fimAjustado.toSecondOfDay();
+        
+        // Gera um valor aleatório entre o início e o fim ajustado
+        long horarioAleatorioEmSegundos = inicioEmSegundos + random.nextLong() % (fimAjustadoEmSegundos - inicioEmSegundos + 1);
+        
+        // Converte de volta para LocalTime
+        return LocalTime.ofSecondOfDay(horarioAleatorioEmSegundos);
+    }
+    
+    
+    
     public void cadastroConsultasInterno(){
         //Esse método é somente para fins de teste, os código a seguir não seguem as definições do projeto
         //Esse método cadastra 20 consultas (os 20 pacientes devem ser criados previamente)
@@ -619,17 +646,22 @@ public class GerenciadorSecretarias {
         //2 consultas serão para o dia seguinte
         //5 consultas serão para dois dias a frente
         
+        
+        LocalTime inicio = LocalTime.of(8, 0);  // 08:00
+        LocalTime fim = LocalTime.of(18, 0);    // 18:00
+        
         int idPaciente = 1;
         LocalDate hoje = LocalDate.now();
         LocalDate amanha = hoje.plusDays(1);
         LocalDate doisDias = hoje.plusDays(2);
-        LocalTime horaConsulta = LocalTime.of(13, 30);
+        //LocalTime horaConsulta = LocalTime.of(13, 30);
 
         for(int i = 1; i <= 2; i++){
             Medico medico = colecaoMedicos.getMedicoById(i);
 
             //3 consultas para o dia atual
             for(int j = 0; j < 3; j++){
+                LocalTime horaConsulta = gerarHorarioAleatorio(inicio, fim);
                 Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
                 Consulta consulta = new Consulta(hoje, horaConsulta);
                 this.idConsultaControle += 1;
@@ -644,6 +676,7 @@ public class GerenciadorSecretarias {
                 
             //2 consultas para o dia seguinte
             for(int j = 0; j < 2; j++){
+                LocalTime horaConsulta = gerarHorarioAleatorio(inicio, fim);
                 Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
                 Consulta consulta = new Consulta(amanha, horaConsulta);
                 this.idConsultaControle += 1;
@@ -658,6 +691,7 @@ public class GerenciadorSecretarias {
                             
             //5 consultas para o dois dias a frente
             for(int j = 0; j < 5; j++){
+                LocalTime horaConsulta = gerarHorarioAleatorio(inicio, fim);
                 Paciente paciente = colecaoPacientes.getPacienteById(idPaciente);
                 Consulta consulta = new Consulta(doisDias, horaConsulta);
                 this.idConsultaControle += 1;
