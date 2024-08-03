@@ -387,7 +387,7 @@ public class GerenciadorMedicos {
             if (resposta.equals("0")) {
                 System.out.println("O paciente fuma? \n[1] Para sim \n[2] Para não");
                 int resp = read.nextInt();
-                read.nextLine(); // Consumir a nova linha restante
+                read.nextLine();
                 boolean fuma = (resp == 1);
                 dadosMedicos.setFuma(fuma);
             }
@@ -398,7 +398,7 @@ public class GerenciadorMedicos {
             if (resposta.equals("0")) {
                 System.out.println("O paciente bebe? \n[1] Para sim \n[2] Para não");
                 int resp = read.nextInt();
-                read.nextLine(); // Consumir a nova linha restante
+                read.nextLine();
                 boolean bebe = (resp == 1);
                 dadosMedicos.setBebe(bebe);
             }
@@ -418,7 +418,7 @@ public class GerenciadorMedicos {
             if (resposta.equals("0")) {
                 System.out.println("O paciente é diabético? \n[1] Para sim \n[2] Para não");
                 int resp = read.nextInt();
-                read.nextLine(); // Consumir a nova linha restante
+                read.nextLine();
                 boolean diabete = (resp == 1);
                 dadosMedicos.setDiabete(diabete);
             }
@@ -429,7 +429,7 @@ public class GerenciadorMedicos {
             if (resposta.equals("0")) {
                 System.out.println("O paciente tem doença cardíaca? \n[1] Para sim \n[2] Para não");
                 int resp = read.nextInt();
-                read.nextLine(); // Consumir a nova linha restante
+                read.nextLine();
                 boolean doencaCardiaca = (resp == 1);
                 dadosMedicos.setDoencaCardiaca(doencaCardiaca);
             }
