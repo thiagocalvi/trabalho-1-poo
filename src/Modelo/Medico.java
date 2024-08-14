@@ -11,71 +11,17 @@ import java.time.LocalDate;
  *
  * @author MatheusConsoni
  */
-public class Medico{
-    private int id; //usar como identificador
-    private String nome;
-    private LocalDate dataNascimento;
-    private String telefone;
-    private String email;
+public class Medico extends Funcionario{
     private String especialidade;
     private int crm;
     private int secretariaId = 0; // 0 indica que o medico não tem nenhuma secretaria (cada medico terá somente uma secretaria)
-    
-    //Construtor
-
-    public Medico(){
-        
-    }
 
     public Medico(String nome, LocalDate dataNascimento, String telefone, String email, String especialidade, int crm) {
-        this.nome = nome;
-        this.dataNascimento = dataNascimento;
-        this.telefone = telefone;
-        this.email = email;
+        super(nome, dataNascimento, telefone, email);
         this.especialidade = especialidade;
         this.crm = crm;
     }
-
-    public void setId(int id){
-        this.id = id;
-    }
     
-    public int getId(){
-        return id;
-    }
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getEspecialidade() {
         return especialidade;
     }
