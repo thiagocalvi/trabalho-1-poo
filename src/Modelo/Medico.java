@@ -46,4 +46,8 @@ public class Medico extends Funcionario{
         this.secretariaId = secretaria.getId();
     }
         
+    //********************************************************//
+    public void cadastrarProntuario(){
+        
+    }
 }
