@@ -2,6 +2,8 @@
 
 Veja a documentação do código [aqui](./docs)
 
+## Parte 2 desse trabalho se encontra [aqui](https://github.com/Trabalho-Faculdade-UEM/trabalho-2-poo)
+
 ## Descição
 Crie uma aplicação Java desktop de acordo com a seguinte descrição:
 
