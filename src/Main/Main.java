@@ -7,10 +7,7 @@ package Main;
 import Colecao.*;
 import java.util.Scanner;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 
 
 /**
@@ -18,28 +15,6 @@ import java.sql.Statement;
  * @author thiago
  */
 public class Main {
-    
-    // Criar uma conexão com o banco de dados
-    private static Connection createConnection() {
-        String url = "jdbc:derby://localhost:1527/segundo-trabalho-poo"; // ajuste conforme necessário
-        String user = "adm"; // ajuste conforme necessário
-        String password = "admin"; // ajuste conforme necessário
-        Connection connection = null;
-
-        try {
-            // Registra o driver JDBC do Derby
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            // Estabelece a conexão com o banco de dados
-            connection = DriverManager.getConnection(url, user, password);
-            System.out.println("Conexão estabelecida com sucesso!");
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return connection;
-    }
-    
-    
     public static void temporizador(int tempo) {
         try {
             Thread.sleep(tempo);
@@ -56,7 +31,7 @@ public class Main {
         
     public static void main(String[] args){
         // Inicializa a conexão com o banco de dados
-        Connection connection = createConnection();
+        
         
         
         
@@ -153,19 +128,6 @@ public class Main {
                     Main.temporizador(2000);
                     break;
             }
-        } while (option != 4); 
-         
-//*****************************************************************************************************//
-        // Fechar a conexão com o banco de dados
-        /*
-        try {
-            if (connection != null && !connection.isClosed()) {
-                connection.close();
-                System.out.println("Conexão fechada.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        */
+        } while (option != 4);
     }      
 }  
