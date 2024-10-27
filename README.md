@@ -1,8 +1,15 @@
 # Parte 1 do Primeiro Trabalho da Disciplina de Programação Orientada a Objetos
 
+Integrantes do grupo:
+
+- [Jean Massumi Tamura Aoyagui](https://github.com/Jean-Massumi)
+- [Matheus Foltran Consonni](https://github.com/MatheusFoltran)
+- [Matheus Kochepki Campaner](https://github.com/m4theuszx)
+- [Thiago Henrique Calvi ](https://github.com/thiagocalvi)
+
 Veja a documentação do código [aqui](./docs)
 
-## Parte 2 desse trabalho se encontra [aqui](https://github.com/Trabalho-Faculdade-UEM/trabalho-2-poo)
+## Parte 2 desse trabalho se encontra [aqui](https://github.com/thiagocalvi/trabalho-2-poo)
 
 ## Descição
 Crie uma aplicação Java desktop de acordo com a seguinte descrição:
